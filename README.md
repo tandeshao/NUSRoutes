@@ -3,7 +3,7 @@
 Orbital 2021: Artemis.  
 By: Alvin Tay & Tan De Shao.
 
-App with an intuitively clear and concise UI of NUS Shuttle Bus Services, including a route recommendation feature.
+App with an intuitively clear and concise UI for NUS Shuttle Bus Services, including a route recommendation feature.
 
 ## Features
  - Route recommendation of quickest bus route from one place to another within NUS.
