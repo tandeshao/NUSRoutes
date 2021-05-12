@@ -1,7 +1,6 @@
 # NUSRoutes
 
-### Orbital 2021: Artemis. 
-Alvin Tay & Tan De Shao.
+Orbital 2021: Artemis. By: Alvin Tay & Tan De Shao.
 
 App with an intuitively clear and concise UI of NUS Shuttle Bus Services, including a route recommendation feature.
 
@@ -14,6 +13,8 @@ App with an intuitively clear and concise UI of NUS Shuttle Bus Services, includ
 ## Platforms
 Website, iOS, Android, Telegram.
 
-[Poster](https://drive.google.com/file/d/1vOOQEt3U8zGU9bPXqeKtyrWo0a3w1gwQ/view?usp=sharing) --
-[Video](https://drive.google.com/file/d/1PRAAMh1dzXpCV1xrEA4r_nKWNrwbNENs/view?usp=sharing) --
+[Poster](https://drive.google.com/file/d/1vOOQEt3U8zGU9bPXqeKtyrWo0a3w1gwQ/view?usp=sharing)
+
+[Video](https://drive.google.com/file/d/1PRAAMh1dzXpCV1xrEA4r_nKWNrwbNENs/view?usp=sharing)
+
 [Proposal](https://docs.google.com/document/d/1FU0Mvb-K5XoYC051hmAnpeqB_YA-p_N893SDMnudMXE/edit?usp=sharing)
