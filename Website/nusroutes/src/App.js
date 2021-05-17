@@ -2,6 +2,7 @@ import Navbar from "./Navbar";
 import Home from "./Home";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Login from "./Login";
+import NotFound from "./NotFound";
 
 function App() {
   //const github = "https://github.com/atmh/NUSRoutes";
@@ -17,6 +18,9 @@ function App() {
             </Route>
             <Route path="/login">
               <Login />
+            </Route>
+            <Route path="*">
+              <NotFound />
             </Route>
           </Switch>
         </div>

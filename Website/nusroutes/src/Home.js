@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 const Home = () => {
   const [current, setCurrent] = useState("here");
   const [destination, setDestination] = useState("there");
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     //prevents page refreshing
@@ -11,6 +13,9 @@ const Home = () => {
 
     // do something, print for now
     console.log(routing);
+
+    // redirect
+    history.push("/");
   };
 
   return (
