@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ContactContainer = styled.div`
-  height: 927px;
+  height: 860px;
   width: 100%;
   background-color: #010606;
   display: grid;
