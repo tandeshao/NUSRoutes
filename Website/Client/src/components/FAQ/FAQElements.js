@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
 export const FAQContainer = styled.div`
-  height: 800px;
+  height: 927px;
   background: #f9f9f9;
   display: grid;
   grid-template-columns: 60% 40%;
   grid-template-rows: 20% 80%;
-  grid-template-areas: 'header header' 'qns gif';
- 
+  grid-template-areas: "header header" "qns gif";
+
   @media screen and (max-width: 768px) {
     height: 600px;
   }
@@ -94,20 +94,20 @@ export const Answer = styled.p`
 `;
 
 export const Image = styled.img`
-    margin-top: 60px;
-    height: 400px;
-    width: 400px;
-    margin-bottom: 10px;
-    object-fit: contain;
-    grid-area: gif;  
+  margin-top: 60px;
+  height: 400px;
+  width: 400px;
+  margin-bottom: 10px;
+  object-fit: contain;
+  grid-area: gif;
 
-    @media screen and (max-width: 768px) {
-      height: 200px;
-      width: 200px;
-    }
+  @media screen and (max-width: 768px) {
+    height: 200px;
+    width: 200px;
+  }
 
-    @media screen and (max-width: 480px) {
-      height: 150px; 
-      width: 150px;
-    }
-`
+  @media screen and (max-width: 480px) {
+    height: 150px;
+    width: 150px;
+  }
+`;

@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 export const ContactContainer = styled.div`
-  height: 1000px;
+  height: 927px;
   width: 100%;
   background-color: #010606;
   display: grid;
   grid-template-rows: 20% 70%;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 60% 40%;
   grid-template-areas: "hd hd" "contact info";
 `;
 
@@ -22,7 +22,7 @@ export const ContactForm = styled.form`
   display: block;
   font-family: "Times New Roman", Times, serif;
   color: #3dfc03;
-  margin-left: 150px;
+  margin-left: 15vw;
   border-radius: 5%;
 `;
 
@@ -142,7 +142,6 @@ export const FormButton = styled.p`
 
 export const ContactInfo = styled.img`
   grid-area: info;
-  margin-left: 30px;
-  margin-top: 60px;
+  margin-left: 8vw;
+  margin-top: 6vh;
 `;
-
