@@ -1,0 +1,145 @@
+[
+  {
+    "service_name": "A1",
+    "path": [
+      "PGPT",
+      "KR-MRT",
+      "LT27",
+      "UHALL",
+      "STAFFCLUB-OPP",
+      "YIH",
+      "CENLIB",
+      "LT13",
+      "AS7",
+      "COM2",
+      "BIZ2",
+      "PGP12-OPP",
+      "PGPT"
+    ]
+  },
+  {
+    "service_name": "A2",
+    "path": [
+      "PGPT",
+      "PGP12",
+      "HSSML-OPP",
+      "NUSS-OPP",
+      "COM2",
+      "LT13-OPP",
+      "COMCEN",
+      "YIH-OPP",
+      "MUSEUM",
+      "STAFFCLUB",
+      "UHALL-OPP",
+      "S17",
+      "KR-MRT-OPP",
+      "PGPR"
+    ]
+  },
+  {
+    "service_name": "B1",
+    "path": [
+      "KR-BT",
+      "COMCEN",
+      "YIH-OPP",
+      "UTown",
+      "YIH",
+      "CENLIB",
+      "LT13",
+      "AS7",
+      "BIZ2"
+    ]
+  },
+  {
+    "service_name": "B2",
+    "path": [
+      "HSSML-OPP",
+      "NUSS-OPP",
+      "LT13-OPP",
+      "CENLIB",
+      "YIH-OPP",
+      "UTown",
+      "RAFFLES",
+      "BLK-EA-OPP",
+      "KR-BT"
+    ]
+  },
+  {
+    "service_name": "BTC1",
+    "path": [
+      "KR-BT",
+      "KV",
+      "MUSEUM",
+      "YIH",
+      "CENLIB",
+      "LT13",
+      "AS7",
+      "BIZ2",
+      "PGPT",
+      "CGH",
+      "BUKITTIMAH"
+    ]
+  },
+  {
+    "service_name": "BTC2",
+    "path": ["BUKITTIMAH", "BG-MRT", "MUSEUM", "BLK-EA-OPP", "KR-BT"]
+  },
+  {
+    "service_name": "C",
+    "path": [
+      "KR-BT",
+      "JP-SCH-16151",
+      "KV",
+      "MUSEUM",
+      "UTown",
+      "STAFFCLUB",
+      "UHALL-OPP",
+      "S17",
+      "LT27",
+      "UHALL",
+      "STAFFCLUB-OPP",
+      "UTown",
+      "RAFFLES",
+      "BLK-EA-OPP",
+      "KR-B"
+    ]
+  },
+  {
+    "service_name": "D1",
+    "path": [
+      "HSSML-OPP",
+      "NUSS-OPP",
+      "COM2",
+      "LT13-OPP",
+      "COMCEN",
+      "YIH-OPP",
+      "MUSEUM",
+      "UTown",
+      "YIH",
+      "CENLIB",
+      "LT13",
+      "AS7",
+      "COM2",
+      "BIZ2"
+    ]
+  },
+  {
+    "service_name": "D2",
+    "path": [
+      "PGP12-OPP",
+      "PGPT",
+      "KR-MRT",
+      "LT27",
+      "UHALL",
+      "STAFFCLUB-OPP",
+      "MUSEUM",
+      "UTown",
+      "STAFFCLUB",
+      "UHALL-OPP",
+      "S17",
+      "KR-MRT-OPP",
+      "PGPR",
+      "PGP12"
+    ]
+  }
+]
