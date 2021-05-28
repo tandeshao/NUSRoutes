@@ -35,12 +35,12 @@ const Services = () => {
         <ServicesCard>
           <ServicesIcon src={Icon3} />
           <ServicesH2> Android</ServicesH2>
-          <ServicesP>Downloadable from Android store.</ServicesP>
+          <ServicesP>Download from Android store.</ServicesP>
         </ServicesCard>
         <ServicesCard>
           <ServicesIcon src={Icon4} />
           <ServicesH2> iPhone </ServicesH2>
-          <ServicesP>Downloadable from Apple store.</ServicesP>
+          <ServicesP>Download from Apple store.</ServicesP>
         </ServicesCard>
       </ServicesWrapper>
     </ServicesContainer>

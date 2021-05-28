@@ -4,7 +4,7 @@ export const FAQContainer = styled.div`
   height: 927px;
   background: #f9f9f9;
   display: grid;
-  grid-template-columns: 60% 40%;
+  grid-template-columns: 50% 50%;
   grid-template-rows: 20% 80%;
   grid-template-areas: "header header" "qns gif";
 
@@ -39,6 +39,7 @@ export const FAQWrapper = styled.div`
   max-width: 80rem;
   margin: 0 auto;
   margin-top: 60px;
+  margin-left: 40%;
 `;
 
 export const FAQSet = styled.div`
@@ -94,6 +95,7 @@ export const Answer = styled.p`
 `;
 
 export const Image = styled.img`
+  margin-left: 40%;
   margin-top: 60px;
   height: 400px;
   width: 400px;

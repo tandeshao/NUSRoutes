@@ -25,8 +25,8 @@ const HeroSection = () => {
       </HeroBg>
       <HeroContent>
         <HeroH1> Navigation Around Campus Made Easy</HeroH1>
-        <HeroP> Not sure how to travel around campus? 
-        Look no further as we introduce to you <strong>NUSROUTES!</strong></HeroP>
+        <HeroP> Not sure how to travel around campus? <br/>Try <strong>NUSROUTES!</strong> today!</HeroP>
+        
         <HeroBtnWrapper>
           <Button to="services" onMouseEnter= {onHover} onMouseLeave={onHover}
           primary = "true"
