@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const FAQContainer = styled.div`
-  height: 927px;
+  height: 860px;
   background: #f9f9f9;
   display: grid;
   grid-template-columns: 50% 50%;
