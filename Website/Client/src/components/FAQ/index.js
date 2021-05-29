@@ -30,14 +30,14 @@ const FAQ = () => {
       <FAQWrapper>     
         {Data.map((element, index) => {
           return (
-            <FAQSet>
+            <FAQSet key = {index}>
               <Question onClick={() => makeOpen(index)}>
                 {element.question}
                 <OpenIcon>
                   {isOpen === index ? (
-                    <HiMinus class="plusminus" />
+                    <HiMinus className="plusminus" />
                   ) : (
-                    <HiPlus class="plusminus" />
+                    <HiPlus className="plusminus" />
                   )}
                 </OpenIcon>
               </Question>

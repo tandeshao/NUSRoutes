@@ -10,12 +10,8 @@ busStops.forEach(busStop => {
     const path = busService.path;
     const length = path.length;
     for (let i = 0; i < length; i ++) {
-      if (path[i] == busStop.name && i - 1 >= 0 && i + 1 < length) {
-        return set.add(path[i - 1]) && set.add(path[i + 1]);        
-      } else if (path[i] == busStop.name && i + 1 < length) {
+      if (path[i] == busStop.name && i + 1 < length) {
         return set.add(path[i + 1]);
-      } else if (path[i] == busStop.name && i - 1 >= 0) {
-        return set.add(path[i - 1]);  
       } else {
         continue;
       }
@@ -23,8 +19,6 @@ busStops.forEach(busStop => {
   });
   graph[busStop.name] = Array.from(set);
 });
-
-
 
 fs.writeFile("../data/graph.json", JSON.stringify(graph), (err) => {
   if (err) return console.log(err);

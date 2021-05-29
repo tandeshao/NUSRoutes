@@ -20,8 +20,7 @@ function breadthFirstSearch(graph, start, end) {
     }
   }
 
-  console.log("no result");
+  console.log("No result available");
 }
-
 
 export default breadthFirstSearch;
