@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "abort-controller": "^3.0.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "google-distance": "^1.0.1",
     "node-dijkstra": "^2.5.0",
