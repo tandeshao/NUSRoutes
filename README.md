@@ -1,9 +1,10 @@
 # NUSRoutes
 
-Orbital 2021: Artemis.  
+Orbital 2021
+Proposed Level of Achievement: Artemis  
 By: Alvin Tay & Tan De Shao.
 
-App with an intuitively clear and concise UI for NUS Shuttle Bus Services, including a route recommendation feature.
+[NUSRoutes](https://nusroutes.vercel.app/) is a web app with an intuitively clear and concise UI for NUS Shuttle Bus Services, including a route recommendation feature.
 
 ## Features
  - Route recommendation of quickest bus route from one place to another within NUS.
