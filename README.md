@@ -14,20 +14,20 @@ By: Alvin Tay & Tan De Shao.
 
 ## How are we different from NUSNextBUS?
 * Route recommendation
- * Manual route planning with NUSNextBUS is a thing of the past.
- * Let NUSRoutes do it for you!
+  * Manual route planning with NUSNextBUS is a thing of the past.
+  * Let NUSRoutes do it for you!
 
 * Proximity Alarm
- * Tired and want to take a quick nap?
- * NUSRoutes got you covered and notifies when your destination is nearing.
+  * Tired and want to take a quick nap?
+  * NUSRoutes got you covered and notifies when your destination is nearing.
 
 * Web app
- * No download required!
- * Runs on the browser and is cross-platform.
+  * No download required!
+  * Runs on the browser and is cross-platform.
 
 * Elegant and intuitive user interface
- * A few clicks is all it takes.
- * We put in our best effort to make NUSRoutes modern yet super intuitive.
+  * A few clicks is all it takes.
+  *We put in our best effort to make NUSRoutes modern yet super intuitive.
 
 ## Platforms
 Website, iOS, Android, Telegram.
