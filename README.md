@@ -6,7 +6,8 @@ By: Alvin Tay & Tan De Shao.
 
 [NUSRoutes](https://nusroutes.vercel.app/) is a web app with an intuitively clear and concise UI for NUS Shuttle Bus Services, including a route recommendation feature.
 
-![Image of bus](https://github.com/atmh/NUSRoutes/blob/main/Website/Client/src/images/Bus.png){:height="50%" width="50%"}
+<img src="https://github.com/atmh/NUSRoutes/blob/main/Website/Client/src/images/Bus.png" width="100">
+
 ## Features
  - Route recommendation of shortest bus route from one place to another within NUS.
  - Proximity Alarm.
