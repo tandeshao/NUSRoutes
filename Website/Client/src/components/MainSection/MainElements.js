@@ -105,3 +105,29 @@ export const ArrowRight = styled(MdKeyboardArrowRight)`
   margin-left: 8px;
   font-size: 20px;
 `;
+
+export const Form = styled.div`
+  color: #fff;
+  font-size: 24px;
+  text-align: center;
+  width: 30%;
+  margin: 0 auto;
+  margin-top: 3vh;
+  display: flex;
+`;
+
+export const FormLabel = styled.label`
+  text-align: Center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const FormSelect = styled.select`
+  width: 100%;
+  padding: 6px 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  display: flex;
+`;
