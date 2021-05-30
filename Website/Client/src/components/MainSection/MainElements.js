@@ -51,7 +51,7 @@ export const VideoBg = styled.video`
 
 export const HeroContent = styled.div`
   z-index: 3;
-  max-width: 1200px;
+  width: 50%;
   position: absolute;
   padding: 8px 24px;
   display: flex;
@@ -60,7 +60,7 @@ export const HeroContent = styled.div`
 `;
 
 export const HeroH1 = styled.h1`
-  color: #fff;
+  color: #ff2400;
   font-size: 40px;
   text-align: center;
 
@@ -110,19 +110,18 @@ export const Form = styled.div`
   color: #fff;
   font-size: 24px;
   text-align: center;
-  width: 50%;
   margin: 0 auto;
   margin-top: 3vh;
   display: flex;
 `;
 
 export const FormLabel = styled.h5`
-  color: #000c66;
+  color: #fff;
   text-align: Center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0.8rem;
+  padding: 1rem;
 `;
 
 export const FormSelect = styled.select`

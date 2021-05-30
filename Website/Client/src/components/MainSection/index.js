@@ -3,8 +3,7 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
-import Box from "../Box";
-import styles from "./Selection.module.css";
+import { makeStyles } from "@material-ui/core/styles";
 
 import {
   HeroContainer,
@@ -119,7 +118,7 @@ const HeroSection = () => {
     } else {
       const curId = map[current];
       const destId = map[destination];
-      const routing = { curId, destId };
+      const routing = [curId, destId];
 
       // do something, print for now
       console.log(routing);
@@ -129,56 +128,114 @@ const HeroSection = () => {
     }
   };
 
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      "& .MuiInputLabel-outlined:not(.MuiInputLabel-shrink)": {
+        // Default transform is "translate(14px, 20px) scale(1)""
+        // This lines up the label with the initial cursor position in the input
+        // after changing its padding-left.
+        transform: "translate(34px, 20px) scale(1);",
+      },
+      //border
+      "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+        borderColor: "aquamarine",
+        borderWidth: 2.5,
+      },
+      //hover
+      "&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+        borderColor: "blue",
+      },
+      //focus
+      "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+        borderColor: "blue",
+      },
+      // not in focus
+      "& .MuiOutlinedInput-input": {
+        color: "white",
+      },
+      // hover
+      "&:hover .MuiOutlinedInput-input": {
+        color: "white",
+      },
+      // in focus
+      "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-input": {
+        color: "white",
+      },
+      // placeholder
+      "& .MuiInputLabel-outlined": {
+        color: "gray",
+      },
+      // hover placeholder
+      "&:hover .MuiInputLabel-outlined": {
+        color: "white",
+      },
+      // in focus
+      "& .MuiInputLabel-outlined.Mui-focused": {
+        color: "blue",
+      },
+    },
+    inputRoot: {
+      color: "white",
+      // This matches the specificity of the default styles at https://github.com/mui-org/material-ui/blob/v4.11.3/packages/material-ui-lab/src/Autocomplete/Autocomplete.js#L90
+      '&[class*="MuiOutlinedInput-root"] .MuiAutocomplete-input:first-child': {
+        // Default left padding is 6px
+        paddingLeft: 26,
+      },
+    },
+  }));
+
+  const classes = useStyles();
+
   return (
     <HeroContainer id="home">
       <HeroBg>
         <VideoBg autoPlay loop muted src={Video} type="video/mp4" />
       </HeroBg>
       <HeroContent>
-        <HeroH1> Navigation Around Campus Made Easy</HeroH1>
+        <HeroH1> Navigation with ease </HeroH1>
 
         <Form>
           <form onSubmit={handleSubmit}>
-            <Box>
-              <FormLabel>Current location: </FormLabel>
-              <Autocomplete
-                value={current}
-                onChange={(event, newValue) => {
-                  setCurrent(newValue);
-                }}
-                id="Current"
-                options={options}
-                style={{ width: 300 }}
-                renderInput={(params) => (
-                  <TextField
-                    className={styles.selection}
-                    {...params}
-                    label="Current"
-                    variant="outlined"
-                    error={currentError}
-                  />
-                )}
-              />
-              <br />
-              <FormLabel>Destination: </FormLabel>
-              <Autocomplete
-                value={destination}
-                onChange={(event, newValue) => {
-                  setDestination(newValue);
-                }}
-                id="destination"
-                options={options}
-                style={{ width: 300 }}
-                renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    label="Destination"
-                    variant="outlined"
-                    error={destinationError}
-                  />
-                )}
-              />
-            </Box>
+            <FormLabel>Current location: </FormLabel>
+            <Autocomplete
+              classes={classes}
+              value={current}
+              onChange={(event, newValue) => {
+                setCurrent(newValue);
+              }}
+              id="Current"
+              options={options}
+              style={{ width: 300 }}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label="Current..."
+                  variant="outlined"
+                  error={currentError}
+                  color="secondary"
+                />
+              )}
+            />
+            <br />
+            <FormLabel>Destination: </FormLabel>
+            <Autocomplete
+              classes={classes}
+              value={destination}
+              onChange={(event, newValue) => {
+                setDestination(newValue);
+              }}
+              id="destination"
+              options={options}
+              style={{ width: 300 }}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label="Destination..."
+                  variant="outlined"
+                  error={destinationError}
+                />
+              )}
+            />
 
             <HeroBtnWrapper>
               <Button
