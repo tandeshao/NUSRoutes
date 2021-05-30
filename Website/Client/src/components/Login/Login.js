@@ -14,6 +14,7 @@ const Login = (props) => {
   return (
     <section className="login">
       <div className="loginContainer">
+        <h1>NUSRoutes</h1>
         <label>Username</label>
         <input
           type="text"
