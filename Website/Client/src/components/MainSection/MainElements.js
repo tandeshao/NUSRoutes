@@ -117,12 +117,12 @@ export const Form = styled.div`
 `;
 
 export const FormLabel = styled.h5`
-  color: #0d4f8b;
+  color: #000c66;
   text-align: Center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem;
+  padding: 0.8rem;
 `;
 
 export const FormSelect = styled.select`
