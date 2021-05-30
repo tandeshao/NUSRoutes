@@ -110,17 +110,19 @@ export const Form = styled.div`
   color: #fff;
   font-size: 24px;
   text-align: center;
-  width: 30%;
+  width: 50%;
   margin: 0 auto;
   margin-top: 3vh;
   display: flex;
 `;
 
-export const FormLabel = styled.label`
+export const FormLabel = styled.h5`
+  color: #0d4f8b;
   text-align: Center;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 1rem;
 `;
 
 export const FormSelect = styled.select`

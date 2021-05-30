@@ -1,6 +1,10 @@
 import Video from "../../video/video.mp4";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import TextField from "@material-ui/core/TextField";
+import Autocomplete from "@material-ui/lab/Autocomplete";
+import Box from "../Box";
+import styles from "./Selection.module.css";
 
 import {
   HeroContainer,
@@ -13,7 +17,6 @@ import {
   ArrowRight,
   Form,
   FormLabel,
-  FormSelect,
 } from "./MainElements";
 import { Button } from "../ButtonElement";
 
@@ -22,20 +25,108 @@ const HeroSection = () => {
   const onHover = () => {
     setHover(!hover);
   };
-  const [current, setCurrent] = useState("AS7");
-  const [destination, setDestination] = useState("AS7");
+
+  const options = [
+    "",
+    "AS5",
+    "BIZ 2",
+    "Botanic Gardens MRT",
+    "BTC - Oei Tiong Ham Building",
+    "Central Library",
+    "College Green",
+    "COM2",
+    "EA",
+    "Information Technology",
+    "Kent Ridge MRT",
+    "Kent Vale",
+    "LT13",
+    "LT27",
+    "Museum",
+    "Opp HSSML",
+    "Opp Kent Ridge MRT",
+    "Opp NUSS",
+    "Opp TCOMS",
+    "Opp University Hall",
+    "Opp University Health Centre",
+    "Opp YIH",
+    "Prince George's Park",
+    "Prince George's Park Residence",
+    "Raffles Hall (Opp. Museum)",
+    "S17",
+    "TCOMS",
+    "University Hall",
+    "University Health Centre",
+    "University Town",
+    "Ventus (Opp LT13)",
+    "YIH",
+    "The Japanese Primary School",
+    "Kent Ridge Bus Terminal",
+  ];
+
+  const map = {
+    AS5: "AS7",
+    "BIZ 2": "BIZ2",
+    "Botanic Gardens MRT": "BG-MRT",
+    "BTC - Oei Tiong Ham Building": "BUKITTIMAH",
+    "Central Library": "CENLIB",
+    "College Green": "CGH",
+    COM2: "COM2",
+    EA: "BLK-EA-OPP",
+    "Information Technology": "COMCEN",
+    "Kent Ridge MRT": "KR-MRT",
+    "Kent Vale": "KV",
+    LT13: "LT13",
+    LT27: "LT27",
+    Museum: "MUSEUM",
+    "Opp HSSML": "HSSML-OPP",
+    "Opp Kent Ridge MRT": "HSSML-OPP",
+    "Opp NUSS": "NUSS-OPP",
+    "Opp TCOMS": "PGP12-OPP",
+    "Opp University Hall": "UHALL-OPP",
+    "Opp University Health Centre": "STAFFCLUB-OPP",
+    "Opp YIH": "YIH-OPP",
+    "Prince George's Park": "PGPT",
+    "Prince George's Park Residence": "PGPR",
+    "Raffles Hall (Opp. Museum)": "RAFFLES",
+    S17: "S17",
+    TCOMS: "PGP12",
+    "University Hall": "UHALL",
+    "University Health Centre": "STAFFCLUB",
+    "University Town": "UTown",
+    "Ventus (Opp LT13)": "LT13-OPP",
+    YIH: "YIH",
+    "The Japanese Primary School": "JP-SCH-16151",
+    "Kent Ridge Bus Terminal": "KR-BT",
+  };
+
+  const [current, setCurrent] = useState(options[0]);
+  const [destination, setDestination] = useState(options[0]);
+  const [currentError, setCurrentError] = useState(false);
+  const [destinationError, setDestinationError] = useState(false);
+
   const history = useHistory();
 
   const handleSubmit = (e) => {
     //prevents page refreshing
     e.preventDefault();
-    const routing = { current, destination };
+    setCurrentError(false);
+    setDestinationError(false);
 
-    // do something, print for now
-    console.log(routing);
+    if (current === "") {
+      setCurrentError(true);
+    } else if (destination === "") {
+      setDestinationError(true);
+    } else {
+      const curId = map[current];
+      const destId = map[destination];
+      const routing = { curId, destId };
 
-    // redirect
-    history.push("/");
+      // do something, print for now
+      console.log(routing);
+
+      // redirect
+      history.push("/");
+    }
   };
 
   return (
@@ -48,94 +139,46 @@ const HeroSection = () => {
 
         <Form>
           <form onSubmit={handleSubmit}>
-            <FormLabel>Current location: </FormLabel>
-            <FormSelect
-              name="Current"
-              id="Current"
-              value={current}
-              onChange={(e) => setCurrent(e.target.value)}
-              required
-            >
-              <option value="AS7">AS5</option>
-              <option value="BIZ2">BIZ 2</option>
-              <option value="BG-MRT">Botanic Gardens MRT</option>
-              <option value="BUKITTIMAH">BTC - Oei Tiong Ham Building</option>
-              <option value="CENLIB">Central Library</option>
-              <option value="CGH">College Green</option>
-              <option value="COM2">COM2</option>
-              <option value="BLK-EA-OPP">EA</option>
-              <option value="COMCEN">Information Technology</option>
-              <option value="KR-MRT">Kent Ridge MRT</option>
-              <option value="KV">Kent Vale</option>
-              <option value="LT13">LT13</option>
-              <option value="LT27">LT27</option>
-              <option value="MUSEUM">Museum</option>
-              <option value="HSSML-OPP">Opp HSSML</option>
-              <option value="KR-MRT-OPP">Opp Kent Ridge MRT</option>
-              <option value="NUSS-OPP">Opp NUSS</option>
-              <option value="PGP12-OPP">Opp TCOMS</option>
-              <option value="UHALL-OPP">Opp University Hall</option>
-              <option value="STAFFCLUB-OPP">
-                Opp University Health Centre
-              </option>
-              <option value="YIH-OPP">Opp YIH</option>
-              <option value="PGPT">Prince George's Park</option>
-              <option value="PGPR">Prince George's Park Residence</option>
-              <option value="RAFFLES">Raffles Hall (Opp. Museum)</option>
-              <option value="S17">S17</option>
-              <option value="PGP12">TCOMS</option>
-              <option value="UHALL">University Hall</option>
-              <option value="STAFFCLUB">University Health Centre</option>
-              <option value="UTown">University Town</option>
-              <option value="LT13-OPP">Ventus (Opp LT13)</option>
-              <option value="YIH">YIH</option>
-              <option value="JP-SCH-16151">The Japanese Primary School</option>
-              <option value="KR-BT">Kent Ridge Bus Terminal</option>
-            </FormSelect>
-            <FormLabel> Destination: </FormLabel>
-            <FormSelect
-              name="Destination"
-              id="Destination"
-              value={destination}
-              onChange={(e) => setDestination(e.target.value)}
-              required
-            >
-              <option value="AS7">AS5</option>
-              <option value="BIZ2">BIZ 2</option>
-              <option value="BG-MRT">Botanic Gardens MRT</option>
-              <option value="BUKITTIMAH">BTC - Oei Tiong Ham Building</option>
-              <option value="CENLIB">Central Library</option>
-              <option value="CGH">College Green</option>
-              <option value="COM2">COM2</option>
-              <option value="BLK-EA-OPP">EA</option>
-              <option value="COMCEN">Information Technology</option>
-              <option value="KR-MRT">Kent Ridge MRT</option>
-              <option value="KV">Kent Vale</option>
-              <option value="LT13">LT13</option>
-              <option value="LT27">LT27</option>
-              <option value="MUSEUM">Museum</option>
-              <option value="HSSML-OPP">Opp HSSML</option>
-              <option value="KR-MRT-OPP">Opp Kent Ridge MRT</option>
-              <option value="NUSS-OPP">Opp NUSS</option>
-              <option value="PGP12-OPP">Opp TCOMS</option>
-              <option value="UHALL-OPP">Opp University Hall</option>
-              <option value="STAFFCLUB-OPP">
-                Opp University Health Centre
-              </option>
-              <option value="YIH-OPP">Opp YIH</option>
-              <option value="PGPT">Prince George's Park</option>
-              <option value="PGPR">Prince George's Park Residence</option>
-              <option value="RAFFLES">Raffles Hall (Opp. Museum)</option>
-              <option value="S17">S17</option>
-              <option value="PGP12">TCOMS</option>
-              <option value="UHALL">University Hall</option>
-              <option value="STAFFCLUB">University Health Centre</option>
-              <option value="UTown">University Town</option>
-              <option value="LT13-OPP">Ventus (Opp LT13)</option>
-              <option value="YIH">YIH</option>
-              <option value="JP-SCH-16151">The Japanese Primary School</option>
-              <option value="KR-BT">Kent Ridge Bus Terminal</option>
-            </FormSelect>
+            <Box>
+              <FormLabel>Current location: </FormLabel>
+              <Autocomplete
+                value={current}
+                onChange={(event, newValue) => {
+                  setCurrent(newValue);
+                }}
+                id="Current"
+                options={options}
+                style={{ width: 300 }}
+                renderInput={(params) => (
+                  <TextField
+                    className={styles.selection}
+                    {...params}
+                    label="Current"
+                    variant="outlined"
+                    error={currentError}
+                  />
+                )}
+              />
+              <br />
+              <FormLabel>Destination: </FormLabel>
+              <Autocomplete
+                value={destination}
+                onChange={(event, newValue) => {
+                  setDestination(newValue);
+                }}
+                id="destination"
+                options={options}
+                style={{ width: 300 }}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label="Destination"
+                    variant="outlined"
+                    error={destinationError}
+                  />
+                )}
+              />
+            </Box>
 
             <HeroBtnWrapper>
               <Button
@@ -160,11 +203,3 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
-
-/*
-        <HeroP>
-          {" "}
-          Not sure how to travel around campus? <br />
-          Try <strong>NUSROUTES!</strong> today!
-        </HeroP>
-        */
