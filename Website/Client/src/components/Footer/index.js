@@ -17,7 +17,6 @@ import { animateScroll as scroll } from "react-scroll";
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 
 const Footer = () => {
-    
   const toggleHome = () => {
     scroll.scrollToTop();
   };
