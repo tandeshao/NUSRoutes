@@ -1,4 +1,4 @@
-[  
+[
   {
     "service_name": "A1",
     "path": [
@@ -49,26 +49,6 @@
     "vacation-sun/ph": [900, 2300]
   },
   {
-    "service_name": "B1",
-    "path": [
-      "KR-BT",
-      "COMCEN",
-      "YIH-OPP",
-      "UTown",
-      "YIH",
-      "CENLIB",
-      "LT13",
-      "AS7",
-      "BIZ2"
-    ],
-    "term-weekdays": [715, 1900],
-    "term-sat": [0, 0],
-    "term-sun/ph": [0, 0],
-    "vacation-weekdays": [0, 0],
-    "vacation-sat": [0, 0],
-    "vacation-sun/ph": [0, 0]
-  },
-  {
     "service_name": "B2",
     "path": [
       "HSSML-OPP",
@@ -86,38 +66,6 @@
     "term-sun/ph": [0, 0],
     "vacation-weekdays": [715, 2300],
     "vacation-sat": [715, 1900],
-    "vacation-sun/ph": [0, 0]
-  },
-  {
-    "service_name": "BTC1",
-    "path": [
-      "KR-BT",
-      "KV",
-      "MUSEUM",
-      "YIH",
-      "CENLIB",
-      "LT13",
-      "AS7",
-      "BIZ2",
-      "PGPT",
-      "CGH",
-      "BUKITTIMAH"
-    ],
-    "term-weekdays": [720, 2130],
-    "term-sat": [830, 1230],
-    "term-sun/ph": [0, 0],
-    "vacation-weekdays": [730, 1900],
-    "vacation-sat": [830, 1230],
-    "vacation-sun/ph": [0, 0]
-  },
-  {
-    "service_name": "BTC2",
-    "path": ["BUKITTIMAH", "BG-MRT", "MUSEUM", "BLK-EA-OPP", "KR-BT"],
-    "term-weekdays": [720, 2130],
-    "term-sat": [830, 1230],
-    "term-sun/ph": [0, 0],
-    "vacation-weekdays": [730, 1900],
-    "vacation-sat": [830, 1230],
     "vacation-sun/ph": [0, 0]
   },
   {
@@ -145,7 +93,6 @@
     "vacation-weekdays": [715, 2300],
     "vacation-sat": [715, 1900],
     "vacation-sun/ph": [0, 0]
-    
   },
   {
     "service_name": "D1",

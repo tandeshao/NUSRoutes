@@ -20,7 +20,7 @@ busStops.forEach(busStop => {
   graph[busStop.name] = Array.from(set);
 });
 
-fs.writeFile("../data/graph.json", JSON.stringify(graph), (err) => {
+fs.writeFile("../data/bfsGraph.json", JSON.stringify(graph), (err) => {
   if (err) return console.log(err);
   console.log("File has been successfully written!");
 });

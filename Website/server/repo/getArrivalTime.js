@@ -13,7 +13,7 @@ const getArrivalTime = async (busStopName, busService) => {
         `Cannot retrieve Arrival Time for ${busService} at ${busStopName}`
       );
     });
-
+    
   return obj;
 };
 

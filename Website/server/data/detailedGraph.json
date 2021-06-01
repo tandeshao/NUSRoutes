@@ -1,0 +1,757 @@
+{
+  "AS7": [
+    {
+      "destination": "COM2",
+      "data": [
+        {
+          "origin": "Temasek Hall Block D&E, Singapore",
+          "destination": "13 Computing Dr, Singapore 117417",
+          "distance": "0.3 km",
+          "distanceValue": 312,
+          "duration": "1 min",
+          "durationValue": 76
+        }
+      ]
+    },
+    {
+      "destination": "BIZ2",
+      "data": [
+        {
+          "origin": "Temasek Hall Block D&E, Singapore",
+          "destination": "1 Business Link, Singapore 117592",
+          "distance": "0.5 km",
+          "distanceValue": 482,
+          "duration": "2 mins",
+          "durationValue": 90
+        }
+      ]
+    }
+  ],
+  "BIZ2": [
+    {
+      "destination": "PGP12-OPP",
+      "data": [
+        {
+          "origin": "1 Business Link, Singapore 117592",
+          "destination": "12 Prince George's Park, Singapore 118411",
+          "distance": "0.2 km",
+          "distanceValue": 230,
+          "duration": "1 min",
+          "durationValue": 34
+        }
+      ]
+    },
+    {
+      "destination": "PGPT",
+      "data": [
+        {
+          "origin": "1 Business Link, Singapore 117592",
+          "destination": "2 Prince George's Park, Singapore 118401",
+          "distance": "0.7 km",
+          "distanceValue": 691,
+          "duration": "2 mins",
+          "durationValue": 90
+        }
+      ]
+    }
+  ],
+  "BG-MRT": [
+    {
+      "destination": "MUSEUM",
+      "data": [
+        {
+          "origin": "Botanic Gardens MRT Station, Singapore",
+          "destination": "Nus Museums, Singapore",
+          "distance": "8.3 km",
+          "distanceValue": 8295,
+          "duration": "11 mins",
+          "durationValue": 656
+        }
+      ]
+    }
+  ],
+  "BUKITTIMAH": [
+    {
+      "destination": "BG-MRT",
+      "data": [
+        {
+          "origin": "469C Bukit Timah Rd, Singapore 259772",
+          "destination": "Botanic Gardens MRT Station, Singapore",
+          "distance": "0.9 km",
+          "distanceValue": 910,
+          "duration": "3 mins",
+          "durationValue": 153
+        }
+      ]
+    }
+  ],
+  "CENLIB": [
+    {
+      "destination": "LT13",
+      "data": [
+        {
+          "origin": "10 Kent Ridge Cres, Singapore 119260",
+          "destination": "3 Arts Link, Singapore 117569",
+          "distance": "0.3 km",
+          "distanceValue": 315,
+          "duration": "1 min",
+          "durationValue": 70
+        }
+      ]
+    },
+    {
+      "destination": "YIH-OPP",
+      "data": [
+        {
+          "origin": "10 Kent Ridge Cres, Singapore 119260",
+          "destination": "Opp Yusof Ishak Hse, Singapore",
+          "distance": "0.6 km",
+          "distanceValue": 648,
+          "duration": "2 mins",
+          "durationValue": 132
+        }
+      ]
+    }
+  ],
+  "CGH": [
+    {
+      "destination": "BUKITTIMAH",
+      "data": [
+        {
+          "origin": "Opp Botanic Gdns Stn, Singapore",
+          "destination": "469C Bukit Timah Rd, Singapore 259772",
+          "distance": "1.1 km",
+          "distanceValue": 1062,
+          "duration": "4 mins",
+          "durationValue": 216
+        }
+      ]
+    }
+  ],
+  "COM2": [
+    {
+      "destination": "BIZ2",
+      "data": [
+        {
+          "origin": "13 Computing Dr, Singapore 117417",
+          "destination": "1 Business Link, Singapore 117592",
+          "distance": "0.8 km",
+          "distanceValue": 802,
+          "duration": "3 mins",
+          "durationValue": 197
+        }
+      ]
+    },
+    {
+      "destination": "LT13-OPP",
+      "data": [
+        {
+          "origin": "13 Computing Dr, Singapore 117417",
+          "destination": "1 Arts Link, Singapore 117568",
+          "distance": "0.7 km",
+          "distanceValue": 678,
+          "duration": "3 mins",
+          "durationValue": 162
+        }
+      ]
+    }
+  ],
+  "BLK-EA-OPP": [
+    {
+      "destination": "KR-BT",
+      "data": [
+        {
+          "origin": "NUS Fac Of Engrg, Singapore",
+          "destination": "37B Clementi Rd, Singapore 129762",
+          "distance": "0.7 km",
+          "distanceValue": 736,
+          "duration": "2 mins",
+          "durationValue": 90
+        }
+      ]
+    },
+    {
+      "destination": "KR-B",
+      "data": [
+        {
+          "origin": "NUS Fac Of Engrg, Singapore",
+          "destination": "37B Clementi Rd, Singapore 129762",
+          "distance": "0.7 km",
+          "distanceValue": 736,
+          "duration": "2 mins",
+          "durationValue": 90
+        }
+      ]
+    }
+  ],
+  "COMCEN": [
+    {
+      "destination": "YIH-OPP",
+      "data": [
+        {
+          "origin": "Information Technology, Singapore",
+          "destination": "Opp Yusof Ishak Hse, Singapore",
+          "distance": "0.2 km",
+          "distanceValue": 234,
+          "duration": "1 min",
+          "durationValue": 34
+        }
+      ]
+    }
+  ],
+  "KR-MRT": [
+    {
+      "destination": "LT27",
+      "data": [
+        {
+          "origin": "16b Lower Kent Ridge Rd, Singapore 119074",
+          "destination": "Lim Seng Tjoe Bldg, Singapore",
+          "distance": "0.5 km",
+          "distanceValue": 517,
+          "duration": "1 min",
+          "durationValue": 87
+        }
+      ]
+    }
+  ],
+  "KV": [
+    {
+      "destination": "MUSEUM",
+      "data": [
+        {
+          "origin": "199 Clementi Rd, Singapore 599471",
+          "destination": "Nus Museums, Singapore",
+          "distance": "0.5 km",
+          "distanceValue": 498,
+          "duration": "2 mins",
+          "durationValue": 114
+        }
+      ]
+    }
+  ],
+  "LT13": [
+    {
+      "destination": "AS7",
+      "data": [
+        {
+          "origin": "3 Arts Link, Singapore 117569",
+          "destination": "Temasek Hall Block D&E, Singapore",
+          "distance": "0.2 km",
+          "distanceValue": 231,
+          "duration": "1 min",
+          "durationValue": 31
+        }
+      ]
+    }
+  ],
+  "LT27": [
+    {
+      "destination": "UHALL",
+      "data": [
+        {
+          "origin": "Lim Seng Tjoe Bldg, Singapore",
+          "destination": "Blk S12, Singapore",
+          "distance": "0.3 km",
+          "distanceValue": 267,
+          "duration": "1 min",
+          "durationValue": 43
+        }
+      ]
+    }
+  ],
+  "MUSEUM": [
+    {
+      "destination": "STAFFCLUB",
+      "data": [
+        {
+          "origin": "Nus Museums, Singapore",
+          "destination": "University Health Ctr, Singapore",
+          "distance": "0.4 km",
+          "distanceValue": 420,
+          "duration": "1 min",
+          "durationValue": 71
+        }
+      ]
+    },
+    {
+      "destination": "YIH",
+      "data": [
+        {
+          "origin": "Nus Museums, Singapore",
+          "destination": "Yusof Ishak Hse, Singapore",
+          "distance": "0.3 km",
+          "distanceValue": 317,
+          "duration": "1 min",
+          "durationValue": 54
+        }
+      ]
+    },
+    {
+      "destination": "BLK-EA-OPP",
+      "data": [
+        {
+          "origin": "Nus Museums, Singapore",
+          "destination": "NUS Fac Of Engrg, Singapore",
+          "distance": "0.7 km",
+          "distanceValue": 652,
+          "duration": "2 mins",
+          "durationValue": 108
+        }
+      ]
+    },
+    {
+      "destination": "UTown",
+      "data": [
+        {
+          "origin": "Nus Museums, Singapore",
+          "destination": "1 Create Way, Campus for Research Excellence and Technological Enterprise, Singapore 138602",
+          "distance": "0.4 km",
+          "distanceValue": 449,
+          "duration": "1 min",
+          "durationValue": 72
+        }
+      ]
+    }
+  ],
+  "HSSML-OPP": [
+    {
+      "destination": "NUSS-OPP",
+      "data": [
+        {
+          "origin": "1 Hon Sui Sen Dr, Singapore 117588",
+          "destination": "9 Kent Ridge Dr, Singapore 119241",
+          "distance": "0.4 km",
+          "distanceValue": 378,
+          "duration": "1 min",
+          "durationValue": 77
+        }
+      ]
+    }
+  ],
+  "KR-MRT-OPP": [
+    {
+      "destination": "PGPR",
+      "data": [
+        {
+          "origin": "16b Lower Kent Ridge Rd, Singapore 119074",
+          "destination": "7 Prince George's Park, Singapore 118406",
+          "distance": "0.8 km",
+          "distanceValue": 822,
+          "duration": "3 mins",
+          "durationValue": 186
+        }
+      ]
+    }
+  ],
+  "NUSS-OPP": [
+    {
+      "destination": "COM2",
+      "data": [
+        {
+          "origin": "9 Kent Ridge Dr, Singapore 119241",
+          "destination": "13 Computing Dr, Singapore 117417",
+          "distance": "0.3 km",
+          "distanceValue": 305,
+          "duration": "1 min",
+          "durationValue": 77
+        }
+      ]
+    },
+    {
+      "destination": "LT13-OPP",
+      "data": [
+        {
+          "origin": "9 Kent Ridge Dr, Singapore 119241",
+          "destination": "1 Arts Link, Singapore 117568",
+          "distance": "0.4 km",
+          "distanceValue": 351,
+          "duration": "1 min",
+          "durationValue": 57
+        }
+      ]
+    }
+  ],
+  "PGP12-OPP": [
+    {
+      "destination": "PGPT",
+      "data": [
+        {
+          "origin": "12 Prince George's Park, Singapore 118411",
+          "destination": "2 Prince George's Park, Singapore 118401",
+          "distance": "0.5 km",
+          "distanceValue": 461,
+          "duration": "1 min",
+          "durationValue": 56
+        }
+      ]
+    }
+  ],
+  "UHALL-OPP": [
+    {
+      "destination": "S17",
+      "data": [
+        {
+          "origin": "Opp University Hall, Singapore",
+          "destination": "11 Lower Kent Ridge Rd, Singapore 119083",
+          "distance": "0.4 km",
+          "distanceValue": 374,
+          "duration": "1 min",
+          "durationValue": 56
+        }
+      ]
+    }
+  ],
+  "STAFFCLUB-OPP": [
+    {
+      "destination": "YIH",
+      "data": [
+        {
+          "origin": "Opp University Health Ctr, Singapore",
+          "destination": "Yusof Ishak Hse, Singapore",
+          "distance": "0.2 km",
+          "distanceValue": 161,
+          "duration": "1 min",
+          "durationValue": 28
+        }
+      ]
+    },
+    {
+      "destination": "UTown",
+      "data": [
+        {
+          "origin": "Opp University Health Ctr, Singapore",
+          "destination": "1 Create Way, Campus for Research Excellence and Technological Enterprise, Singapore 138602",
+          "distance": "0.7 km",
+          "distanceValue": 692,
+          "duration": "2 mins",
+          "durationValue": 115
+        }
+      ]
+    },
+    {
+      "destination": "MUSEUM",
+      "data": [
+        {
+          "origin": "Opp University Health Ctr, Singapore",
+          "destination": "Nus Museums, Singapore",
+          "distance": "0.5 km",
+          "distanceValue": 490,
+          "duration": "2 mins",
+          "durationValue": 91
+        }
+      ]
+    }
+  ],
+  "YIH-OPP": [
+    {
+      "destination": "MUSEUM",
+      "data": [
+        {
+          "origin": "Opp Yusof Ishak Hse, Singapore",
+          "destination": "Nus Museums, Singapore",
+          "distance": "0.4 km",
+          "distanceValue": 407,
+          "duration": "1 min",
+          "durationValue": 76
+        }
+      ]
+    },
+    {
+      "destination": "UTown",
+      "data": [
+        {
+          "origin": "Opp Yusof Ishak Hse, Singapore",
+          "destination": "1 Create Way, Campus for Research Excellence and Technological Enterprise, Singapore 138602",
+          "distance": "0.6 km",
+          "distanceValue": 609,
+          "duration": "2 mins",
+          "durationValue": 99
+        }
+      ]
+    }
+  ],
+  "PGPT": [
+    {
+      "destination": "KR-MRT",
+      "data": [
+        {
+          "origin": "2 Prince George's Park, Singapore 118401",
+          "destination": "16b Lower Kent Ridge Rd, Singapore 119074",
+          "distance": "0.9 km",
+          "distanceValue": 883,
+          "duration": "3 mins",
+          "durationValue": 193
+        }
+      ]
+    },
+    {
+      "destination": "PGP12",
+      "data": [
+        {
+          "origin": "2 Prince George's Park, Singapore 118401",
+          "destination": "12 Prince George's Park, Singapore 118411",
+          "distance": "0.5 km",
+          "distanceValue": 466,
+          "duration": "1 min",
+          "durationValue": 55
+        }
+      ]
+    },
+    {
+      "destination": "CGH",
+      "data": [
+        {
+          "origin": "2 Prince George's Park, Singapore 118401",
+          "destination": "Opp Botanic Gdns Stn, Singapore",
+          "distance": "7.0 km",
+          "distanceValue": 7029,
+          "duration": "13 mins",
+          "durationValue": 781
+        }
+      ]
+    }
+  ],
+  "PGPR": [
+    {
+      "destination": "PGP12",
+      "data": [
+        {
+          "origin": "7 Prince George's Park, Singapore 118406",
+          "destination": "12 Prince George's Park, Singapore 118411",
+          "distance": "0.6 km",
+          "distanceValue": 583,
+          "duration": "1 min",
+          "durationValue": 78
+        }
+      ]
+    }
+  ],
+  "RAFFLES": [
+    {
+      "destination": "BLK-EA-OPP",
+      "data": [
+        {
+          "origin": "NUS Raffles Hall, Singapore",
+          "destination": "NUS Fac Of Engrg, Singapore",
+          "distance": "0.4 km",
+          "distanceValue": 352,
+          "duration": "1 min",
+          "durationValue": 62
+        }
+      ]
+    }
+  ],
+  "S17": [
+    {
+      "destination": "KR-MRT-OPP",
+      "data": [
+        {
+          "origin": "11 Lower Kent Ridge Rd, Singapore 119083",
+          "destination": "16b Lower Kent Ridge Rd, Singapore 119074",
+          "distance": "0.5 km",
+          "distanceValue": 487,
+          "duration": "1 min",
+          "durationValue": 77
+        }
+      ]
+    },
+    {
+      "destination": "LT27",
+      "data": [
+        {
+          "origin": "11 Lower Kent Ridge Rd, Singapore 119083",
+          "destination": "Lim Seng Tjoe Bldg, Singapore",
+          "distance": "42 m",
+          "distanceValue": 42,
+          "duration": "1 min",
+          "durationValue": 8
+        }
+      ]
+    }
+  ],
+  "PGP12": [
+    {
+      "destination": "HSSML-OPP",
+      "data": [
+        {
+          "origin": "12 Prince George's Park, Singapore 118411",
+          "destination": "1 Hon Sui Sen Dr, Singapore 117588",
+          "distance": "0.3 km",
+          "distanceValue": 281,
+          "duration": "1 min",
+          "durationValue": 41
+        }
+      ]
+    }
+  ],
+  "UHALL": [
+    {
+      "destination": "STAFFCLUB-OPP",
+      "data": [
+        {
+          "origin": "Blk S12, Singapore",
+          "destination": "Opp University Health Ctr, Singapore",
+          "distance": "0.4 km",
+          "distanceValue": 414,
+          "duration": "1 min",
+          "durationValue": 58
+        }
+      ]
+    }
+  ],
+  "STAFFCLUB": [
+    {
+      "destination": "UHALL-OPP",
+      "data": [
+        {
+          "origin": "University Health Ctr, Singapore",
+          "destination": "Opp University Hall, Singapore",
+          "distance": "0.3 km",
+          "distanceValue": 280,
+          "duration": "1 min",
+          "durationValue": 38
+        }
+      ]
+    }
+  ],
+  "UTown": [
+    {
+      "destination": "YIH",
+      "data": [
+        {
+          "origin": "1 Create Way, Campus for Research Excellence and Technological Enterprise, Singapore 138602",
+          "destination": "Yusof Ishak Hse, Singapore",
+          "distance": "0.9 km",
+          "distanceValue": 871,
+          "duration": "2 mins",
+          "durationValue": 146
+        }
+      ]
+    },
+    {
+      "destination": "RAFFLES",
+      "data": [
+        {
+          "origin": "1 Create Way, Campus for Research Excellence and Technological Enterprise, Singapore 138602",
+          "destination": "NUS Raffles Hall, Singapore",
+          "distance": "0.9 km",
+          "distanceValue": 853,
+          "duration": "2 mins",
+          "durationValue": 138
+        }
+      ]
+    },
+    {
+      "destination": "STAFFCLUB",
+      "data": [
+        {
+          "origin": "1 Create Way, Campus for Research Excellence and Technological Enterprise, Singapore 138602",
+          "destination": "University Health Ctr, Singapore",
+          "distance": "1.0 km",
+          "distanceValue": 974,
+          "duration": "3 mins",
+          "durationValue": 163
+        }
+      ]
+    }
+  ],
+  "LT13-OPP": [
+    {
+      "destination": "COMCEN",
+      "data": [
+        {
+          "origin": "1 Arts Link, Singapore 117568",
+          "destination": "Information Technology, Singapore",
+          "distance": "0.4 km",
+          "distanceValue": 393,
+          "duration": "1 min",
+          "durationValue": 83
+        }
+      ]
+    },
+    {
+      "destination": "CENLIB",
+      "data": [
+        {
+          "origin": "1 Arts Link, Singapore 117568",
+          "destination": "10 Kent Ridge Cres, Singapore 119260",
+          "distance": "0.4 km",
+          "distanceValue": 411,
+          "duration": "2 mins",
+          "durationValue": 107
+        }
+      ]
+    }
+  ],
+  "YIH": [
+    {
+      "destination": "CENLIB",
+      "data": [
+        {
+          "origin": "Yusof Ishak Hse, Singapore",
+          "destination": "10 Kent Ridge Cres, Singapore 119260",
+          "distance": "0.4 km",
+          "distanceValue": 375,
+          "duration": "1 min",
+          "durationValue": 63
+        }
+      ]
+    }
+  ],
+  "JP-SCH-16151": [
+    {
+      "destination": "KV",
+      "data": [
+        {
+          "origin": "The Japanese Pr Sch, Singapore",
+          "destination": "199 Clementi Rd, Singapore 599471",
+          "distance": "0.2 km",
+          "distanceValue": 225,
+          "duration": "1 min",
+          "durationValue": 57
+        }
+      ]
+    }
+  ],
+  "KR-BT": [
+    {
+      "destination": "COMCEN",
+      "data": [
+        {
+          "origin": "37B Clementi Rd, Singapore 129762",
+          "destination": "Information Technology, Singapore",
+          "distance": "0.8 km",
+          "distanceValue": 782,
+          "duration": "3 mins",
+          "durationValue": 181
+        }
+      ]
+    },
+    {
+      "destination": "KV",
+      "data": [
+        {
+          "origin": "37B Clementi Rd, Singapore 129762",
+          "destination": "199 Clementi Rd, Singapore 599471",
+          "distance": "1.1 km",
+          "distanceValue": 1102,
+          "duration": "3 mins",
+          "durationValue": 176
+        }
+      ]
+    },
+    {
+      "destination": "JP-SCH-16151",
+      "data": [
+        {
+          "origin": "37B Clementi Rd, Singapore 129762",
+          "destination": "The Japanese Pr Sch, Singapore",
+          "distance": "0.9 km",
+          "distanceValue": 877,
+          "duration": "2 mins",
+          "durationValue": 119
+        }
+      ]
+    }
+  ]
+}

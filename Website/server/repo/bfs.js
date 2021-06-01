@@ -1,4 +1,4 @@
-function breadthFirstSearch(graph, start, end) {
+const breadthFirstSearch = (graph, start, end) => {
   const queue = [];
   queue.push([start]);
 
@@ -23,4 +23,4 @@ function breadthFirstSearch(graph, start, end) {
   console.log("No result available");
 }
 
-export default breadthFirstSearch;
+module.exports = breadthFirstSearch;
