@@ -7,11 +7,11 @@ import {
   Question,
   Answer,
   OpenIcon,
-  Image
+  Image,
 } from "./FAQElements";
 import { useState } from "react";
 import { Data } from "./Data.js";
-import Icon1 from '../../images/1.gif';
+import Icon1 from "../../images/1.gif";
 
 const FAQ = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,8 +26,8 @@ const FAQ = () => {
   return (
     <FAQContainer id="faq">
       <FAQH1>Frequently Asked Questions </FAQH1>
-      <Image src = {Icon1} />
-      <FAQWrapper>     
+      <Image src={Icon1} />
+      <FAQWrapper>
         {Data.map((element, index) => {
           return (
             <FAQSet key = {index}>

@@ -7,13 +7,14 @@ import {
   NavItem,
   NavLinks,
   NavBtn,
-  NavBtnLink,
 } from "./NavbarElements";
 import { FaBars } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { animateScroll as scroll } from "react-scroll";
+import styles from "./SignOut.module.css";
 
-const Navbar = ({ toggle }) => {
+const Navbar = (props) => {
+  const { toggle, handleLogout } = props;
   const [scrollNav, setScrollNav] = useState(false);
 
   const changeNav = () => {
@@ -95,7 +96,9 @@ const Navbar = ({ toggle }) => {
             </NavItem>
           </NavMenu>
           <NavBtn>
-            <NavBtnLink to="/signin"> Sign In </NavBtnLink>
+            <button onClick={handleLogout} className={styles.signout}>
+              Sign Out
+            </button>
           </NavBtn>
         </NavbarContainer>
       </Nav>

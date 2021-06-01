@@ -51,7 +51,7 @@ export const VideoBg = styled.video`
 
 export const HeroContent = styled.div`
   z-index: 3;
-  max-width: 1200px;
+  width: 50%;
   position: absolute;
   padding: 8px 24px;
   display: flex;
@@ -60,7 +60,7 @@ export const HeroContent = styled.div`
 `;
 
 export const HeroH1 = styled.h1`
-  color: #fff;
+  color: #ff2400;
   font-size: 40px;
   text-align: center;
 
@@ -104,4 +104,31 @@ export const ArrowForward = styled(MdArrowForward)`
 export const ArrowRight = styled(MdKeyboardArrowRight)`
   margin-left: 8px;
   font-size: 20px;
+`;
+
+export const Form = styled.div`
+  color: #fff;
+  font-size: 24px;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 3vh;
+  display: flex;
+`;
+
+export const FormLabel = styled.h5`
+  color: #fff;
+  text-align: Center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+`;
+
+export const FormSelect = styled.select`
+  width: 100%;
+  padding: 6px 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  display: flex;
 `;
