@@ -26,7 +26,6 @@ export const NavbarContainer = styled.div`
   z-index: 1;
   width: 100%;
   padding: 0 24px;
-  max-width: 1100px;
   align-items: center;
 `;
 
@@ -63,7 +62,7 @@ export const NavMenu = styled.ul`
   align-items: center;
   list-style-type: none;
   text-align: center;
-  margin-right: -22px;
+  margin-left: -80px;
 
   @media screen and (max-width: 768px) {
     display: none;

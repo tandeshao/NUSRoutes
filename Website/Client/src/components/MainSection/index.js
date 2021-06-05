@@ -143,11 +143,11 @@ const HeroSection = () => {
       },
       //hover
       "&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-        borderColor: "blue",
+        borderColor: "white",
       },
       //focus
       "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-        borderColor: "blue",
+        borderColor: "white",
       },
       // not in focus
       "& .MuiOutlinedInput-input": {
@@ -171,7 +171,7 @@ const HeroSection = () => {
       },
       // in focus
       "& .MuiInputLabel-outlined.Mui-focused": {
-        color: "blue",
+        color: "white",
       },
     },
     inputRoot: {
@@ -192,7 +192,7 @@ const HeroSection = () => {
         <VideoBg autoPlay loop muted src={Video} type="video/mp4" />
       </HeroBg>
       <HeroContent>
-        <HeroH1> Navigation with ease </HeroH1>
+        <HeroH1> Route Finder </HeroH1>
 
         <Form>
           <form onSubmit={handleSubmit}>
