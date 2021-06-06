@@ -1,7 +1,7 @@
 const detailedGraph = require('../data/detailedGraph');
 const fs = require('fs');
 
-const create_djikstraGraph = (graph) => {
+const create_dijkstraGraph = (graph) => {
     for (const key in graph) {
         const arr = graph[key];
         let res = {};
@@ -13,7 +13,7 @@ const create_djikstraGraph = (graph) => {
     return graph;
 }
 
-fs.writeFile("../data/djikstraGraph.json", JSON.stringify(create_djikstraGraph(detailedGraph)), (err) => {
+fs.writeFile("../data/dijkstraGraph.json", JSON.stringify(create_dijkstraGraph(detailedGraph)), (err) => {
     if (err) return console.log(err);
     console.log("File has been successfully written!");
 });

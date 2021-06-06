@@ -1,6 +1,6 @@
 //finds service after finding the optimal path.
 
-const find_service = (path, busServices) => {
+const findService = (path, busServices) => {
   if (path == null) {
     console.log("path is not found");
   } else {
@@ -37,4 +37,4 @@ const find_service = (path, busServices) => {
   }
 };
 
-module.exports = find_service;
+module.exports = findService;
