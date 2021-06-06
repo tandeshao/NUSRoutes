@@ -90,6 +90,7 @@ const dijkstra = (
   } else {
     shortestPath.reverse();
     results = {
+      timeFromStart: time,
       //duration = duration of going to each stop + a 1 min "stop time" given to each stop.
       duration: findDuration(shortestPath, dijkstraGraphWithService) + shortestPath.length,
       distance: findDistance(shortestPath, dijkstraGraphWithService),
@@ -114,12 +115,12 @@ const routeRecommendation = (
     console.log(
       `Start: ${start} and End: ${end} is the same bus stop, no path can be found.`
     );
-    return null;
+    return `Start: ${start} and End: ${end} is the same bus stop`;
   } else if (!graph[start] || !graph[end]) {
     console.log(
-      `Start: ${start} or End: ${end} cannot be found. Probably bus stops doesn't exist or no such bus service is able to get you there.`
+      `Start: ${start} or End: ${end} cannot be found. Probably bus stops doesn't exist or no such bus service is able to get you there currently.`
     );
-    return null;
+    return `Start: ${start} or End: ${end} cannot be found.`;
   } else {
     let graphForTransfers = create_dijkstraGraphforTransfers(graph);
     let arr = [];
@@ -144,22 +145,5 @@ const routeRecommendation = (
   }
 };
 
-// console.log(
-//   routeRecommendation("COM2", "UTown", dijkstraGraphWithService, 150, 1000)
-// );
-
-// console.log(
-//   routeRecommendation(
-//     "PGPT",
-//     "COM2",
-//     1700,
-//     "term-weekdays",
-//     dijkstraGraphWithService,
-//     150,
-//     5000
-//   )
-// );
-
-// date : "term-weekdays", "term-sat", "term-sun/ph", "vacation-weekdays", "vacation-sat", "vacation-sun/ph"
 
 module.exports = routeRecommendation;

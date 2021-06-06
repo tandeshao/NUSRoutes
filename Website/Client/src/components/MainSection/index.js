@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { makeStyles } from "@material-ui/core/styles";
+import data from "./vacation.json";
 
 import {
   HeroContainer,
@@ -63,20 +64,20 @@ const HeroSection = () => {
   ];
 
   const map = {
-    AS5: "AS7",
+    "AS5": "AS7",
     "BIZ 2": "BIZ2",
     "Botanic Gardens MRT": "BG-MRT",
     "BTC - Oei Tiong Ham Building": "BUKITTIMAH",
     "Central Library": "CENLIB",
     "College Green": "CGH",
-    COM2: "COM2",
-    EA: "BLK-EA-OPP",
+    "COM2": "COM2",
+    "EA": "BLK-EA-OPP",
     "Information Technology": "COMCEN",
     "Kent Ridge MRT": "KR-MRT",
     "Kent Vale": "KV",
-    LT13: "LT13",
-    LT27: "LT27",
-    Museum: "MUSEUM",
+    "LT13": "LT13",
+    "LT27": "LT27",
+    "Museum": "MUSEUM",
     "Opp HSSML": "HSSML-OPP",
     "Opp Kent Ridge MRT": "HSSML-OPP",
     "Opp NUSS": "NUSS-OPP",
@@ -87,13 +88,13 @@ const HeroSection = () => {
     "Prince George's Park": "PGPT",
     "Prince George's Park Residence": "PGPR",
     "Raffles Hall (Opp. Museum)": "RAFFLES",
-    S17: "S17",
-    TCOMS: "PGP12",
+    "S17": "S17",
+    "TCOMS": "PGP12",
     "University Hall": "UHALL",
     "University Health Centre": "STAFFCLUB",
     "University Town": "UTown",
     "Ventus (Opp LT13)": "LT13-OPP",
-    YIH: "YIH",
+    "YIH": "YIH",
     "The Japanese Primary School": "JP-SCH-16151",
     "Kent Ridge Bus Terminal": "KR-BT",
   };
@@ -116,15 +117,51 @@ const HeroSection = () => {
     } else if (destination === "") {
       setDestinationError(true);
     } else {
-      const curId = map[current];
-      const destId = map[destination];
-      const routing = [curId, destId];
+      const start = map[current];
+      const end = map[destination];
+      let [hour, minute] = new Date().toLocaleTimeString("it-IT").split(/:| /);
+      let time;
+      if (hour === 23 || (0 <= hour && hour < 7)) {
+        //earliest bus timing.
+        time = 715; 
+      } else if (hour === 7 && minute <= 15 ) {
+        time = 715;
+      } else {
+        time = hour + minute ;
+      }
+      const obj = new Date();
+      let [date, month, year] = obj.toLocaleDateString("en-US").split("/");
+      const day = obj.getDay();
+      const category =
+        data.reduce((x, y) => {
+          if (x !== null) {
+            return x;
+          } else if (y["duration-year"].includes(parseInt(year))) {
+            return y["duration-month"][0] <
+              parseInt(month) <
+              y["duration-month"][1] &&
+              y["duration-date"][0] < parseInt(date) < y["duration-date"][1]
+              ? "vacation"
+              : "term";
+          } else {
+            return null;
+          }
+        }, null) +
+        (parseInt(day) === 0
+          ? "-sun/ph"
+          : parseInt(day) === 6
+          ? "-sat"
+          : "-weekdays");
 
-      // do something, print for now
-      console.log(routing);
-
-      // redirect
-      history.push("/");
+      // might need to implement for PH
+      history.push("/map/routeRecommedation?start=" +
+      encodeURIComponent(start) +
+      "&end=" +
+      encodeURIComponent(end) +
+      "&time=" +
+      encodeURIComponent(time) +
+      "&date=" +
+      encodeURIComponent(category));
     }
   };
 
