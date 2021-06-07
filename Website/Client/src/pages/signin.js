@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import fire from "../fire";
 import Login from "../components/Login/Login";
-import Home from "./index";
 
 const SigninPage = () => {
   const [user, setUser] = useState("");
@@ -36,7 +35,7 @@ const SigninPage = () => {
           case "auth/wrong-password":
             setPasswordError(err.message);
             break;
-          // no default
+          //no default
         }
       });
   };
@@ -80,22 +79,20 @@ const SigninPage = () => {
 
   return (
     <div>
-      {user ? (
-        <Home handleLogout={handleLogout} />
-      ) : (
-        <Login
-          email={email}
-          setEmail={setEmail}
-          password={password}
-          setPassword={setPassword}
-          handleLogin={handleLogin}
-          handleSignup={handleSignup}
-          hasAccount={hasAccount}
-          setHasAccount={setHasAccount}
-          emailError={emailError}
-          passwordError={passwordError}
-        />
-      )}
+      <Login
+        email={email}
+        setEmail={setEmail}
+        password={password}
+        setPassword={setPassword}
+        handleLogin={handleLogin}
+        handleSignup={handleSignup}
+        hasAccount={hasAccount}
+        setHasAccount={setHasAccount}
+        emailError={emailError}
+        passwordError={passwordError}
+        handleLogout={handleLogout}
+        user={user}
+      />
     </div>
   );
 };
