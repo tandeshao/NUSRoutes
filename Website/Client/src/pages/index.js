@@ -10,7 +10,6 @@ import FAQSection from "../components/FAQ";
 import ContactSection from "../components/Contact";
 
 const Home = (props) => {
-  const { handleLogout } = props;
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => {
     setIsOpen(!isOpen);
@@ -18,7 +17,7 @@ const Home = (props) => {
   return (
     <>
       <Sidebar isOpen={isOpen} toggle={toggle} />
-      <Navbar toggle={toggle} handleLogout={handleLogout} />
+      <Navbar toggle={toggle} />
       <MainSection />
       <InfoSection {...homeObjOne} />
       <Services />

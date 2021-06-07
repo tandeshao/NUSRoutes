@@ -7,8 +7,7 @@ import {
   NavItem,
   NavLinks,
   NavBtn,
-  NavProfile,
-} from "./NavbarElements";
+} from "./ProfileNavbarElements";
 import { FaBars } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { animateScroll as scroll } from "react-scroll";
@@ -43,6 +42,7 @@ const Navbar = (props) => {
     //prevents page refreshing
     e.preventDefault();
 
+    //logout
     if (googleSignOut) {
       googleSignOut();
     }
@@ -69,7 +69,6 @@ const Navbar = (props) => {
             </h3>
           </MobileIcon>
           <NavMenu>
-            <NavProfile to={user ? "/profile" : "/signin"}>Profile</NavProfile>
             <NavItem>
               <NavLinks
                 to="about"
@@ -79,19 +78,7 @@ const Navbar = (props) => {
                 exact="true"
                 offset={-80}
               >
-                About
-              </NavLinks>
-            </NavItem>
-            <NavItem>
-              <NavLinks
-                to="platforms"
-                smooth={true}
-                duration={500}
-                spy={true}
-                exact="true"
-                offset={-80}
-              >
-                Platforms
+                Home
               </NavLinks>
             </NavItem>
             <NavItem>
@@ -103,7 +90,7 @@ const Navbar = (props) => {
                 exact="true"
                 offset={-80}
               >
-                FAQs
+                Favourites
               </NavLinks>
             </NavItem>
             <NavItem>
@@ -115,7 +102,7 @@ const Navbar = (props) => {
                 exact="true"
                 offset={-80}
               >
-                Contact Us
+                History
               </NavLinks>
             </NavItem>
           </NavMenu>
