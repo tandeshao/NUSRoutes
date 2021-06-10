@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const OptionsContainer = styled.div`
-    
     width: 100%;
     background: #262626;
     overflow: hidden;

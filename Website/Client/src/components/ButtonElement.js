@@ -14,6 +14,7 @@ export const Button = styled.button`
   justify-content: center;
   align-items: center;
   transition: all 0.2s ease-in-out;
+  width: 100%;
 
   &:hover {
     transition: all 0.2s ease-in-out;

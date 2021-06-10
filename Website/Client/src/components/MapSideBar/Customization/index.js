@@ -18,6 +18,8 @@ import {
   KeyboardTimePicker,
   KeyboardDatePicker,
 } from "@material-ui/pickers";
+import { createMuiTheme } from "@material-ui/core";
+import { ThemeProvider } from "@material-ui/styles";
 
 const getDate = (str) => {
   if (str === null) {
@@ -77,7 +79,6 @@ const Customization = ({
   const [btnName, setBtnName] = useState("Depart Now");
   const [content, setContent] = useState("true");
   const [selectedDate, setSelectedDate] = useState(new Date());
-  
 
   const changeVar = (arr) => {
     setTime(arr[0]);
@@ -115,6 +116,21 @@ const Customization = ({
       setContent(false);
     }
   };
+  const materialTheme = createMuiTheme({
+    overrides: {
+      MuiPickersToolbar: {
+        toolbar: {
+          backgroundColor: "#939990"
+        },
+      },
+      MuiPickersCalendarHeader: {
+        switchHeader: {
+          backgroundColor: "white",
+          color: "#1b5e20",
+        },
+      },
+    },
+  });
 
   const makeOpen = () => {
     if (!content && isOpen) {
@@ -272,42 +288,44 @@ const Customization = ({
         )
       ) : isOpen ? (
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
-          <Grid container justify="space-around">
-            <KeyboardDatePicker
-              margin="normal"
-              id="date-picker-dialog"
-              label="Date picker dialog"
-              format="MM/dd/yyyy"
-              value={selectedDate}
-              onChange={handleDateChange}
-              KeyboardButtonProps={{
-                "aria-label": "change date",
-              }}
-              style={{
-                position: "relative",
-                right: "3.5vw",
-                bottom: "3vh",
-                background: "#fff",
-              }}
-            />
+          <ThemeProvider theme={materialTheme}>
+            <Grid container justify="space-around">
+              <KeyboardDatePicker
+                margin="normal"
+                id="date-picker-dialog"
+                label="Date picker dialog"
+                format="dd/MM/yyyy"
+                value={selectedDate}
+                onChange={handleDateChange}
+                KeyboardButtonProps={{
+                  "aria-label": "change date",
+                }}
+                style={{
+                  position: "relative",
+                  right: "3.5vw",
+                  bottom: "3vh",
+                  background: "#fff",
+                }}
+              />
 
-            <KeyboardTimePicker
-              margin="normal"
-              id="time-picker"
-              label="Time picker"
-              value={selectedDate}
-              onChange={handleDateChange}
-              KeyboardButtonProps={{
-                "aria-label": "change time",
-              }}
-              style={{
-                position: "relative",
-                right: "3.5vw",
-                bottom: "3vh",
-                background: "#fff",
-              }}
-            />
-          </Grid>
+              <KeyboardTimePicker
+                margin="normal"
+                id="time-picker"
+                label="Time picker"
+                value={selectedDate}
+                onChange={handleDateChange}
+                KeyboardButtonProps={{
+                  "aria-label": "change time",
+                }}
+                style={{
+                  position: "relative",
+                  right: "3.5vw",
+                  bottom: "3vh",
+                  background: "#fff",
+                }}
+              />
+            </Grid>
+          </ThemeProvider>
         </MuiPickersUtilsProvider>
       ) : (
         ""

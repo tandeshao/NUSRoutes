@@ -31,7 +31,7 @@ const InputSection = ({ startAndEnd, time, day, date, month, year }) => {
   const [destinationError, setDestinationError] = useState(false);
 
   useEffect(() => {
-  },[time, day, date, month, year]);
+  },[time, day, date, month, year, current, destination]);
   const history = useHistory();
 
   const handleSubmit = (e) => {

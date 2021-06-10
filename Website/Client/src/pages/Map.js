@@ -35,6 +35,7 @@ const Map = () => {
     )
       .then((response) => response.json())
       .then((data) => {
+        console.log(data)
         setRouteRecommendations(data);
       })
       .catch((error) =>
@@ -42,8 +43,8 @@ const Map = () => {
           `Unable to retrieve route recommendation. ${error}`
         )
       );
-  }, [string, start, end, time, date, REACT_APP_DOMAIN, routeRecommedations]);
-
+  });
+  //string, start, end, time, date, REACT_APP_DOMAIN, routeRecommedations as dependencies
   return (
     <div>
       <div
@@ -60,7 +61,7 @@ const Map = () => {
           startAndEnd={[start, end]}
         />
       </div>
-      <div
+      {/* <div
         style={{
           position: "absolute",
           width: "100vw",
@@ -75,7 +76,7 @@ const Map = () => {
           mapElement={<div style={{ height: "100%" }} />}
           route={route}
         />
-      </div>
+      </div> */}
     </div>
   );
 };
