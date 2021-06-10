@@ -5,8 +5,10 @@ import SigninPage from "./pages/signin";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
 import Map from "./pages/Map";
+import dotenv from 'dotenv';
 
 function App() {
+  dotenv.config();
   return (
     <Router>
       <Switch>

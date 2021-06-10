@@ -92,10 +92,12 @@ const dijkstra = (
     results = {
       timeFromStart: time,
       //duration = duration of going to each stop + a 1 min "stop time" given to each stop.
-      duration: findDuration(shortestPath, dijkstraGraphWithService) + shortestPath.length,
+      duration:
+        findDuration(shortestPath, dijkstraGraphWithService) +
+        shortestPath.length,
       distance: findDistance(shortestPath, dijkstraGraphWithService),
       cost: costs[end],
-      path: shortestPath,
+      path: shortestPath
     };
   }
 
@@ -141,9 +143,25 @@ const routeRecommendation = (
         );
       }
     });
-    return arr.reduce((x, y) => (x.cost < y.cost ? x : y), { cost: Infinity });
-  }
+    
+    let lowestCost = Infinity;
+    let result = [];
+    arr.forEach(x => {
+      if (x.cost !== null && x.cost < lowestCost) {
+        lowestCost = x.cost;
+      }
+    })
+
+    arr.forEach(x => {
+      if (x.cost === lowestCost) {
+        result.push(x);
+      }
+    })
+
+    return result;
+  } 
 };
 
-
+//console.log(routeRecommendation('AS7', 'BIZ2', 1929, 'vacation-weekdays', dijkstraGraphWithService, 150, 5000));
 module.exports = routeRecommendation;
+

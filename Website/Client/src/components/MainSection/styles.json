@@ -1,0 +1,51 @@
+{
+  "root": {
+    "& .MuiInputLabel-outlined:not(.MuiInputLabel-shrink)": {
+      "transform": "translate(34px, 20px) scale(1);"
+    },
+
+    "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+      "borderColor": "aquamarine",
+      "borderWidth": 2.5
+    },
+
+    "&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+      "borderColor": "white"
+    },
+
+    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+      "borderColor": "white"
+    },
+
+    "& .MuiOutlinedInput-input": {
+      "color": "white"
+    },
+
+    "&:hover .MuiOutlinedInput-input": {
+      "color": "white"
+    },
+
+    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-input": {
+      "color": "white"
+    },
+
+    "& .MuiInputLabel-outlined": {
+      "color": "gray"
+    },
+
+    "&:hover .MuiInputLabel-outlined": {
+      "color": "white"
+    },
+
+    "& .MuiInputLabel-outlined.Mui-focused": {
+      "color": "white"
+    }
+  },
+  "inputRoot": {
+    "color": "white",
+
+    "&[class*=\"MuiOutlinedInput-root\"] .MuiAutocomplete-input:first-child": {
+      "paddingLeft": 26
+    }
+  }
+}

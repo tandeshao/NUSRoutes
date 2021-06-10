@@ -4,8 +4,7 @@ import { useHistory } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { makeStyles } from "@material-ui/core/styles";
-import data from "./vacation.json";
-
+import data from "../../data/vacation.json";
 import {
   HeroContainer,
   HeroBg,
@@ -19,84 +18,14 @@ import {
   FormLabel,
 } from "./MainElements";
 import { Button } from "../ButtonElement";
+import options from "../../data/options.json";
+import map from "../../data/map.json";
+import styles from "./styles.json";
 
 const HeroSection = () => {
   const [hover, setHover] = useState(false);
   const onHover = () => {
     setHover(!hover);
-  };
-
-  const options = [
-    "",
-    "AS5",
-    "BIZ 2",
-    "Botanic Gardens MRT",
-    "BTC - Oei Tiong Ham Building",
-    "Central Library",
-    "College Green",
-    "COM2",
-    "EA",
-    "Information Technology",
-    "Kent Ridge MRT",
-    "Kent Vale",
-    "LT13",
-    "LT27",
-    "Museum",
-    "Opp HSSML",
-    "Opp Kent Ridge MRT",
-    "Opp NUSS",
-    "Opp TCOMS",
-    "Opp University Hall",
-    "Opp University Health Centre",
-    "Opp YIH",
-    "Prince George's Park",
-    "Prince George's Park Residence",
-    "Raffles Hall (Opp. Museum)",
-    "S17",
-    "TCOMS",
-    "University Hall",
-    "University Health Centre",
-    "University Town",
-    "Ventus (Opp LT13)",
-    "YIH",
-    "The Japanese Primary School",
-    "Kent Ridge Bus Terminal",
-  ];
-
-  const map = {
-    "AS5": "AS7",
-    "BIZ 2": "BIZ2",
-    "Botanic Gardens MRT": "BG-MRT",
-    "BTC - Oei Tiong Ham Building": "BUKITTIMAH",
-    "Central Library": "CENLIB",
-    "College Green": "CGH",
-    "COM2": "COM2",
-    "EA": "BLK-EA-OPP",
-    "Information Technology": "COMCEN",
-    "Kent Ridge MRT": "KR-MRT",
-    "Kent Vale": "KV",
-    "LT13": "LT13",
-    "LT27": "LT27",
-    "Museum": "MUSEUM",
-    "Opp HSSML": "HSSML-OPP",
-    "Opp Kent Ridge MRT": "HSSML-OPP",
-    "Opp NUSS": "NUSS-OPP",
-    "Opp TCOMS": "PGP12-OPP",
-    "Opp University Hall": "UHALL-OPP",
-    "Opp University Health Centre": "STAFFCLUB-OPP",
-    "Opp YIH": "YIH-OPP",
-    "Prince George's Park": "PGPT",
-    "Prince George's Park Residence": "PGPR",
-    "Raffles Hall (Opp. Museum)": "RAFFLES",
-    "S17": "S17",
-    "TCOMS": "PGP12",
-    "University Hall": "UHALL",
-    "University Health Centre": "STAFFCLUB",
-    "University Town": "UTown",
-    "Ventus (Opp LT13)": "LT13-OPP",
-    "YIH": "YIH",
-    "The Japanese Primary School": "JP-SCH-16151",
-    "Kent Ridge Bus Terminal": "KR-BT",
   };
 
   const [current, setCurrent] = useState(options[0]);
@@ -120,29 +49,31 @@ const HeroSection = () => {
       const start = map[current];
       const end = map[destination];
       let [hour, minute] = new Date().toLocaleTimeString("it-IT").split(/:| /);
-      let time;
-      if (hour === 23 || (0 <= hour && hour < 7)) {
-        //earliest bus timing.
-        time = 715; 
-      } else if (hour === 7 && minute <= 15 ) {
-        time = 715;
-      } else {
-        time = hour + minute ;
-      }
+      let time = hour + minute;
       const obj = new Date();
-      let [date, month, year] = obj.toLocaleDateString("en-US").split("/");
+      let [month, date, year] = obj.toLocaleDateString("en-US").split("/");
       const day = obj.getDay();
       const category =
         data.reduce((x, y) => {
           if (x !== null) {
             return x;
           } else if (y["duration-year"].includes(parseInt(year))) {
-            return y["duration-month"][0] <
-              parseInt(month) <
-              y["duration-month"][1] &&
-              y["duration-date"][0] < parseInt(date) < y["duration-date"][1]
-              ? "vacation"
-              : "term";
+            if (
+              y["duration-month"][0] < parseInt(month) &&
+              parseInt(month) < y["duration-month"][1]
+            ) {
+              return "vacation";
+            } else if (
+              y["duration-month"][0] === parseInt(month) ||
+              parseInt(month) === y["duration-month"][1]
+            ) {
+              return y["duration-date"][0] <= parseInt(date) &&
+                parseInt(date) <= y["duration-date"][1]
+                ? "vacation"
+                : "term";
+            } else {
+              return "term";
+            }
           } else {
             return null;
           }
@@ -154,72 +85,20 @@ const HeroSection = () => {
           : "-weekdays");
 
       // might need to implement for PH
-      history.push("/map/routeRecommedation?start=" +
-      encodeURIComponent(start) +
-      "&end=" +
-      encodeURIComponent(end) +
-      "&time=" +
-      encodeURIComponent(time) +
-      "&date=" +
-      encodeURIComponent(category));
+      history.push(
+        "/map/routeRecommedation?start=" +
+          encodeURIComponent(start) +
+          "&end=" +
+          encodeURIComponent(end) +
+          "&time=" +
+          encodeURIComponent(time) +
+          "&date=" +
+          encodeURIComponent(category)
+      );
     }
   };
 
-  const useStyles = makeStyles((theme) => ({
-    root: {
-      "& .MuiInputLabel-outlined:not(.MuiInputLabel-shrink)": {
-        // Default transform is "translate(14px, 20px) scale(1)""
-        // This lines up the label with the initial cursor position in the input
-        // after changing its padding-left.
-        transform: "translate(34px, 20px) scale(1);",
-      },
-      //border
-      "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-        borderColor: "aquamarine",
-        borderWidth: 2.5,
-      },
-      //hover
-      "&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-        borderColor: "white",
-      },
-      //focus
-      "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-        borderColor: "white",
-      },
-      // not in focus
-      "& .MuiOutlinedInput-input": {
-        color: "white",
-      },
-      // hover
-      "&:hover .MuiOutlinedInput-input": {
-        color: "white",
-      },
-      // in focus
-      "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-input": {
-        color: "white",
-      },
-      // placeholder
-      "& .MuiInputLabel-outlined": {
-        color: "gray",
-      },
-      // hover placeholder
-      "&:hover .MuiInputLabel-outlined": {
-        color: "white",
-      },
-      // in focus
-      "& .MuiInputLabel-outlined.Mui-focused": {
-        color: "white",
-      },
-    },
-    inputRoot: {
-      color: "white",
-      // This matches the specificity of the default styles at https://github.com/mui-org/material-ui/blob/v4.11.3/packages/material-ui-lab/src/Autocomplete/Autocomplete.js#L90
-      '&[class*="MuiOutlinedInput-root"] .MuiAutocomplete-input:first-child': {
-        // Default left padding is 6px
-        paddingLeft: 26,
-      },
-    },
-  }));
+  const useStyles = makeStyles((theme) => styles);
 
   const classes = useStyles();
 
@@ -276,7 +155,6 @@ const HeroSection = () => {
 
             <HeroBtnWrapper>
               <Button
-                to="services"
                 onMouseEnter={onHover}
                 onMouseLeave={onHover}
                 primary="true"
