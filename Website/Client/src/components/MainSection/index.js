@@ -45,6 +45,8 @@ const HeroSection = () => {
       setCurrentError(true);
     } else if (destination === "") {
       setDestinationError(true);
+    } else if (current === destination) {
+      setDestinationError(true);
     } else {
       const start = map[current];
       const end = map[destination];
