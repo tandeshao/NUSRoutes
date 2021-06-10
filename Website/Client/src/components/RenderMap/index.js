@@ -5,7 +5,7 @@ import {
   withGoogleMap,
   Marker,
   InfoWindow,
-  DirectionsRenderer 
+  DirectionsRenderer,
 } from "react-google-maps";
 import busStops from "../../data/busStops.json";
 import { useState, useEffect } from "react";
@@ -13,15 +13,15 @@ import icon from "../../images/icon.png";
 import mapStyle from "./mapStyle.js";
 
 function MapDirectionsRenderer(props) {
-  const [directions, setDirections] = useState(null);
-  const [error, setError] = useState(null);
+  const [directions, setDirections] = useState(() => null);
+  const [error, setError] = useState(() => null);
 
   useEffect(() => {
     const { places, travelMode } = props;
 
-    const waypoints = places.map(p => ({
+    const waypoints = places.map((p) => ({
       location: { lat: p.latitude, lng: p.longitude },
-      stopover: true
+      stopover: true,
     }));
     const origin = waypoints.shift().location;
     const destination = waypoints.pop().location;
@@ -32,7 +32,7 @@ function MapDirectionsRenderer(props) {
         origin: origin,
         destination: destination,
         travelMode: travelMode,
-        waypoints: waypoints
+        waypoints: waypoints,
       },
       (result, status) => {
         if (status === google.maps.DirectionsStatus.OK) {
@@ -49,35 +49,43 @@ function MapDirectionsRenderer(props) {
   }
   return (
     directions && (
-      <DirectionsRenderer directions={directions} options={{
-        polylineOptions: {
+      <DirectionsRenderer
+        directions={directions}
+        options={{
+          polylineOptions: {
             strokeWeight: 10,
             strokeOpacity: 0.5,
-            strokeColor: '#FF0000',
-        },
-        suppressMarkers: true 
-      }}/>
+            strokeColor: "#FF0000",
+          },
+          suppressMarkers: true,
+        }}
+      />
     )
   );
 }
 
-const RenderMap = () => {   
+const RenderMap = ({ route }) => {
   const [selectedBusStop, setSelectedBusStop] = useState(null);
-  const places = [{latitude: 1.291824156, 
-    longitude: 103.7804755}, 
-    {latitude: 1.293719601, longitude: 103.7768181}, 
-    {latitude: 1.292778015, longitude: 103.7750015}, 
-    {latitude: 1.293318803, longitude: 103.772445}, 
-    {latitude: 1.294829426, longitude: 103.7736}]
-
+  let places = [];
+  route.forEach((location) => {
+    busStops.forEach((busStop) => {
+      if (busStop["name"] === location.substring(0, location.indexOf('_'))) {
+        places.push({latitude: busStop["latitude"], longitude: busStop["longitude"]})
+      }
+    });
+  });
+  
   return (
     <GoogleMap
       defaultZoom={16}
       defaultCenter={{ lat: 1.296643, lng: 103.776398 }}
       defaultOptions={{ styles: mapStyle, clickableIcons: false }}
     >
-      <MapDirectionsRenderer places={places} travelMode={window.google.maps.TravelMode.DRIVING}/>
-      {busStops.map((busStop) => {
+      <MapDirectionsRenderer
+        places={places}
+        travelMode={window.google.maps.TravelMode.DRIVING}
+      />
+      {places.map((busStop) => {
         return (
           <Marker
             key={busStop["caption"]}

@@ -17,22 +17,23 @@ import { Button } from "../../ButtonElement";
 import reverseMap from "../../../data/reverseMap.json";
 
 const InputSection = ({ startAndEnd, time, day, date, month, year }) => {
-  const [hover, setHover] = useState(false);
+  useEffect(() => {
+    // to update time, day, date, month and year resource variables.
+  },[time, day, date, month, year]) ;
+  const history = useHistory();
+
+  const [hover, setHover] = useState(() => false);
   const onHover = () => {
     setHover(!hover);
   };
-  const [current, setCurrent] = useState(
-    reverseMap[startAndEnd[0]] === "" ? options[0] : reverseMap[startAndEnd[0]]
-  );
-  const [destination, setDestination] = useState(
-    reverseMap[startAndEnd[1]] === "" ? options[0] : reverseMap[startAndEnd[1]]
-  );
-  const [currentError, setCurrentError] = useState(false);
-  const [destinationError, setDestinationError] = useState(false);
-
-  useEffect(() => {
-  },[time, day, date, month, year, current, destination]);
-  const history = useHistory();
+  const [current, setCurrent] = useState(() => {
+    return reverseMap[startAndEnd[0]] === "" ? options[0] : reverseMap[startAndEnd[0]]
+  });
+  const [destination, setDestination] = useState(() => {
+    return reverseMap[startAndEnd[1]] === "" ? options[0] : reverseMap[startAndEnd[1]]
+  });
+  const [currentError, setCurrentError] = useState(() => false);
+  const [destinationError, setDestinationError] = useState(() => false);
 
   const handleSubmit = (e) => {
     //prevents page refreshing

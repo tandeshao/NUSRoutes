@@ -6,15 +6,15 @@ import { useState, useEffect } from "react";
 const Map = () => {
   const { REACT_APP_API_KEY, REACT_APP_DOMAIN } = process.env;
   let { string } = useParams();
-  const [routeRecommedations, setRouteRecommendations] = useState('loading..');
-  const [route, setRoute] = useState(null);
+  const [routeRecommendations, setRouteRecommendations] = useState(() => [{"path": "loading..."}]);
+  const [route, setRoute] = useState(() => null);
   const search = window.location.search;
   const params = new URLSearchParams(search);
   let start = params.get("start");
   let end = params.get("end");
   let time = params.get("time");
   let date = params.get("date");
-
+  
   useEffect(() => {
     fetch(
       `${REACT_APP_DOMAIN}` +
@@ -35,7 +35,6 @@ const Map = () => {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data)
         setRouteRecommendations(data);
       })
       .catch((error) =>
@@ -43,8 +42,8 @@ const Map = () => {
           `Unable to retrieve route recommendation. ${error}`
         )
       );
-  });
-  //string, start, end, time, date, REACT_APP_DOMAIN, routeRecommedations as dependencies
+  }, [string, start, end, time, date, REACT_APP_DOMAIN]);
+  
   return (
     <div>
       <div
@@ -56,12 +55,12 @@ const Map = () => {
         }}
       >
         <MapSideBar
-          routeRecommedations={routeRecommedations}
+          routeRecommendations={routeRecommendations}
           setRoute={setRoute}
           startAndEnd={[start, end]}
         />
       </div>
-      {/* <div
+      <div
         style={{
           position: "absolute",
           width: "100vw",
@@ -76,7 +75,7 @@ const Map = () => {
           mapElement={<div style={{ height: "100%" }} />}
           route={route}
         />
-      </div> */}
+      </div>
     </div>
   );
 };

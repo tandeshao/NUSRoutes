@@ -75,10 +75,10 @@ const Customization = ({
   setDate,
   setDay,
 }) => {
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [btnName, setBtnName] = useState("Depart Now");
-  const [content, setContent] = useState("true");
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [anchorEl, setAnchorEl] = useState(() => null);
+  const [btnName, setBtnName] = useState(() => "Depart Now");
+  const [content, setContent] = useState(() => "true");
+  const [selectedDate, setSelectedDate] = useState(() => new Date());
 
   const changeVar = (arr) => {
     setTime(arr[0]);
