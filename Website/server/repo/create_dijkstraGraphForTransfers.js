@@ -5,14 +5,14 @@ const create_dijkstraGraphforTransfers = (input_graph) => {
   let graph = {};
   Object.keys(input_graph).forEach((elem) => {
     //create _none keys
+    // it will look something like COM2_none: {BIZ2_A1: 802, BIZ2_D1: 802, ....}
+    // because we can travel from COM2 to BIZ2 with bus service A1 and D1.
     for (let adjacentBusStop in input_graph[elem]) {
       let new_value = {};
-      input_graph[elem][adjacentBusStop]["services"].forEach(
-        (service) => {
-          new_value[adjacentBusStop + "_" + service] =
+      input_graph[elem][adjacentBusStop]["services"].forEach((service) => {
+        new_value[adjacentBusStop + "_" + service] =
           input_graph[elem][adjacentBusStop]["distance"];
-        }
-      );
+      });
 
       if (!graph[elem + "_none"]) {
         graph[elem + "_none"] = new_value;
@@ -24,18 +24,16 @@ const create_dijkstraGraphforTransfers = (input_graph) => {
 
   Object.keys(input_graph).forEach((elem) => {
     //create _service keys
+    //once we have created the _none keys, we can loop through the 'input_graph' to first find the destination 
+    // and its corresponding bus services available for us to get to that destination. 
+    // Then, we can append the 'destination_none' value into the 'graph' with the 'destination_service' as the key.
     for (let adjacentBusStop in input_graph[elem]) {
-      let new_value = {};
-      input_graph[elem][adjacentBusStop]["services"].forEach(
-        (service) => {
-          if (!graph[adjacentBusStop + "_none"]) {
-            graph[adjacentBusStop + "_" + service] = null;
-          } else {
-            graph[adjacentBusStop + "_" + service] =
-              graph[adjacentBusStop + "_none"];
-          }
-        }
-      );
+      input_graph[elem][adjacentBusStop]["services"].forEach((service) => {
+        graph[adjacentBusStop + "_" + service] = Object.assign(
+          {},
+          graph[adjacentBusStop + "_none"]
+        );
+      });
     }
   });
 

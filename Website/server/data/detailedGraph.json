@@ -169,19 +169,6 @@
           "durationValue": 90
         }
       ]
-    },
-    {
-      "destination": "KR-BT",
-      "data": [
-        {
-          "origin": "NUS Fac Of Engrg, Singapore",
-          "destination": "37B Clementi Rd, Singapore 129762",
-          "distance": "0.7 km",
-          "distanceValue": 736,
-          "duration": "2 mins",
-          "durationValue": 90
-        }
-      ]
     }
   ],
   "COMCEN": [

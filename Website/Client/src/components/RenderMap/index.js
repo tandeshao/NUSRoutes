@@ -18,13 +18,13 @@ function MapDirectionsRenderer(props) {
 
   useEffect(() => {
     const { places, travelMode } = props;
-
+    
     const waypoints = places.map((p) => ({
       location: { lat: p.latitude, lng: p.longitude },
       stopover: true,
     }));
-    const origin = waypoints.shift().location;
-    const destination = waypoints.pop().location;
+    const origin = waypoints.shift() && waypoints.shift().location;
+    const destination = waypoints.pop() && waypoints.pop().location;
 
     const directionsService = new google.maps.DirectionsService();
     directionsService.route(
@@ -75,16 +75,17 @@ const RenderMap = ({ route }) => {
     });
   });
   
-  return (
+  return ( 
+  
     <GoogleMap
       defaultZoom={16}
       defaultCenter={{ lat: 1.296643, lng: 103.776398 }}
       defaultOptions={{ styles: mapStyle, clickableIcons: false }}
     >
-      <MapDirectionsRenderer
+        {route.length !== 0 ? <MapDirectionsRenderer
         places={places}
         travelMode={window.google.maps.TravelMode.DRIVING}
-      />
+      /> : ""}
       {places.map((busStop) => {
         return (
           <Marker

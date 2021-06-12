@@ -24,7 +24,8 @@ const dijkstra = (
   dijkstraGraphWithService,
   dijkstraGraph,
   costPerStop,
-  costPerTransfer
+  costPerTransfer,
+  durationPerTransfer
 ) => {
   const unavailable_service = unavailableServices(
     time,
@@ -40,8 +41,9 @@ const dijkstra = (
       dijkstraGraph[start][x] = dijkstraGraph[start][x] + costPerStop;
     }
   });
-
-  const costs = dijkstraGraph[start];
+  //here
+  const costs = {};
+  Object.assign(costs, dijkstraGraph[start]);
   const parents = { end: null };
   for (let child in dijkstraGraph[start]) {
     parents[child] = start;
@@ -57,9 +59,10 @@ const dijkstra = (
       const currBusService = node.substring(indexNode + 1, node.length);
       const nextBusService = n.substring(indexChild + 1, n.length);
       let newCost;
+
       if (unavailable_service.includes(nextBusService)) {
-        delete dijkstraGraph[node][n];
-      } else if (currBusService == "none" || currBusService == nextBusService) {
+        continue;
+      } else if (currBusService == nextBusService) {
         newCost = cost + children[n] + costPerStop;
       } else if (currBusService !== nextBusService) {
         newCost = cost + children[n] + costPerStop + costPerTransfer;
@@ -73,6 +76,9 @@ const dijkstra = (
     processed.push(node);
     node = lowestCostNode(costs, processed);
   }
+
+  //here
+
   let shortestPath = [end];
   let parent = parents[end];
   let results;
@@ -91,16 +97,19 @@ const dijkstra = (
     shortestPath.reverse();
     results = {
       timeFromStart: time,
-      //duration = duration of going to each stop + a 1 min "stop time" given to each stop.
+      //duration = duration of going to each stop + a 40s "stop time" given to each stop.
+      //40s = 40/60 = 2/3 estimated to be 0.67.
       duration:
-        findDuration(shortestPath, dijkstraGraphWithService) +
-        shortestPath.length,
+        Math.ceil(findDuration(
+          shortestPath,
+          dijkstraGraphWithService,
+          durationPerTransfer
+        ) + shortestPath.length * 0.67),
       distance: findDistance(shortestPath, dijkstraGraphWithService),
       cost: costs[end],
-      path: shortestPath
+      path: shortestPath,
     };
   }
-
   return results;
 };
 
@@ -111,7 +120,8 @@ const routeRecommendation = (
   date,
   graph,
   costPerStop,
-  costPerTransfer
+  costPerTransfer,
+  durationPerTransfer
 ) => {
   if (start == end) {
     console.log(
@@ -120,7 +130,7 @@ const routeRecommendation = (
     return `Start: ${start} and End: ${end} is the same bus stop`;
   } else if (!graph[start] || !graph[end]) {
     console.log(
-      `Start: ${start} or End: ${end} cannot be found. Probably bus stops doesn't exist or no such bus service is able to get you there currently.`
+      `Start: ${start} or End: ${end} cannot be found. Probably bus stops doesn't exist.`
     );
     return `Start: ${start} or End: ${end} cannot be found.`;
   } else {
@@ -138,30 +148,75 @@ const routeRecommendation = (
             dijkstraGraphWithService,
             graphForTransfers,
             costPerStop,
-            costPerTransfer
+            costPerTransfer,
+            durationPerTransfer
           )
         );
       }
     });
-    
+
     let lowestCost = Infinity;
     let result = [];
-    arr.forEach(x => {
+    arr.forEach((x) => {
       if (x.cost !== null && x.cost < lowestCost) {
         lowestCost = x.cost;
       }
-    })
+    });
 
-    arr.forEach(x => {
+    arr.forEach((x) => {
       if (x.cost === lowestCost) {
         result.push(x);
       }
-    })
+    });
 
-    return result;
-  } 
+    if (result.length === 0) {
+      result.push({ path: "No available path could be found." });
+      return result;
+    } else {
+      return result;
+    }
+  }
 };
 
-//console.log(routeRecommendation('AS7', 'BIZ2', 1929, 'vacation-weekdays', dijkstraGraphWithService, 150, 5000));
+// console.log(
+//   dijkstra(
+//     "COMCEN_none",
+//     "JP-SCH-16151_C",
+//     1300,
+//     "term-weekdays",
+//     dijkstraGraphWithService,
+//     create_dijkstraGraphforTransfers(dijkstraGraphWithService),
+//     150,
+//     5000,
+//     12
+//   )
+// );
+
+// console.log(
+//   dijkstra(
+//     "COM2_none",
+//     "BIZ2_D1",
+//     1300,
+//     "term-weekdays",
+//     dijkstraGraphWithService,
+//     create_dijkstraGraphforTransfers(dijkstraGraphWithService),
+//     150,
+//     5000,
+//     12
+//   )
+// );
 module.exports = routeRecommendation;
 
+// console.log(
+//   routeRecommendation(
+//     "COMCEN",
+//     "JP-SCH-16151",
+//     1300,
+//     "term-weekdays",
+//     dijkstraGraphWithService,
+//     150,
+//     5000,
+//     12
+//   )
+// );
+//COMCEN_A2 --> KR-BT_BTC2 no such journey.

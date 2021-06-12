@@ -6,15 +6,15 @@ import { useState, useEffect } from "react";
 const Map = () => {
   const { REACT_APP_API_KEY, REACT_APP_DOMAIN } = process.env;
   let { string } = useParams();
-  const [routeRecommendations, setRouteRecommendations] = useState(() => [{"path": "loading..."}]);
-  const [route, setRoute] = useState(() => null);
+  const [routeRecommendations, setRouteRecommendations] = useState(() => [{"path": "loading..."}]); 
+  const [route, setRoute] = useState(() => []);
   const search = window.location.search;
   const params = new URLSearchParams(search);
   let start = params.get("start");
   let end = params.get("end");
   let time = params.get("time");
   let date = params.get("date");
-  
+
   useEffect(() => {
     fetch(
       `${REACT_APP_DOMAIN}` +
@@ -39,7 +39,7 @@ const Map = () => {
       })
       .catch((error) =>
         setRouteRecommendations(
-          `Unable to retrieve route recommendation. ${error}`
+          [{"path": `Unable to retrieve route recommendation. ${error}`}]
         )
       );
   }, [string, start, end, time, date, REACT_APP_DOMAIN]);

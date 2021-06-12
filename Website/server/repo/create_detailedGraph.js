@@ -1,9 +1,11 @@
+//cannot be used without api key.
+
 const GoogleDistanceApi = require("google-distance-api");
 const graph = require("../data/bfsgraph");
 const busStops = require("../data/busStops");
 const fs = require("fs");
 
-const key_input = "<Google API Key>";
+const key_input = '<API Key>';
 const mode_input = "driving";
 let options = {
   key: key_input,
@@ -19,7 +21,7 @@ const register_result = (graph, origin, destination, data) => {
     }
   }
 
-  fs.writeFile("../data/detailedGraph.json", JSON.stringify(graph), (err) => {
+  fs.writeFile("../data/test.json", JSON.stringify(graph), (err) => {
     if (err) return console.log(err);
     console.log("File has been successfully written!");
   });

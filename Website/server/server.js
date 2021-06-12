@@ -16,7 +16,8 @@ app.get("/api/routeRecommedation", (req, res) => {
       req.query.date,
       dijkstraGraphWithService,
       150,
-      5000
+      5000,
+      12
     )
   );
 });

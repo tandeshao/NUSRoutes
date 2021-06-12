@@ -17,9 +17,8 @@ const Routes = ({ isOpen, setRoute, routeRecommendations }) => {
               setRoute(route["path"]);
             }}
             style={{ cursor: "pointer" }}
-          >
-            {" "}
-            {String(route["path"])}{" "}
+          >           
+            {String(route["path"])}
           </div>
         );
       })}

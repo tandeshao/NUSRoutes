@@ -15,9 +15,7 @@ const create_dijkstraGraphWithService = (graph) => {
                     "duration": x["data"][0]["duration"]};
                     graph[key][val] = res;
                 }
-
-            });
-            
+            });      
         }
     }
     return graph;

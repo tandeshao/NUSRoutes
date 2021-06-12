@@ -42,11 +42,7 @@
   },
   "BLK-EA-OPP": {
     "KR-BT": {
-      "distance": {
-        "distance": 736,
-        "services": ["B2", "BTC2", "C"],
-        "duration": "2 mins"
-      },
+      "distance": 736,
       "services": ["B2", "BTC2", "C"],
       "duration": "2 mins"
     }
