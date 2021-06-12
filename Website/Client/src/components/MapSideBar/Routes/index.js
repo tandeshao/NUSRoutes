@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-
 const Routes = ({ isOpen, setRoute, routeRecommendations }) => {
   return (
     <div

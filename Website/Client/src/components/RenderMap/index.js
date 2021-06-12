@@ -17,15 +17,17 @@ function MapDirectionsRenderer(props) {
   const [error, setError] = useState(() => null);
 
   useEffect(() => {
+    console.log(1);
     const { places, travelMode } = props;
     
     const waypoints = places.map((p) => ({
-      location: { lat: p.latitude, lng: p.longitude },
+      location: { lat: p["latitude"], lng: p["longitude"] },
       stopover: true,
     }));
-    const origin = waypoints.shift() && waypoints.shift().location;
-    const destination = waypoints.pop() && waypoints.pop().location;
-
+       
+    const origin = waypoints.shift().location;
+    const destination = waypoints.pop().location;
+   
     const directionsService = new google.maps.DirectionsService();
     directionsService.route(
       {
@@ -42,7 +44,7 @@ function MapDirectionsRenderer(props) {
         }
       }
     );
-  });
+  }, [props]);
 
   if (error) {
     return <h1>{error}</h1>;
@@ -53,9 +55,9 @@ function MapDirectionsRenderer(props) {
         directions={directions}
         options={{
           polylineOptions: {
-            strokeWeight: 10,
-            strokeOpacity: 0.5,
-            strokeColor: "#FF0000",
+            strokeWeight: 5,
+            strokeOpacity: 1,
+            strokeColor: "#FF0099",
           },
           suppressMarkers: true,
         }}
@@ -65,27 +67,28 @@ function MapDirectionsRenderer(props) {
 }
 
 const RenderMap = ({ route }) => {
-  const [selectedBusStop, setSelectedBusStop] = useState(null);
+  console.log(2);
+  //for markers and info window.
+  const [selectedBusStop, setSelectedBusStop] = useState(() => null);
   let places = [];
   route.forEach((location) => {
     busStops.forEach((busStop) => {
       if (busStop["name"] === location.substring(0, location.indexOf('_'))) {
-        places.push({latitude: busStop["latitude"], longitude: busStop["longitude"]})
+        places.push(busStop);
       }
     });
   });
   
   return ( 
-  
     <GoogleMap
       defaultZoom={16}
       defaultCenter={{ lat: 1.296643, lng: 103.776398 }}
       defaultOptions={{ styles: mapStyle, clickableIcons: false }}
     >
-        {route.length !== 0 ? <MapDirectionsRenderer
+      {route.length !== 0 ? <MapDirectionsRenderer
         places={places}
         travelMode={window.google.maps.TravelMode.DRIVING}
-      /> : ""}
+      /> :""}
       {places.map((busStop) => {
         return (
           <Marker

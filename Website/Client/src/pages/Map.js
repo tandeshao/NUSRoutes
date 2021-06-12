@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 const Map = () => {
+  console.log(3);
   const { REACT_APP_API_KEY, REACT_APP_DOMAIN } = process.env;
   let { string } = useParams();
   const [routeRecommendations, setRouteRecommendations] = useState(() => [{"path": "loading..."}]); 
