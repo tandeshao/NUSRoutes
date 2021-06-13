@@ -55,9 +55,9 @@ function MapDirectionsRenderer(props) {
         directions={directions}
         options={{
           polylineOptions: {
-            strokeWeight: 5,
-            strokeOpacity: 1,
-            strokeColor: "#A5282C",
+            strokeWeight: 7,
+            strokeOpacity: 0.8,
+            strokeColor: "aquamarine",
           },
           suppressMarkers: true,
         }}

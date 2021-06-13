@@ -169,6 +169,7 @@ const Customization = ({
               width: "240px",
               position: "relative",
               top: "30px",
+              left: '1.5vw'
             }}
           >
             {btnName}

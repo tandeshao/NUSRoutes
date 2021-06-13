@@ -1,11 +1,9 @@
 const Routes = ({ isOpen, setRoute, routeRecommendations }) => {
   return (
     <div
-      style={
-        isOpen
-          ? { background: "black", height: "40vh" }
-          : { background: "black", height: "55vh" }
-      }
+      style={{
+        height: isOpen ? "40vh" : "55vh",
+      }}
     >
       {routeRecommendations.map((route, index) => {
         return (
@@ -14,9 +12,14 @@ const Routes = ({ isOpen, setRoute, routeRecommendations }) => {
             onClick={() => {
               setRoute(route["path"]);
             }}
-            style={{ padding: '20px', cursor: "pointer", color: '#fff'}}
-          >           
-            {String(route["path"])}
+            style={{
+              padding: "20px",
+              cursor: "pointer",
+              color: "#fff",
+              maxWidth: "20vw"
+            }}
+          >
+            {String(route["path"]).split(",").map(str => <p> {str}</p>)}
           </div>
         );
       })}

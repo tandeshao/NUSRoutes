@@ -130,9 +130,7 @@ const InputSection = ({ startAndEnd, time, day, date, month, year }) => {
   return (
     <div
       style={{
-        background: "black",
         height: "35vh",
-        borderTop: "0.5px solid #535150",
       }}
     >
       <Form>
@@ -167,7 +165,7 @@ const InputSection = ({ startAndEnd, time, day, date, month, year }) => {
             }}
             id="destination"
             options={options}
-            style={{ width: 300 }}
+            style={{ width: '300px' }}
             renderInput={(params) => (
               <TextField
                 {...params}

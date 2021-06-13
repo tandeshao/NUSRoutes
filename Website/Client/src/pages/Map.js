@@ -7,8 +7,8 @@ import ArrowRightRoundedIcon from "@material-ui/icons/ArrowRightRounded";
 
 const Map = () => {
   console.log(3);
-  const [ onHover, setOnHover ] = useState(() => false);
-  const [ sideBar, setSideBar ] = useState(() => true);
+  const [onHover, setOnHover] = useState(() => false);
+  const [sideBar, setSideBar] = useState(() => true);
   const { REACT_APP_API_KEY, REACT_APP_DOMAIN } = process.env;
   let { string } = useParams();
   const [routeRecommendations, setRouteRecommendations] = useState(() => [
@@ -55,10 +55,10 @@ const Map = () => {
     <div style={{ display: "flex" }}>
       <div
         style={{
-          width: sideBar ? '30vw' : "0vw",
+          width: sideBar ? "30vw" : "0vw",
           height: "100vh",
           zIndex: "1",
-          transition : 'all .15s ease-in-out'
+          transition: "all .15s ease-in-out",
         }}
       >
         <MapSideBar
@@ -74,47 +74,58 @@ const Map = () => {
           zIndex: "1",
         }}
       >
-      {sideBar ? <ArrowLeftRoundedIcon
-          style={{
-            position: "absolute",
-            zIndex: "2",
-            fontSize: "100px",
-            top: "50vh",
-            color: "black",
-            left: sideBar ? "23vw" : '0vw',
-            cursor: "pointer",
-            backgroundColor: onHover ? '#DFCCB7' :'white',
-            width: '1vw',
-            height: onHover ? '6vh' : '4vh',
-            transition: 'background 2s'            
-          }}
-          onMouseEnter = {()=> setOnHover(true)}
-          onMouseLeave = {()=> setOnHover(false)}
-          onClick = {()=> setSideBar((prev) => !prev)}
-        /> : <ArrowRightRoundedIcon style={{
-            position: "absolute",
-            zIndex: "2",
-            fontSize: "100px",
-            top: "50vh",
-            color: "black",
-            left: sideBar ? "23vw" : '0vw',
-            cursor: "pointer",
-            backgroundColor: onHover ? '#DFCCB7' :'white',
-            width: '1vw',
-            height: onHover ? '6vh' : '4vh',
-            transition: 'background 2s'            
-          }}
-          onMouseEnter = {()=> setOnHover(true)}
-          onMouseLeave = {()=> setOnHover(false)}
-          onClick = {()=> setSideBar((prev) => !prev)}
-        />}
+        {sideBar ? (
+          <ArrowLeftRoundedIcon
+            style={{
+              position: "absolute",
+              zIndex: "2",
+              fontSize: "100px",
+              top: "50vh",
+              color: "black",
+              left: sideBar ? "23vw" : "0vw",
+              cursor: "pointer",
+              backgroundColor: "#DFCCB7",
+              width: "1vw",
+              height: onHover ? "6vh" : "4vh",
+              transition: "background 2s",
+            }}
+            onMouseEnter={() => setOnHover(true)}
+            onMouseLeave={() => setOnHover(false)}
+            onClick={() => {
+              setSideBar((prev) => !prev);
+              setOnHover(false);
+            }}
+          />
+        ) : (
+          <ArrowRightRoundedIcon
+            style={{
+              position: "absolute",
+              zIndex: "2",
+              fontSize: "100px",
+              top: "50vh",
+              color: "black",
+              left: sideBar ? "23vw" : "0vw",
+              cursor: "pointer",
+              backgroundColor: "#DFCCB7",
+              width: "1vw",
+              height: onHover ? "6vh" : "4vh",
+              transition: "background 2s",
+            }}
+            onMouseEnter={() => setOnHover(true)}
+            onMouseLeave={() => setOnHover(false)}
+            onClick={() => {
+              setSideBar((prev) => !prev);
+              setOnHover(false);
+            }}
+          />
+        )}
         <WrappedMap
           googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${REACT_APP_API_KEY}`}
           loadingElement={<div style={{ height: "100%" }} />}
           containerElement={<div style={{ height: "100%" }} />}
           mapElement={<div style={{ height: "100%" }} />}
           route={route}
-          style={{transition : 'all .15s ease-in-out'}}
+          style={{ transition: "all .15s ease-in-out" }}
         />
       </div>
     </div>
