@@ -1,4 +1,5 @@
-import firebase from "firebase";
+import fb from "firebase/app";
+import "firebase/auth";
 
 var firebaseConfig = {
   apiKey: "AIzaSyAWDkIRaZJgGyTvZCR63hWn-h_5qwukSrQ",
@@ -8,6 +9,6 @@ var firebaseConfig = {
   messagingSenderId: "536561780354",
   appId: "1:536561780354:web:8bb26dacafd24d669bd69b",
 };
-const fire = firebase.initializeApp(firebaseConfig);
+const fire = fb.initializeApp(firebaseConfig);
 
 export default fire;

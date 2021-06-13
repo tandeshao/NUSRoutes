@@ -14,12 +14,12 @@ import { useEffect, useState } from "react";
 import { animateScroll as scroll } from "react-scroll";
 import styles from "./SignOut.module.css";
 import { Link, useHistory } from "react-router-dom";
+import firebase from "firebase/app";
+import "firebase/auth";
 
 const Navbar = (props) => {
   const { toggle } = props;
   const [scrollNav, setScrollNav] = useState(false);
-  const handleLogout = () => window.localStorage.getItem("handleLogout");
-  const googleSignOut = () => window.localStorage.getItem("googleSignOut");
   const user = window.localStorage.getItem("user");
 
   const changeNav = () => {
@@ -39,18 +39,28 @@ const Navbar = (props) => {
   };
 
   const history = useHistory();
+
+  const signOut = () => {
+    // [START auth_sign_out]
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        // Sign-out successful.
+        console.log("Sign Out Successful");
+      })
+      .catch((error) => {
+        // An error happened.
+      });
+  };
+
   const handleSubmit = (e) => {
     //prevents page refreshing
     e.preventDefault();
 
-    if (googleSignOut) {
-      googleSignOut();
-    }
-    if (handleLogout) {
-      handleLogout();
-    }
+    signOut();
     //clear cache
-    window.localStorage.clear();
+    window.localStorage.removeItem("user");
 
     //redirect
     history.push("/");

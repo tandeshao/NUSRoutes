@@ -1,73 +1,55 @@
+import { useHistory } from "react-router-dom";
 import firebase from "firebase/app";
 import "firebase/auth";
 import { GoogleButton } from "./LoginElements";
 import googleIcon from "../../images/google-icon.png";
-import { useState } from "react";
-import fire from "../../fire";
-import { useHistory } from "react-router-dom";
 
-const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [emailError, setEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
-  const [hasAccount, setHasAccount] = useState(false);
-
-  const clearErrors = () => {
-    setEmailError("");
-    setPasswordError("");
-  };
+const Login = (props) => {
+  const {
+    email,
+    setEmail,
+    password,
+    setPassword,
+    handleLogin,
+    handleSignup,
+    hasAccount,
+    setHasAccount,
+    emailError,
+    passwordError,
+    handleLogout,
+    user,
+  } = props;
 
   const history = useHistory();
 
-  const push = (user) => {
-    console.log(user);
-    window.localStorage.setItem("user", user);
-    history.push("/profile");
+  const push = () => {
+    if (user) {
+      console.log(user);
+      window.localStorage.setItem("user", user);
+      window.localStorage.setItem("handleLogout", handleLogout);
+      history.push("/profile");
+    }
   };
 
-  const handleLogin = () => {
-    clearErrors();
-    fire
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then((result) => push(result.user))
-      .catch((err) => {
-        switch (err.code) {
-          case "auth/invalid-email":
-          case "auth/user-disabled":
-          case "auth/user-not-found":
-            setEmailError(err.message);
-            break;
-          case "auth/wrong-password":
-            setPasswordError(err.message);
-            break;
-          //no default
-        }
-      });
-  };
-
-  const handleSignup = () => {
-    clearErrors();
-    fire
-      .auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then((result) => push(result.user))
-      .catch((err) => {
-        switch (err.code) {
-          case "auth/email-already-in-use":
-          case "auth/invalid-email":
-            setEmailError(err.message);
-            break;
-          case "auth/weak-password":
-            setPasswordError(err.message);
-            break;
-          // no default
-        }
-      });
+  const googlePush = () => {
+    if (user) {
+      window.localStorage.setItem("user", user);
+      window.localStorage.setItem("googleSignOut", googleSignOut);
+      history.push("/profile");
+    }
   };
 
   var provider = new firebase.auth.GoogleAuthProvider();
+
+  const handleSubmit = (e) => {
+    //prevents page refreshing
+    e.preventDefault();
+
+    //login
+    handleLogin();
+    // redirect
+    setTimeout(push, 1525);
+  };
 
   const handleGoogleSignIn = () => {
     firebase
@@ -80,7 +62,7 @@ const Login = () => {
         // var token = credential.accessToken;
         // The signed-in user info.
         // var user = result.user;
-        push(result.user);
+        googlePush();
       })
       .catch((error) => {
         // Handle Errors here.
@@ -88,6 +70,19 @@ const Login = () => {
         var errorMessage = error.message;
         console.log(errorCode);
         console.log(errorMessage);
+      });
+  };
+
+  const googleSignOut = () => {
+    // [START auth_sign_out]
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        // Sign-out successful.
+      })
+      .catch((error) => {
+        // An error happened.
       });
   };
 
@@ -118,7 +113,7 @@ const Login = () => {
         <div className="btnContainer">
           {!hasAccount ? (
             <>
-              <button onClick={handleLogin}>Sign in</button>
+              <button onClick={handleSubmit}>Sign in</button>
               <p>
                 Don't have an account?
                 <span onClick={() => setHasAccount(!hasAccount)}>Sign up</span>
