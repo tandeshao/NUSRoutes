@@ -94,7 +94,7 @@ const InputSection = ({ startAndEnd, time, day, date, month, year }) => {
   const classes = useStyles();
 
   return (
-    <div style={{ background: "black", height: "35vh" }}>
+    <div style={{ background: "black", height: "35vh", borderTop: '0.5px solid #535150' }}>
       <Form>
         <form onSubmit={handleSubmit}>
           <FormLabel>Current location: </FormLabel>

@@ -3,8 +3,8 @@ const Routes = ({ isOpen, setRoute, routeRecommendations }) => {
     <div
       style={
         isOpen
-          ? { background: "#8a8a8a", height: "40vh" }
-          : { background: "#8a8a8a", height: "55vh" }
+          ? { background: "black", height: "40vh" }
+          : { background: "black", height: "55vh" }
       }
     >
       {routeRecommendations.map((route, index) => {
@@ -14,7 +14,7 @@ const Routes = ({ isOpen, setRoute, routeRecommendations }) => {
             onClick={() => {
               setRoute(route["path"]);
             }}
-            style={{ cursor: "pointer" }}
+            style={{ padding: '20px', cursor: "pointer", color: '#fff'}}
           >           
             {String(route["path"])}
           </div>

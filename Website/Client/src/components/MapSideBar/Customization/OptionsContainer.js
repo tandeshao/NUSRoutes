@@ -2,8 +2,10 @@ import styled from "styled-components";
 
 export const OptionsContainer = styled.div`
     width: 100%;
-    background: #262626;
+    background: black;
     overflow: hidden;
+    border-top: 0.5px solid #535150;
+    border-bottom: 0.5px solid #535150;
 `;
 
 export const Options = styled.form`

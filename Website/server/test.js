@@ -1,1 +1,0 @@
-!undefined && console.log(1);
