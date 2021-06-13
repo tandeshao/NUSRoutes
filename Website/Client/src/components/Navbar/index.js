@@ -19,7 +19,7 @@ import "firebase/auth";
 
 const Navbar = (props) => {
   const { toggle } = props;
-  const [scrollNav, setScrollNav] = useState(false);
+  const [scrollNav, setScrollNav] = useState(() => false);
   const user = window.localStorage.getItem("user");
 
   const changeNav = () => {
@@ -61,6 +61,7 @@ const Navbar = (props) => {
     signOut();
     //clear cache
     window.localStorage.removeItem("user");
+    window.localStorage.removeItem("id");
 
     //redirect
     history.push("/");

@@ -21,6 +21,8 @@ import { Button } from "../ButtonElement";
 import options from "../../data/options.json";
 import map from "../../data/map.json";
 import styles from "./styles.json";
+import firebase from "firebase/app";
+import "firebase/firestore";
 
 const HeroSection = () => {
   const [hover, setHover] = useState(false);
@@ -34,6 +36,9 @@ const HeroSection = () => {
   const [destinationError, setDestinationError] = useState(false);
 
   const history = useHistory();
+  const user = window.localStorage.getItem("user");
+  const id = window.localStorage.getItem("id");
+  const db = firebase.firestore();
 
   const handleSubmit = (e) => {
     //prevents page refreshing
@@ -48,13 +53,40 @@ const HeroSection = () => {
     } else if (current === destination) {
       setDestinationError(true);
     } else {
-      const start = map[current];
-      const end = map[destination];
+      // Current Time
       let [hour, minute] = new Date().toLocaleTimeString("it-IT").split(/:| /);
       let time = hour + minute;
       const obj = new Date();
       let [month, date, year] = obj.toLocaleDateString("en-US").split("/");
       const day = obj.getDay();
+
+      // Save to firestore
+      if (user) {
+        var userRef = db.collection("user").doc(id);
+        userRef.get().then((doc) => {
+          var data = doc.data();
+          const newHist = data.hist;
+          const now = obj.toString().substring(0, 24);
+          newHist.push({
+            current: current,
+            destination: destination,
+            time: now,
+          });
+
+          userRef.set(
+            {
+              hist: newHist,
+            },
+            {
+              merge: true,
+            }
+          );
+        });
+      }
+
+      // Get route
+      const start = map[current];
+      const end = map[destination];
       const category =
         data.reduce((x, y) => {
           if (x !== null) {

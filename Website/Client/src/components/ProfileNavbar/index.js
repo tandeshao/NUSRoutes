@@ -7,6 +7,7 @@ import {
   NavItem,
   NavLinks,
   NavBtn,
+  NavToggle,
 } from "./ProfileNavbarElements";
 import { FaBars } from "react-icons/fa";
 import { useEffect, useState } from "react";
@@ -16,8 +17,8 @@ import { Link, useHistory } from "react-router-dom";
 import firebase from "firebase/app";
 import "firebase/auth";
 
-const Navbar = (props) => {
-  const { toggle } = props;
+const ProfileNavbar = (props) => {
+  const { toggle, setSection } = props;
   const [scrollNav, setScrollNav] = useState(false);
   const user = window.localStorage.getItem("user");
 
@@ -59,6 +60,7 @@ const Navbar = (props) => {
     signOut();
     //clear cache
     window.localStorage.removeItem("user");
+    window.localStorage.removeItem("id");
     //redirect
     history.push("/");
   };
@@ -77,40 +79,15 @@ const Navbar = (props) => {
           </MobileIcon>
           <NavMenu>
             <NavItem>
-              <NavLinks
-                to="about"
-                smooth={true}
-                duration={500}
-                spy={true}
-                exact="true"
-                offset={-80}
-              >
-                Home
-              </NavLinks>
+              <NavLinks to="/">Home</NavLinks>
             </NavItem>
             <NavItem>
-              <NavLinks
-                to="faq"
-                smooth={true}
-                duration={500}
-                spy={true}
-                exact="true"
-                offset={-80}
-              >
+              <NavToggle onClick={() => setSection(true)}>History</NavToggle>
+            </NavItem>
+            <NavItem>
+              <NavToggle onClick={() => setSection(false)}>
                 Favourites
-              </NavLinks>
-            </NavItem>
-            <NavItem>
-              <NavLinks
-                to="contact"
-                smooth={true}
-                duration={500}
-                spy={true}
-                exact="true"
-                offset={-80}
-              >
-                History
-              </NavLinks>
+              </NavToggle>
             </NavItem>
           </NavMenu>
           <NavBtn>
@@ -130,4 +107,4 @@ const Navbar = (props) => {
   );
 };
 
-export default Navbar;
+export default ProfileNavbar;

@@ -1,4 +1,5 @@
 import firebase from "firebase/app";
+import "firebase/firestore";
 import "firebase/auth";
 import { GoogleButton } from "./LoginElements";
 import googleIcon from "../../images/google-icon.png";
@@ -13,6 +14,8 @@ const Login = () => {
   const [passwordError, setPasswordError] = useState("");
   const [hasAccount, setHasAccount] = useState(false);
 
+  const db = firebase.firestore();
+
   const clearErrors = () => {
     setEmailError("");
     setPasswordError("");
@@ -21,7 +24,7 @@ const Login = () => {
   const history = useHistory();
 
   const push = (user) => {
-    console.log(user);
+    window.localStorage.setItem("id", user.uid);
     window.localStorage.setItem("user", user);
     history.push("/profile");
   };
@@ -52,7 +55,14 @@ const Login = () => {
     fire
       .auth()
       .createUserWithEmailAndPassword(email, password)
-      .then((result) => push(result.user))
+      .then((result) => {
+        push(result.user);
+        const id = result.user.uid;
+        db.collection("user").doc(id).set({
+          hist: [],
+          fav: [],
+        });
+      })
       .catch((err) => {
         switch (err.code) {
           case "auth/email-already-in-use":
@@ -81,6 +91,16 @@ const Login = () => {
         // The signed-in user info.
         // var user = result.user;
         push(result.user);
+        const id = result.user.uid;
+        const docRef = db.collection("user").doc(id);
+        if (docRef.get()) {
+        } else {
+          console.log("No such document!");
+          db.collection("user").doc(id).set({
+            hist: [],
+            fav: [],
+          });
+        }
       })
       .catch((error) => {
         // Handle Errors here.
