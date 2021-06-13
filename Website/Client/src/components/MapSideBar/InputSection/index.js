@@ -15,11 +15,13 @@ import {
 } from "./InputSectionElements";
 import { Button } from "../../ButtonElement";
 import reverseMap from "../../../data/reverseMap.json";
+import firebase from "firebase/app";
+import "firebase/firestore";
 
 const InputSection = ({ startAndEnd, time, day, date, month, year }) => {
   useEffect(() => {
     // to update time, day, date, month and year resource variables.
-  },[time, day, date, month, year]) ;
+  }, [time, day, date, month, year]);
   const history = useHistory();
 
   const [hover, setHover] = useState(() => false);
@@ -27,13 +29,21 @@ const InputSection = ({ startAndEnd, time, day, date, month, year }) => {
     setHover(!hover);
   };
   const [current, setCurrent] = useState(() => {
-    return reverseMap[startAndEnd[0]] === "" ? options[0] : reverseMap[startAndEnd[0]]
+    return reverseMap[startAndEnd[0]] === ""
+      ? options[0]
+      : reverseMap[startAndEnd[0]];
   });
   const [destination, setDestination] = useState(() => {
-    return reverseMap[startAndEnd[1]] === "" ? options[0] : reverseMap[startAndEnd[1]]
+    return reverseMap[startAndEnd[1]] === ""
+      ? options[0]
+      : reverseMap[startAndEnd[1]];
   });
   const [currentError, setCurrentError] = useState(() => false);
   const [destinationError, setDestinationError] = useState(() => false);
+
+  const user = window.localStorage.getItem("user");
+  const id = window.localStorage.getItem("id");
+  const db = firebase.firestore();
 
   const handleSubmit = (e) => {
     //prevents page refreshing
@@ -46,6 +56,31 @@ const InputSection = ({ startAndEnd, time, day, date, month, year }) => {
     } else if (destination === "") {
       setDestinationError(true);
     } else {
+      const obj = new Date();
+      // Save to firestore
+      if (user) {
+        var userRef = db.collection("user").doc(id);
+        userRef.get().then((doc) => {
+          var data = doc.data();
+          const newHist = data.hist;
+          const now = obj.toString().substring(0, 24);
+          newHist.push({
+            current: current,
+            destination: destination,
+            time: now,
+          });
+
+          userRef.set(
+            {
+              hist: newHist,
+            },
+            {
+              merge: true,
+            }
+          );
+        });
+      }
+
       const start = map[current];
       const end = map[destination];
       const category =
@@ -53,16 +88,15 @@ const InputSection = ({ startAndEnd, time, day, date, month, year }) => {
           if (x !== null) {
             return x;
           } else if (y["duration-year"].includes(year)) {
-            
             if (
               y["duration-month"][0] < month &&
               month < y["duration-month"][1]
             ) {
               return "vacation";
-            } else if (              
+            } else if (
               y["duration-month"][0] === month ||
               month === y["duration-month"][1]
-            ) {        
+            ) {
               return y["duration-date"][0] <= date &&
                 date <= y["duration-date"][1]
                 ? "vacation"
@@ -94,7 +128,13 @@ const InputSection = ({ startAndEnd, time, day, date, month, year }) => {
   const classes = useStyles();
 
   return (
-    <div style={{ background: "black", height: "35vh", borderTop: '0.5px solid #535150' }}>
+    <div
+      style={{
+        background: "black",
+        height: "35vh",
+        borderTop: "0.5px solid #535150",
+      }}
+    >
       <Form>
         <form onSubmit={handleSubmit}>
           <FormLabel>Current location: </FormLabel>
