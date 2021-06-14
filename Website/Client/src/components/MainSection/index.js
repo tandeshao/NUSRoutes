@@ -142,9 +142,22 @@ const HeroSection = () => {
         <VideoBg autoPlay loop muted src={Video} type="video/mp4" />
       </HeroBg>
       <HeroContent>
-        <HeroH1> Route Finder </HeroH1>
+        <div
+          style={{
+            background: "#353535",
+            borderRadius: "10%",
+            position: 'absolute',
+            width: "130%",
+            height: "130%",
+            opacity: '85%',
+            filter: 'blur(5px) brightness(0.5)',
+            border: '7px solid',
+            margin: '-50px'
+          }}
+        />
+        <HeroH1 style={{zIndex: '4'}}> Route Finder </HeroH1>
 
-        <Form>
+        <Form style={{zIndex: '4'}}>
           <form onSubmit={handleSubmit}>
             <FormLabel>Current location: </FormLabel>
             <Autocomplete
