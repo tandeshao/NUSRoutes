@@ -193,9 +193,9 @@ const Customization = ({
                   .split("/");
                 setTime(hour + minute);
                 setDay(today);
-                setDate(dateNow);
-                setMonth(monthNow);
-                setYear(yearNow);
+                setDate(parseInt(dateNow));
+                setMonth(parseInt(monthNow));
+                setYear(parseInt(yearNow));
                 handleClose("Depart Now");
               }}
             >

@@ -4,6 +4,8 @@ const unavailableServices = require("./unavailableServices");
 const busServices = require("../data/busServices");
 const findDistance = require("./findDistance");
 const findDuration = require("./findDuration");
+const addTime = require("./addTime");
+const heapq = require("heapq");
 
 const lowestCostNode = (costs, processed) => {
   return Object.keys(costs).reduce((lowest, node) => {
@@ -88,26 +90,34 @@ const dijkstra = (
   }
   if (shortestPath.length == 1) {
     results = {
-      duration: null,
-      distance: null,
-      cost: null,
-      path: null,
+      StartingTime: null,
+      ArrivalTime: null,
+      Transfers: null,
+      Duration: null,
+      Distance: null,
+      Cost: null,
+      Path: null,
     };
   } else {
     shortestPath.reverse();
+    const res = findDuration(
+      shortestPath,
+      dijkstraGraphWithService,
+      durationPerTransfer
+    );
+    const duration = Math.ceil(res[0] + shortestPath.length * 0.67);
+    const transfers = res[1];
+
     results = {
-      timeFromStart: time,
+      StartingTime: time,
+      ArrivalTime: addTime(parseInt(time), duration),
+      Transfers: transfers,
       //duration = duration of going to each stop + a 40s "stop time" given to each stop.
       //40s = 40/60 = 2/3 estimated to be 0.67.
-      duration:
-        Math.ceil(findDuration(
-          shortestPath,
-          dijkstraGraphWithService,
-          durationPerTransfer
-        ) + shortestPath.length * 0.67),
-      distance: findDistance(shortestPath, dijkstraGraphWithService),
-      cost: costs[end],
-      path: shortestPath,
+      Duration: duration,
+      Distance: findDistance(shortestPath, dijkstraGraphWithService),
+      Cost: costs[end],
+      Path: shortestPath,
     };
   }
   return results;
@@ -127,12 +137,19 @@ const routeRecommendation = (
     console.log(
       `Start: ${start} and End: ${end} is the same bus stop, no path can be found.`
     );
-    return `Start: ${start} and End: ${end} is the same bus stop`;
+    return [
+      {
+        Path: `Start: ${start} and End: ${end} is the same bus stop`,
+        Cost: -1,
+      },
+    ];
   } else if (!graph[start] || !graph[end]) {
     console.log(
       `Start: ${start} or End: ${end} cannot be found. Probably bus stops doesn't exist.`
     );
-    return `Start: ${start} or End: ${end} cannot be found.`;
+    return [
+      { Path: `Start: ${start} or End: ${end} cannot be found.`, Cost: -1 },
+    ];
   } else {
     let graphForTransfers = create_dijkstraGraphforTransfers(graph);
     let arr = [];
@@ -155,68 +172,20 @@ const routeRecommendation = (
       }
     });
 
-    let lowestCost = Infinity;
     let result = [];
+    const comparator = (x, y) => x["Cost"] < y["Cost"];
     arr.forEach((x) => {
-      if (x.cost !== null && x.cost < lowestCost) {
-        lowestCost = x.cost;
-      }
-    });
-
-    arr.forEach((x) => {
-      if (x.cost === lowestCost) {
-        result.push(x);
+      if (x["Path"] !== null) {
+        heapq.push(result, x, comparator);
       }
     });
 
     if (result.length === 0) {
-      result.push({ path: "No available path could be found." });
-      return result;
+      return [{ String: "No available path could be found.", Path: [],Cost: -1 }];
     } else {
       return result;
     }
   }
 };
 
-// console.log(
-//   dijkstra(
-//     "COMCEN_none",
-//     "JP-SCH-16151_C",
-//     1300,
-//     "term-weekdays",
-//     dijkstraGraphWithService,
-//     create_dijkstraGraphforTransfers(dijkstraGraphWithService),
-//     150,
-//     5000,
-//     12
-//   )
-// );
-
-// console.log(
-//   dijkstra(
-//     "COM2_none",
-//     "BIZ2_D1",
-//     1300,
-//     "term-weekdays",
-//     dijkstraGraphWithService,
-//     create_dijkstraGraphforTransfers(dijkstraGraphWithService),
-//     150,
-//     5000,
-//     12
-//   )
-// );
 module.exports = routeRecommendation;
-
-// console.log(
-//   routeRecommendation(
-//     "COMCEN",
-//     "JP-SCH-16151",
-//     1300,
-//     "term-weekdays",
-//     dijkstraGraphWithService,
-//     150,
-//     5000,
-//     12
-//   )
-// );
-//COMCEN_A2 --> KR-BT_BTC2 no such journey.

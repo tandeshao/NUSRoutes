@@ -150,8 +150,8 @@ const HeroSection = () => {
             width: "130%",
             height: "130%",
             opacity: '85%',
-            filter: 'blur(5px) brightness(0.5)',
-            border: '7px solid',
+            filter: 'brightness(0.5)',
+            border: '7px solid #636363',
             margin: '-50px'
           }}
         />

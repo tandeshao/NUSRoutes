@@ -8,6 +8,7 @@ const cors = require("cors");
 app.use(cors());
 
 app.get("/api/routeRecommedation", (req, res) => {
+  console.log('routeRecommendation function called');
   res.json(
     routeRecommendation(
       req.query.start,

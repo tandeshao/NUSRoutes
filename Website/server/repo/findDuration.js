@@ -25,7 +25,7 @@ const findDuration = (path, graph, durationPerTransfer) => {
     }
   }
 
-  return duration + numberOfBusTransfers * durationPerTransfer;
+  return [duration + numberOfBusTransfers * durationPerTransfer, numberOfBusTransfers];
 };
 
 module.exports = findDuration;

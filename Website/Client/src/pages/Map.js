@@ -12,7 +12,7 @@ const Map = () => {
   const { REACT_APP_API_KEY, REACT_APP_DOMAIN } = process.env;
   let { string } = useParams();
   const [routeRecommendations, setRouteRecommendations] = useState(() => [
-    { path: "loading..." },
+    { Path: [] },
   ]);
   const [route, setRoute] = useState(() => []);
   const search = window.location.search;
@@ -43,10 +43,11 @@ const Map = () => {
       .then((response) => response.json())
       .then((data) => {
         setRouteRecommendations(data);
+        setRoute(data[0]["Path"]);
       })
       .catch((error) =>
         setRouteRecommendations([
-          { path: `Unable to retrieve route recommendation. ${error}` },
+          { String: `Unable to retrieve route recommendation. ${error}` , Path: [], Cost: -1},
         ])
       );
   }, [string, start, end, time, date, REACT_APP_DOMAIN]);

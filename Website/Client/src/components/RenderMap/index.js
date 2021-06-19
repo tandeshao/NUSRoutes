@@ -11,6 +11,7 @@ import busStops from "../../data/busStops.json";
 import { useState, useEffect } from "react";
 import icon from "../../images/icon.png";
 import mapStyle from "./mapStyle.js";
+import icon2 from "../../images/Picture2.png";
 
 function MapDirectionsRenderer(props) {
   const [directions, setDirections] = useState(() => null);
@@ -19,15 +20,15 @@ function MapDirectionsRenderer(props) {
   useEffect(() => {
     console.log(1);
     const { places, travelMode } = props;
-    
+
     const waypoints = places.map((p) => ({
       location: { lat: p["latitude"], lng: p["longitude"] },
       stopover: true,
     }));
-       
+
     const origin = waypoints.shift().location;
     const destination = waypoints.pop().location;
-   
+
     const directionsService = new google.maps.DirectionsService();
     directionsService.route(
       {
@@ -73,36 +74,67 @@ const RenderMap = ({ route }) => {
   let places = [];
   route.forEach((location) => {
     busStops.forEach((busStop) => {
-      if (busStop["name"] === location.substring(0, location.indexOf('_'))) {
+      if (busStop["name"] === location.substring(0, location.indexOf("_"))) {
         places.push(busStop);
       }
     });
   });
-  
-  return ( 
+
+  return (
     <GoogleMap
       defaultZoom={16}
       defaultCenter={{ lat: 1.296643, lng: 103.776398 }}
       defaultOptions={{ styles: mapStyle, clickableIcons: false }}
     >
-      {route.length !== 0 ? <MapDirectionsRenderer
-        places={places}
-        travelMode={window.google.maps.TravelMode.DRIVING}
-      /> :""}
-      {places.map((busStop) => {
-        return (
-          <Marker
-            key={busStop["caption"]}
-            position={{ lat: busStop["latitude"], lng: busStop["longitude"] }}
-            onClick={() => {
-              setSelectedBusStop(busStop);
-            }}
-            icon={{
-              url: icon,
-              scaledSize: new window.google.maps.Size(27, 35),
-            }}
-          />
-        );
+      {route.length !== 0 && (
+        <MapDirectionsRenderer
+          places={places}
+          travelMode={window.google.maps.TravelMode.DRIVING}
+        />
+      )}
+      {places.map((busStop, index) => {
+        if (index === 0) {
+          return (
+            <Marker
+              key={busStop["caption"]}
+              position={{ lat: busStop["latitude"], lng: busStop["longitude"] }}
+              onClick={() => {
+                setSelectedBusStop(busStop);
+              }}
+              icon={{
+                url: icon2,
+                scaledSize: new window.google.maps.Size(40, 40),
+              }}
+            />
+          );
+        } else if (index === places.length - 1) {
+          return (
+            <Marker
+              key={busStop["caption"]}
+              position={{ lat: busStop["latitude"], lng: busStop["longitude"] }}
+              onClick={() => {
+                setSelectedBusStop(busStop);
+              }}
+              icon={{
+                scaledSize: new window.google.maps.Size(35, 40),
+              }}
+            />
+          );
+        } else {
+          return (
+            <Marker
+              key={busStop["caption"]}
+              position={{ lat: busStop["latitude"], lng: busStop["longitude"] }}
+              onClick={() => {
+                setSelectedBusStop(busStop);
+              }}
+              icon={{
+                url: icon,
+                scaledSize: new window.google.maps.Size(27, 35),
+              }}
+            />
+          );
+        }
       })}
 
       {selectedBusStop && (

@@ -1,6 +1,6 @@
 import options from "../../../data/options.json";
 import map from "../../../data/map.json";
-import styles from "../../MainSection/styles.json";
+import styles from "./styles.json";
 import data from "../../../data/vacation.json";
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
@@ -13,18 +13,14 @@ import {
   ArrowForward,
   ArrowRight,
 } from "./InputSectionElements";
-import { Button } from "../../ButtonElement";
+import { Button } from "./ButtonElement";
 import reverseMap from "../../../data/reverseMap.json";
 import firebase from "firebase/app";
 import "firebase/firestore";
 
 const InputSection = ({ startAndEnd, time, day, date, month, year }) => {
-  useEffect(() => {
-    // to update time, day, date, month and year resource variables.
-  }, [time, day, date, month, year]);
-  const history = useHistory();
-
-  const [hover, setHover] = useState(() => false);
+  useEffect(() => {}, [time, day, date, month, year]);
+  const [hover, setHover] = useState(false);
   const onHover = () => {
     setHover(!hover);
   };
@@ -41,13 +37,13 @@ const InputSection = ({ startAndEnd, time, day, date, month, year }) => {
   const [currentError, setCurrentError] = useState(() => false);
   const [destinationError, setDestinationError] = useState(() => false);
 
-  const user = window.localStorage.getItem("user");
-  const id = window.localStorage.getItem("id");
-  const db = firebase.firestore();
-
+  const history = useHistory();
   const handleSubmit = (e) => {
     //prevents page refreshing
     e.preventDefault();
+    const user = window.localStorage.getItem("user");
+    const id = window.localStorage.getItem("id");
+    const db = firebase.firestore();
     setCurrentError(false);
     setDestinationError(false);
 
@@ -108,7 +104,6 @@ const InputSection = ({ startAndEnd, time, day, date, month, year }) => {
             return null;
           }
         }, null) + (day === 0 ? "-sun/ph" : day === 6 ? "-sat" : "-weekdays");
-
       // might need to implement for PH
       history.push(
         "/map/routeRecommedation?start=" +
@@ -130,7 +125,7 @@ const InputSection = ({ startAndEnd, time, day, date, month, year }) => {
   return (
     <div
       style={{
-        height: "35vh",
+        height: "28vh",
       }}
     >
       <Form>
@@ -165,7 +160,7 @@ const InputSection = ({ startAndEnd, time, day, date, month, year }) => {
             }}
             id="destination"
             options={options}
-            style={{ width: '300px' }}
+            style={{ width: "300px" }}
             renderInput={(params) => (
               <TextField
                 {...params}
@@ -175,9 +170,7 @@ const InputSection = ({ startAndEnd, time, day, date, month, year }) => {
               />
             )}
           />
-
           <Button
-            to="services"
             onMouseEnter={onHover}
             onMouseLeave={onHover}
             primary="true"
@@ -186,9 +179,8 @@ const InputSection = ({ startAndEnd, time, day, date, month, year }) => {
             duration={500}
             spy={true}
             exact="true"
-            style={{ marginTop: "3vh" }}
           >
-            Get Route {hover ? <ArrowForward /> : <ArrowRight />}
+            {hover ? <ArrowForward /> : <ArrowRight />}
           </Button>
         </form>
       </Form>
