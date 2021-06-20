@@ -17,8 +17,9 @@ import { Button } from "./ButtonElement";
 import reverseMap from "../../../data/reverseMap.json";
 import firebase from "firebase/app";
 import "firebase/firestore";
+import image from '../../../images/switch.png';
 
-const InputSection = ({ startAndEnd, time, day, date, month, year }) => {
+const InputSection = ({ startAndEnd, time, day, date, month, year, setSelectedRoute}) => {
   useEffect(() => {}, [time, day, date, month, year]);
   const [hover, setHover] = useState(false);
   const onHover = () => {
@@ -128,8 +129,15 @@ const InputSection = ({ startAndEnd, time, day, date, month, year }) => {
         height: "28vh",
       }}
     >
+      <img onClick= {()=> {
+        const curr = current;
+        setCurrent(destination);
+        setDestination(curr);
+      }} src={image} style={{position: 'absolute', width: '3vw', height: '7vh', left: '18vw', top: '10vh', cursor: 'pointer'}} alt=""/>
       <Form>
-        <form onSubmit={handleSubmit}>
+        <form
+          onSubmit={handleSubmit}
+        >
           <FormLabel>Current location: </FormLabel>
           <Autocomplete
             classes={classes}
@@ -179,6 +187,7 @@ const InputSection = ({ startAndEnd, time, day, date, month, year }) => {
             duration={500}
             spy={true}
             exact="true"
+            onClick={() => setSelectedRoute(null)} 
           >
             {hover ? <ArrowForward /> : <ArrowRight />}
           </Button>

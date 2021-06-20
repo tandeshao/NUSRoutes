@@ -1,13 +1,66 @@
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import { useState } from "react";
-import { RouteContainer, ScrollBar, Effect, Container, ScrollBar2 } from "./RouteElements";
+import {
+  RouteContainer,
+  ScrollBar,
+  Effect,
+  Container,
+  ScrollBar2,
+  Container2,
+} from "./RouteElements";
+import { Button } from "../../ButtonElement";
+import map from "../../../data/reverseMap.json";
+import startIcon from "../../../images/Picture2.png";
+import endIcon from "../../../images/Picture3.png";
 
-const Routes = ({ isOpen, setRoute, routeRecommendations }) => {
-  const [selectedRoute, setSelectedRoute] = useState(() => null);
+const findTransferredBuses = (route) => {
+  const transferredBuses = [];
+  let prev = "";
+  let start = 0;
+  let end = 0;
+
+  if (route.length === 2) {
+    transferredBuses.push({
+      start: 0,
+      end: 1,
+      service: route[1].substring(route[1].indexOf("_") + 1, route[1].length),
+    });
+  } else {
+    for (let i = 1; i < route.length; i++) {
+      const busStop = route[i];
+      const service = busStop.substring(
+        busStop.indexOf("_") + 1,
+        busStop.length
+      );
+
+      if (i === 1) {
+        prev = service;
+      } else if (service !== prev) {
+        transferredBuses.push({ start: start, end: end, service: prev });
+        start = end;
+        prev = service;
+      } else if (i === route.length - 1) {
+        transferredBuses.push({ start: start, end: end + 1, service: prev });
+      }
+
+      end = i;
+    }
+  }
+
+  return transferredBuses;
+};
+
+const Routes = ({
+  isOpen,
+  setRoute,
+  routeRecommendations,
+  route,
+  selectedRoute,
+  setSelectedRoute,
+}) => {
   const units = ["hrs", "hrs", "", "mins", "metres", ""];
+  const transferredBuses =
+    selectedRoute === null ? [] : findTransferredBuses(route);
 
-  console.log(routeRecommendations);
-  console.log(selectedRoute);
   return (
     <div
       style={{
@@ -21,7 +74,7 @@ const Routes = ({ isOpen, setRoute, routeRecommendations }) => {
               {routeRecommendations.map((route, index) => {
                 return (
                   <CSSTransition
-                    key={index}
+                    key={index + 100}
                     in={true}
                     appear={true}
                     timeout={500}
@@ -29,7 +82,7 @@ const Routes = ({ isOpen, setRoute, routeRecommendations }) => {
                     unmountOnExit
                   >
                     <RouteContainer
-                      key={index}
+                      key={index + 200}
                       onClick={() => {
                         setRoute(route["Path"]);
                         setSelectedRoute(index);
@@ -38,7 +91,7 @@ const Routes = ({ isOpen, setRoute, routeRecommendations }) => {
                       {Object.keys(route).map(
                         (str, index) =>
                           str !== "Path" && (
-                            <p>
+                            <p key={index + 300}>
                               {str + ": " + route[str] + " " + units[index]}
                             </p>
                           )
@@ -51,7 +104,6 @@ const Routes = ({ isOpen, setRoute, routeRecommendations }) => {
           ) : (
             <TransitionGroup component={Effect}>
               <CSSTransition
-                key={1}
                 in={true}
                 appear={true}
                 timeout={500}
@@ -67,35 +119,138 @@ const Routes = ({ isOpen, setRoute, routeRecommendations }) => {
         </ScrollBar>
       ) : (
         <ScrollBar2 isOpen={isOpen}>
-          <Container>
-            {Object.keys(routeRecommendations[selectedRoute]).map(
-              (str, index) => {
-                return (
-                  str !== "Path" && (
-                    <p>
-                      {str +
-                        ": " +
-                        routeRecommendations[selectedRoute][str] +
-                        " " +
-                        units[index]}
-                    </p>
-                  )
-                );
-              }
-            )}
-          
-          </Container>
-          <div style={{background: 'grey', height: '20vh', width: '17.7vw', margin: '0'}}> </div>
-            <div
-              style={{
-                position: "absolute",
-                borderRight: "7px solid aquamarine",
-                height: "100px",
-                top: '68vh',
-                left: '5vw',
-                paddingRight: '10px'
-              }}
-            >test <br/> test</div>
+          <TransitionGroup component={Effect}>
+            <CSSTransition
+              in={true}
+              appear={true}
+              timeout={500}
+              classNames="fade"
+              unmountOnExit
+            >
+              <Container>
+                {Object.keys(routeRecommendations[selectedRoute]).map(
+                  (str, index) => {
+                    return (
+                      str !== "Path" && (
+                        <p key={index + 400}>
+                          {str +
+                            ": " +
+                            routeRecommendations[selectedRoute][str] +
+                            " " +
+                            units[index]}
+                        </p>
+                      )
+                    );
+                  }
+                )}
+              </Container>
+            </CSSTransition>
+          </TransitionGroup>
+          <TransitionGroup component={Effect}>
+            <CSSTransition
+              in={true}
+              appear={true}
+              timeout={500}
+              classNames="fade"
+              unmountOnExit
+            >
+              <Container2>
+                Start from {map[route[0].substring(0, route[0].indexOf("_"))]}.{" "}
+                <img
+                  src={startIcon}
+                  alt=""
+                  style={{
+                    display: "inline",
+                    float: "right",
+                    width: "30px",
+                    height: "30px",
+                  }}
+                />
+              </Container2>
+            </CSSTransition>
+          </TransitionGroup>
+
+          <TransitionGroup component={Effect}>
+            {transferredBuses.map((x, index) => {
+              return (
+                <CSSTransition
+                  key={index + 500}
+                  in={true}
+                  appear={true}
+                  timeout={500}
+                  classNames="fade"
+                  unmountOnExit
+                >
+                  <Container2 key={index + 500}>
+                    Take {x.service} from{" "}
+                    {
+                      map[
+                        route[x.start].substring(0, route[x.start].indexOf("_"))
+                      ]
+                    }{" "}
+                    to{" "}
+                    {map[route[x.end].substring(0, route[x.end].indexOf("_"))]}.{" "}
+                    <br /> <br />
+                    Path: <br />
+                    {route
+                      .map((y) => map[y.substring(0, y.indexOf("_"))])
+                      .slice(x.start, x.end + 1)
+                      .join(" >> ")}
+                    .
+                  </Container2>
+                </CSSTransition>
+              );
+            })}
+          </TransitionGroup>
+          <TransitionGroup component={Effect}>
+            <CSSTransition
+              in={true}
+              appear={true}
+              timeout={500}
+              classNames="fade"
+              unmountOnExit
+            >
+              <Container2>
+                {
+                  map[
+                    route[route.length - 1].substring(
+                      0,
+                      route[route.length - 1].indexOf("_")
+                    )
+                  ]
+                }{" "}
+                Reached.{" "}
+                <img
+                  src={endIcon}
+                  alt=""
+                  style={{
+                    display: "inline",
+                    float: "right",
+                    width: "20px",
+                    height: "35px",
+                  }}
+                />
+              </Container2>
+            </CSSTransition>
+          </TransitionGroup>
+          <TransitionGroup component={Effect}>
+            <CSSTransition
+              in={true}
+              appear={true}
+              timeout={500}
+              classNames="fade"
+              unmountOnExit
+            >
+              <Button
+                primary="false"
+                dark="true"
+                onClick={() => setSelectedRoute(null)}
+                style={{ width: "18vw" }}
+              >
+                Go Back to Route Search
+              </Button>
+            </CSSTransition>
+          </TransitionGroup>
         </ScrollBar2>
       )}
     </div>

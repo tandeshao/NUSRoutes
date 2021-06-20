@@ -12,13 +12,13 @@ import { useState, useEffect } from "react";
 import icon from "../../images/icon.png";
 import mapStyle from "./mapStyle.js";
 import icon2 from "../../images/Picture2.png";
+import icon3 from '../../images/Picture3.png';
 
 function MapDirectionsRenderer(props) {
   const [directions, setDirections] = useState(() => null);
   const [error, setError] = useState(() => null);
 
   useEffect(() => {
-    console.log(1);
     const { places, travelMode } = props;
 
     const waypoints = places.map((p) => ({
@@ -68,8 +68,7 @@ function MapDirectionsRenderer(props) {
 }
 
 const RenderMap = ({ route }) => {
-  console.log(2);
-  //for markers and info window.
+  console.log('render map was called.');
   const [selectedBusStop, setSelectedBusStop] = useState(() => null);
   let places = [];
   route.forEach((location) => {
@@ -116,7 +115,8 @@ const RenderMap = ({ route }) => {
                 setSelectedBusStop(busStop);
               }}
               icon={{
-                scaledSize: new window.google.maps.Size(35, 40),
+                url: icon3,
+                scaledSize: new window.google.maps.Size(28, 42),
               }}
             />
           );

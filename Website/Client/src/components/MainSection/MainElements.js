@@ -131,3 +131,24 @@ export const FormSelect = styled.select`
   box-sizing: border-box;
   display: flex;
 `;
+
+export const FormBg = styled.div`
+  background: #353535;
+  borderradius: 10%;
+  position: absolute;
+  width: 130%;
+  height: 130%;
+  opacity: 85%;
+  filter: brightness(0.5);
+  border: 7px solid #636363;
+  margin: -50px;
+
+  @media screen and (max-width: 480px) {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 400px) {
+    display: none;
+  }
+ 
+`;

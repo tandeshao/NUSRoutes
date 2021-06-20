@@ -7,7 +7,7 @@ export const RouteContainer = styled.div`
   background: #353535;
   filter: brightness(0.5);
   border: 7px solid black;
-  width: 18vw;
+  width: 19vw;
   
   &:hover {
     transform: scale(1.1);
@@ -42,7 +42,7 @@ export const Effect = styled.div`
 
   .fade-enter.fade-enter-active {
     opacity: 1;
-    transition: opacity 1s linear;
+    transition: opacity 0.5s linear;
   }
 
   .fade-appear {
@@ -51,7 +51,7 @@ export const Effect = styled.div`
 
   .fade-appear.fade-appear-active {
     opacity: 1;
-    transition: opacity 1s linear;
+    transition: opacity 0.5s linear;
   }
 
   .fade-exit {
@@ -60,7 +60,7 @@ export const Effect = styled.div`
 
   .fade-exit.fade-exit-active {
     opacity: 0;
-    transition: opacity 1s linear;
+    transition: opacity 0.5s linear;
   }
 
   .fade-exit-done {
@@ -70,13 +70,28 @@ export const Effect = styled.div`
 
 export const Container = styled.div`
   padding: 20px;
-  cursor: pointer;
   color: #fff;
   background: #353535;
-  filter: brightness(0.5);
+  backdrop-filter: brightness(0.5);
   border: 7px solid black;
-  width: 18vw;
+  width: 19vw;
+  
+`;
 
+
+export const Container2 = styled.div`
+  display: list-item;
+  list-style-type: disc;
+  list-style-position: inside;
+  text-indent: -1.5em;
+  padding: 20px;
+  padding-left: 40px;
+  color: #fff;
+  background: #353535;
+  backdrop-filter: brightness(0.5);
+  border: 7px solid black;
+  width: 19vw;
+  
 `;
 
 export const ScrollBar2 = styled.div`
@@ -98,3 +113,4 @@ export const ScrollBar2 = styled.div`
  ::webkit-keyframes  { 100% { left: 0; }}
  ::keyframes { 100% { left: 0; }}
 `;
+
