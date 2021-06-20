@@ -19,7 +19,6 @@ export const Button = styled.button`
   position: absolute;
   left: 18%;
   top: 19.9%;
-  
 
   &:hover {
     transition: all 0.2s ease-in-out;

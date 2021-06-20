@@ -6,7 +6,6 @@ import ArrowLeftRoundedIcon from "@material-ui/icons/ArrowLeftRounded";
 import ArrowRightRoundedIcon from "@material-ui/icons/ArrowRightRounded";
 
 const Map = () => {
-  console.log(3);
   const [onHover, setOnHover] = useState(() => false);
   const [sideBar, setSideBar] = useState(() => true);
   const { REACT_APP_API_KEY, REACT_APP_DOMAIN } = process.env;
@@ -66,6 +65,7 @@ const Map = () => {
           routeRecommendations={routeRecommendations}
           setRoute={setRoute}
           startAndEnd={[start, end]}
+          route={route}
         />
       </div>
       <div

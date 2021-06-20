@@ -33,7 +33,6 @@ const HistorySection = () => {
     });
   }, []);
 
-  console.log(data);
 
   return (
     <HeroContainer id="home">

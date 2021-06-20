@@ -6,7 +6,8 @@ import Divider from "@material-ui/core/Divider";
 import { NavLogo } from "../Navbar/NavbarElements";
 import { useHistory } from "react-router-dom";
 
-const MapSideBar = ({ routeRecommendations, setRoute, startAndEnd }) => {
+
+const MapSideBar = ({ routeRecommendations, setRoute, route, startAndEnd }) => {
   const [arrivalTime, setArrivalTime] = useState(() => false);
   const [distance, setDistance] = useState(() => false);
   const [differentService, setDifferentService] = useState(() => false);
@@ -21,6 +22,7 @@ const MapSideBar = ({ routeRecommendations, setRoute, startAndEnd }) => {
   const [year, setYear] = useState(() => parseInt(yearNow));
   const [isOpen, setIsOpen] = useState(() => false);
   const [day, setDay] = useState(() => today);
+  const [selectedRoute, setSelectedRoute] = useState(() => null);
 
   const history = useHistory();
   const toggleHome = () => {
@@ -36,6 +38,7 @@ const MapSideBar = ({ routeRecommendations, setRoute, startAndEnd }) => {
         month={month}
         year={year}
         day={day}
+        setSelectedRoute={setSelectedRoute}
       />
       <Divider style={{ background: "white", marginTop: '20px'}} variant="middle" />
       <Customization
@@ -60,7 +63,11 @@ const MapSideBar = ({ routeRecommendations, setRoute, startAndEnd }) => {
         distance={distance}
         differentService={differentService}
         bfs={bfs}
+        route={route}
+        selectedRoute={selectedRoute}
+        setSelectedRoute={setSelectedRoute}
       />
+      
       <NavLogo
         to="/"
         onClick={toggleHome}
