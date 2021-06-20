@@ -16,6 +16,7 @@ import {
   ArrowRight,
   Form,
   FormLabel,
+  FormBg,
 } from "./MainElements";
 import { Button } from "../ButtonElement";
 import options from "../../data/options.json";
@@ -142,22 +143,10 @@ const HeroSection = () => {
         <VideoBg autoPlay loop muted src={Video} type="video/mp4" />
       </HeroBg>
       <HeroContent>
-        <div
-          style={{
-            background: "#353535",
-            borderRadius: "10%",
-            position: 'absolute',
-            width: "130%",
-            height: "130%",
-            opacity: '85%',
-            filter: 'brightness(0.5)',
-            border: '7px solid #636363',
-            margin: '-50px'
-          }}
-        />
-        <HeroH1 style={{zIndex: '4'}}> Route Finder </HeroH1>
+        <FormBg />
+        <HeroH1 style={{ zIndex: "4" }}> Route Finder </HeroH1>
 
-        <Form style={{zIndex: '4'}}>
+        <Form style={{ zIndex: "4" }}>
           <form onSubmit={handleSubmit}>
             <FormLabel>Current location: </FormLabel>
             <Autocomplete

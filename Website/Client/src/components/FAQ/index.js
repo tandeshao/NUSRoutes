@@ -26,7 +26,7 @@ const FAQ = () => {
   return (
     <FAQContainer id="faq">
       <FAQH1>Frequently Asked Questions </FAQH1>
-      <Image src={Icon1} />
+      
       <FAQWrapper>
         {Data.map((element, index) => {
           return (
@@ -46,6 +46,7 @@ const FAQ = () => {
           );
         })}
       </FAQWrapper>
+      <Image src={Icon1} />
     </FAQContainer>
   );
 };

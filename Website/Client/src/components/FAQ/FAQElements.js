@@ -9,11 +9,15 @@ export const FAQContainer = styled.div`
   grid-template-areas: "header header" "qns gif";
 
   @media screen and (max-width: 768px) {
-    height: 600px;
+    display: flex;
+    flex-direction: column;
+    height: 700px;
+    justify-content: center;
+    align-items: center;
   }
 
   @media screen and (max-width: 480px) {
-    height: 400px;
+    height: 600px;
   }
 `;
 
@@ -40,6 +44,10 @@ export const FAQWrapper = styled.div`
   margin: 0 auto;
   margin-top: 60px;
   margin-left: 40%;
+
+  @media screen and (max-width: 768px) {
+    margin-left: 10%;
+  }
 `;
 
 export const FAQSet = styled.div`
@@ -70,7 +78,7 @@ export const Question = styled.div`
   cursor: pointer;
 
   @media screen and (max-width: 480px) {
-    font-size: 0.5rem;
+    font-size: 1rem;
   }
 `;
 
@@ -103,13 +111,23 @@ export const Image = styled.img`
   object-fit: contain;
   grid-area: gif;
 
+  @media screen and (max-width: 1200px) {
+    margin-left: 20%;
+    height: 280px;
+    width: 280px;
+  }
+  
   @media screen and (max-width: 768px) {
     height: 200px;
     width: 200px;
+    margin: 0;
+
   }
 
   @media screen and (max-width: 480px) {
     height: 150px;
     width: 150px;
   }
+
+  
 `;
