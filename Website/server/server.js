@@ -2,7 +2,7 @@ const express = require("express");
 const dijkstraGraphWithService = require("./data/dijkstraGraphWithService");
 const routeRecommendation = require("./repo/routeRecommendation");
 const app = express();
-const port = process.env.port || 5000;
+const port = process.env.PORT || 5000;
 const cors = require("cors");
 
 app.use(cors());
@@ -24,5 +24,5 @@ app.get("/api/routeRecommedation", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Listening at http://localhost:${port}`);
+  console.log(`Listening...`);
 });
