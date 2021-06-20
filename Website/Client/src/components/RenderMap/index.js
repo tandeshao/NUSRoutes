@@ -68,7 +68,7 @@ function MapDirectionsRenderer(props) {
 }
 
 const RenderMap = ({ route }) => {
-  //for markers and info window.
+  console.log('render map was called.');
   const [selectedBusStop, setSelectedBusStop] = useState(() => null);
   let places = [];
   route.forEach((location) => {
