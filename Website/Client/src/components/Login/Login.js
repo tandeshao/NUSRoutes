@@ -26,7 +26,7 @@ const Login = () => {
   const push = (user) => {
     window.localStorage.setItem("id", user.uid);
     window.localStorage.setItem("user", user);
-    history.push("/profile");
+    history.push("/");
   };
 
   const handleLogin = () => {

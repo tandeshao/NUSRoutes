@@ -1,0 +1,21 @@
+.header {
+  color: white !important;
+  font-size: 16px !important;
+  font-weight: bold !important;
+  background-color: #00162b !important;
+}
+
+.body {
+  color: black;
+  background-color: whitesmoke;
+}
+
+@media only screen and (max-width: 800px) {
+  .header {
+    font-size: 12px !important;
+  }
+
+  .body {
+    font-size: 12px !important;
+  }
+}
