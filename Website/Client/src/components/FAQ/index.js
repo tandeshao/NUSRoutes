@@ -30,7 +30,7 @@ const FAQ = () => {
       <FAQWrapper>
         {Data.map((element, index) => {
           return (
-            <FAQSet key = {index}>
+            <FAQSet key={index}>
               <Question onClick={() => makeOpen(index)}>
                 {element.question}
                 <OpenIcon>
