@@ -14,7 +14,7 @@ const Profile = () => {
 
   return (
     <>
-      <Sidebar isOpen={isOpen} toggle={toggle} />
+      <Sidebar isOpen={isOpen} toggle={toggle} setSection={setSection} />
       <ProfileNavbar toggle={toggle} setSection={setSection} />
       <ProfileSection section={section} />
       <Footer />

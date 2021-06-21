@@ -3,7 +3,13 @@ import "firebase/firestore";
 
 import { useState, useEffect } from "react";
 
-import { HeroContainer, HeroContent, HeroH1 } from "./HistoryElements";
+import {
+  HeroContainer,
+  GhostContainer,
+  HeroContent,
+  HeroH1,
+  HeroEmpty,
+} from "./HistoryElements";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
@@ -15,6 +21,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
 import styles from "./history.module.css";
+import { Ghost } from "react-kawaii";
 
 const HistorySection = () => {
   const [data, setData] = useState(() => []);
@@ -28,10 +35,6 @@ const HistorySection = () => {
       setData(hist);
     });
   }, []);
-
-  // Add the Grids
-  // 3 containers, | Time | Initial location | Destination
-  // if data is empty, reactkawaii
 
   const columns = [
     { id: "time", label: "Time", minWidth: "100%", align: "center" },
@@ -68,7 +71,13 @@ const HistorySection = () => {
     setPage(0);
   };
 
-  return (
+  return data.length === 0 ? (
+    <GhostContainer>
+      <HeroH1>History</HeroH1>
+      <HeroEmpty>None</HeroEmpty>
+      <Ghost size={240} mood="blissful" color="#E0E4E8" />
+    </GhostContainer>
+  ) : (
     <HeroContainer id="history">
       <HeroContent>
         <HeroH1>History</HeroH1>
