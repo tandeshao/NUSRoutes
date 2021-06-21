@@ -2,8 +2,15 @@ import WrappedMap from "../components/RenderMap";
 import MapSideBar from "../components/MapSideBar";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import ArrowLeftRoundedIcon from "@material-ui/icons/ArrowLeftRounded";
-import ArrowRightRoundedIcon from "@material-ui/icons/ArrowRightRounded";
+import { StylesProvider } from "@material-ui/core/styles";
+
+import {
+  PageContainer,
+  SideBarContainer,
+  MapContainer,
+  ArrowLeftButton,
+  ArrowRightButton,
+} from "./MapElements.js";
 
 const Map = () => {
   const [onHover, setOnHover] = useState(() => false);
@@ -46,90 +53,61 @@ const Map = () => {
       })
       .catch((error) =>
         setRouteRecommendations([
-          { String: `Unable to retrieve route recommendation. ${error}` , Path: [], Cost: -1},
+          {
+            String: `Unable to retrieve route recommendation. ${error}`,
+            Path: [],
+            Cost: -1,
+          },
         ])
       );
   }, [string, start, end, time, date, REACT_APP_DOMAIN]);
 
   return (
-    <div style={{ display: "flex" }}>
-      <div
-        style={{
-          width: sideBar ? "30vw" : "0vw",
-          height: "100vh",
-          zIndex: "1",
-          transition: "all .15s ease-in-out",
-        }}
-      >
-        <MapSideBar
-          routeRecommendations={routeRecommendations}
-          setRoute={setRoute}
-          startAndEnd={[start, end]}
-          route={route}
-        />
-      </div>
-      <div
-        style={{
-          width: "100vw",
-          height: "100vh",
-          zIndex: "1",
-        }}
-      >
-        {sideBar ? (
-          <ArrowLeftRoundedIcon
-            style={{
-              position: "absolute",
-              zIndex: "2",
-              fontSize: "100px",
-              top: "50vh",
-              color: "black",
-              left: sideBar ? "23vw" : "0vw",
-              cursor: "pointer",
-              backgroundColor: "#DFCCB7",
-              width: "1vw",
-              height: onHover ? "6vh" : "4vh",
-              transition: "background 2s",
-            }}
-            onMouseEnter={() => setOnHover(true)}
-            onMouseLeave={() => setOnHover(false)}
-            onClick={() => {
-              setSideBar((prev) => !prev);
-              setOnHover(false);
-            }}
+    <StylesProvider injectFirst>
+      <PageContainer>
+        <SideBarContainer sideBar={sideBar}>
+          <MapSideBar
+            routeRecommendations={routeRecommendations}
+            setRoute={setRoute}
+            startAndEnd={[start, end]}
+            route={route}
           />
-        ) : (
-          <ArrowRightRoundedIcon
-            style={{
-              position: "absolute",
-              zIndex: "2",
-              fontSize: "100px",
-              top: "50vh",
-              color: "black",
-              left: sideBar ? "23vw" : "0vw",
-              cursor: "pointer",
-              backgroundColor: "#DFCCB7",
-              width: "1vw",
-              height: onHover ? "6vh" : "4vh",
-              transition: "background 2s",
-            }}
-            onMouseEnter={() => setOnHover(true)}
-            onMouseLeave={() => setOnHover(false)}
-            onClick={() => {
-              setSideBar((prev) => !prev);
-              setOnHover(false);
-            }}
+        </SideBarContainer>
+        <MapContainer sideBar={sideBar}>
+          {sideBar ? (
+            <ArrowLeftButton
+              sideBar={sideBar}
+              onHover={onHover}
+              onMouseEnter={() => setOnHover(true)}
+              onMouseLeave={() => setOnHover(false)}
+              onClick={() => {
+                setSideBar((prev) => !prev);
+                setOnHover(false);
+              }}
+            />
+          ) : (
+            <ArrowRightButton
+              sideBar={sideBar}
+              onHover={onHover}
+              onMouseEnter={() => setOnHover(true)}
+              onMouseLeave={() => setOnHover(false)}
+              onClick={() => {
+                setSideBar((prev) => !prev);
+                setOnHover(false);
+              }}
+            />
+          )}
+          <WrappedMap
+            googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${REACT_APP_API_KEY}`}
+            loadingElement={<div style={{ height: "100%" }} />}
+            containerElement={<div style={{ height: "100%" }} />}
+            mapElement={<div style={{ height: "100%" }} />}
+            route={route}
+            style={{ transition: "all .15s ease-in-out" }}
           />
-        )}
-        <WrappedMap
-          googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${REACT_APP_API_KEY}`}
-          loadingElement={<div style={{ height: "100%" }} />}
-          containerElement={<div style={{ height: "100%" }} />}
-          mapElement={<div style={{ height: "100%" }} />}
-          route={route}
-          style={{ transition: "all .15s ease-in-out" }}
-        />
-      </div>
-    </div>
+        </MapContainer>
+      </PageContainer>
+    </StylesProvider>
   );
 };
 

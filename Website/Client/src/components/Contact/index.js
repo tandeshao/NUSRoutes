@@ -15,9 +15,8 @@ import {
   FormButton,
   ContactInfo
 } from "./ContactElements";
-import Button from '@material-ui/core/Button';
-import Icon from '@material-ui/core/Icon';
 import Image from '../../images/svg-6.png';
+import { Button } from '../ButtonElement';
 
 
 const ContactSection = () => {
@@ -43,7 +42,7 @@ const ContactSection = () => {
           <MessageBox placeholder = 'Drag box to adjust size...'/>
         </MessageSet>
         <FormButton>
-        <Button variant="contained" color = 'secondary' endIcon={<Icon>send</Icon>}>
+        <Button secondary="true">
         Send Message
       </Button>
       </FormButton>

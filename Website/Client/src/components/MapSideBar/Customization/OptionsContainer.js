@@ -1,35 +1,67 @@
 import styled from "styled-components";
 
-export const OptionsContainer = styled.div`
-    width: 100%;
-    overflow: hidden;
-
+export const SectionContainer = styled.div`
+  width: 100%;
+  position: relative;
+  height: auto;
+  overflow: hidden;
 `;
 
 export const Options = styled.form`
-    color: #fff;
-    font-size: 12px;
-    position: relative;
-    margin: 4px;   
-`
+  color: #fff;
+  font-size: 12px;
+  position: absolute;
+  margin: 3em;
+`;
 
 export const Item1 = styled.label`
-    padding: 10px;
-    color: #fff;
-    margin: 5px;
-`
+  padding: 10px;
+  color: #fff;
+  margin: 5px;
+`;
 export const Item2 = styled.label`
-    padding: 10px;
-    color: #fff;
-    margin: 5px;
-`
+  padding: 10px;
+  color: #fff;
+  margin: 5px;
+`;
 export const Item3 = styled.label`
-    padding: 10px;
-    color: #fff;
-    margin: 5px;
-`
+  padding: 10px;
+  color: #fff;
+  margin: 5px;
+`;
 export const Item4 = styled.label`
-    padding: 10px;
-    color: #fff;
-    margin: 5px;
+  padding: 10px;
+  color: #fff;
+  margin: 5px;
+`;
+
+export const DepartureContainer = styled.div`
+  color: #fff;
+  position: absolute;
+  top: 10%;
+  left: 7%;
+  width: 100%;              
+
+  @media screen and (max-width: 450px) {
+    left: 20%;
+  }
+`;
+
+export const OptionsContainer = styled.div`
+  color: #fff;
+  position: absolute;
+  top: 10%;
+  right: 7%;
+  width: 100%,      
+`;
+
+export const RouteOptionsContainer = styled.div`
+  position: absolute;
+  width: 100%;
+  top: 40%;
+  left: 1%;
+
+  @media screen and (max-width: 828px) {
+    left: 5%;
+  }
 `

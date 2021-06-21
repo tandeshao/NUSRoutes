@@ -5,6 +5,9 @@ import {
   Item3,
   Options,
   Item4,
+  DepartureContainer,
+  SectionContainer,
+  RouteOptionsContainer
 } from "./OptionsContainer";
 import Button from "@material-ui/core/Button";
 import { useState } from "react";
@@ -120,7 +123,7 @@ const Customization = ({
     overrides: {
       MuiPickersToolbar: {
         toolbar: {
-          backgroundColor: "#939990"
+          backgroundColor: "#939990",
         },
       },
       MuiPickersCalendarHeader: {
@@ -145,32 +148,26 @@ const Customization = ({
   };
 
   return (
-    <OptionsContainer style={isOpen ? { height: "25vh" } : { height: "10vh" }}>
+    <SectionContainer style={isOpen ? { height: "21vh" } : { height: "5vh" }}>
       {content && isOpen ? (
         <h4
           style={{
             color: "#fff",
-            position: "relative",
-            top: "50px",
+            position: "absolute",
+            top: "20%",
             left: "30px",
           }}
         >
           Route Options
         </h4>
       ) : (
-        <div>
+        <DepartureContainer>
           <Button
+            onClick={handleClick}
             aria-controls="simple-menu"
             aria-haspopup="true"
             variant="contained"
             color="primary"
-            onClick={handleClick}
-            style={{
-              width: "240px",
-              position: "relative",
-              top: "30px",
-              left: '1.5vw'
-            }}
           >
             {btnName}
           </Button>
@@ -209,129 +206,117 @@ const Customization = ({
               Depart Later
             </MenuItem>
           </Menu>
-        </div>
+        </DepartureContainer>
       )}
 
       {content && isOpen ? (
-        <Button
-          variant="contained"
-          color="secondary"
-          onClick={makeOpen}
-          style={{
-            width: "100px",
-            margin: "20px",
-            position: "relative",
-            left: "60%",
-          }}
-        >
-          CLOSE
-        </Button>
+        <OptionsContainer>
+          <Button variant="contained" color="secondary" onClick={makeOpen}>
+            CLOSE
+          </Button>
+        </OptionsContainer>
       ) : (
-        <Button
-          variant="contained"
-          color="secondary"
-          onClick={makeOpen}
-          style={{
-            width: "100px",
-            margin: "20px",
-            position: "relative",
-            bottom: "25px",
-            left: "60%",
-          }}
-        >
-          OPTIONS
-        </Button>
+        <OptionsContainer>
+          <Button variant="contained" color="secondary" onClick={makeOpen}>
+            OPTIONS
+          </Button>
+        </OptionsContainer>
       )}
 
       {content ? (
         isOpen ? (
-          <Options action="/">
-            <input
-              type="checkbox"
-              id="getArrivalTime"
-              name="options"
-              value="getArrivalTime"
-              style={{ marginLeft: "20px" }}
-            />
-            <Item1 for="getArrivalTime">Include Arrival Time of Buses</Item1>
-            <br />
-            <input
-              type="checkbox"
-              id="getDistance"
-              name="options"
-              value="getDistance"
-              style={{ marginLeft: "20px" }}
-            />
-            <Item2 for="getDistance">Include Distance Needed to Travel</Item2>{" "}
-            <br />
-            <input
-              type="checkbox"
-              id="getDifferentService"
-              name="options"
-              value="getDifferentService"
-              style={{ marginLeft: "20px" }}
-            />
-            <Item3 for="getDifferentService">
-              Include Different Service Available Per Bus Stop
-            </Item3>
-            <br />
-            <input
-              type="checkbox"
-              id="getShortestBusStops"
-              name="options"
-              value="getShortestBusStops"
-              style={{ marginLeft: "20px" }}
-            />
-            <Item4 for="">Include Route for Shortest Number of Bus Stops</Item4>
-          </Options>
+          <RouteOptionsContainer
+            
+          >
+            <Options action="/">
+              <input
+                type="checkbox"
+                id="getArrivalTime"
+                name="options"
+                value="getArrivalTime"
+              />
+              <Item1 for="getArrivalTime">Include Arrival Time of Buses</Item1>
+              <br />
+              <input
+                type="checkbox"
+                id="getDistance"
+                name="options"
+                value="getDistance"
+              />
+              <Item2 for="getDistance">Include Distance Needed to Travel</Item2>{" "}
+              <br />
+              <input
+                type="checkbox"
+                id="getDifferentService"
+                name="options"
+                value="getDifferentService"
+              />
+              <Item3 for="getDifferentService">
+                Include Different Service Available Per Bus Stop
+              </Item3>
+              <br />
+              <input
+                type="checkbox"
+                id="getShortestBusStops"
+                name="options"
+                value="getShortestBusStops"
+              />
+              <Item4 for="">
+                Include Route for Shortest Number of Bus Stops
+              </Item4>
+            </Options>
+          </RouteOptionsContainer>
         ) : (
           ""
         )
       ) : isOpen ? (
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
           <ThemeProvider theme={materialTheme}>
-            <Grid container justify="space-around">
-              <KeyboardDatePicker
-                margin="normal"
-                id="date-picker-dialog"
-                label="Date picker dialog"
-                format="dd/MM/yyyy"
-                value={selectedDate}
-                onChange={handleDateChange}
-                KeyboardButtonProps={{
-                  "aria-label": "change date",
-                }}
-                style={{
-                  position: "relative",
-                  right: "3.5vw",
-                  bottom: "3vh",
-                  background: "#fff",
-                }}
-              />
+            <div
+              style={{
+                position: "absolute",
+                top: "30%",
+                width: "100%",
+                right: ''
+              }}
+            >
+              <Grid container justify="space-around">
+                <KeyboardDatePicker
+                  margin="normal"
+                  id="date-picker-dialog"
+                  label="Date picker dialog"
+                  format="dd/MM/yyyy"
+                  value={selectedDate}
+                  onChange={handleDateChange}
+                  KeyboardButtonProps={{
+                    "aria-label": "change date",
+                  }}
+                  style={{
+                    background: "#fff",
+                  }}
+                />
 
-              <KeyboardTimePicker
-                margin="normal"
-                id="time-picker"
-                label="Time picker"
-                value={selectedDate}
-                onChange={handleDateChange}
-                KeyboardButtonProps={{
-                  "aria-label": "change time",
-                }}
-                style={{
-                  position: "relative",
-                  right: "3.5vw",
-                  bottom: "3vh",
-                  background: "#fff",
-                }}
-              />
-            </Grid>
+                <KeyboardTimePicker
+                  margin="normal"
+                  id="time-picker"
+                  label="Time picker"
+                  value={selectedDate}
+                  onChange={handleDateChange}
+                  KeyboardButtonProps={{
+                    "aria-label": "change time",
+                  }}
+                  style={{
+                    background: "#fff",
+                  }}
+                />
+              </Grid>
+            </div>
           </ThemeProvider>
         </MuiPickersUtilsProvider>
       ) : (
         ""
       )}
-    </OptionsContainer>
+    </SectionContainer>
   );
 };
 

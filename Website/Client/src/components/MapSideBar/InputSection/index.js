@@ -12,14 +12,24 @@ import {
   FormLabel,
   ArrowForward,
   ArrowRight,
+  Switch,
+  InputSectionContainer,
+  Button
 } from "./InputSectionElements";
-import { Button } from "./ButtonElement";
 import reverseMap from "../../../data/reverseMap.json";
 import firebase from "firebase/app";
 import "firebase/firestore";
-import image from '../../../images/switch.png';
+import image from "../../../images/switch.png";
 
-const InputSection = ({ startAndEnd, time, day, date, month, year, setSelectedRoute}) => {
+const InputSection = ({
+  startAndEnd,
+  time,
+  day,
+  date,
+  month,
+  year,
+  setSelectedRoute,
+}) => {
   useEffect(() => {}, [time, day, date, month, year]);
   const [hover, setHover] = useState(false);
   const onHover = () => {
@@ -124,20 +134,18 @@ const InputSection = ({ startAndEnd, time, day, date, month, year, setSelectedRo
   const classes = useStyles();
 
   return (
-    <div
-      style={{
-        height: "28vh",
-      }}
-    >
-      <img onClick= {()=> {
-        const curr = current;
-        setCurrent(destination);
-        setDestination(curr);
-      }} src={image} style={{position: 'absolute', width: '3vw', height: '7vh', left: '18vw', top: '10vh', cursor: 'pointer'}} alt=""/>
+    <InputSectionContainer>
+      <Switch
+        onClick={() => {
+          const curr = current;
+          setCurrent(destination);
+          setDestination(curr);
+        }}
+        src={image}
+        alt=""
+      />
       <Form>
-        <form
-          onSubmit={handleSubmit}
-        >
+        <form onSubmit={handleSubmit}>
           <FormLabel>Current location: </FormLabel>
           <Autocomplete
             classes={classes}
@@ -147,7 +155,7 @@ const InputSection = ({ startAndEnd, time, day, date, month, year, setSelectedRo
             }}
             id="Current"
             options={options}
-            style={{ width: 300 }}
+            style={{ width: '100%', flexBasis: '80%' }}
             renderInput={(params) => (
               <TextField
                 {...params}
@@ -168,7 +176,7 @@ const InputSection = ({ startAndEnd, time, day, date, month, year, setSelectedRo
             }}
             id="destination"
             options={options}
-            style={{ width: "300px" }}
+            
             renderInput={(params) => (
               <TextField
                 {...params}
@@ -187,13 +195,13 @@ const InputSection = ({ startAndEnd, time, day, date, month, year, setSelectedRo
             duration={500}
             spy={true}
             exact="true"
-            onClick={() => setSelectedRoute(null)} 
+            onClick={() => setSelectedRoute(null)}
           >
-            {hover ? <ArrowForward /> : <ArrowRight />}
+           Get Route {hover ? <ArrowForward /> : <ArrowRight />}
           </Button>
         </form>
       </Form>
-    </div>
+    </InputSectionContainer>
   );
 };
 
