@@ -13,43 +13,121 @@ import {
   SubjectSet,
   SubjectBox,
   FormButton,
-  ContactInfo
+  ContactInfo,
 } from "./ContactElements";
-import Image from '../../images/svg-6.png';
-import { Button } from '../ButtonElement';
-
+import Button from "@material-ui/core/Button";
+import Icon from "@material-ui/core/Icon";
+import Image from "../../images/svg-6.png";
+import { useState } from "react";
+import firebase from "firebase/app";
+import "firebase/firestore";
 
 const ContactSection = () => {
+  const [name, setName] = useState(() => "");
+  const [email, setEmail] = useState(() => "");
+  const [subject, setSubject] = useState(() => "");
+  const [message, setMessage] = useState(() => "");
+  const [nameError, setNameError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [subjectError, setSubjectError] = useState(false);
+  const [messageError, setMessageError] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setNameError(false);
+    setEmailError(false);
+    setSubjectError(false);
+    setMessageError(false);
+
+    const db = firebase.firestore();
+
+    if (name === "") {
+      setNameError(true);
+    } else if (email === "") {
+      setEmailError(true);
+    } else if (subject === "") {
+      setSubjectError(true);
+    } else if (message === "") {
+      setMessageError(true);
+    } else {
+      var feedback = db.collection("feedback").doc(email);
+      feedback.set(
+        {
+          name: name,
+          subject: subject,
+          message: message,
+        },
+        {
+          merge: true,
+        }
+      );
+    }
+  };
+
   return (
     <ContactContainer id="contact">
       <ContactHeader>Contact Us</ContactHeader>
       <ContactForm>
-        <Formhd> Do you have any feedbacks? We love to hear it from you!</Formhd>
-          <NameSet>
-            <Label> Name </Label>
-            <NameBox placeholder="Your Name..." />
-          </NameSet>
-          <EmailSet>
-            <Label> Email </Label>
-            <EmailBox placeholder="Your Email..." />
-          </EmailSet>       
+        <Formhd>
+          {" "}
+          Do you have any feedbacks? We love to hear it from you!
+        </Formhd>
+        <NameSet>
+          <Label> Name </Label>
+          <NameBox
+            placeholder="Your Name..."
+            type="text"
+            required
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            error={nameError}
+          />
+        </NameSet>
+        <EmailSet>
+          <Label> Email </Label>
+          <EmailBox
+            placeholder="Your Email..."
+            type="email"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            error={emailError}
+          />
+        </EmailSet>
         <SubjectSet>
           <Label> Subject</Label>
-          <SubjectBox placeholder="Your Subject.." />
+          <SubjectBox
+            placeholder="Your Subject.."
+            type="text"
+            required
+            value={subject}
+            onChange={(e) => setSubject(e.target.value)}
+            error={subjectError}
+          />
         </SubjectSet>
         <MessageSet>
           <Label> Message </Label>
-          <MessageBox placeholder = 'Drag box to adjust size...'/>
+          <MessageBox
+            placeholder="Drag box to adjust size..."
+            type="text"
+            required
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            error={messageError}
+          />
         </MessageSet>
         <FormButton>
-        <Button secondary="true">
-        Send Message
-      </Button>
-      </FormButton>
+          <Button
+            variant="contained"
+            color="secondary"
+            endIcon={<Icon>send</Icon>}
+            onClick={handleSubmit}
+          >
+            Send Message
+          </Button>
+        </FormButton>
       </ContactForm>
-      <ContactInfo src ={Image}>
-      </ContactInfo>
-      
+      <ContactInfo src={Image}></ContactInfo>
     </ContactContainer>
   );
 };

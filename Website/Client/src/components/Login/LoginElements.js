@@ -21,8 +21,8 @@ export const GoogleButton = styled.button`
     font-size: 18px;
   }
 
-  @media screen and (max-width: 380px) {
+  @media screen and (max-width: 310px) {
     transition: 0.8s all ease;
-    font-size: 16px;
+    font-size: 15px;
   }
 `;
