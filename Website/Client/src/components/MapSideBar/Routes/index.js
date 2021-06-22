@@ -64,7 +64,7 @@ const Routes = ({
   return (
     <div
       style={{
-        height: isOpen ? "40.4vh" : "55.4vh",
+        height: isOpen ? "100%" : "100%",
       }}
     >
       {selectedRoute === null ? (
@@ -245,7 +245,7 @@ const Routes = ({
                 primary="false"
                 dark="true"
                 onClick={() => setSelectedRoute(null)}
-                style={{ width: "18vw" }}
+                style={{ width: "100%" }}
               >
                 Go Back to Route Search
               </Button>

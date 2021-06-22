@@ -2,10 +2,7 @@ import Customization from "./Customization/";
 import InputSection from "./InputSection/";
 import Routes from "./Routes/";
 import { useState } from "react";
-import Divider from "@material-ui/core/Divider";
-import { NavLogo } from "../Navbar/NavbarElements";
-import { useHistory } from "react-router-dom";
-
+import { MapSideBarContainer, Dividers, Logo } from "./MapSideBarElements";
 
 const MapSideBar = ({ routeRecommendations, setRoute, route, startAndEnd }) => {
   const [arrivalTime, setArrivalTime] = useState(() => false);
@@ -24,13 +21,8 @@ const MapSideBar = ({ routeRecommendations, setRoute, route, startAndEnd }) => {
   const [day, setDay] = useState(() => today);
   const [selectedRoute, setSelectedRoute] = useState(() => null);
 
-  const history = useHistory();
-  const toggleHome = () => {
-    history.push("/");
-  };
-
   return (
-    <div style={{ background: "black" }}>
+    <MapSideBarContainer>
       <InputSection
         startAndEnd={startAndEnd}
         time={time}
@@ -40,7 +32,7 @@ const MapSideBar = ({ routeRecommendations, setRoute, route, startAndEnd }) => {
         day={day}
         setSelectedRoute={setSelectedRoute}
       />
-      <Divider style={{ background: "white", marginTop: '20px'}} variant="middle" />
+      <Dividers variant="middle" />
       <Customization
         setTime={setTime}
         setArrivalTime={setArrivalTime}
@@ -54,7 +46,7 @@ const MapSideBar = ({ routeRecommendations, setRoute, route, startAndEnd }) => {
         setYear={setYear}
         setDay={setDay}
       />
-      <Divider style={{ background: "white", marginTop: '20px'}} variant="middle" />
+      
       <Routes
         routeRecommendations={routeRecommendations}
         setRoute={setRoute}
@@ -67,19 +59,11 @@ const MapSideBar = ({ routeRecommendations, setRoute, route, startAndEnd }) => {
         selectedRoute={selectedRoute}
         setSelectedRoute={setSelectedRoute}
       />
-      
-      <NavLogo
-        to="/"
-        onClick={toggleHome}
-        style={{
-          position: "absolute",
-          bottom: "3vh",
-          left: '11.5vw'
-        }}
-      >
+
+      <Logo to="/" >
         NUSROUTES
-      </NavLogo>
-    </div>
+      </Logo>
+    </MapSideBarContainer>
   );
 };
 

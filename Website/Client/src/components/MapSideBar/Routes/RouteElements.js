@@ -7,7 +7,7 @@ export const RouteContainer = styled.div`
   background: #353535;
   filter: brightness(0.5);
   border: 7px solid black;
-  width: 19vw;
+  width: 100%;
   
   &:hover {
     transform: scale(1.1);
@@ -46,7 +46,7 @@ export const Effect = styled.div`
   }
 
   .fade-appear {
-    opacity: 0;
+    opacity: 0; 
   }
 
   .fade-appear.fade-appear-active {
@@ -74,8 +74,7 @@ export const Container = styled.div`
   background: #353535;
   backdrop-filter: brightness(0.5);
   border: 7px solid black;
-  width: 19vw;
-  
+  width: 100%;
 `;
 
 
@@ -90,7 +89,7 @@ export const Container2 = styled.div`
   background: #353535;
   backdrop-filter: brightness(0.5);
   border: 7px solid black;
-  width: 19vw;
+  width: 100%;
   
 `;
 
