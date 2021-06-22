@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const HeroContainer = styled.div`
-  background: #0c0c0c;
   display: flex;
   justify-content: center;
   align-items: top;
@@ -11,21 +10,17 @@ export const HeroContainer = styled.div`
   position: relative;
   z-index: 1;
   width: 100%;
-  background-color: #35363a;
+  background-color: #1f2020;
 `;
 
 export const GhostContainer = styled.div`
-  background: #0c0c0c;
   display: block;
-  justify-content: center;
-  align-items: top;
-  margin-top: 120px;
-  padding: 0 30px;
-  height: 887px;
-  position: relative;
-  z-index: 1;
+  z-index: 3;
   width: 100%;
-  background-color: #35363a;
+  padding: 8px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const HeroContent = styled.div`
@@ -38,7 +33,7 @@ export const HeroContent = styled.div`
 `;
 
 export const HeroH1 = styled.h1`
-  color: #ff2400;
+  color: #cefdcf;
   font-size: 40px;
   text-align: center;
   margin-bottom: 30px;

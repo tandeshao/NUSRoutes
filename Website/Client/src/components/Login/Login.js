@@ -116,7 +116,7 @@ const Login = () => {
       <div className="loginContainer">
         <h1>NUSRoutes</h1>
         <GoogleButton onClick={handleGoogleSignIn}>
-          <img src={googleIcon} alt="google icon" /> Sign in with Google
+          <img src={googleIcon} alt="google icon" /> Google
         </GoogleButton>
         <label>Username</label>
         <input

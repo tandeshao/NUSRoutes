@@ -38,7 +38,7 @@ export const HeroBg = styled.div`
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background-color: #35363a;
+  background-color: #1f2020;
 `;
 
 export const HeroContent = styled.div`

@@ -71,75 +71,77 @@ const HistorySection = () => {
     setPage(0);
   };
 
-  return data.length === 0 ? (
-    <GhostContainer>
-      <HeroH1>History</HeroH1>
-      <HeroEmpty>None</HeroEmpty>
-      <Ghost size={240} mood="blissful" color="#E0E4E8" />
-    </GhostContainer>
-  ) : (
+  return (
     <HeroContainer id="history">
-      <HeroContent>
-        <HeroH1>History</HeroH1>
-        <Paper className={classes.root} style={{ minWidth: "142%" }}>
-          <TableContainer className={classes.container}>
-            <Table stickyHeader aria-label="sticky table">
-              <TableHead>
-                <TableRow>
-                  {columns.map((column) => (
-                    <TableCell
-                      key={column.id}
-                      align={column.align}
-                      className={styles.header}
-                      style={{ minWidth: column.minWidth }}
-                    >
-                      {column.label}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {rows
-                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map((row) => {
-                    return (
-                      <TableRow
-                        hover
-                        role="checkbox"
-                        tabIndex={-1}
-                        key={row.code}
+      {data.length === 0 ? (
+        <GhostContainer>
+          <HeroH1>History</HeroH1>
+          <HeroEmpty>None</HeroEmpty>
+          <Ghost size={240} mood="blissful" color="#E0E4E8" />
+        </GhostContainer>
+      ) : (
+        <HeroContent>
+          <HeroH1>History</HeroH1>
+          <Paper className={classes.root} style={{ minWidth: "142%" }}>
+            <TableContainer className={classes.container}>
+              <Table stickyHeader aria-label="sticky table">
+                <TableHead>
+                  <TableRow>
+                    {columns.map((column) => (
+                      <TableCell
+                        key={column.id}
+                        align={column.align}
+                        className={styles.header}
+                        style={{ minWidth: column.minWidth }}
                       >
-                        {columns.map((column) => {
-                          const value = row[column.id];
-                          return (
-                            <TableCell
-                              key={column.id}
-                              align={column.align}
-                              className={styles.body}
-                            >
-                              {column.format && typeof value === "number"
-                                ? column.format(value)
-                                : value}
-                            </TableCell>
-                          );
-                        })}
-                      </TableRow>
-                    );
-                  })}
-              </TableBody>
-            </Table>
-          </TableContainer>
-          <TablePagination
-            rowsPerPageOptions={[10]}
-            component="div"
-            count={rows.length}
-            rowsPerPage={rowsPerPage}
-            page={page}
-            onChangePage={handleChangePage}
-            onChangeRowsPerPage={handleChangeRowsPerPage}
-          />
-        </Paper>
-      </HeroContent>
+                        {column.label}
+                      </TableCell>
+                    ))}
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {rows
+                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                    .map((row) => {
+                      return (
+                        <TableRow
+                          hover
+                          role="checkbox"
+                          tabIndex={-1}
+                          key={row.code}
+                        >
+                          {columns.map((column) => {
+                            const value = row[column.id];
+                            return (
+                              <TableCell
+                                key={column.id}
+                                align={column.align}
+                                className={styles.body}
+                              >
+                                {column.format && typeof value === "number"
+                                  ? column.format(value)
+                                  : value}
+                              </TableCell>
+                            );
+                          })}
+                        </TableRow>
+                      );
+                    })}
+                </TableBody>
+              </Table>
+            </TableContainer>
+            <TablePagination
+              rowsPerPageOptions={[10]}
+              component="div"
+              count={rows.length}
+              rowsPerPage={rowsPerPage}
+              page={page}
+              onChangePage={handleChangePage}
+              onChangeRowsPerPage={handleChangeRowsPerPage}
+            />
+          </Paper>
+        </HeroContent>
+      )}
     </HeroContainer>
   );
 };
