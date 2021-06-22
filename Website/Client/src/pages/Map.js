@@ -2,7 +2,6 @@ import WrappedMap from "../components/RenderMap";
 import MapSideBar from "../components/MapSideBar";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { StylesProvider } from "@material-ui/core/styles";
 
 import {
   PageContainer,
@@ -28,6 +27,7 @@ const Map = () => {
   let time = params.get("time");
   let date = params.get("date");
 
+  console.log(onHover);
   useEffect(() => {
     fetch(
       `${REACT_APP_DOMAIN}` +
@@ -63,7 +63,6 @@ const Map = () => {
   }, [string, start, end, time, date, REACT_APP_DOMAIN]);
 
   return (
-    <StylesProvider injectFirst>
       <PageContainer>
         <SideBarContainer sideBar={sideBar}>
           <MapSideBar
@@ -107,7 +106,6 @@ const Map = () => {
           />
         </MapContainer>
       </PageContainer>
-    </StylesProvider>
   );
 };
 

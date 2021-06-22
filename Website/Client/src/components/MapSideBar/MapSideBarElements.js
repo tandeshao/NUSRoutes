@@ -8,12 +8,13 @@ export const MapSideBarContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding-bottom: 1%;
-  position: 'relative';
 `;
 
 export const Dividers = styled(Divider)`
-  background: white;
-  margin-top: 3%;
+  && {
+    background: white;
+    margin-top: 3%;
+  }
 `;
 
 export const Logo = styled(LinkR)`
@@ -22,7 +23,7 @@ export const Logo = styled(LinkR)`
   text-decoration: none;
   font-weight: bold;
   color: #ff2400;
-  bottom: -20%;
+  bottom: 20%;
   right: 2vw;
 
   @media screen and (max-height: 1130px) {
@@ -35,5 +36,17 @@ export const Logo = styled(LinkR)`
 
   @media screen and (max-height: 874px) {
     bottom: -4%;
+  }
+
+  @media screen and (max-height: 800px) {
+    bottom: 0%;
+  }
+
+  @media screen and (max-height: 731px) {
+    bottom: 5%;
+  }
+
+  @media screen and (max-height: 673px) {
+    bottom: 10%;
   }
 `;
