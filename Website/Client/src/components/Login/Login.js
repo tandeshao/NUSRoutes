@@ -1,11 +1,14 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
-import { GoogleButton } from "./LoginElements";
+import { GoogleButton, NUSRoutes } from "./LoginElements";
 import googleIcon from "../../images/google-icon.png";
 import { useState } from "react";
 import fire from "../../fire";
 import { useHistory } from "react-router-dom";
+import { makeStyles } from "@material-ui/core/styles";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import IconButton from "@material-ui/core/IconButton";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -15,6 +18,17 @@ const Login = () => {
   const [hasAccount, setHasAccount] = useState(false);
 
   const db = firebase.firestore();
+
+  const useStyles = makeStyles({
+    root: {
+      color: "white",
+      height: 20,
+      width: 0,
+      padding: "0 30px",
+    },
+  });
+
+  const classes = useStyles();
 
   const clearErrors = () => {
     setEmailError("");
@@ -93,14 +107,14 @@ const Login = () => {
         push(result.user);
         const id = result.user.uid;
         const docRef = db.collection("user").doc(id);
-        if (docRef.get()) {
-        } else {
-          console.log("No such document!");
-          db.collection("user").doc(id).set({
-            hist: [],
-            fav: [],
-          });
-        }
+        docRef.get().then((doc) => {
+          if (doc.data().hist.length === 0) {
+            docRef.set({
+              hist: [],
+              fav: [],
+            });
+          }
+        });
       })
       .catch((error) => {
         // Handle Errors here.
@@ -111,10 +125,19 @@ const Login = () => {
       });
   };
 
+  const handleClick = (e) => {
+    //prevents page refreshing
+    e.preventDefault();
+    history.push("/");
+  };
+
   return (
     <section className="login">
       <div className="loginContainer">
-        <h1>NUSRoutes</h1>
+        <IconButton aria-label="back" className={classes.root} size="small">
+          <ArrowBackIcon fontSize="large" onClick={handleClick} />
+        </IconButton>
+        <NUSRoutes>NUSRoutes</NUSRoutes>
         <GoogleButton onClick={handleGoogleSignIn}>
           <img src={googleIcon} alt="google icon" /> Google
         </GoogleButton>

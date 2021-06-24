@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+export const NUSRoutes = styled.h1`
+  color: #ff2400;
+  margin-top: 20px;
+`;
+
 export const GoogleButton = styled.button`
   border-radius: 50px;
   background: #fff;
@@ -14,7 +19,7 @@ export const GoogleButton = styled.button`
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   text-decoration: none;
-  margin: 13px 10px;
+  margin: 15px 10px;
 
   @media screen and (max-width: 400px) {
     transition: 0.8s all ease;
