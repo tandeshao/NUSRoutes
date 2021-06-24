@@ -158,6 +158,7 @@ const InputSection = ({
             style={{ width: '100%', flexBasis: '80%' }}
             renderInput={(params) => (
               <TextField
+                size="small"
                 {...params}
                 label="Current..."
                 variant="outlined"
@@ -176,7 +177,6 @@ const InputSection = ({
             }}
             id="destination"
             options={options}
-            
             renderInput={(params) => (
               <TextField
                 {...params}

@@ -225,9 +225,7 @@ const Customization = ({
 
       {content ? (
         isOpen ? (
-          <RouteOptionsContainer
-            
-          >
+          <RouteOptionsContainer>
             <Options action="/">
               <input
                 type="checkbox"

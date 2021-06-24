@@ -43,7 +43,7 @@ export const DepartureContainer = styled.div`
   width: 100%;              
 
   @media screen and (max-width: 450px) {
-    left: 20%;
+    left: 7%;
   }
 `;
 

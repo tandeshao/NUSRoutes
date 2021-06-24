@@ -5,21 +5,22 @@ export const InputSectionContainer = styled.div`
   min-height: 28vh;
   position: relative;
 `;
+
 export const Switch = styled.img`
   position: absolute;
-  height: 30%;
-  right: 3%;
-  top: 30%;
+  height: 25%;
+  right: 10%;
+  top: 40%;
   cursor: pointer;
 
   @media screen and (max-width: 800px) {
-    height: 40%;
-    right: 10%;
-    top: 30%;
+    height: 20%;
+    right: 20%;
+    top: 40%;
   }
 
   @media screen and (max-width: 624px) {
-    height: 25%;
+    height: 15%;
   }
 `;
 
@@ -27,7 +28,7 @@ export const Form = styled.div`
   height: 100%;
   width: 70%;
   color: #fff;
-  font-size: 20px;
+  font-size: 1em;
   text-align: center;
   margin: 0 3%;
   display: flex;
@@ -35,6 +36,8 @@ export const Form = styled.div`
   align-items: stretch;
   justify-content: space-between;
   flex-wrap: wrap;
+  
+  
 `;
 
 export const FormLabel = styled.h5`
@@ -42,6 +45,8 @@ export const FormLabel = styled.h5`
   padding: 1rem;
   width: 100%;
   right: 20%;
+
+  
 `;
 
 export const ArrowForward = styled(MdArrowForward)`

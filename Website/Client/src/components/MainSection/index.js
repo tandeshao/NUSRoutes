@@ -1,4 +1,4 @@
-import Video from "../../video/video.mp4";
+import Video from "../../video/convertedVideo.gif";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
@@ -140,7 +140,7 @@ const HeroSection = () => {
   return (
     <HeroContainer id="home">
       <HeroBg>
-        <VideoBg autoPlay loop muted src={Video} type="video/mp4" />
+        <VideoBg src={Video} type="gif" />
       </HeroBg>
       <HeroContent>
         <FormBg />

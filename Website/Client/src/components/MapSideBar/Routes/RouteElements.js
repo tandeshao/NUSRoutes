@@ -7,7 +7,7 @@ export const RouteContainer = styled.div`
   background: #353535;
   filter: brightness(0.5);
   border: 7px solid black;
-  width: 100%;
+  width: 80%;
   
   &:hover {
     transform: scale(1.1);
