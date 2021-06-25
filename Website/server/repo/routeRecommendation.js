@@ -174,7 +174,7 @@ const routeRecommendation = (
     });
 
     let result = [];
-    const comparator = (x, y) => x["Cost"] < y["Cost"];
+    const comparator = (x, y) => x["ArrivalTime"] < y["ArrivalTime"];
     arr.forEach((x) => {
       if (x["Path"] !== null) {
         heapq.push(result, x, comparator);

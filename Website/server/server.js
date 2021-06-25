@@ -4,6 +4,7 @@ const routeRecommendation = require("./repo/routeRecommendation");
 const app = express();
 const port = process.env.PORT || 5000;
 const cors = require("cors");
+const getArrivalTime = require('./repo/getArrivalTime');
 
 app.use(cors());
 
@@ -23,6 +24,17 @@ app.get("/api/routeRecommedation", (req, res) => {
   );
 });
 
+app.get("/api/getArrivalTime", async (req, res) => {
+  console.log('getArrivalTime function called');
+  const result = await getArrivalTime(
+    req.query.busStop,
+    req.query.busService
+  );
+  res.json(
+    result
+  );
+});
+
 app.listen(port, () => {
-  console.log(`Listening...`);
+  console.log(`Listening to ${port}...`);
 });

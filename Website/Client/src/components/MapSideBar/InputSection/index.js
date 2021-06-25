@@ -14,37 +14,37 @@ import {
   ArrowRight,
   Switch,
   InputSectionContainer,
-  Button
+  Button,
+  Button2,
+  Switch2,
+  MobileViewContainer,
+  DesktopViewContainer,
 } from "./InputSectionElements";
-import reverseMap from "../../../data/reverseMap.json";
+
 import firebase from "firebase/app";
 import "firebase/firestore";
 import image from "../../../images/switch.png";
 
 const InputSection = ({
-  startAndEnd,
   time,
   day,
   date,
   month,
   year,
   setSelectedRoute,
+  setBusArrivalTime,
+  setTransferredBuses,
+  current,
+  destination,
+  setCurrent,
+  setDestination
 }) => {
   useEffect(() => {}, [time, day, date, month, year]);
   const [hover, setHover] = useState(false);
   const onHover = () => {
     setHover(!hover);
   };
-  const [current, setCurrent] = useState(() => {
-    return reverseMap[startAndEnd[0]] === ""
-      ? options[0]
-      : reverseMap[startAndEnd[0]];
-  });
-  const [destination, setDestination] = useState(() => {
-    return reverseMap[startAndEnd[1]] === ""
-      ? options[0]
-      : reverseMap[startAndEnd[1]];
-  });
+ 
   const [currentError, setCurrentError] = useState(() => false);
   const [destinationError, setDestinationError] = useState(() => false);
 
@@ -147,45 +147,120 @@ const InputSection = ({
       <Form>
         <form onSubmit={handleSubmit}>
           <FormLabel>Current location: </FormLabel>
-          <Autocomplete
-            classes={classes}
-            value={current}
-            onChange={(event, newValue) => {
-              setCurrent(newValue);
-            }}
-            id="Current"
-            options={options}
-            style={{ width: '100%', flexBasis: '80%' }}
-            renderInput={(params) => (
-              <TextField
-                size="small"
-                {...params}
-                label="Current..."
-                variant="outlined"
-                error={currentError}
-                color="secondary"
-              />
-            )}
-          />
+          <DesktopViewContainer>
+            <Autocomplete
+              classes={classes}
+              value={current}
+              onChange={(event, newValue) => {
+                setCurrent(newValue);
+              }}
+              id="Current"
+              options={options}
+              renderInput={(params) => (
+                <TextField
+                  size="small"
+                  {...params}
+                  label="Choose Starting Point"
+                  variant="outlined"
+                  error={currentError}
+                  color="secondary"
+                />
+              )}
+            />
+          </DesktopViewContainer>
+
+          <MobileViewContainer>
+            <Autocomplete
+              classes={classes}
+              value={current}
+              onChange={(event, newValue) => {
+                setCurrent(newValue);
+              }}
+              options={options}
+              renderInput={(params) => (
+                <TextField
+                  size="small"
+                  {...params}
+                  label="Choose Starting Point"
+                  style={{ width: "60vw" }}
+                  variant="outlined"
+                  error={currentError}
+                  color="secondary"
+                />
+              )}
+            />
+
+            <Switch2
+              onClick={() => {
+                const curr = current;
+                setCurrent(destination);
+                setDestination(curr);
+              }}
+              src={image}
+              alt=""
+            />
+          </MobileViewContainer>
+
           <br />
           <FormLabel>Destination: </FormLabel>
-          <Autocomplete
-            classes={classes}
-            value={destination}
-            onChange={(event, newValue) => {
-              setDestination(newValue);
-            }}
-            id="destination"
-            options={options}
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                label="Destination..."
-                variant="outlined"
-                error={destinationError}
-              />
-            )}
-          />
+          <DesktopViewContainer>
+            <Autocomplete
+              classes={classes}
+              value={destination}
+              onChange={(event, newValue) => {
+                setDestination(newValue);
+              }}
+              options={options}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label="Choose Destination"
+                  variant="outlined"
+                  error={destinationError}
+                />
+              )}
+            />
+          </DesktopViewContainer>
+
+          <MobileViewContainer>
+            <Autocomplete
+              classes={classes}
+              value={destination}
+              onChange={(event, newValue) => {
+                setDestination(newValue);
+              }}
+              id="destination"
+              options={options}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  style={{ width: "60vw" }}
+                  label="Choose Destination"
+                  variant="outlined"
+                  error={destinationError}
+                />
+              )}
+            />
+
+            <Button2
+              onMouseEnter={onHover}
+              onMouseLeave={onHover}
+              primary="true"
+              dark="true"
+              smooth={true}
+              duration={500}
+              spy={true}
+              exact="true"
+              onClick={() => {
+                setSelectedRoute(null);
+                setBusArrivalTime([]);
+                setTransferredBuses([]);
+              }}
+            >
+              Go
+            </Button2>
+          </MobileViewContainer>
+
           <Button
             onMouseEnter={onHover}
             onMouseLeave={onHover}
@@ -195,9 +270,13 @@ const InputSection = ({
             duration={500}
             spy={true}
             exact="true"
-            onClick={() => setSelectedRoute(null)}
+            onClick={() => {
+              setSelectedRoute(null);
+              setBusArrivalTime([]);
+              setTransferredBuses([]);
+            }}
           >
-           Get Route {hover ? <ArrowForward /> : <ArrowRight />}
+            Get Route {hover ? <ArrowForward /> : <ArrowRight />}
           </Button>
         </form>
       </Form>

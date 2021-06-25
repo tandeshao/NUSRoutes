@@ -12,39 +12,46 @@ import { useState, useEffect } from "react";
 import icon from "../../images/icon.png";
 import mapStyle from "./mapStyle.js";
 import icon2 from "../../images/Picture2.png";
-import icon3 from '../../images/Picture3.png';
+import icon3 from "../../images/Picture3.png";
 
 function MapDirectionsRenderer(props) {
   const [directions, setDirections] = useState(() => null);
   const [error, setError] = useState(() => null);
 
   useEffect(() => {
-    const { places, travelMode } = props;
+    let mounted = true;
 
-    const waypoints = places.map((p) => ({
-      location: { lat: p["latitude"], lng: p["longitude"] },
-      stopover: true,
-    }));
+    if (mounted) {
+      const { places, travelMode } = props;
 
-    const origin = waypoints.shift().location;
-    const destination = waypoints.pop().location;
+      const waypoints = places.map((p) => ({
+        location: { lat: p["latitude"], lng: p["longitude"] },
+        stopover: true,
+      }));
 
-    const directionsService = new google.maps.DirectionsService();
-    directionsService.route(
-      {
-        origin: origin,
-        destination: destination,
-        travelMode: travelMode,
-        waypoints: waypoints,
-      },
-      (result, status) => {
-        if (status === google.maps.DirectionsStatus.OK) {
-          setDirections(result);
-        } else {
-          setError(result);
+      const origin = waypoints.shift().location;
+      const destination = waypoints.pop().location;
+      const directionsService = new google.maps.DirectionsService();
+      directionsService.route(
+        {
+          origin: origin,
+          destination: destination,
+          travelMode: travelMode,
+          waypoints: waypoints,
+        },
+        (result, status) => {
+          if (status === google.maps.DirectionsStatus.OK) {
+            setDirections(result);
+          } else {
+            setError(result);
+            console.log(result);
+          }
         }
-      }
-    );
+      );
+    }
+    return () => {
+      mounted = false;
+    };
   }, [props]);
 
   if (error) {
@@ -68,7 +75,7 @@ function MapDirectionsRenderer(props) {
 }
 
 const RenderMap = ({ route }) => {
-  console.log('render map was called.');
+  console.log("render map was called.");
   const [selectedBusStop, setSelectedBusStop] = useState(() => null);
   let places = [];
   route.forEach((location) => {

@@ -136,6 +136,7 @@ export const FormBg = styled.div`
   background: #353535;
   borderradius: 10%;
   position: absolute;
+  left: 0%;
   width: 130%;
   height: 130%;
   opacity: 85%;
@@ -147,7 +148,7 @@ export const FormBg = styled.div`
     width: 100%;
   }
 
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 481px) {
     display: none;
   }
  

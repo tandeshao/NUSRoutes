@@ -7,7 +7,7 @@ import {
   Item4,
   DepartureContainer,
   SectionContainer,
-  RouteOptionsContainer
+  RouteOptionsContainer,
 } from "./OptionsContainer";
 import Button from "@material-ui/core/Button";
 import { useState } from "react";
@@ -23,6 +23,9 @@ import {
 } from "@material-ui/pickers";
 import { createMuiTheme } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/styles";
+import { useHistory } from "react-router-dom";
+import map from "../../../data/map.json";
+import data from "../../../data/vacation.json";
 
 const getDate = (str) => {
   if (str === null) {
@@ -67,22 +70,22 @@ const getDate = (str) => {
 
 const Customization = ({
   setTime,
-  setArrivalTime,
-  setDistance,
-  setDifferentService,
-  setBfs,
   isOpen,
   setIsOpen,
   setMonth,
   setYear,
   setDate,
   setDay,
+  setIncludeArrivalTime,
+  setSelectedRoute,
+  current,
+  destination
 }) => {
   const [anchorEl, setAnchorEl] = useState(() => null);
   const [btnName, setBtnName] = useState(() => "Depart Now");
   const [content, setContent] = useState(() => "true");
   const [selectedDate, setSelectedDate] = useState(() => new Date());
-
+  const history = useHistory();
   const changeVar = (arr) => {
     setTime(arr[0]);
     setDay(arr[1]);
@@ -148,7 +151,7 @@ const Customization = ({
   };
 
   return (
-    <SectionContainer style={isOpen ? { height: "21vh" } : { height: "5vh" }}>
+    <SectionContainer style={isOpen ? { height: "45%" } : { height: "7%" }}>
       {content && isOpen ? (
         <h4
           style={{
@@ -194,6 +197,49 @@ const Customization = ({
                 setMonth(parseInt(monthNow));
                 setYear(parseInt(yearNow));
                 handleClose("Depart Now");
+                setIncludeArrivalTime(true);
+                setSelectedRoute(null);
+                const year = parseInt(yearNow);
+                const month = parseInt(monthNow);
+                const date = parseInt(dateNow);
+                const day = today;
+                const time = hour + minute;
+                const category =
+                  data.reduce((x, y) => {
+                    if (x !== null) {
+                      return x;
+                    } else if (y["duration-year"].includes(year)) {
+                      if (
+                        y["duration-month"][0] < month &&
+                        month < y["duration-month"][1]
+                      ) {
+                        return "vacation";
+                      } else if (
+                        y["duration-month"][0] === month ||
+                        month === y["duration-month"][1]
+                      ) {
+                        return y["duration-date"][0] <= date &&
+                          date <= y["duration-date"][1]
+                          ? "vacation"
+                          : "term";
+                      } else {
+                        return "term";
+                      }
+                    } else {
+                      return null;
+                    }
+                  }, null) +
+                  (day === 0 ? "-sun/ph" : day === 6 ? "-sat" : "-weekdays");
+                history.push(
+                  "/map/routeRecommedation?start=" +
+                    encodeURIComponent(map[current]) +
+                    "&end=" +
+                    encodeURIComponent(map[destination]) +
+                    "&time=" +
+                    encodeURIComponent(time) +
+                    "&date=" +
+                    encodeURIComponent(category)
+                );
               }}
             >
               Depart Now
@@ -201,6 +247,9 @@ const Customization = ({
             <MenuItem
               onClick={() => {
                 handleClose("Depart Later");
+                setIncludeArrivalTime(false);
+                setSelectedRoute(null);
+                setSelectedDate(new Date());
               }}
             >
               Depart Later
@@ -275,7 +324,7 @@ const Customization = ({
                 position: "absolute",
                 top: "30%",
                 width: "100%",
-                right: ''
+                height: "100%",
               }}
             >
               <Grid container justify="space-around">

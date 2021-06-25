@@ -27,7 +27,6 @@ const Map = () => {
   let time = params.get("time");
   let date = params.get("date");
 
-  console.log(onHover);
   useEffect(() => {
     fetch(
       `${REACT_APP_DOMAIN}` +
@@ -70,6 +69,7 @@ const Map = () => {
             setRoute={setRoute}
             startAndEnd={[start, end]}
             route={route}
+            setRouteRecommendations={setRouteRecommendations}
           />
         </SideBarContainer>
         <MapContainer sideBar={sideBar}>

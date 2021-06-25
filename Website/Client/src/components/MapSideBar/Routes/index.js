@@ -11,14 +11,16 @@ import { Button } from "../../ButtonElement";
 import map from "../../../data/reverseMap.json";
 import startIcon from "../../../images/Picture2.png";
 import endIcon from "../../../images/Picture3.png";
+import { useEffect } from "react";
 
-const findTransferredBuses = (route) => {
+const findTransferredBuses = (route, selectedRoute) => {
   const transferredBuses = [];
   let prev = "";
   let start = 0;
   let end = 0;
-
-  if (route.length === 2) {
+  if (selectedRoute === null) {
+    return transferredBuses;
+  } else if (route.length === 2) {
     transferredBuses.push({
       start: 0,
       end: 1,
@@ -34,6 +36,9 @@ const findTransferredBuses = (route) => {
 
       if (i === 1) {
         prev = service;
+      } else if (service !== prev && i === route.length - 1) {
+        transferredBuses.push({ start: start, end: end, service: prev });
+        transferredBuses.push({ start: end, end: i, service: service });
       } else if (service !== prev) {
         transferredBuses.push({ start: start, end: end, service: prev });
         start = end;
@@ -56,10 +61,41 @@ const Routes = ({
   route,
   selectedRoute,
   setSelectedRoute,
+  transferredBuses,
+  setTransferredBuses,
+  busArrivalTime,
+  setBusArrivalTime,
+  includeArrivalTime,
 }) => {
   const units = ["hrs", "hrs", "", "mins", "metres", ""];
-  const transferredBuses =
-    selectedRoute === null ? [] : findTransferredBuses(route);
+  const { REACT_APP_DOMAIN } = process.env;
+  useEffect(() => {
+    transferredBuses.forEach((obj) => {
+      fetch(
+        `${REACT_APP_DOMAIN}` +
+          "/api/" +
+          "getArrivalTime" +
+          "?" +
+          "busStop=" +
+          route[obj.start].substring(0, route[obj.start].indexOf("_")) +
+          "&" +
+          "busService=" +
+          obj.service
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          setBusArrivalTime((arr) => {
+            console.log(arr);
+            if (arr.length < transferredBuses.length) {
+              return arr.concat([data]);
+            } else {
+              return [];
+            }
+          });
+        })
+        .catch(console.log);
+    });
+  }, [transferredBuses, REACT_APP_DOMAIN, route, setBusArrivalTime]);
 
   return (
     <div
@@ -86,6 +122,9 @@ const Routes = ({
                       onClick={() => {
                         setRoute(route["Path"]);
                         setSelectedRoute(index);
+                        setTransferredBuses(
+                          findTransferredBuses(route["Path"], index)
+                        );
                       }}
                     >
                       {Object.keys(route).map(
@@ -191,6 +230,24 @@ const Routes = ({
                     to{" "}
                     {map[route[x.end].substring(0, route[x.end].indexOf("_"))]}.{" "}
                     <br /> <br />
+                    Bus Arrival Time:{" "}
+                    {includeArrivalTime
+                      ? busArrivalTime[index] === undefined
+                        ? "loading.."
+                        : busArrivalTime[index][0] === "-"
+                        ? "-"
+                        : busArrivalTime[index][0] + " mins"
+                      : ""}
+                    {includeArrivalTime ? <br /> : " "}
+                    Next Bus Arrival Time:{" "}
+                    {includeArrivalTime
+                      ? busArrivalTime[index] === undefined
+                        ? "loading.."
+                        : busArrivalTime[index][1] === "-"
+                        ? "-"
+                        : +busArrivalTime[index][1] + " mins"
+                      : ""}
+                    {includeArrivalTime ? <br /> : ""} <br />
                     Path: <br />
                     {route
                       .map((y) => map[y.substring(0, y.indexOf("_"))])
@@ -211,6 +268,7 @@ const Routes = ({
               unmountOnExit
             >
               <Container2>
+                Destination:{" "}
                 {
                   map[
                     route[route.length - 1].substring(
@@ -219,7 +277,7 @@ const Routes = ({
                     )
                   ]
                 }{" "}
-                Reached.{" "}
+                reached .
                 <img
                   src={endIcon}
                   alt=""
@@ -244,7 +302,11 @@ const Routes = ({
               <Button
                 primary="false"
                 dark="true"
-                onClick={() => setSelectedRoute(null)}
+                onClick={() => {
+                  setSelectedRoute(null);
+                  setBusArrivalTime([]);
+                  setTransferredBuses([]);
+                }}
                 style={{ width: "100%" }}
               >
                 Go Back to Route Search
