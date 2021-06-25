@@ -24,7 +24,7 @@ import styles from "./history.module.css";
 import { Ghost } from "react-kawaii";
 
 const HistorySection = () => {
-  const [data, setData] = useState(() => []);
+  const [data, setData] = useState(["empty"]);
 
   useEffect(() => {
     const id = window.localStorage.getItem("id");
