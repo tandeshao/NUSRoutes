@@ -21,6 +21,11 @@ import Image from "../../images/svg-6.png";
 import { useState } from "react";
 import firebase from "firebase/app";
 import "firebase/firestore";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
 
 const ContactSection = () => {
   const [name, setName] = useState(() => "");
@@ -31,6 +36,7 @@ const ContactSection = () => {
   const [emailError, setEmailError] = useState(false);
   const [subjectError, setSubjectError] = useState(false);
   const [messageError, setMessageError] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -61,7 +67,21 @@ const ContactSection = () => {
           merge: true,
         }
       );
+
+      setName("");
+      setEmail("");
+      setSubject("");
+      setMessage("");
+      handleClickOpen();
     }
+  };
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
   };
 
   return (
@@ -125,6 +145,27 @@ const ContactSection = () => {
           >
             Send Message
           </Button>
+          <Dialog
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogTitle id="alert-dialog-title">
+              {"Feedback received!"}
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-description">
+                Thank you for your feedback! We will work to improve the website
+                based on your suggestions.
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleClose} color="primary" autoFocus>
+                Ok
+              </Button>
+            </DialogActions>
+          </Dialog>
         </FormButton>
       </ContactForm>
       <ContactInfo src={Image}></ContactInfo>
