@@ -6,6 +6,7 @@ const findDistance = require("./findDistance");
 const findDuration = require("./findDuration");
 const addTime = require("./addTime");
 const heapq = require("heapq");
+const reverseMap = require('../data/reverseMap.json');
 
 const lowestCostNode = (costs, processed) => {
   return Object.keys(costs).reduce((lowest, node) => {
@@ -135,11 +136,11 @@ const routeRecommendation = (
 ) => {
   if (start == end) {
     console.log(
-      `Start: ${start} and End: ${end} is the same bus stop, no path can be found.`
+      `Start: ${reverseMap[start]} and End: ${reverseMap[end]} is the same bus stop, no path can be found.`
     );
     return [
       {
-        String: `Start: ${start} and End: ${end} is the same bus stop`,
+        String: `Start: ${reverseMap[start]} and End: ${reverseMap[end]} is the same bus stop`,
         Path: [],
         Cost: -1,
       },
@@ -149,7 +150,7 @@ const routeRecommendation = (
       `Start: ${start} or End: ${end} cannot be found. Probably bus stops doesn't exist.`
     );
     return [
-      { String: `Start: ${start} or End: ${end} cannot be found.`, Path: [], Cost: -1 },
+      { String: `Start: ${reverseMap[start]} or End: ${reverseMap[end]} cannot be found.`, Path: [], Cost: -1 },
     ];
   } else {
     let graphForTransfers = create_dijkstraGraphforTransfers(graph);
