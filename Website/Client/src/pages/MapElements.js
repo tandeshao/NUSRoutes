@@ -26,6 +26,11 @@ export const SideBarContainer = styled.div`
     width: ${({ sideBar }) => (sideBar ? "100vw" : "0vw")};
     height: ${({ sideBar }) => (sideBar ? "100vh" : "0vh")};
   }
+
+  @media screen and (max-height: 850px) {
+    width: ${({ sideBar }) => (sideBar ? "100vw" : "0vw")};
+    height: ${({ sideBar }) => (sideBar ? "100vh" : "0vh")};
+  }
 `;
 
 export const MapContainer = styled.div`
@@ -34,6 +39,11 @@ export const MapContainer = styled.div`
   z-index: 1;
 
   @media screen and (max-width: 828px) {
+    width: ${({ sideBar }) => (sideBar ? "0vw" : "100vw")};
+    height: ${({ sideBar }) => (sideBar ? "0vh" : "100vh")};
+  }
+
+  @media screen and (max-height: 850px) {
     width: ${({ sideBar }) => (sideBar ? "0vw" : "100vw")};
     height: ${({ sideBar }) => (sideBar ? "0vh" : "100vh")};
   }
@@ -63,6 +73,11 @@ export const ArrowLeftButton = styled(ArrowLeftRoundedIcon)`
     }
 
     @media screen and (max-width: 828px) {
+      top: 35%;
+      left: ${({ sideBar }) => (sideBar ? "97%" : "0vw")};
+    }
+
+    @media screen and (max-height: 850px) {
       top: 35%;
       left: ${({ sideBar }) => (sideBar ? "97%" : "0vw")};
     }
@@ -100,6 +115,11 @@ export const ArrowRightButton = styled(ArrowRightRoundedIcon)`
     @media screen and (max-width: 828px) {
       top: 35%;
       left: ${({ sideBar }) => (sideBar ? "97%" : "0%")};
+    }
+
+    @media screen and (max-height: 850px) {
+      top: 35%;
+      left: ${({ sideBar }) => (sideBar ? "97%" : "0vw")};
     }
 
     @media screen and (max-width: 492px) {

@@ -85,7 +85,6 @@ const Routes = ({
         .then((response) => response.json())
         .then((data) => {
           setBusArrivalTime((arr) => {
-            console.log(arr);
             if (arr.length < transferredBuses.length) {
               return arr.concat([data]);
             } else {
@@ -229,8 +228,9 @@ const Routes = ({
                     }{" "}
                     to{" "}
                     {map[route[x.end].substring(0, route[x.end].indexOf("_"))]}.{" "}
-                    <br /> <br />
-                    Bus Arrival Time:{" "}
+                    <br />
+                    {includeArrivalTime ? <br /> : ""}
+                    {includeArrivalTime ? "Bus Arrival Time: " : ""}
                     {includeArrivalTime
                       ? busArrivalTime[index] === undefined
                         ? "loading.."
@@ -239,7 +239,7 @@ const Routes = ({
                         : busArrivalTime[index][0] + " mins"
                       : ""}
                     {includeArrivalTime ? <br /> : " "}
-                    Next Bus Arrival Time:{" "}
+                    {includeArrivalTime ? "Next Bus Arrival Time: " : ""}
                     {includeArrivalTime
                       ? busArrivalTime[index] === undefined
                         ? "loading.."

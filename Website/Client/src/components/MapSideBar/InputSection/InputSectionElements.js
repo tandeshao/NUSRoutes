@@ -61,9 +61,14 @@ export const Form = styled.div`
   flex-wrap: wrap;
 
   @media screen and (max-height: 850px) {
-    margin: 20px;
     width: 100%;
+    margin: 20px;
   }
+  
+  @media screen and (max-height: 900px) {
+    margin-top: 20px;
+  }
+
 `;
 
 export const FormLabel = styled.h5`
@@ -72,7 +77,7 @@ export const FormLabel = styled.h5`
   width: 100%;
   right: 20%;
 
-  @media screen and (max-height: 850px) {
+  @media screen and (max-height: 900px) {
     display: none;
   }
 `;
