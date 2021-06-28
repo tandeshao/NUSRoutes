@@ -33,12 +33,7 @@ app.get("/api/getArrivalTime", async (req, res) => {
 
 app.get("/proximityAlarm", (req, res) => {
   console.log("proxmityAlarm function called");
-  const result = proximityAlarm(
-    req.query.lat,
-    req.query.lon,
-    req.query.lat2,
-    req.query.lon2
-  );
+  const result = proximityAlarm(req.query.lat, req.query.lon, req.query.dest);
   res.json(result);
 });
 
