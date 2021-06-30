@@ -17,10 +17,5 @@ const getArrivalTime = (busStopName, busService) => {
   return obj;
 };
 
-// const test = async () => {
-//   let res = await getArrivalTime("COM2", "D1(To UTown)")
-//   console.log(res);
-// }
 
-// test();
 module.exports = getArrivalTime;

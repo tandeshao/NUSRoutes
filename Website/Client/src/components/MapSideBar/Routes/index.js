@@ -71,16 +71,31 @@ const Routes = ({
   const { REACT_APP_DOMAIN } = process.env;
   useEffect(() => {
     transferredBuses.forEach((obj) => {
+      const busStop = route[obj.start].substring(
+        0,
+        route[obj.start].indexOf("_")
+      );
+      const busService = obj.service;
+      const checkBusService =
+        busStop === "COM2" && busService === "D1"
+          ? route[obj.start + 1] === "LT13-OPP"
+            ? encodeURIComponent("D1(To UTown)")
+            : encodeURIComponent("D1(To BIZ2)")
+          : busStop === "UTown" && busService === "C"
+          ? route[obj.start + 1] === "RAFFLES"
+            ? encodeURIComponent("C(To KRT)")
+            : encodeURIComponent("C(To FOS)")
+          : encodeURIComponent(busService);
       fetch(
         `${REACT_APP_DOMAIN}` +
           "/api/" +
           "getArrivalTime" +
           "?" +
           "busStop=" +
-          route[obj.start].substring(0, route[obj.start].indexOf("_")) +
+          busStop +
           "&" +
           "busService=" +
-          obj.service
+          checkBusService
       )
         .then((response) => response.json())
         .then((data) => {
@@ -268,7 +283,6 @@ const Routes = ({
               unmountOnExit
             >
               <Container2>
-                Destination:{" "}
                 {
                   map[
                     route[route.length - 1].substring(
@@ -277,7 +291,7 @@ const Routes = ({
                     )
                   ]
                 }{" "}
-                reached .
+                reached.
                 <img
                   src={endIcon}
                   alt=""

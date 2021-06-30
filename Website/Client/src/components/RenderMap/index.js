@@ -17,7 +17,7 @@ import icon3 from "../../images/Picture3.png";
 function MapDirectionsRenderer(props) {
   const [directions, setDirections] = useState(() => null);
   const [error, setError] = useState(() => null);
-
+  console.log('map directions rendered called.', props.places);
   useEffect(() => {
     let mounted = true;
 
@@ -78,6 +78,7 @@ const RenderMap = ({ route }) => {
   console.log("render map was called.");
   const [selectedBusStop, setSelectedBusStop] = useState(() => null);
   let places = [];
+
   route.forEach((location) => {
     busStops.forEach((busStop) => {
       if (busStop["name"] === location.substring(0, location.indexOf("_"))) {
@@ -85,14 +86,14 @@ const RenderMap = ({ route }) => {
       }
     });
   });
-
+  console.log(places);
   return (
     <GoogleMap
       defaultZoom={16}
       defaultCenter={{ lat: 1.296643, lng: 103.776398 }}
       defaultOptions={{ styles: mapStyle, clickableIcons: false }}
     >
-      {route.length !== 0 && (
+      {places.length !== 0 && (
         <MapDirectionsRenderer
           places={places}
           travelMode={window.google.maps.TravelMode.DRIVING}

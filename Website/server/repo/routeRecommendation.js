@@ -175,7 +175,7 @@ const routeRecommendation = (
     });
 
     let result = [];
-    const comparator = (x, y) => x["ArrivalTime"] < y["ArrivalTime"];
+    const comparator = (x, y) => x["ArrivalTime"] <= y["ArrivalTime"];
     arr.forEach((x) => {
       if (x["Path"] !== null) {
         heapq.push(result, x, comparator);
@@ -185,9 +185,10 @@ const routeRecommendation = (
     if (result.length === 0) {
       return [{ String: "No available path could be found.", Path: [],Cost: -1 }];
     } else {
-      return result;
+      return heapq.heapsort(result, comparator);
     }
   }
 };
+
 
 module.exports = routeRecommendation;
