@@ -35,6 +35,6 @@ By: Alvin Tay & Tan De Shao.
 Website, iOS, Android, Telegram.
 
 ## Documentations
-[Proposal](https://docs.google.com/document/d/1SXj5WiLJiQzO4HPfhKkvp-F8F_eFLhVs-c22GaXN5eo/edit?usp=sharing)  
-[Poster](https://drive.google.com/file/d/1jvCwjksClwt7gpLPHSTWORnx-sRWwNfd/view?usp=sharing)  
-[Video](https://drive.google.com/file/d/1PRAAMh1dzXpCV1xrEA4r_nKWNrwbNENs/view?usp=sharing)  
+[Report](https://docs.google.com/document/d/1SXj5WiLJiQzO4HPfhKkvp-F8F_eFLhVs-c22GaXN5eo/edit?usp=sharing)  
+[Poster](https://drive.google.com/file/d/1q7cKIbXN8d7XDeiox5G0c58zURM-MiOU/view?usp=sharing)  
+[Video](https://drive.google.com/file/d/10ny5oZnlAhzsbMgueB8fedn1xBNOjorn/view?usp=sharing)  
