@@ -11,7 +11,7 @@ export const Switch = styled.img`
   position: absolute;
   height: 25%;
   right: 10%;
-  top: 30%;
+  top: 40%;
   cursor: pointer;
 
   @media screen and (max-width: 800px) {
@@ -20,7 +20,8 @@ export const Switch = styled.img`
   }
 
   @media screen and (max-width: 624px) {
-    height: 15%;
+    height: 30%;
+    right: 10%;
   }
 
   @media screen and (max-height: 850px) {

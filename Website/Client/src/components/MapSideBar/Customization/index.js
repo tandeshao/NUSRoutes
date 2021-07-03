@@ -1,13 +1,8 @@
 import {
   OptionsContainer,
-  Item1,
-  Item2,
-  Item3,
-  Options,
-  Item4,
   DepartureContainer,
   SectionContainer,
-  RouteOptionsContainer,
+  OptionsContainer2,
 } from "./OptionsContainer";
 import Button from "@material-ui/core/Button";
 import { useState } from "react";
@@ -79,11 +74,10 @@ const Customization = ({
   setIncludeArrivalTime,
   setSelectedRoute,
   current,
-  destination
+  destination,
 }) => {
   const [anchorEl, setAnchorEl] = useState(() => null);
   const [btnName, setBtnName] = useState(() => "Depart Now");
-  const [content, setContent] = useState(() => "true");
   const [selectedDate, setSelectedDate] = useState(() => new Date());
   const history = useHistory();
   const changeVar = (arr) => {
@@ -107,21 +101,19 @@ const Customization = ({
   };
 
   const handleClose = (name) => {
-    if (name === btnName) {
-      setAnchorEl(null);
-    } else if (name === "Depart Now") {
+    if (isOpen === false && name === "Depart Later") {
       setAnchorEl(null);
       setBtnName(name);
-      setIsOpen(false);
-      setContent(true);
+      setIsOpen((prev) => !prev);
+    } else if (isOpen === true && name === "Depart Now") {
+      setAnchorEl(null);
+      setBtnName(name);
+      setIsOpen((prev) => !prev);
     } else {
-      // name === depart later
       setAnchorEl(null);
-      setBtnName(name);
-      setIsOpen(true);
-      setContent(false);
     }
   };
+
   const materialTheme = createMuiTheme({
     overrides: {
       MuiPickersToolbar: {
@@ -138,185 +130,112 @@ const Customization = ({
     },
   });
 
-  const makeOpen = () => {
-    if (!content && isOpen) {
-      setContent(true);
-    } else if (content && isOpen && btnName === "Depart Now") {
-      setIsOpen(false);
-    } else if (content && isOpen) {
-      setContent(false);
-    } else {
-      setIsOpen(true);
-    }
-  };
-
   return (
     <SectionContainer style={isOpen ? { height: "45%" } : { height: "7%" }}>
-      {content && isOpen ? (
-        <h4
-          style={{
-            color: "#fff",
-            position: "absolute",
-            top: "20%",
-            left: "30px",
-          }}
+      <DepartureContainer>
+        <Button
+          onClick={handleClick}
+          aria-controls="simple-menu"
+          aria-haspopup="true"
+          variant="contained"
+          color="primary"
         >
-          Route Options
-        </h4>
-      ) : (
-        <DepartureContainer>
-          <Button
-            onClick={handleClick}
-            aria-controls="simple-menu"
-            aria-haspopup="true"
-            variant="contained"
-            color="primary"
-          >
-            {btnName}
-          </Button>
-          <Menu
-            id="simple-menu"
-            anchorEl={anchorEl}
-            keepMounted
-            open={Boolean(anchorEl)}
-            onClose={() => handleClose}
-          >
-            <MenuItem
-              onClick={() => {
-                const obj = new Date();
-                const today = obj.getDay();
-                let [hour, minute] = obj
-                  .toLocaleTimeString("it-IT")
-                  .split(/:| /);
-                let [monthNow, dateNow, yearNow] = obj
-                  .toLocaleDateString("en-US")
-                  .split("/");
-                setTime(hour + minute);
-                setDay(today);
-                setDate(parseInt(dateNow));
-                setMonth(parseInt(monthNow));
-                setYear(parseInt(yearNow));
-                handleClose("Depart Now");
-                setIncludeArrivalTime(true);
-                setSelectedRoute(null);
-                const year = parseInt(yearNow);
-                const month = parseInt(monthNow);
-                const date = parseInt(dateNow);
-                const day = today;
-                const time = hour + minute;
-                const category =
-                  data.reduce((x, y) => {
-                    if (x !== null) {
-                      return x;
-                    } else if (y["duration-year"].includes(year)) {
-                      if (
-                        y["duration-month"][0] < month &&
-                        month < y["duration-month"][1]
-                      ) {
-                        return "vacation";
-                      } else if (
-                        y["duration-month"][0] === month ||
-                        month === y["duration-month"][1]
-                      ) {
-                        return y["duration-date"][0] <= date &&
-                          date <= y["duration-date"][1]
-                          ? "vacation"
-                          : "term";
-                      } else {
-                        return "term";
-                      }
+          {btnName}
+        </Button>
+        <Menu
+          id="simple-menu"
+          anchorEl={anchorEl}
+          keepMounted
+          open={Boolean(anchorEl)}
+          onClose={() => handleClose}
+        >
+          <MenuItem
+            onClick={() => {
+              const obj = new Date();
+              const today = obj.getDay();
+              let [hour, minute] = obj.toLocaleTimeString("it-IT").split(/:| /);
+              let [monthNow, dateNow, yearNow] = obj
+                .toLocaleDateString("en-US")
+                .split("/");
+              setTime(hour + minute);
+              setDay(today);
+              setDate(parseInt(dateNow));
+              setMonth(parseInt(monthNow));
+              setYear(parseInt(yearNow));
+              handleClose("Depart Now");
+              setIncludeArrivalTime(true);
+              setSelectedRoute(null);
+              const year = parseInt(yearNow);
+              const month = parseInt(monthNow);
+              const date = parseInt(dateNow);
+              const day = today;
+              const time = hour + minute;
+              const category =
+                data.reduce((x, y) => {
+                  if (x !== null) {
+                    return x;
+                  } else if (y["duration-year"].includes(year)) {
+                    if (
+                      y["duration-month"][0] < month &&
+                      month < y["duration-month"][1]
+                    ) {
+                      return "vacation";
+                    } else if (
+                      y["duration-month"][0] === month ||
+                      month === y["duration-month"][1]
+                    ) {
+                      return y["duration-date"][0] <= date &&
+                        date <= y["duration-date"][1]
+                        ? "vacation"
+                        : "term";
                     } else {
-                      return null;
+                      return "term";
                     }
-                  }, null) +
-                  (day === 0 ? "-sun/ph" : day === 6 ? "-sat" : "-weekdays");
-                history.push(
-                  "/map/routeRecommedation?start=" +
-                    encodeURIComponent(map[current]) +
-                    "&end=" +
-                    encodeURIComponent(map[destination]) +
-                    "&time=" +
-                    encodeURIComponent(time) +
-                    "&date=" +
-                    encodeURIComponent(category)
-                );
-              }}
-            >
-              Depart Now
-            </MenuItem>
-            <MenuItem
-              onClick={() => {
-                handleClose("Depart Later");
-                setIncludeArrivalTime(false);
-                setSelectedRoute(null);
-                setSelectedDate(new Date());
-              }}
-            >
-              Depart Later
-            </MenuItem>
-          </Menu>
-        </DepartureContainer>
-      )}
+                  } else {
+                    return null;
+                  }
+                }, null) +
+                (day === 0 ? "-sun/ph" : day === 6 ? "-sat" : "-weekdays");
+              history.push(
+                "/map/routeRecommedation?start=" +
+                  encodeURIComponent(map[current]) +
+                  "&end=" +
+                  encodeURIComponent(map[destination]) +
+                  "&time=" +
+                  encodeURIComponent(time) +
+                  "&date=" +
+                  encodeURIComponent(category)
+              );
+            }}
+          >
+            Depart Now
+          </MenuItem>
+          <MenuItem
+            onClick={() => {
+              handleClose("Depart Later");
+              setIncludeArrivalTime(false);
+              setSelectedRoute(null);
+              setSelectedDate(new Date());
+            }}
+          >
+            Depart Later
+          </MenuItem>
+        </Menu>
+      </DepartureContainer>
 
-      {content && isOpen ? (
-        <OptionsContainer>
-          <Button variant="contained" color="secondary" onClick={makeOpen}>
-            CLOSE
-          </Button>
-        </OptionsContainer>
-      ) : (
-        <OptionsContainer>
-          <Button variant="contained" color="secondary" onClick={makeOpen}>
-            OPTIONS
-          </Button>
-        </OptionsContainer>
-      )}
+      <OptionsContainer>
+        <Button variant="contained" color="secondary">
+          FIND NEAREST BUS STOPS
+        </Button>
+      </OptionsContainer>
 
-      {content ? (
-        isOpen ? (
-          <RouteOptionsContainer>
-            <Options action="/">
-              <input
-                type="checkbox"
-                id="getArrivalTime"
-                name="options"
-                value="getArrivalTime"
-              />
-              <Item1 for="getArrivalTime">Include Arrival Time of Buses</Item1>
-              <br />
-              <input
-                type="checkbox"
-                id="getDistance"
-                name="options"
-                value="getDistance"
-              />
-              <Item2 for="getDistance">Include Distance Needed to Travel</Item2>{" "}
-              <br />
-              <input
-                type="checkbox"
-                id="getDifferentService"
-                name="options"
-                value="getDifferentService"
-              />
-              <Item3 for="getDifferentService">
-                Include Different Service Available Per Bus Stop
-              </Item3>
-              <br />
-              <input
-                type="checkbox"
-                id="getShortestBusStops"
-                name="options"
-                value="getShortestBusStops"
-              />
-              <Item4 for="">
-                Include Route for Shortest Number of Bus Stops
-              </Item4>
-            </Options>
-          </RouteOptionsContainer>
-        ) : (
-          ""
-        )
-      ) : isOpen ? (
+      <OptionsContainer2>
+        <Button variant="contained" color="secondary">
+          STOPS NEAR ME
+        </Button>
+      </OptionsContainer2>
+
+      {isOpen ? (
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
           <ThemeProvider theme={materialTheme}>
             <div
