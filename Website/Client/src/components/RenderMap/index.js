@@ -22,11 +22,11 @@ function MapDirectionsRenderer(props) {
   const [directions, setDirections] = useState(() => null);
   const [error, setError] = useState(() => null);
   const { places, travelMode } = props;
+
   useEffect(() => {
     let mounted = true;
 
     if (mounted) {
-      
       const waypoints = places.map((p) => ({
         location: { lat: p["latitude"], lng: p["longitude"] },
         stopover: true,
@@ -79,7 +79,7 @@ function MapDirectionsRenderer(props) {
 
 function RenderMap({ route }) {
   const mapRef = useRef(() => null);
-  const [position, setPosition] = useState({
+  const position = useRef({
     lat: 1.296643,
     lng: 103.776398,
   });
@@ -88,15 +88,6 @@ function RenderMap({ route }) {
     mapRef.current = map;
   }
 
-  function handleCenter() {
-    if (!mapRef.current) return;
-    const newPos = mapRef.current.getCenter().toJSON();
-    if (newPos.lat === position.lat && newPos.lng === position.lng) return;
-    else {      
-      setPosition(newPos);
-    }
-    
-  }
   const [selectedBusStop, setSelectedBusStop] = useState(() => null);
   let places = [];
 
@@ -113,7 +104,6 @@ function RenderMap({ route }) {
       <GoogleMap
         mapContainerStyle={containerStyle}
         onLoad={handleLoad}
-        onDragEnd={handleCenter}
         center={position}
         zoom={16}
         options={{ styles: mapStyle, clickableIcons: false }}

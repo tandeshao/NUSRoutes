@@ -47,8 +47,8 @@ const Map = () => {
       .then((response) => response.json())
       .then((data) => {
         //reason for the rendering of map pg twice.
-        setRouteRecommendations(data);
         setRoute(data[0]["Path"]);
+        setRouteRecommendations(data);    
       })
       .catch((error) =>
         setRouteRecommendations([

@@ -37,6 +37,7 @@ const MapSideBar = ({ routeRecommendations, setRoute, route, startAndEnd }) => {
       <InputSection
         setTransferredBuses={setTransferredBuses}
         setBusArrivalTime={setBusArrivalTime}
+        setTime={setTime}
         time={time}
         date={date}
         month={month}
