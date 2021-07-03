@@ -55,9 +55,6 @@ const ProfileSidebar = ({ isOpen, toggle, setSection }) => {
           <SidebarProfile to="/profile" onClick={() => setSection(true)}>
             History
           </SidebarProfile>
-          <SidebarProfile to="/profile" onClick={() => setSection(false)}>
-            Favourites
-          </SidebarProfile>
         </SidebarMenu>
         <SideBtnWrap>
           {user ? (
