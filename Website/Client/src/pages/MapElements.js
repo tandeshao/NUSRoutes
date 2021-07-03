@@ -15,11 +15,11 @@ export const SideBarContainer = styled.div`
   position: relative;
 
   @media screen and (max-width: 1500px) {
-    width: ${({ $sidebar }) => ($sidebar ? "50vw" : "0vw")};
+    width: ${({ $sidebar }) => ($sidebar ? "60vw" : "0vw")};
   }
 
   @media screen and (max-width: 1100px) {
-    width: ${({ $sidebar }) => ($sidebar ? "70vw" : "0vw")};
+    width: ${({ $sidebar }) => ($sidebar ? "85vw" : "0vw")};
   }
 
   @media screen and (max-width: 828px) {

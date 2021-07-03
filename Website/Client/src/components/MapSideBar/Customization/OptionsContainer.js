@@ -6,44 +6,15 @@ export const SectionContainer = styled.div`
   overflow: hidden;
 `;
 
-export const Options = styled.form`
-  color: #fff;
-  font-size: 12px;
-  position: absolute;
-  margin: 3em;
-`;
-
-export const Item1 = styled.label`
-  padding: 10px;
-  color: #fff;
-  margin: 5px;
-`;
-export const Item2 = styled.label`
-  padding: 10px;
-  color: #fff;
-  margin: 5px;
-`;
-export const Item3 = styled.label`
-  padding: 10px;
-  color: #fff;
-  margin: 5px;
-`;
-export const Item4 = styled.label`
-  padding: 10px;
-  color: #fff;
-  margin: 5px;
-`;
-
 export const DepartureContainer = styled.div`
   color: #fff;
   position: absolute;
   top: 10%;
-  left: 7%;
-  width: 100%;   
-            
+  left: 3%;
+  width: 100%;
 
   @media screen and (max-width: 450px) {
-    left: 7%;
+    left: 3%;
   }
 `;
 
@@ -51,7 +22,7 @@ export const OptionsContainer = styled.div`
   color: #fff;
   position: absolute;
   top: 10%;
-  left: 70%;
+  left: 41%;
   width: 100%;
 
   @media screen and (max-height: 850px) {
@@ -59,13 +30,15 @@ export const OptionsContainer = styled.div`
   }
 `;
 
-export const RouteOptionsContainer = styled.div`
-  position: absolute;
-  width: 100%;
-  top: 40%;
-  left: 1%;
+export const OptionsContainer2 = styled.div`
+  display: none;
 
-  @media screen and (max-width: 828px) {
-    left: 5%;
+  @media screen and (max-height: 850px) {
+    display: block;
+    color: #fff;
+    position: absolute;
+    top: 10%;
+    left: 45%;
+    width: 100%;
   }
-`
+`;
