@@ -21,6 +21,7 @@ import { ThemeProvider } from "@material-ui/styles";
 import { useHistory } from "react-router-dom";
 import map from "../../../data/map.json";
 import data from "../../../data/vacation.json";
+import ProximityAlarm from "../ProximityAlarm/";
 
 const getDate = (str) => {
   if (str === null) {
@@ -131,7 +132,7 @@ const Customization = ({
   });
 
   return (
-    <SectionContainer style={isOpen ? { height: "45%" } : { height: "7%" }}>
+    <SectionContainer style={isOpen ? { height: "45%" } : { height: "15%" }}>
       <DepartureContainer>
         <Button
           onClick={handleClick}
@@ -234,6 +235,8 @@ const Customization = ({
           STOPS NEAR ME
         </Button>
       </OptionsContainer2>
+
+      <ProximityAlarm destination={destination} />
 
       {isOpen ? (
         <MuiPickersUtilsProvider utils={DateFnsUtils}>

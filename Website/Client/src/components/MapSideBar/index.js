@@ -5,7 +5,6 @@ import { useState } from "react";
 import { MapSideBarContainer, Dividers, Logo } from "./MapSideBarElements";
 import reverseMap from "../../data/reverseMap.json";
 import options from "../../data/options.json";
-import ProximityAlarm from "./ProximityAlarm/";
 
 const MapSideBar = ({ routeRecommendations, setRoute, route, startAndEnd }) => {
   const [transferredBuses, setTransferredBuses] = useState(() => []);
@@ -78,8 +77,6 @@ const MapSideBar = ({ routeRecommendations, setRoute, route, startAndEnd }) => {
         selectedRoute={selectedRoute}
         setSelectedRoute={setSelectedRoute}
       />
-
-      <ProximityAlarm destination={destination} />
 
       <Logo to="/">NUSROUTES</Logo>
     </MapSideBarContainer>

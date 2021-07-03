@@ -52,10 +52,10 @@ const ProfileSidebar = ({ isOpen, toggle, setSection }) => {
       <SidebarWrapper>
         <SidebarMenu>
           <SidebarProfile to="/">Home</SidebarProfile>
-          <SidebarProfile onClick={() => setSection(true)}>
+          <SidebarProfile to="/profile" onClick={() => setSection(true)}>
             History
           </SidebarProfile>
-          <SidebarProfile onClick={() => setSection(false)}>
+          <SidebarProfile to="/profile" onClick={() => setSection(false)}>
             Favourites
           </SidebarProfile>
         </SidebarMenu>
