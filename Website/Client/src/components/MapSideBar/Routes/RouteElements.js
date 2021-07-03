@@ -8,7 +8,7 @@ export const RouteContainer = styled.div`
   filter: brightness(0.5);
   border: 7px solid black;
   width: 80%;
-  
+
   &:hover {
     transform: scale(1.1);
     transition: all 0.2s ease-in-out;
@@ -16,23 +16,48 @@ export const RouteContainer = styled.div`
 `;
 
 export const ScrollBar = styled.div`
- overflow-y: auto;
- height: ${({ isOpen }) => (isOpen ? "30vh" : "45vh")};
- background: black  ;
- maxWidth: 20vw;
- margin: 20px;
- opacity: 90%;
- backdrop-filter: blur(5px) brightness(0.2);
+  overflow-y: auto;
+  height: ${({ isOpen }) => (isOpen ? "20vh" : "45vh")};
+  background: black;
+  maxwidth: 20vw;
+  margin: 20px;
+  opacity: 90%;
+  backdrop-filter: blur(5px) brightness(0.2);
 
- ::-webkit-scrollbar { width: 8px; height: 3px;}
- ::-webkit-scrollbar-button {  background-color: #666; }
- ::-webkit-scrollbar-track {  background-color: #646464;}
- ::-webkit-scrollbar-track-piece { background-color: #000;}
- ::-webkit-scrollbar-thumb { height: 50px; background-color: #666; border-radius: 3px;}
- ::-webkit-scrollbar-corner { background-color: #646464;}
- ::-webkit-resizer { background-color: #666;}
- ::webkit-keyframes  { 100% { left: 0; }}
- ::keyframes { 100% { left: 0; }}
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 3px;
+  }
+  ::-webkit-scrollbar-button {
+    background-color: #666;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: #646464;
+  }
+  ::-webkit-scrollbar-track-piece {
+    background-color: #000;
+  }
+  ::-webkit-scrollbar-thumb {
+    height: 50px;
+    background-color: #666;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-corner {
+    background-color: #646464;
+  }
+  ::-webkit-resizer {
+    background-color: #666;
+  }
+  ::webkit-keyframes {
+    100% {
+      left: 0;
+    }
+  }
+  ::keyframes {
+    100% {
+      left: 0;
+    }
+  }
 `;
 
 export const Effect = styled.div`
@@ -46,7 +71,7 @@ export const Effect = styled.div`
   }
 
   .fade-appear {
-    opacity: 0; 
+    opacity: 0;
   }
 
   .fade-appear.fade-appear-active {
@@ -77,7 +102,6 @@ export const Container = styled.div`
   width: 100%;
 `;
 
-
 export const Container2 = styled.div`
   display: list-item;
   list-style-type: disc;
@@ -90,26 +114,48 @@ export const Container2 = styled.div`
   backdrop-filter: brightness(0.5);
   border: 7px solid black;
   width: 100%;
-  
 `;
 
 export const ScrollBar2 = styled.div`
- overflow-y: auto;
- height: ${({ isOpen }) => (isOpen ? "30vh" : "45vh")};
- background: black  ;
- maxWidth: 20vw;
- margin: 20px;
- opacity: 90%;
- 
+  overflow-y: auto;
+  height: ${({ isOpen }) => (isOpen ? "30vh" : "45vh")};
+  background: black;
+  maxwidth: 20vw;
+  margin: 20px;
+  opacity: 90%;
 
- ::-webkit-scrollbar { width: 8px; height: 3px;}
- ::-webkit-scrollbar-button {  background-color: #666; }
- ::-webkit-scrollbar-track {  background-color: #646464;}
- ::-webkit-scrollbar-track-piece { background-color: #000;}
- ::-webkit-scrollbar-thumb { height: 50px; background-color: #666; border-radius: 3px;}
- ::-webkit-scrollbar-corner { background-color: #646464;}
- ::-webkit-resizer { background-color: #666;}
- ::webkit-keyframes  { 100% { left: 0; }}
- ::keyframes { 100% { left: 0; }}
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 3px;
+  }
+  ::-webkit-scrollbar-button {
+    background-color: #666;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: #646464;
+  }
+  ::-webkit-scrollbar-track-piece {
+    background-color: #000;
+  }
+  ::-webkit-scrollbar-thumb {
+    height: 50px;
+    background-color: #666;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-corner {
+    background-color: #646464;
+  }
+  ::-webkit-resizer {
+    background-color: #666;
+  }
+  ::webkit-keyframes {
+    100% {
+      left: 0;
+    }
+  }
+  ::keyframes {
+    100% {
+      left: 0;
+    }
+  }
 `;
-
