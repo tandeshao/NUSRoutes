@@ -21,7 +21,19 @@ import { ThemeProvider } from "@material-ui/styles";
 import { useHistory } from "react-router-dom";
 import map from "../../../data/map.json";
 import data from "../../../data/vacation.json";
-import ProximityAlarm from "../ProximityAlarm/";
+import ProximityAlarm from "../ProximityAlarm";
+import busStops from "../../../data/busStops.json";
+
+function distance(lat1, lon1, lat2, lon2) {
+  var p = 0.017453292519943295; // Math.PI / 180
+  var c = Math.cos;
+  var a =
+    0.5 -
+    c((lat2 - lat1) * p) / 2 +
+    (c(lat1 * p) * c(lat2 * p) * (1 - c((lon2 - lon1) * p))) / 2;
+
+  return 12742 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km
+}
 
 const getDate = (str) => {
   if (str === null) {
@@ -131,6 +143,45 @@ const Customization = ({
     },
   });
 
+  const findNearest = async () => {
+    let arr = [];
+    function getLongAndLat() {
+      return new Promise((resolve, reject) =>
+        navigator.geolocation.getCurrentPosition(resolve, reject)
+      );
+    }
+    let obj = await getLongAndLat();
+    console.log(obj);
+    busStops.forEach((busStop) => {
+      const dist = distance(
+        obj.coords.latitude,
+        obj.coords.longitude,
+        busStop.latitude,
+        busStop.longitude
+      );
+      if (dist <= 0.2) {
+        // distance is less than 200 metres.
+        arr.push(busStop.caption);
+      }
+    });
+
+    if (arr.length === 0) {
+      alert("No bus stops are near you.");
+    } else if (arr.length === 1) {
+      alert("Closest bus stop near you is: " + arr[0]);
+    } else if (arr.length === 2) {
+      alert("Closest bus stop near you are: " + arr[0] + " and " + arr[1]);
+    } else {
+      alert(
+        "The closest bus stops near you are: " +
+          arr.slice(0, arr.length - 1).join(", ") +
+          " and " +
+          arr[arr.length - 1]
+      );
+    }
+    
+  };
+
   return (
     <SectionContainer style={isOpen ? { height: "45%" } : { height: "18%" }}>
       <DepartureContainer>
@@ -225,13 +276,13 @@ const Customization = ({
       </DepartureContainer>
 
       <OptionsContainer>
-        <Button variant="contained" color="secondary">
+        <Button variant="contained" color="secondary" onClick={findNearest}>
           FIND NEAREST BUS STOPS
         </Button>
       </OptionsContainer>
 
       <OptionsContainer2>
-        <Button variant="contained" color="secondary">
+        <Button variant="contained" color="secondary" onClick={findNearest}>
           STOPS NEAR ME
         </Button>
       </OptionsContainer2>
