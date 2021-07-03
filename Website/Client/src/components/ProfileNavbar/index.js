@@ -18,7 +18,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 
 const ProfileNavbar = (props) => {
-  const { toggle, setSection } = props;
+  const { toggle } = props;
   const [scrollNav, setScrollNav] = useState(false);
   const user = window.localStorage.getItem("user");
 
@@ -82,12 +82,7 @@ const ProfileNavbar = (props) => {
               <NavLinks to="/">Home</NavLinks>
             </NavItem>
             <NavItem>
-              <NavToggle onClick={() => setSection(true)}>History</NavToggle>
-            </NavItem>
-            <NavItem>
-              <NavToggle onClick={() => setSection(false)}>
-                Favourites
-              </NavToggle>
+              <NavToggle>History</NavToggle>
             </NavItem>
           </NavMenu>
           <NavBtn>

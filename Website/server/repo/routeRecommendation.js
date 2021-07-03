@@ -6,7 +6,7 @@ const findDistance = require("./findDistance");
 const findDuration = require("./findDuration");
 const addTime = require("./addTime");
 const heapq = require("heapq");
-const reverseMap = require('../data/reverseMap.json');
+const reverseMap = require("../data/reverseMap.json");
 
 const lowestCostNode = (costs, processed) => {
   return Object.keys(costs).reduce((lowest, node) => {
@@ -150,13 +150,17 @@ const routeRecommendation = (
       `Start: ${start} or End: ${end} cannot be found. Probably bus stops doesn't exist.`
     );
     return [
-      { String: `Start: ${reverseMap[start]} or End: ${reverseMap[end]} cannot be found.`, Path: [], Cost: -1 },
+      {
+        String: `Start: ${reverseMap[start]} or End: ${reverseMap[end]} cannot be found.`,
+        Path: [],
+        Cost: -1,
+      },
     ];
   } else {
     let graphForTransfers = create_dijkstraGraphforTransfers(graph);
     let arr = [];
     Object.keys(graphForTransfers).forEach((x) => {
-      if (x !== end + "_none" && x.substring(0, x.indexOf('_')) === end) {
+      if (x !== end + "_none" && x.substring(0, x.indexOf("_")) === end) {
         graphForTransfers = create_dijkstraGraphforTransfers(graph);
         arr.push(
           dijkstra(
@@ -183,12 +187,13 @@ const routeRecommendation = (
     });
 
     if (result.length === 0) {
-      return [{ String: "No available path could be found.", Path: [],Cost: -1 }];
+      return [
+        { String: "No available path could be found.", Path: [], Cost: -1 },
+      ];
     } else {
       return heapq.heapsort(result, comparator);
     }
   }
 };
-
 
 module.exports = routeRecommendation;

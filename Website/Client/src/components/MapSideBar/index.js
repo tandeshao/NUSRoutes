@@ -63,7 +63,7 @@ const MapSideBar = ({ routeRecommendations, setRoute, route, startAndEnd }) => {
         current={current}
         destination={destination}
       />
-      
+
       <Routes
         includeArrivalTime={includeArrivalTime}
         transferredBuses={transferredBuses}
@@ -78,9 +78,7 @@ const MapSideBar = ({ routeRecommendations, setRoute, route, startAndEnd }) => {
         setSelectedRoute={setSelectedRoute}
       />
 
-      <Logo to="/" >
-        NUSROUTES
-      </Logo>
+      <Logo to="/">NUSROUTES</Logo>
     </MapSideBarContainer>
   );
 };
