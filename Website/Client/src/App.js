@@ -9,6 +9,7 @@ import dotenv from 'dotenv';
 
 function App() {
   dotenv.config();
+  console.log("app rendered");
   return (
     <Router>
       <Switch>

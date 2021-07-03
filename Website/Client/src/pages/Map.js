@@ -1,4 +1,4 @@
-import WrappedMap from "../components/RenderMap";
+import RenderMap from "../components/RenderMap";
 import MapSideBar from "../components/MapSideBar";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -12,9 +12,8 @@ import {
 } from "./MapElements.js";
 
 const Map = () => {
-  const [onHover, setOnHover] = useState(() => false);
-  const [sideBar, setSideBar] = useState(() => true);
-  const { REACT_APP_API_KEY, REACT_APP_DOMAIN } = process.env;
+  const [sidebar, setSideBar] = useState(() => true);
+  const { REACT_APP_DOMAIN } = process.env;
   let { string } = useParams();
   const [routeRecommendations, setRouteRecommendations] = useState(() => [
     { Path: [] },
@@ -47,8 +46,9 @@ const Map = () => {
     )
       .then((response) => response.json())
       .then((data) => {
-        setRouteRecommendations(data);
+        //reason for the rendering of map pg twice.
         setRoute(data[0]["Path"]);
+        setRouteRecommendations(data);    
       })
       .catch((error) =>
         setRouteRecommendations([
@@ -63,47 +63,31 @@ const Map = () => {
 
   return (
       <PageContainer>
-        <SideBarContainer sideBar={sideBar}>
+        <SideBarContainer $sidebar={sidebar}>
           <MapSideBar
             routeRecommendations={routeRecommendations}
             setRoute={setRoute}
             startAndEnd={[start, end]}
             route={route}
-            setRouteRecommendations={setRouteRecommendations}
           />
         </SideBarContainer>
-        <MapContainer sideBar={sideBar}>
-          {sideBar ? (
+        <MapContainer $sidebar={sidebar}>
+          {sidebar ? (
             <ArrowLeftButton
-              sideBar={sideBar}
-              onHover={onHover}
-              onMouseEnter={() => setOnHover(true)}
-              onMouseLeave={() => setOnHover(false)}
+              $sidebar={sidebar}
               onClick={() => {
                 setSideBar((prev) => !prev);
-                setOnHover(false);
               }}
             />
           ) : (
             <ArrowRightButton
-              sideBar={sideBar}
-              onHover={onHover}
-              onMouseEnter={() => setOnHover(true)}
-              onMouseLeave={() => setOnHover(false)}
+              $sidebar={sidebar}
               onClick={() => {
                 setSideBar((prev) => !prev);
-                setOnHover(false);
               }}
             />
           )}
-          <WrappedMap
-            googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${REACT_APP_API_KEY}`}
-            loadingElement={<div style={{ height: "100%" }} />}
-            containerElement={<div style={{ height: "100%" }} />}
-            mapElement={<div style={{ height: "100%" }} />}
-            route={route}
-            style={{ transition: "all .15s ease-in-out" }}
-          />
+          <RenderMap route={route}/>
         </MapContainer>
       </PageContainer>
   );

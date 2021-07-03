@@ -2,7 +2,7 @@ import options from "../../../data/options.json";
 import map from "../../../data/map.json";
 import styles from "./styles.json";
 import data from "../../../data/vacation.json";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
@@ -37,14 +37,14 @@ const InputSection = ({
   current,
   destination,
   setCurrent,
-  setDestination
+  setDestination,
+  setTime,
 }) => {
-  useEffect(() => {}, [time, day, date, month, year]);
   const [hover, setHover] = useState(false);
   const onHover = () => {
     setHover(!hover);
   };
- 
+
   const [currentError, setCurrentError] = useState(() => false);
   const [destinationError, setDestinationError] = useState(() => false);
 
@@ -90,6 +90,10 @@ const InputSection = ({
 
       const start = map[current];
       const end = map[destination];
+      const [hour, minute] = obj.toLocaleTimeString("it-IT").split(/:| /);
+      let now = parseInt(hour + minute);
+      setTime(now);
+      
       const category =
         data.reduce((x, y) => {
           if (x !== null) {

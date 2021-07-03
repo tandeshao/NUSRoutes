@@ -143,7 +143,7 @@ const Routes = ({
                     >
                       {Object.keys(route).map(
                         (str, index) =>
-                          str !== "Path" && (
+                          str !== "Path" && str !== "Cost" && (
                             <p key={index + 300}>
                               {str + ": " + route[str] + " " + units[index]}
                             </p>
@@ -184,7 +184,7 @@ const Routes = ({
                 {Object.keys(routeRecommendations[selectedRoute]).map(
                   (str, index) => {
                     return (
-                      str !== "Path" && (
+                      str !== "Path" && str !== "Cost" && (
                         <p key={index + 400}>
                           {str +
                             ": " +

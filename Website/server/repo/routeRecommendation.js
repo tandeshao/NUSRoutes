@@ -156,7 +156,7 @@ const routeRecommendation = (
     let graphForTransfers = create_dijkstraGraphforTransfers(graph);
     let arr = [];
     Object.keys(graphForTransfers).forEach((x) => {
-      if (x.indexOf(end) !== -1 && x !== end + "_none") {
+      if (x !== end + "_none" && x.substring(0, x.indexOf('_')) === end) {
         graphForTransfers = create_dijkstraGraphforTransfers(graph);
         arr.push(
           dijkstra(

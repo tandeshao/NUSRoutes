@@ -1,29 +1,32 @@
 /* global google */
 import {
   GoogleMap,
-  withScriptjs,
-  withGoogleMap,
+  LoadScript,
+  DirectionsRenderer,
   Marker,
   InfoWindow,
-  DirectionsRenderer,
-} from "react-google-maps";
-import busStops from "../../data/busStops.json";
-import { useState, useEffect } from "react";
+} from "@react-google-maps/api";
+import mapStyle from "./mapStyle";
+import { useState, useEffect, useRef } from "react";
 import icon from "../../images/icon.png";
-import mapStyle from "./mapStyle.js";
 import icon2 from "../../images/Picture2.png";
 import icon3 from "../../images/Picture3.png";
+import busStops from "../../data/busStops.json";
+
+const containerStyle = {
+  height: "100%",
+  transition: "all .25s ease-in-out",
+};
 
 function MapDirectionsRenderer(props) {
   const [directions, setDirections] = useState(() => null);
   const [error, setError] = useState(() => null);
-  console.log('map directions rendered called.', props.places);
+  const { places, travelMode } = props;
+
   useEffect(() => {
     let mounted = true;
 
     if (mounted) {
-      const { places, travelMode } = props;
-
       const waypoints = places.map((p) => ({
         location: { lat: p["latitude"], lng: p["longitude"] },
         stopover: true,
@@ -52,7 +55,7 @@ function MapDirectionsRenderer(props) {
     return () => {
       mounted = false;
     };
-  }, [props]);
+  }, [places, travelMode]);
 
   if (error) {
     return <h1>{error}</h1>;
@@ -74,8 +77,17 @@ function MapDirectionsRenderer(props) {
   );
 }
 
-const RenderMap = ({ route }) => {
-  console.log("render map was called.");
+function RenderMap({ route }) {
+  const mapRef = useRef(() => null);
+  const position = useRef({
+    lat: 1.296643,
+    lng: 103.776398,
+  });
+
+  function handleLoad(map) {
+    mapRef.current = map;
+  }
+
   const [selectedBusStop, setSelectedBusStop] = useState(() => null);
   let places = [];
 
@@ -86,84 +98,95 @@ const RenderMap = ({ route }) => {
       }
     });
   });
-  console.log(places);
+  const { REACT_APP_API_KEY } = process.env;
   return (
-    <GoogleMap
-      defaultZoom={16}
-      defaultCenter={{ lat: 1.296643, lng: 103.776398 }}
-      defaultOptions={{ styles: mapStyle, clickableIcons: false }}
-    >
-      {places.length !== 0 && (
-        <MapDirectionsRenderer
-          places={places}
-          travelMode={window.google.maps.TravelMode.DRIVING}
-        />
-      )}
-      {places.map((busStop, index) => {
-        if (index === 0) {
-          return (
-            <Marker
-              key={busStop["caption"]}
-              position={{ lat: busStop["latitude"], lng: busStop["longitude"] }}
-              onClick={() => {
-                setSelectedBusStop(busStop);
-              }}
-              icon={{
-                url: icon2,
-                scaledSize: new window.google.maps.Size(40, 40),
-              }}
-            />
-          );
-        } else if (index === places.length - 1) {
-          return (
-            <Marker
-              key={busStop["caption"]}
-              position={{ lat: busStop["latitude"], lng: busStop["longitude"] }}
-              onClick={() => {
-                setSelectedBusStop(busStop);
-              }}
-              icon={{
-                url: icon3,
-                scaledSize: new window.google.maps.Size(28, 42),
-              }}
-            />
-          );
-        } else {
-          return (
-            <Marker
-              key={busStop["caption"]}
-              position={{ lat: busStop["latitude"], lng: busStop["longitude"] }}
-              onClick={() => {
-                setSelectedBusStop(busStop);
-              }}
-              icon={{
-                url: icon,
-                scaledSize: new window.google.maps.Size(27, 35),
-              }}
-            />
-          );
-        }
-      })}
+    <LoadScript googleMapsApiKey={REACT_APP_API_KEY}>
+      <GoogleMap
+        mapContainerStyle={containerStyle}
+        onLoad={handleLoad}
+        center={position}
+        zoom={16}
+        options={{ styles: mapStyle, clickableIcons: false }}
+      >
+        {places.length !== 0 && (
+          <MapDirectionsRenderer
+            places={places}
+            travelMode={window.google.maps.TravelMode.DRIVING}
+          />
+        )}
+        {places.map((busStop, index) => {
+          if (index === 0) {
+            return (
+              <Marker
+                key={busStop["caption"]}
+                position={{
+                  lat: busStop["latitude"],
+                  lng: busStop["longitude"],
+                }}
+                onClick={() => {
+                  setSelectedBusStop(busStop);
+                }}
+                icon={{
+                  url: icon2,
+                  scaledSize: new window.google.maps.Size(40, 40),
+                }}
+              />
+            );
+          } else if (index === places.length - 1) {
+            return (
+              <Marker
+                key={busStop["caption"]}
+                position={{
+                  lat: busStop["latitude"],
+                  lng: busStop["longitude"],
+                }}
+                onClick={() => {
+                  setSelectedBusStop(busStop);
+                }}
+                icon={{
+                  url: icon3,
+                  scaledSize: new window.google.maps.Size(28, 42),
+                }}
+              />
+            );
+          } else {
+            return (
+              <Marker
+                key={busStop["caption"]}
+                position={{
+                  lat: busStop["latitude"],
+                  lng: busStop["longitude"],
+                }}
+                onClick={() => {
+                  setSelectedBusStop(busStop);
+                }}
+                icon={{
+                  url: icon,
+                  scaledSize: new window.google.maps.Size(27, 35),
+                }}
+              />
+            );
+          }
+        })}
 
-      {selectedBusStop && (
-        <InfoWindow
-          onCloseClick={() => {
-            setSelectedBusStop(null);
-          }}
-          position={{
-            lat: selectedBusStop["latitude"],
-            lng: selectedBusStop["longitude"],
-          }}
-        >
-          <div>
-            <h4> {selectedBusStop["LongName"]} </h4>
-          </div>
-        </InfoWindow>
-      )}
-    </GoogleMap>
+        {selectedBusStop && (
+          <InfoWindow
+            onCloseClick={() => {
+              setSelectedBusStop(null);
+            }}
+            position={{
+              lat: selectedBusStop["latitude"],
+              lng: selectedBusStop["longitude"],
+            }}
+          >
+            <div>
+              <h4> {selectedBusStop["LongName"]} </h4>
+            </div>
+          </InfoWindow>
+        )}
+      </GoogleMap>
+    </LoadScript>
   );
-};
+}
 
-const WrappedMap = withScriptjs(withGoogleMap(RenderMap));
-
-export default WrappedMap;
+export default RenderMap;
