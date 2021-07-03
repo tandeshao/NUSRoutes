@@ -76,13 +76,14 @@ const ProximityAlarm = ({ destination }) => {
   const [openReached, setOpenReached] = useState(false);
 
   const onSuccess = (location) => {
-    setLocation({
+    return setLocation({
       loaded: true,
       lat: location.coords.latitude,
       lng: location.coords.longitude,
     });
   };
 
+  
   const onError = (error) => {
     setLocation({
       loaded: false,
@@ -93,7 +94,9 @@ const ProximityAlarm = ({ destination }) => {
     });
   };
 
+  
   useEffect(() => {
+    const { REACT_APP_DOMAIN } = process.env;
     if (alarmToggle) {
       if (!alarm) {
         if (!("geolocation" in navigator)) {
@@ -110,7 +113,7 @@ const ProximityAlarm = ({ destination }) => {
         console.log("Far from destination");
         if (location.loaded) {
           fetch(
-            "http://localhost:5000" +
+            REACT_APP_DOMAIN +
               "/proximityAlarm?" +
               "lat=" +
               location.lat +

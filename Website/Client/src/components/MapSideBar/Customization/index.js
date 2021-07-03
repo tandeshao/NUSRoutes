@@ -132,7 +132,7 @@ const Customization = ({
   });
 
   return (
-    <SectionContainer style={isOpen ? { height: "45%" } : { height: "15%" }}>
+    <SectionContainer style={isOpen ? { height: "45%" } : { height: "18%" }}>
       <DepartureContainer>
         <Button
           onClick={handleClick}

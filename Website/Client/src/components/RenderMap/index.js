@@ -79,11 +79,9 @@ function MapDirectionsRenderer(props) {
 
 function RenderMap({ route }) {
   const mapRef = useRef(() => null);
-  const position = useRef({
-    lat: 1.296643,
-    lng: 103.776398,
-  });
-
+  const center = { lat: 1.296643, lng: 103.776398};
+  const position = useRef(center)
+  
   function handleLoad(map) {
     mapRef.current = map;
   }
@@ -104,7 +102,7 @@ function RenderMap({ route }) {
       <GoogleMap
         mapContainerStyle={containerStyle}
         onLoad={handleLoad}
-        center={position}
+        center={position.current}
         zoom={16}
         options={{ styles: mapStyle, clickableIcons: false }}
       >
