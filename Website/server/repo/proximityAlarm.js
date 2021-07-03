@@ -4,10 +4,12 @@ function proximityAlarm(lat1, lon1, dest) {
   const distance = 175;
   var R = 6371; // Radius of the earth in km
   const details = busStops.filter((stops) => stops.name === dest)[0];
-  const lat2 = details.latitude;
-  const lon2 = details.longitude;
+  const lat2 = parseFloat(details.latitude);
+  const lon2 = parseFloat(details.longitude);
+
   var dLat = degToRad(lat2 - lat1); // deg2rad below
   var dLon = degToRad(lon2 - lon1);
+
   var a =
     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
     Math.cos(degToRad(lat1)) *
