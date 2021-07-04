@@ -17,7 +17,6 @@ const MapSideBar = ({ routeRecommendations, setRoute, route, startAndEnd }) => {
   const [date, setDate] = useState(() => parseInt(dateNow));
   const [month, setMonth] = useState(() => parseInt(monthNow));
   const [year, setYear] = useState(() => parseInt(yearNow));
-  const [isOpen, setIsOpen] = useState(() => false);
   const [day, setDay] = useState(() => today);
   const [selectedRoute, setSelectedRoute] = useState(() => null);
   const [includeArrivalTime, setIncludeArrivalTime] = useState(() => true);
@@ -53,8 +52,6 @@ const MapSideBar = ({ routeRecommendations, setRoute, route, startAndEnd }) => {
       <Customization
         setTime={setTime}
         setDate={setDate}
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
         setMonth={setMonth}
         setYear={setYear}
         setDay={setDay}
@@ -72,7 +69,6 @@ const MapSideBar = ({ routeRecommendations, setRoute, route, startAndEnd }) => {
         setBusArrivalTime={setBusArrivalTime}
         routeRecommendations={routeRecommendations}
         setRoute={setRoute}
-        isOpen={isOpen}
         route={route}
         selectedRoute={selectedRoute}
         setSelectedRoute={setSelectedRoute}

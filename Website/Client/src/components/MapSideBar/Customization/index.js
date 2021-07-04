@@ -232,7 +232,7 @@ const Customization = ({
   };
 
   return (
-    <SectionContainer style={{ height: "20%" }}>
+    <SectionContainer>
       <DepartureContainer>
         <Button
           onClick={handleClick}

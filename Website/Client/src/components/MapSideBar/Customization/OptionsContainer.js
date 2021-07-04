@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const SectionContainer = styled.div`
   width: 100%;
+  height: 20%;
   position: relative;
-  overflow: hidden;
 `;
 
 export const DepartureContainer = styled.div`

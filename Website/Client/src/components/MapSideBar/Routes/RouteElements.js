@@ -17,7 +17,7 @@ export const RouteContainer = styled.div`
 
 export const ScrollBar = styled.div`
   overflow-y: auto;
-  height: ${({ isOpen }) => (isOpen ? "20vh" : "45vh")};
+  height: 45vh;
   background: black;
   maxwidth: 20vw;
   margin: 20px;
@@ -118,7 +118,7 @@ export const Container2 = styled.div`
 
 export const ScrollBar2 = styled.div`
   overflow-y: auto;
-  height: ${({ isOpen }) => (isOpen ? "30vh" : "45vh")};
+  height: 45vh;
   background: black;
   maxwidth: 20vw;
   margin: 20px;

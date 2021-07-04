@@ -1,4 +1,5 @@
 import { Button } from "../ButtonElement";
+import { useState } from "react";
 import {
   InfoContainer,
   InfoWrapper,
@@ -28,8 +29,10 @@ const InfoSection = ({
   alt,
   primary,
   dark,
-  dark2
+  dark2,
 }) => {
+  const [isOpen, setIsOpen] = useState(() => false);
+
   return (
     <>
       <InfoContainer lightBg={lightBg} id={id}>
@@ -50,7 +53,8 @@ const InfoSection = ({
                     offset={-80}
                     primary={primary ? 1 : 0} //from stackoverflow
                     dark={dark ? 1 : 0} //from stackoverflow
-                    dark2={dark2 ? 1 : 0}>
+                    dark2={dark2 ? 1 : 0}
+                  >
                     {buttonLabel}
                   </Button>
                 </BtnWrap>
@@ -58,11 +62,45 @@ const InfoSection = ({
             </Column1>
             <Column2>
               <ImgWrap>
-                <Img src={img} alt={alt} />
+                <Img src={img} alt={alt} onClick={() => setIsOpen(true)} />
               </ImgWrap>
             </Column2>
           </InfoRow>
         </InfoWrapper>
+        {isOpen ? (
+          <>
+            <div
+              style={{
+                zIndex: "99",
+                position: "fixed",
+                background: "#353535",
+                width: "100vw",
+                height: "100vh",
+                top: "0",
+                right: "0",
+                backdropFilter: "blur(5px) brightness(0.5)",
+                opacity: "80%",
+                cursor: "pointer",
+              }}
+              onClick={() => setIsOpen(false)}
+            />
+            <img
+              src={img}
+              alt={""}
+              style={{
+                position: "fixed",
+                right: "20%",
+                top: "10%",
+                zIndex: '100',
+                width: "65%",
+                height: "75%",
+              }}
+              onClick={() => setIsOpen(true)}
+            />
+          </>
+        ) : (
+          ""
+        )}
       </InfoContainer>
     </>
   );

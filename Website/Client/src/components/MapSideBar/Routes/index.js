@@ -55,7 +55,6 @@ const findTransferredBuses = (route, selectedRoute) => {
 };
 
 const Routes = ({
-  isOpen,
   setRoute,
   routeRecommendations,
   route,
@@ -114,11 +113,11 @@ const Routes = ({
   return (
     <div
       style={{
-        height: isOpen ? "100%" : "100%",
+        height:"100%",
       }}
     >
       {selectedRoute === null ? (
-        <ScrollBar isOpen={isOpen}>
+        <ScrollBar>
           {routeRecommendations[0]["Cost"] !== -1 ? (
             <TransitionGroup component={Effect}>
               {routeRecommendations.map((route, index) => {
@@ -171,7 +170,7 @@ const Routes = ({
           )}
         </ScrollBar>
       ) : (
-        <ScrollBar2 isOpen={isOpen}>
+        <ScrollBar2>
           <TransitionGroup component={Effect}>
             <CSSTransition
               in={true}
