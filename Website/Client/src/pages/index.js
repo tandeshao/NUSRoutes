@@ -4,12 +4,12 @@ import { useState } from "react";
 import MainSection from "../components/MainSection";
 import InfoSection from "../components/InfoSection/Index";
 import { homeObjOne } from "../components/InfoSection/Data";
-import Services from "../components/Platforms";
 import Footer from "../components/Footer";
 import FAQSection from "../components/FAQ";
 import ContactSection from "../components/Contact";
+import BusInfo from '../components/BusInfo';
 
-const Home = (props) => {
+const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => {
     setIsOpen(!isOpen);
@@ -20,7 +20,7 @@ const Home = (props) => {
       <Navbar toggle={toggle} />
       <MainSection />
       <InfoSection {...homeObjOne} />
-      <Services />
+      <BusInfo />
       <FAQSection />
       <ContactSection />
       <Footer />

@@ -11,14 +11,16 @@ export const FAQContainer = styled.div`
   @media screen and (max-width: 768px) {
     display: flex;
     flex-direction: column;
-    height: 700px;
+    height: 1000px;
     justify-content: center;
     align-items: center;
   }
 
   @media screen and (max-width: 480px) {
-    height: 600px;
+    height: 1200px;
+    
   }
+
 `;
 
 export const FAQH1 = styled.h1`
@@ -34,7 +36,7 @@ export const FAQH1 = styled.h1`
   }
 
   @media screen and (max-width: 480px) {
-    font-size: 1rem;
+    font-size: 2rem;
   }
 `;
 
@@ -103,7 +105,7 @@ export const Answer = styled.p`
 `;
 
 export const Image = styled.img`
-  margin-left: 40%;
+  margin-left: 30%;
   margin-top: 60px;
   height: 400px;
   width: 400px;
