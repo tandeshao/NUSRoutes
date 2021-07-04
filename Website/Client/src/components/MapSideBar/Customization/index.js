@@ -3,6 +3,7 @@ import {
   DepartureContainer,
   SectionContainer,
   OptionsContainer2,
+  ProximityAlarmContainer
 } from "./OptionsContainer";
 import Button from "@material-ui/core/Button";
 import { useState } from "react";
@@ -35,7 +36,7 @@ const Customization = ({
   setIncludeArrivalTime,
   setSelectedRoute,
   current,
-  destination,
+  destination
 }) => {
   const [anchorEl, setAnchorEl] = useState(() => null);
   const [btnName, setBtnName] = useState(() => "Depart Now");
@@ -228,7 +229,7 @@ const Customization = ({
   };
 
   return (
-    <SectionContainer style={{ height: "18%" }}>
+    <SectionContainer style={{ height: "20%" }}>
       <DepartureContainer>
         <Button
           onClick={handleClick}
@@ -276,8 +277,9 @@ const Customization = ({
           STOPS NEAR ME
         </Button>
       </OptionsContainer2>
-
-      <ProximityAlarm destination={destination} />
+      <ProximityAlarmContainer>
+        <ProximityAlarm destination={destination} />
+      </ProximityAlarmContainer>
     </SectionContainer>
   );
 };

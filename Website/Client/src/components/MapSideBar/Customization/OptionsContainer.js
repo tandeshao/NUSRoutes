@@ -41,4 +41,10 @@ export const OptionsContainer2 = styled.div`
     left: 45%;
     width: 100%;
   }
-`;
+`
+export const ProximityAlarmContainer = styled.div`
+  position: absolute;
+  top: 60%;
+  left: 5%;
+`
+;
