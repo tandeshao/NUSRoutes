@@ -16,6 +16,7 @@ import data from "../../../data/vacation.json";
 import ProximityAlarm from "../ProximityAlarm";
 import busStops from "../../../data/busStops.json";
 
+
 function distance(lat1, lon1, lat2, lon2) {
   var p = 0.017453292519943295; // Math.PI / 180
   var c = Math.cos;
@@ -50,7 +51,10 @@ const Customization = ({
     if (name === "Depart Later") {
       setAnchorEl(null);
       setBtnName(name);
+      setIncludeArrivalTime(false);
+      setSelectedRoute(null);
       handleDateInput();
+  
     } else {
       setAnchorEl(null);
       setBtnName(name);
@@ -129,13 +133,13 @@ const Customization = ({
       parseInt(userTime.substring(0, 2)) < 0 ||
       parseInt(userTime.substring(0, 2)) > 23
     ) {
-      alert("hour is not between 00 and 23 inclusive. Please try again.");
+      alert("Hour is not between 00 and 23 inclusive. Please try again.");
       return handleTimeInput() === null ? handleClose("Depart Now") : "";
     } else if (
       parseInt(userTime.substring(0, 2)) < 0 ||
       parseInt(userTime.substring(2, 4)) > 59
     ) {
-      alert("minute is not between 00 and 59 inclusive. Please try again.");
+      alert("Mnute is not between 00 and 59 inclusive. Please try again.");
       return handleTimeInput() === null ? handleClose("Depart Now") : "";
     } else {
       return userTime;
@@ -153,7 +157,7 @@ const Customization = ({
       handleClose("Depart Now");
       return null;
     } else if (userDate === "") {
-      alert("Please input a date. Please try again.");
+      alert("You have no input. Please try again.");
       return handleDateInput() === null ? handleClose("Depart Now") : "";
     } else if (isNaN(parseInt(userDate))) {
       alert("Input is not a number. Please try again.");
@@ -198,7 +202,6 @@ const Customization = ({
       );
     }
     let obj = await getLongAndLat();
-    console.log(obj);
     busStops.forEach((busStop) => {
       const dist = distance(
         obj.coords.latitude,
@@ -257,8 +260,6 @@ const Customization = ({
           <MenuItem
             onClick={() => {
               handleClose("Depart Later");
-              setIncludeArrivalTime(false);
-              setSelectedRoute(null);
             }}
           >
             Depart Later

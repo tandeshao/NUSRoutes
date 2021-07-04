@@ -62,27 +62,7 @@ const Map = () => {
       );
   }, [string, start, end, time, date, REACT_APP_DOMAIN]);
 
-  // const onSuccess = (location) => {
-  //   console.log(location.coords.latitude, location.coords.longitude);
-  //   return {
-  //     lat: location.coords.latitude,
-  //     lng: location.coords.longitude,
-  //   };
-  // };
-
-  // const onError = (error) => {
-  //   return {
-  //     error: {
-  //       code: error.code,
-  //       message: error.message,
-  //     },
-  //   };
-  // };
-
-  // setInterval(() => {
-  //   console.log(1);
-  //   navigator.geolocation.getCurrentPosition(onSuccess, onError);
-  // }, 10000);
+ 
 
   return (
     <PageContainer>

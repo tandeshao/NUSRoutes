@@ -65,11 +65,12 @@ export const ArrowLeftButton = styled(ArrowLeftRoundedIcon)`
     
 
     @media screen and (max-width: 1500px) {
-      left: ${({ $sidebar }) => ($sidebar ? "33.2vw" : "0vw")};
+      width: 2vw;
+      left: ${({ $sidebar }) => ($sidebar ? "37.5%" : "0vw")};
     }
 
     @media screen and (max-width: 1100px) {
-      left: ${({ $sidebar }) => ($sidebar ? "41.2vw" : "0vw")};
+      left: ${({ $sidebar }) => ($sidebar ? "46%" : "0vw")};
       width: 3vw;
     }
 
