@@ -90,9 +90,6 @@ const InputSection = ({
 
       const start = map[current];
       const end = map[destination];
-      const [hour, minute] = obj.toLocaleTimeString("it-IT").split(/:| /);
-      let now = parseInt(hour + minute);
-      setTime(now);
       
       const category =
         data.reduce((x, y) => {

@@ -9,15 +9,6 @@ import { useState } from "react";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import "date-fns";
-import Grid from "@material-ui/core/Grid";
-import DateFnsUtils from "@date-io/date-fns";
-import {
-  MuiPickersUtilsProvider,
-  KeyboardTimePicker,
-  KeyboardDatePicker,
-} from "@material-ui/pickers";
-import { createMuiTheme } from "@material-ui/core";
-import { ThemeProvider } from "@material-ui/styles";
 import { useHistory } from "react-router-dom";
 import map from "../../../data/map.json";
 import data from "../../../data/vacation.json";
@@ -35,51 +26,8 @@ function distance(lat1, lon1, lat2, lon2) {
   return 12742 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km
 }
 
-const getDate = (str) => {
-  if (str === null) {
-    return null;
-  } else {
-    const map = {
-      Mon: 1,
-      Tue: 2,
-      Wed: 3,
-      Thu: 4,
-      Fri: 5,
-      Sat: 6,
-      Sun: 0,
-    };
-
-    const month = {
-      Jan: 1,
-      Feb: 2,
-      Mar: 3,
-      Apr: 4,
-      May: 5,
-      Jun: 6,
-      Jul: 7,
-      Aug: 8,
-      Sep: 9,
-      Oct: 10,
-      Nov: 11,
-      Dec: 12,
-    };
-    let result = [];
-    result.push(
-      parseInt(str.substring(16, 18)) * 100 + parseInt(str.substring(19, 21))
-    );
-    result.push(map[str.substring(0, 3)]);
-    result.push(parseInt(str.substring(4).substring(4, 6)));
-    result.push(month[str.substring(4, 7)]);
-    result.push(parseInt(str.substring(11, 15)));
-    //[time, day, date, month, year] format
-    return result;
-  }
-};
-
 const Customization = ({
   setTime,
-  isOpen,
-  setIsOpen,
   setMonth,
   setYear,
   setDate,
@@ -91,57 +39,155 @@ const Customization = ({
 }) => {
   const [anchorEl, setAnchorEl] = useState(() => null);
   const [btnName, setBtnName] = useState(() => "Depart Now");
-  const [selectedDate, setSelectedDate] = useState(() => new Date());
   const history = useHistory();
-  const changeVar = (arr) => {
-    setTime(arr[0]);
-    setDay(arr[1]);
-    setDate(arr[2]);
-    setMonth(arr[3]);
-    setYear(arr[4]);
-  };
-
-  const handleDateChange = (date) => {
-    setSelectedDate(date);
-    const res = getDate(String(date));
-    if (res !== null) {
-      changeVar(res);
-    }
-  };
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
   const handleClose = (name) => {
-    if (isOpen === false && name === "Depart Later") {
+    if (name === "Depart Later") {
       setAnchorEl(null);
       setBtnName(name);
-      setIsOpen((prev) => !prev);
-    } else if (isOpen === true && name === "Depart Now") {
-      setAnchorEl(null);
-      setBtnName(name);
-      setIsOpen((prev) => !prev);
+      handleDateInput();
     } else {
       setAnchorEl(null);
+      setBtnName(name);
+      const obj = new Date();
+      const today = obj.getDay();
+      let [hour, minute] = obj.toLocaleTimeString("it-IT").split(/:| /);
+      let [monthNow, dateNow, yearNow] = obj
+        .toLocaleDateString("en-US")
+        .split("/");
+      setTime(hour + minute);
+      setDay(today);
+      setDate(parseInt(dateNow));
+      setMonth(parseInt(monthNow));
+      setYear(parseInt(yearNow));
+      setIncludeArrivalTime(true);
+      setSelectedRoute(null);
+      const year = parseInt(yearNow);
+      const month = parseInt(monthNow);
+      const date = parseInt(dateNow);
+      const day = today;
+      const time = hour + minute;
+      const category =
+        data.reduce((x, y) => {
+          if (x !== null) {
+            return x;
+          } else if (y["duration-year"].includes(year)) {
+            if (
+              y["duration-month"][0] < month &&
+              month < y["duration-month"][1]
+            ) {
+              return "vacation";
+            } else if (
+              y["duration-month"][0] === month ||
+              month === y["duration-month"][1]
+            ) {
+              return y["duration-date"][0] <= date &&
+                date <= y["duration-date"][1]
+                ? "vacation"
+                : "term";
+            } else {
+              return "term";
+            }
+          } else {
+            return null;
+          }
+        }, null) + (day === 0 ? "-sun/ph" : day === 6 ? "-sat" : "-weekdays");
+      history.push(
+        "/map/routeRecommedation?start=" +
+          encodeURIComponent(map[current]) +
+          "&end=" +
+          encodeURIComponent(map[destination]) +
+          "&time=" +
+          encodeURIComponent(time) +
+          "&date=" +
+          encodeURIComponent(category)
+      );
     }
   };
 
-  const materialTheme = createMuiTheme({
-    overrides: {
-      MuiPickersToolbar: {
-        toolbar: {
-          backgroundColor: "#939990",
-        },
-      },
-      MuiPickersCalendarHeader: {
-        switchHeader: {
-          backgroundColor: "white",
-          color: "#1b5e20",
-        },
-      },
-    },
-  });
+  const handleTimeInput = () => {
+    const userTime = prompt(
+      "Type in your time here (format: hhmm)." +
+        "For example, 12:34 am would be 0034 and 12:34 pm would be 1234."
+    );
+
+    if (userTime === null) {
+      handleClose("Depart Now");
+      return null;
+    } else if (isNaN(parseInt(userTime))) {
+      alert("Input is not a number. Please try again.");
+      return handleTimeInput() === null ? handleClose("Depart Now") : "";
+    } else if (userTime.length !== 4) {
+      alert("Input is not of the correct length. Please try again.");
+      return handleTimeInput() === null ? handleClose("Depart Now") : "";
+    } else if (
+      parseInt(userTime.substring(0, 2)) < 0 ||
+      parseInt(userTime.substring(0, 2)) > 23
+    ) {
+      alert("hour is not between 00 and 23 inclusive. Please try again.");
+      return handleTimeInput() === null ? handleClose("Depart Now") : "";
+    } else if (
+      parseInt(userTime.substring(0, 2)) < 0 ||
+      parseInt(userTime.substring(2, 4)) > 59
+    ) {
+      alert("minute is not between 00 and 59 inclusive. Please try again.");
+      return handleTimeInput() === null ? handleClose("Depart Now") : "";
+    } else {
+      return userTime;
+    }
+  };
+
+  const handleDateInput = () => {
+    const userDate = prompt(
+      "Type in your date here (format: ddmmyyyy)." +
+        " For example, 4 Jul 2021 would be 04072021. (*Note: We can only compute between the year 2021 to 2024 inclusive." +
+        " Please do not put a year greater than 2024.)"
+    );
+
+    if (userDate === null) {
+      handleClose("Depart Now");
+      return null;
+    } else if (userDate === "") {
+      alert("Please input a date. Please try again.");
+      return handleDateInput() === null ? handleClose("Depart Now") : "";
+    } else if (isNaN(parseInt(userDate))) {
+      alert("Input is not a number. Please try again.");
+      return handleDateInput() === null ? handleClose("Depart Now") : "";
+    } else if (userDate.length !== 8) {
+      alert("Input is not of the correct length. Please try again.");
+      return handleDateInput() === null ? handleClose("Depart Now") : "";
+    } else if (
+      parseInt(userDate.substring(4, 8)) > 2024 ||
+      parseInt(userDate.substring(4, 8)) < 2021
+    ) {
+      alert("Input is not between 2021 and 2024. Please try again.");
+      return handleDateInput() === null ? handleClose("Depart Now") : "";
+    } else {
+      const obj = new Date(
+        userDate.substring(4, 8) +
+          "-" +
+          userDate.substring(2, 4) +
+          userDate.substring(0, 2)
+      );
+      setDay(obj.getDay());
+      setYear(parseInt(userDate.substring(4, 8)));
+      setMonth(parseInt(userDate.substring(2, 4)));
+      setDate(parseInt(userDate.substring(0, 2)));
+      const res = handleTimeInput();
+      if (res === null) {
+        handleClose("Depart Now");
+      } else {
+        setTime(parseInt(res));
+        alert(
+          `Date and time has been updated. Press get route to see the route recommendations for ${userDate} at ${res}`
+        );
+      }
+    }
+  };
 
   const findNearest = async () => {
     let arr = [];
@@ -179,11 +225,10 @@ const Customization = ({
           arr[arr.length - 1]
       );
     }
-    
   };
 
   return (
-    <SectionContainer style={isOpen ? { height: "45%" } : { height: "18%" }}>
+    <SectionContainer style={{ height: "18%" }}>
       <DepartureContainer>
         <Button
           onClick={handleClick}
@@ -203,61 +248,7 @@ const Customization = ({
         >
           <MenuItem
             onClick={() => {
-              const obj = new Date();
-              const today = obj.getDay();
-              let [hour, minute] = obj.toLocaleTimeString("it-IT").split(/:| /);
-              let [monthNow, dateNow, yearNow] = obj
-                .toLocaleDateString("en-US")
-                .split("/");
-              setTime(hour + minute);
-              setDay(today);
-              setDate(parseInt(dateNow));
-              setMonth(parseInt(monthNow));
-              setYear(parseInt(yearNow));
               handleClose("Depart Now");
-              setIncludeArrivalTime(true);
-              setSelectedRoute(null);
-              const year = parseInt(yearNow);
-              const month = parseInt(monthNow);
-              const date = parseInt(dateNow);
-              const day = today;
-              const time = hour + minute;
-              const category =
-                data.reduce((x, y) => {
-                  if (x !== null) {
-                    return x;
-                  } else if (y["duration-year"].includes(year)) {
-                    if (
-                      y["duration-month"][0] < month &&
-                      month < y["duration-month"][1]
-                    ) {
-                      return "vacation";
-                    } else if (
-                      y["duration-month"][0] === month ||
-                      month === y["duration-month"][1]
-                    ) {
-                      return y["duration-date"][0] <= date &&
-                        date <= y["duration-date"][1]
-                        ? "vacation"
-                        : "term";
-                    } else {
-                      return "term";
-                    }
-                  } else {
-                    return null;
-                  }
-                }, null) +
-                (day === 0 ? "-sun/ph" : day === 6 ? "-sat" : "-weekdays");
-              history.push(
-                "/map/routeRecommedation?start=" +
-                  encodeURIComponent(map[current]) +
-                  "&end=" +
-                  encodeURIComponent(map[destination]) +
-                  "&time=" +
-                  encodeURIComponent(time) +
-                  "&date=" +
-                  encodeURIComponent(category)
-              );
             }}
           >
             Depart Now
@@ -267,7 +258,6 @@ const Customization = ({
               handleClose("Depart Later");
               setIncludeArrivalTime(false);
               setSelectedRoute(null);
-              setSelectedDate(new Date());
             }}
           >
             Depart Later
@@ -288,54 +278,6 @@ const Customization = ({
       </OptionsContainer2>
 
       <ProximityAlarm destination={destination} />
-
-      {isOpen ? (
-        <MuiPickersUtilsProvider utils={DateFnsUtils}>
-          <ThemeProvider theme={materialTheme}>
-            <div
-              style={{
-                position: "absolute",
-                top: "30%",
-                width: "100%",
-                height: "100%",
-              }}
-            >
-              <Grid container justify="space-around">
-                <KeyboardDatePicker
-                  margin="normal"
-                  id="date-picker-dialog"
-                  label="Date picker dialog"
-                  format="dd/MM/yyyy"
-                  value={selectedDate}
-                  onChange={handleDateChange}
-                  KeyboardButtonProps={{
-                    "aria-label": "change date",
-                  }}
-                  style={{
-                    background: "#fff",
-                  }}
-                />
-
-                <KeyboardTimePicker
-                  margin="normal"
-                  id="time-picker"
-                  label="Time picker"
-                  value={selectedDate}
-                  onChange={handleDateChange}
-                  KeyboardButtonProps={{
-                    "aria-label": "change time",
-                  }}
-                  style={{
-                    background: "#fff",
-                  }}
-                />
-              </Grid>
-            </div>
-          </ThemeProvider>
-        </MuiPickersUtilsProvider>
-      ) : (
-        ""
-      )}
     </SectionContainer>
   );
 };

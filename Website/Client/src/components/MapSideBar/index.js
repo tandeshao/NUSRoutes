@@ -13,7 +13,7 @@ const MapSideBar = ({ routeRecommendations, setRoute, route, startAndEnd }) => {
   let [hour, minute] = obj.toLocaleTimeString("it-IT").split(/:| /);
   let [monthNow, dateNow, yearNow] = obj.toLocaleDateString("en-US").split("/");
   const today = obj.getDay();
-  const [time, setTime] = useState(() => hour + minute);
+  const [time, setTime] = useState(() => parseInt(hour + minute));
   const [date, setDate] = useState(() => parseInt(dateNow));
   const [month, setMonth] = useState(() => parseInt(monthNow));
   const [year, setYear] = useState(() => parseInt(yearNow));
