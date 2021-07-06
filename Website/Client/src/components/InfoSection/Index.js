@@ -89,13 +89,16 @@ const InfoSection = ({
               alt={""}
               style={{
                 position: "fixed",
-                right: "30%",
-                top: "10%",
+                left: "50%",
+                top: '50%',
+                transform: 'translate(-50%, -50%)',
                 zIndex: '100',
-                width: "40vw",
-                height: "60vh",
+                width: "75%",
+                height: "auto",
+                minWidth: '100px',
+                cursor: 'pointer'
               }}
-              onClick={() => setIsOpen(true)}
+              onClick={() => setIsOpen(false)}
             />
           </>
         ) : (

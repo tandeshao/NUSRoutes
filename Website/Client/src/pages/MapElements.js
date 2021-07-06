@@ -8,18 +8,18 @@ export const PageContainer = styled.div`
 `;
 
 export const SideBarContainer = styled.div`
-  width: ${({ $sidebar }) => ($sidebar ? "30vw" : "0vw")};
+  width: ${({ $sidebar }) => ($sidebar ? "25vw" : "0vw")};
   height: 100vh;
   z-index: 1;
   transition: all 0.15s ease-in-out;
   position: relative;
 
   @media screen and (max-width: 1500px) {
-    width: ${({ $sidebar }) => ($sidebar ? "60vw" : "0vw")};
+    width: ${({ $sidebar }) => ($sidebar ? "37.3vw" : "0vw")};
   }
 
   @media screen and (max-width: 1100px) {
-    width: ${({ $sidebar }) => ($sidebar ? "85vw" : "0vw")};
+    width: ${({ $sidebar }) => ($sidebar ? "46vw" : "0vw")};
   }
 
   @media screen and (max-width: 828px) {
@@ -56,7 +56,7 @@ export const ArrowLeftButton = styled(ArrowLeftRoundedIcon)`
     font-size: 100px;
     top: 50vh;
     color: black;
-    left: ${({ $sidebar }) => ($sidebar ? "23vw" : "0vw")};
+    left: ${({ $sidebar }) => ($sidebar ? "25vw" : "0vw")};
     cursor: pointer;
     background: #dfccb7;
     width: 1vw;
@@ -102,7 +102,7 @@ export const ArrowRightButton = styled(ArrowRightRoundedIcon)`
     font-size: 100px;
     top: 50vh;
     color: black;
-    left: ${({ $sidebar }) => ($sidebar ? "23vw" : "0vw")};
+    left: ${({ $sidebar }) => ($sidebar ? "25vw" : "0vw")};
     cursor: pointer;
     background: #dfccb7;
     width: 1vw;

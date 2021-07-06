@@ -12,7 +12,6 @@ import {
 } from "./MapElements.js";
 
 const Map = () => {
-  console.log("map rendered");
   const [sidebar, setSideBar] = useState(() => true);
   const { REACT_APP_DOMAIN } = process.env;
   let { string } = useParams();

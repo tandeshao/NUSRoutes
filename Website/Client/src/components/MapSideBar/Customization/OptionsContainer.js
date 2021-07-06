@@ -1,17 +1,18 @@
 import styled from "styled-components";
 
 export const SectionContainer = styled.div`
-  width: 100%;
-  height: 20%;
+  width: 100vw;
+  min-height: 10%;
+  height: auto;
   position: relative;
 `;
 
 export const DepartureContainer = styled.div`
   color: #fff;
   position: absolute;
-  top: 10%;
-  left: 3%;
-  width: 100%;
+  top: 11%;
+  left: 1%;
+  width: auto;
 
   @media screen and (max-width: 450px) {
     left: 3%;
@@ -21,13 +22,26 @@ export const DepartureContainer = styled.div`
 export const OptionsContainer = styled.div`
   color: #fff;
   position: absolute;
-  top: 10%;
-  left: 41%;
-  width: 100%;
+  top: 12%;
+  left: 10%;
+  width: auto;
+
+  @media screen and (max-width: 1500px) {
+    left: 15%;
+  }
+
+  @media screen and (max-width: 1100px) {
+    left: 20%;
+  }
 
   @media screen and (max-height: 850px) {
     display: none;
   }
+
+  @media screen and (max-width: 828px) {
+    left: 45%;
+  }
+
 `;
 
 export const OptionsContainer2 = styled.div`
@@ -37,14 +51,16 @@ export const OptionsContainer2 = styled.div`
     display: block;
     color: #fff;
     position: absolute;
-    top: 10%;
+    top: 12%;
     left: 45%;
-    width: 100%;
+    width: auto;
   }
 `
 export const ProximityAlarmContainer = styled.div`
   position: absolute;
-  top: 60%;
-  left: 5%;
+  margin-top: 25px;
+  margin-left: 15px;
+  top: 30%;
+  left: 1%;
 `
 ;

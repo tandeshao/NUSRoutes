@@ -74,7 +74,7 @@ const MapSideBar = ({ routeRecommendations, setRoute, route, startAndEnd }) => {
         setSelectedRoute={setSelectedRoute}
       />
 
-      <Logo to="/">NUSROUTES</Logo>
+      <Logo to="/">Go Back to Home</Logo>
     </MapSideBarContainer>
   );
 };

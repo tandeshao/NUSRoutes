@@ -62,7 +62,7 @@ export const Form = styled.div`
   flex-wrap: wrap;
 
   @media screen and (max-height: 850px) {
-    width: 100%;
+    width: auto;
     margin: 20px;
   }
   

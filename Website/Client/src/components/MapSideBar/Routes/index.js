@@ -250,7 +250,9 @@ const Routes = ({
                         ? "loading.."
                         : busArrivalTime[index][0] === "-"
                         ? "-"
-                        : busArrivalTime[index][0] + " mins"
+                        : busArrivalTime[index][0] !== 'Arr'
+                        ? busArrivalTime[index][0] + " mins"
+                        : busArrivalTime[index][0]
                       : ""}
                     {includeArrivalTime ? <br /> : " "}
                     {includeArrivalTime ? "Next Bus Arrival Time: " : ""}
@@ -259,7 +261,9 @@ const Routes = ({
                         ? "loading.."
                         : busArrivalTime[index][1] === "-"
                         ? "-"
-                        : +busArrivalTime[index][1] + " mins"
+                        : busArrivalTime[index][1] !== 'Arr'
+                        ? busArrivalTime[index][1] + " mins"
+                        : busArrivalTime[index][1]
                       : ""}
                     {includeArrivalTime ? <br /> : ""} <br />
                     Path: <br />

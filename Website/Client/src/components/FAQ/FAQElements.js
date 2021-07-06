@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const FAQContainer = styled.div`
-  height: 927px;
+  height: 1100px;
   background: #f9f9f9;
   display: grid;
   grid-template-columns: 50% 50%;
@@ -11,14 +11,9 @@ export const FAQContainer = styled.div`
   @media screen and (max-width: 768px) {
     display: flex;
     flex-direction: column;
-    height: 1000px;
+    height: auto;
     justify-content: center;
     align-items: center;
-  }
-
-  @media screen and (max-width: 480px) {
-    height: 1200px;
-    
   }
 
 `;
@@ -26,13 +21,12 @@ export const FAQContainer = styled.div`
 export const FAQH1 = styled.h1`
   font-size: 3rem;
   grid-area: header;
-  margin-top: 60px;
   color: #000;
+  margin-top: 60px;
   text-align: center;
 
   @media screen and (max-width: 768px) {
     font-size: 2rem;
-    margin-left: 40px;
   }
 
   @media screen and (max-width: 480px) {
@@ -106,7 +100,7 @@ export const Answer = styled.p`
 
 export const Image = styled.img`
   margin-left: 30%;
-  margin-top: 60px;
+  margin-top: 200px;
   height: 400px;
   width: 400px;
   margin-bottom: 10px;
@@ -120,16 +114,8 @@ export const Image = styled.img`
   }
   
   @media screen and (max-width: 768px) {
-    height: 200px;
-    width: 200px;
-    margin: 0;
+    display: none;
 
   }
-
-  @media screen and (max-width: 480px) {
-    height: 150px;
-    width: 150px;
-  }
-
   
 `;

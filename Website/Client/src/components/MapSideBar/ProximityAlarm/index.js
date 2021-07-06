@@ -134,6 +134,7 @@ const ProximityAlarm = ({ destination }) => {
             });
         }
       } else {
+        window.navigator.vibrate(200);
         console.log("Arriving at destination");
       }
     }

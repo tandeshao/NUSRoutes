@@ -6,9 +6,12 @@ export const Header = styled.h1`
   color: #fff;
   margin-bottom: 64px;
   top: 5vh;
+  text-align: center;
+  margin-top: 60px;
   
   @media screen and (max-width: 700px) {
     font-size: 1.7rem;
+    margin-top: 0px;
   }
 
   @media screen and (max-width: 500px) {

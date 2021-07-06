@@ -188,7 +188,7 @@ const Customization = ({
       } else {
         setTime(parseInt(res));
         alert(
-          `Date and time has been updated. Press get route to see the route recommendations for ${userDate} at ${res}`
+          `Date and time has been updated. Press get route/Go to see the route recommendations for ${userDate} at ${res}`
         );
       }
     }
