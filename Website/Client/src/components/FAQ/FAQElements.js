@@ -68,6 +68,7 @@ export const Question = styled.div`
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
+  padding-top: 10px;
   
 
   @media screen and (max-width: 480px) {
@@ -99,6 +100,7 @@ export const Answer = styled.p`
   transition: all 0.5s;
   padding: ${({isOpen, index}) => isOpen === index ? '0.5rem' : '0'};
   vertical-align: center;
+  cursor: pointer;
 `;
 
 export const Image = styled.img`
@@ -111,7 +113,7 @@ export const Image = styled.img`
   grid-area: gif;
 
   @media screen and (max-width: 1200px) {
-    margin-left: 20%;
+    margin-left: 10%;
     height: 280px;
     width: 280px;
   }

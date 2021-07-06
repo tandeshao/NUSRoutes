@@ -40,7 +40,7 @@ const FAQ = () => {
                     )}
                   </OpenIcon>
                 </Question>
-                <Answer isOpen={isOpen} index={index} >{element.answer}</Answer>
+                <Answer onClick={() => makeOpen(index)} isOpen={isOpen} index={index} >{element.answer}</Answer>
               </FAQSet>
             );
           })}
