@@ -100,7 +100,7 @@ export const Answer = styled.p`
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  transition: all 0.2s ease-out;
+  transition: all 0.5s;
   padding: ${({isOpen, index}) => isOpen === index ? '0.5rem' : '0'};
   vertical-align: center;
 `;

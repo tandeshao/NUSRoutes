@@ -138,13 +138,13 @@ export const FormSelect = styled.select`
 
 export const FormBg = styled.div`
   background: #353535;
-  borderradius: 10%;
+  border-radius: 10%;
   position: absolute;
   left: 0%;
   width: 130%;
   height: 130%;
   opacity: 85%;
-  filter: brightness(0.5);
+  filter: brightness(0.75);
   border: 7px solid #636363;
   margin: -50px;
 

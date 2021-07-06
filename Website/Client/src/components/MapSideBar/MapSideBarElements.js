@@ -22,6 +22,16 @@ export const Dividers = styled(Divider)`
 
 export const Logo = styled(LinkR)`
   position: absolute;
+  font-size: 1rem;
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+  bottom: 2%;
+  right: 10%;
+`;
+
+export const Logo2 = styled(LinkR)`
+  position: absolute;
   font-size: 1.5rem;
   text-decoration: none;
   font-weight: bold;

@@ -13,6 +13,7 @@ import startIcon from "../../../images/Picture2.png";
 import endIcon from "../../../images/Picture3.png";
 import { useEffect } from "react";
 import { BiRefresh } from "react-icons/bi";
+import {GiClick} from 'react-icons/gi';
 
 const findTransferredBuses = (route, selectedRoute) => {
   const transferredBuses = [];
@@ -200,6 +201,7 @@ const Routes = ({
                             </p>
                           )
                       )}
+                      < GiClick style={{position: 'absolute', top: '10px', right: '10px'}}/>
                     </RouteContainer>
                   </CSSTransition>
                 );

@@ -2,9 +2,11 @@ import Customization from "./Customization/";
 import InputSection from "./InputSection/";
 import Routes from "./Routes/";
 import { useState } from "react";
-import { MapSideBarContainer, Dividers, Logo } from "./MapSideBarElements";
+import { MapSideBarContainer, Dividers, Logo, Logo2 } from "./MapSideBarElements";
 import reverseMap from "../../data/reverseMap.json";
 import options from "../../data/options.json";
+import { IoHomeSharp } from "react-icons/io5";
+
 
 const MapSideBar = ({ routeRecommendations, setRoute, route, startAndEnd }) => {
   const [transferredBuses, setTransferredBuses] = useState(() => []);
@@ -74,7 +76,8 @@ const MapSideBar = ({ routeRecommendations, setRoute, route, startAndEnd }) => {
         setSelectedRoute={setSelectedRoute}
       />
 
-      <Logo to="/">Go Back to Home</Logo>
+      <Logo to="/">  <IoHomeSharp size={30} style={{position: 'relative', top:'5px', right: '5px'}}/> Home </Logo>
+     
     </MapSideBarContainer>
   );
 };
