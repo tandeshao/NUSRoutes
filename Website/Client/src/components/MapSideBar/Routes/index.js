@@ -13,7 +13,7 @@ import startIcon from "../../../images/Picture2.png";
 import endIcon from "../../../images/Picture3.png";
 import { useEffect } from "react";
 import { BiRefresh } from "react-icons/bi";
-import {GiClick} from 'react-icons/gi';
+import { GiClick } from "react-icons/gi";
 
 const findTransferredBuses = (route, selectedRoute) => {
   const transferredBuses = [];
@@ -73,43 +73,45 @@ const Routes = ({
   useEffect(() => {
     console.log("fetch called");
     transferredBuses.forEach((obj) => {
-      const busStop = route[obj.start].substring(
-        0,
-        route[obj.start].indexOf("_")
-      );
-      const busService = obj.service;
-      const checkBusService =
-        busStop === "COM2" && busService === "D1"
-          ? route[obj.start + 1] === "LT13-OPP"
-            ? encodeURIComponent("D1(To UTown)")
-            : encodeURIComponent("D1(To BIZ2)")
-          : busStop === "UTown" && busService === "C"
-          ? route[obj.start + 1] === "RAFFLES"
-            ? encodeURIComponent("C(To KRT)")
-            : encodeURIComponent("C(To FOS)")
-          : encodeURIComponent(busService);
-      fetch(
-        `${REACT_APP_DOMAIN}` +
-          "/api/" +
-          "getArrivalTime" +
-          "?" +
-          "busStop=" +
-          busStop +
-          "&" +
-          "busService=" +
-          checkBusService
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          setBusArrivalTime((arr) => {
-            if (arr.length < transferredBuses.length) {
-              return arr.concat([data]);
-            } else {
-              return [];
-            }
-          });
-        })
-        .catch(console.log);
+      if (route[obj.start]) {
+        const busStop = route[obj.start].substring(
+          0,
+          route[obj.start].indexOf("_")
+        );
+        const busService = obj.service;
+        const checkBusService =
+          busStop === "COM2" && busService === "D1"
+            ? route[obj.start + 1] === "LT13-OPP"
+              ? encodeURIComponent("D1(To UTown)")
+              : encodeURIComponent("D1(To BIZ2)")
+            : busStop === "UTown" && busService === "C"
+            ? route[obj.start + 1] === "RAFFLES"
+              ? encodeURIComponent("C(To KRT)")
+              : encodeURIComponent("C(To FOS)")
+            : encodeURIComponent(busService);
+        fetch(
+          `${REACT_APP_DOMAIN}` +
+            "/api/" +
+            "getArrivalTime" +
+            "?" +
+            "busStop=" +
+            busStop +
+            "&" +
+            "busService=" +
+            checkBusService
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            setBusArrivalTime((arr) => {
+              if (arr.length < transferredBuses.length) {
+                return arr.concat([data]);
+              } else {
+                return [];
+              }
+            });
+          })
+          .catch(console.log);
+      }
     });
   }, [transferredBuses, REACT_APP_DOMAIN, route, setBusArrivalTime]);
 
@@ -147,7 +149,7 @@ const Routes = ({
   //       )
   //         .then((response) => response.json())
   //         .then((data) => {
-            
+
   //           setBusArrivalTime((arr) => {
   //             if (arr.length < transferredBuses.length) {
   //               return arr.concat([data]);
@@ -201,7 +203,13 @@ const Routes = ({
                             </p>
                           )
                       )}
-                      < GiClick style={{position: 'absolute', top: '10px', right: '10px'}}/>
+                      <GiClick
+                        style={{
+                          position: "absolute",
+                          top: "10px",
+                          right: "10px",
+                        }}
+                      />
                     </RouteContainer>
                   </CSSTransition>
                 );
@@ -300,21 +308,12 @@ const Routes = ({
                     <br />
                     {includeArrivalTime ? <br /> : ""}
                     {includeArrivalTime ? (
-                      <strong
-                        style={{ cursor: "pointer" }}
-                     
-                      >
-                        {" "}
-                        Refresh{" "}
-                      </strong>
+                      <strong style={{ cursor: "pointer" }}> Refresh </strong>
                     ) : (
                       ""
                     )}
                     {includeArrivalTime ? (
-                      <BiRefresh
-                        style={{ cursor: "pointer" }}
-                        
-                      />
+                      <BiRefresh style={{ cursor: "pointer" }} />
                     ) : (
                       ""
                     )}

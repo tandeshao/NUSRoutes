@@ -4,9 +4,9 @@ export const FAQContainer = styled.div`
   height: 1100px;
   background: #f9f9f9;
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 40% 60%;
   grid-template-rows: 20% 80%;
-  grid-template-areas: "header header" "qns gif";
+  grid-template-areas: "header header" "gif qns";
 
   @media screen and (max-width: 768px) {
     display: flex;
@@ -37,13 +37,9 @@ export const FAQH1 = styled.h1`
 export const FAQWrapper = styled.div`
   width: 80%;
   max-width: 80rem;
-  margin: 0 auto;
+  margin: 0;
   margin-top: 60px;
-  margin-left: 40%;
-
-  @media screen and (max-width: 768px) {
-    margin-left: 10%;
-  }
+  
 `;
 
 export const FAQSet = styled.div`

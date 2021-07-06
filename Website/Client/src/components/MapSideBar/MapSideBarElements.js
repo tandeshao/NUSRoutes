@@ -29,13 +29,3 @@ export const Logo = styled(LinkR)`
   bottom: 2%;
   right: 10%;
 `;
-
-export const Logo2 = styled(LinkR)`
-  position: absolute;
-  font-size: 1.5rem;
-  text-decoration: none;
-  font-weight: bold;
-  color: #ff2400;
-  bottom: 2%;
-  right: 10%;
-`;
