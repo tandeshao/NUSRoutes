@@ -61,8 +61,6 @@ const Map = () => {
       );
   }, [string, start, end, time, date, REACT_APP_DOMAIN]);
 
- 
-
   return (
     <PageContainer>
       <SideBarContainer $sidebar={sidebar}>
@@ -74,15 +72,31 @@ const Map = () => {
         />
       </SideBarContainer>
       <MapContainer $sidebar={sidebar}>
-        {sidebar ? (
-          <ArrowLeftButton
+        {window.innerWidth > 828 || window.innerHeight > 850 ? (
+          sidebar ? (
+            <ArrowLeftButton
+              $sidebar={sidebar}
+              onClick={() => {
+                setSideBar((prev) => !prev);
+              }}
+            />
+          ) : (
+            <ArrowRightButton
+              $sidebar={sidebar}
+              onClick={() => {
+                setSideBar((prev) => !prev);
+              }}
+            />
+          )
+        ) : sidebar ? (
+          <ArrowRightButton
             $sidebar={sidebar}
             onClick={() => {
               setSideBar((prev) => !prev);
             }}
           />
         ) : (
-          <ArrowRightButton
+          <ArrowLeftButton
             $sidebar={sidebar}
             onClick={() => {
               setSideBar((prev) => !prev);

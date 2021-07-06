@@ -11,7 +11,7 @@ export const FAQContainer = styled.div`
   @media screen and (max-width: 768px) {
     display: flex;
     flex-direction: column;
-    height: auto;
+    height: auto + 100px;
     justify-content: center;
     align-items: center;
   }
@@ -50,7 +50,7 @@ export const FAQSet = styled.div`
   background-color: #203042;
   border-radius: 0.4rem;
   margin-bottom: 1rem;
-  padding: 1rem;
+  padding: 0.5rem;
   box-shadow: 0.5rem 0.5rem rgba(0, 0, 0, 0.1);
   grid-area: qns;
 
@@ -72,6 +72,7 @@ export const Question = styled.div`
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
+  
 
   @media screen and (max-width: 480px) {
     font-size: 1rem;
@@ -83,6 +84,9 @@ export const OpenIcon = styled.div`
 `;
 
 export const Answer = styled.p`
+  height: ${({isOpen, index}) => isOpen === index ? 'auto' : '0'};
+  transform: ${({isOpen, index}) => isOpen === index ? 'scaleY(1)' : 'scaleY(0)'};
+  overflow: hidden;
   margin-top: 1rem;
   color: #29e3c1;
   font-size: 0.9rem;
@@ -96,6 +100,9 @@ export const Answer = styled.p`
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  transition: all 0.2s ease-out;
+  padding: ${({isOpen, index}) => isOpen === index ? '0.5rem' : '0'};
+  vertical-align: center;
 `;
 
 export const Image = styled.img`

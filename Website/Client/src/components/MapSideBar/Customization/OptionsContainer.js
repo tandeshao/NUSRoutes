@@ -10,7 +10,7 @@ export const SectionContainer = styled.div`
 export const DepartureContainer = styled.div`
   color: #fff;
   position: absolute;
-  top: 11%;
+  top: 12%;
   left: 1%;
   width: auto;
 
@@ -34,7 +34,7 @@ export const OptionsContainer = styled.div`
     left: 20%;
   }
 
-  @media screen and (max-height: 850px) {
+  @media screen and (max-height: 750px) {
     display: none;
   }
 
@@ -47,7 +47,7 @@ export const OptionsContainer = styled.div`
 export const OptionsContainer2 = styled.div`
   display: none;
 
-  @media screen and (max-height: 850px) {
+  @media screen and (max-height: 750px) {
     display: block;
     color: #fff;
     position: absolute;

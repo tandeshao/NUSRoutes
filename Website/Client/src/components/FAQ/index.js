@@ -40,7 +40,7 @@ const FAQ = () => {
                     )}
                   </OpenIcon>
                 </Question>
-                {isOpen === index ? <Answer>{element.answer}</Answer> : ""}
+                <Answer isOpen={isOpen} index={index} >{element.answer}</Answer>
               </FAQSet>
             );
           })}

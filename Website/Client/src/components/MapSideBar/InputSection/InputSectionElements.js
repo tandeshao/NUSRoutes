@@ -24,7 +24,7 @@ export const Switch = styled.img`
     right: 10%;
   }
 
-  @media screen and (max-height: 850px) {
+  @media screen and (max-height: 750px) {
     display: none;
   }
 `;
@@ -61,7 +61,7 @@ export const Form = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
 
-  @media screen and (max-height: 850px) {
+  @media screen and (max-height: 750px) {
     width: auto;
     margin: 20px;
   }
@@ -95,7 +95,7 @@ export const ArrowRight = styled(MdKeyboardArrowRight)`
 
 export const Button2 = styled.button`
   display: none;
-  @media screen and (max-height: 850px) {
+  @media screen and (max-height: 750px) {
     width: 5%;
     border-radius: 50px;
     background: ${({ primary, secondary }) =>
@@ -147,20 +147,20 @@ export const Button = styled.button`
     background: ${({ primary }) => (primary ? "#fff" : "#01BF71")};
   }
 
-  @media screen and (max-height: 850px) {
+  @media screen and (max-height: 750px) {
     display: none;
   }
 `;
 
 export const MobileViewContainer = styled.div`
   display: none;
-  @media screen and (max-height: 850px) {
+  @media screen and (max-height: 750px) {
     display: flex;
   }
 `
 
 export const DesktopViewContainer = styled.div`
-  @media screen and (max-height: 850px) {
+  @media screen and (max-height: 750px) {
     display: none;
   }
 `
