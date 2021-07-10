@@ -1,7 +1,7 @@
 const busStops = require("../data/busStops.json");
 
 function proximityAlarm(lat1, lon1, dest) {
-  const distance = 200;
+  const distance = 250;
   var R = 6371; // Radius of the earth in km
   const details = busStops.filter((stops) => stops.caption === dest)[0];
   const lat2 = parseFloat(details.latitude);
