@@ -4,7 +4,6 @@ import { MdKeyboardArrowRight, MdArrowForward } from "react-icons/md";
 export const InputSectionContainer = styled.div`
   min-height: auto;
   position: relative;
-
 `;
 
 export const Switch = styled.img`
@@ -30,15 +29,13 @@ export const Switch = styled.img`
 `;
 
 export const Switch2 = styled.img`
-  position: absolute;
-  height: 30%;
-  left: 70%;
-  top: 20%;
+  height: 60px;
+  width: 60px;
   cursor: pointer;
 
   @media screen and (max-width: 800px) {
     height: 30%;
-    left: 70%;
+    left: 70%;  
   }
 
   @media screen and (max-width: 624px) {
@@ -62,7 +59,7 @@ export const Form = styled.div`
   flex-wrap: wrap;
 
   @media screen and (max-height: 750px) {
-    width: auto;
+    width: 60%;
     margin: 20px;
   }
   
@@ -139,7 +136,7 @@ export const Button = styled.button`
   align-items: center;
   transition: all 0.2s ease-in-out;
   width: 100%;
-  margin-top: 7%;
+  margin-top: 20px;
   margin-bottom: 7%;
 
   &:hover {

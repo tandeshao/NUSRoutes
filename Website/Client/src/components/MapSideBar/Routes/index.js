@@ -167,7 +167,7 @@ const Routes = ({
   return (
     <div
       style={{
-        height: "100%",
+        height: "100%"
       }}
     >
       {selectedRoute === null ? (
@@ -270,7 +270,7 @@ const Routes = ({
               unmountOnExit
             >
               <Container2>
-                Start from {map[route[0].substring(0, route[0].indexOf("_"))]}.{" "}
+                Start from {route[0] && map[route[0].substring(0, route[0].indexOf("_"))]}.{" "}
                 <img
                   src={startIcon}
                   alt=""
@@ -298,13 +298,13 @@ const Routes = ({
                 >
                   <Container2 key={index + 500}>
                     Take {x.service} from{" "}
-                    {
+                    {route[x.start] && 
                       map[
                         route[x.start].substring(0, route[x.start].indexOf("_"))
                       ]
                     }{" "}
                     to{" "}
-                    {map[route[x.end].substring(0, route[x.end].indexOf("_"))]}.{" "}
+                    {route[x.end] && map[route[x.end].substring(0, route[x.end].indexOf("_"))]}.{" "}
                     <br />
                     {includeArrivalTime ? <br /> : ""}
                     {includeArrivalTime ? (
@@ -360,7 +360,7 @@ const Routes = ({
               unmountOnExit
             >
               <Container2>
-                {
+                {route[route.length - 1] && 
                   map[
                     route[route.length - 1].substring(
                       0,

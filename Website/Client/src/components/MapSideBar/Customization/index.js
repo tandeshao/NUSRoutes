@@ -2,7 +2,6 @@ import {
   OptionsContainer,
   DepartureContainer,
   SectionContainer,
-  OptionsContainer2,
   ProximityAlarmContainer
 } from "./OptionsContainer";
 import Button from "@material-ui/core/Button";
@@ -117,7 +116,7 @@ const Customization = ({
   const handleTimeInput = () => {
     const userTime = prompt(
       "Type in your time here (format: hhmm)." +
-        "For example, 12:34 am would be 0034 and 12:34 pm would be 1234."
+        "\nFor example, 12:34 am would be 0034 and 12:34 pm would be 1234."
     );
 
     if (userTime === null) {
@@ -149,8 +148,8 @@ const Customization = ({
   const handleDateInput = () => {
     const userDate = prompt(
       "Type in your date here (format: ddmmyyyy)." +
-        " For example, 4 Jul 2021 would be 04072021. (*Note: We can only compute between the year 2021 to 2024 inclusive." +
-        " Please do not put a year greater than 2024.)"
+        " \n For example, 4 Jul 2021 would be 04072021. \n*Note: We can only compute between the year 2021 to 2024 inclusive." +
+        " Please do not put a year greater than 2024."
     );
 
     if (userDate === null) {
@@ -269,15 +268,10 @@ const Customization = ({
 
       <OptionsContainer>
         <Button variant="contained" color="secondary" onClick={findNearest}>
-          FIND NEAREST BUS STOPS
+          NEAREST BUS STOPS
         </Button>
       </OptionsContainer>
 
-      <OptionsContainer2>
-        <Button variant="contained" color="secondary" onClick={findNearest}>
-          STOPS NEAR ME
-        </Button>
-      </OptionsContainer2>
       <ProximityAlarmContainer>
         <ProximityAlarm destination={destination} />
       </ProximityAlarmContainer>

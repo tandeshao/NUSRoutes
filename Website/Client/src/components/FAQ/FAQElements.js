@@ -39,6 +39,8 @@ export const FAQWrapper = styled.div`
   max-width: 80rem;
   margin: 0;
   margin-top: 60px;
+  display: flex;
+  flex-direction: column;
   
 `;
 
@@ -69,7 +71,7 @@ export const Question = styled.div`
   user-select: none;
   cursor: pointer;
   padding-top: 10px;
-  
+  flex-grow: 1;
 
   @media screen and (max-width: 480px) {
     font-size: 1rem;
@@ -82,7 +84,7 @@ export const OpenIcon = styled.div`
 
 export const Answer = styled.p`
   height: ${({isOpen, index}) => isOpen === index ? 'auto' : '0'};
-  transform: ${({isOpen, index}) => isOpen === index ? 'scaleY(1)' : 'scaleY(0)'};
+  flex-grow: ${({isOpen, index}) => isOpen === index ? '0' : '1'};
   overflow: hidden;
   margin-top: 1rem;
   color: #29e3c1;
@@ -97,7 +99,7 @@ export const Answer = styled.p`
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  transition: all 0.5s;
+  transition: all 0.3s ease-in-out;
   padding: ${({isOpen, index}) => isOpen === index ? '0.5rem' : '0'};
   vertical-align: center;
   cursor: pointer;

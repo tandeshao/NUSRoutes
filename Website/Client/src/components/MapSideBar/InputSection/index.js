@@ -90,7 +90,7 @@ const InputSection = ({
 
       const start = map[current];
       const end = map[destination];
-      
+
       const category =
         data.reduce((x, y) => {
           if (x !== null) {

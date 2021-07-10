@@ -8,9 +8,10 @@ export const RouteContainer = styled.div`
   filter: brightness(0.5);
   border: 7px solid black;
   width: 80%;
+  border-radius: 40px;
 
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.02);
     transition: all 0.2s ease-in-out;
   }
 `;
@@ -100,6 +101,7 @@ export const Container = styled.div`
   backdrop-filter: brightness(0.5);
   border: 7px solid black;
   width: 100%;
+  border-radius: 40px;
 `;
 
 export const Container2 = styled.div`
@@ -114,6 +116,7 @@ export const Container2 = styled.div`
   backdrop-filter: brightness(0.5);
   border: 7px solid black;
   width: 100%;
+  border-radius: 40px;
 `;
 
 export const ScrollBar2 = styled.div`

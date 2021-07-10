@@ -53,7 +53,7 @@ const MapSideBar = ({ routeRecommendations, setRoute, route, startAndEnd }) => {
         setCurrent={setCurrent}
         setDestination={setDestination}
       />
-      <Dividers variant="middle" />
+      <Dividers />
       <Customization
         setTime={setTime}
         setDate={setDate}

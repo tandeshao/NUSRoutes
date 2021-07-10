@@ -1,10 +1,16 @@
 import styled from "styled-components";
 
 export const SectionContainer = styled.div`
-  width: 100vw;
+  width: 100%;
   min-height: 10%;
-  height: auto;
+  height: 10vh;
   position: relative;
+  margin-bottom: 20px;
+
+  @media screen and (max-width: 400px) (max-height: 820px) {
+    margin-bottom: 20px;
+  }
+
 `;
 
 export const DepartureContainer = styled.div`
@@ -14,53 +20,33 @@ export const DepartureContainer = styled.div`
   left: 1%;
   width: auto;
 
-  @media screen and (max-width: 450px) {
-    left: 3%;
+  @media screen and (max-width: 400px) (max-height: 820px) {
+    display: none;
   }
+
 `;
 
 export const OptionsContainer = styled.div`
   color: #fff;
   position: absolute;
   top: 12%;
-  left: 10%;
   width: auto;
+  right: 10%;
 
-  @media screen and (max-width: 1500px) {
-    left: 15%;
-  }
-
-  @media screen and (max-width: 1100px) {
-    left: 20%;
-  }
-
-  @media screen and (max-height: 750px) {
+  @media screen and (max-width: 400px) and (max-height: 820px) {
     display: none;
-  }
-
-  @media screen and (max-width: 828px) {
-    left: 45%;
   }
 
 `;
 
-export const OptionsContainer2 = styled.div`
-  display: none;
-
-  @media screen and (max-height: 750px) {
-    display: block;
-    color: #fff;
-    position: absolute;
-    top: 12%;
-    left: 45%;
-    width: auto;
-  }
-`
 export const ProximityAlarmContainer = styled.div`
   position: absolute;
-  margin-top: 25px;
   margin-left: 15px;
-  top: 30%;
+  top: 60%;
   left: 1%;
-`
-;
+
+  @media screen and (max-width: 400px) and (max-height: 820px) {
+    display: none;
+  }
+
+`;

@@ -129,7 +129,7 @@ function RenderMap({ route }) {
         onLoad={handleLoad}
         center={position.current}
         zoom={16}
-        options={{ styles: mapStyle, clickableIcons: false }}
+        options={{ styles: mapStyle, clickableIcons: false, disableDefaultUI: true }}
       >
         {places.length !== 0 && (
           <MapDirectionsRenderer
