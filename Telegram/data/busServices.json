@@ -1,0 +1,14 @@
+{
+  "AS5": [
+    [
+      {
+        "text": "A1",
+        "callback_data": "service_A1"
+      },
+      {
+        "text": "A2",
+        "callback_data": "service_A2"
+      }
+    ]
+  ]
+}

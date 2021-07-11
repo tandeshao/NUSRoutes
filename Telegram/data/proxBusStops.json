@@ -1,0 +1,156 @@
+[
+  [
+    {
+      "text": "AS5",
+      "callback_data": "prox_AS5"
+    },
+    {
+      "text": "BIZ 2",
+      "callback_data": "prox_BIZ 2"
+    },
+    {
+      "text": "Botanic Gardens MRT",
+      "callback_data": "prox_Botanic Gardens MRT"
+    }
+  ],
+  [
+    {
+      "text": "BTC-Oei Tiong Ham Building",
+      "callback_data": "prox_BTC - Oei Tiong Ham Building"
+    },
+    {
+      "text": "Central Library",
+      "callback_data": "prox_Central Library"
+    },
+    {
+      "text": "College Green",
+      "callback_data": "prox_College Green"
+    }
+  ],
+  [
+    {
+      "text": "COM2",
+      "callback_data": "prox_COM2"
+    },
+    {
+      "text": "EA",
+      "callback_data": "prox_EA"
+    },
+    {
+      "text": "Info Technology",
+      "callback_data": "prox_Information Technology"
+    }
+  ],
+  [
+    {
+      "text": "KR MRT",
+      "callback_data": "prox_Kent Ridge MRT"
+    },
+    {
+      "text": "Kent Vale",
+      "callback_data": "prox_Kent Vale"
+    },
+    {
+      "text": "LT13",
+      "callback_data": "prox_LT13"
+    }
+  ],
+  [
+    {
+      "text": "LT27",
+      "callback_data": "prox_LT27"
+    },
+    {
+      "text": "Museum",
+      "callback_data": "prox_Museum"
+    },
+    {
+      "text": "Opp HSSML",
+      "callback_data": "prox_Opp HSSML"
+    }
+  ],
+  [
+    {
+      "text": "Opp KR MRT",
+      "callback_data": "prox_Opp Kent Ridge MRT"
+    },
+    {
+      "text": "Opp NUSS",
+      "callback_data": "prox_Opp NUSS"
+    },
+    {
+      "text": "Opp TCOMS",
+      "callback_data": "prox_Opp TCOMS"
+    }
+  ],
+  [
+    {
+      "text": "Opp U Hall",
+      "callback_data": "prox_Opp University Hall"
+    },
+    {
+      "text": "Opp U Health Centre",
+      "callback_data": "prox_Opp University Health Centre"
+    },
+    {
+      "text": "Opp YIH",
+      "callback_data": "prox_Opp YIH"
+    }
+  ],
+  [
+    {
+      "text": "PGP",
+      "callback_data": "prox_Prince George's Park"
+    },
+    {
+      "text": "PGPR",
+      "callback_data": "prox_Prince George's Park Residence"
+    },
+    {
+      "text": "Raffles Hall",
+      "callback_data": "prox_Raffles Hall (Opp. Museum)"
+    }
+  ],
+  [
+    {
+      "text": "S17",
+      "callback_data": "prox_S17"
+    },
+    {
+      "text": "TCOMS",
+      "callback_data": "prox_TCOMS"
+    },
+    {
+      "text": "U Hall",
+      "callback_data": "prox_University Hall"
+    }
+  ],
+  [
+    {
+      "text": "U Health Centre",
+      "callback_data": "prox_University Health Centre"
+    },
+    {
+      "text": "U Town",
+      "callback_data": "prox_University Town"
+    },
+    {
+      "text": "Ventus (Opp LT13)",
+      "callback_data": "prox_Ventus (Opp LT13)"
+    }
+  ],
+  [
+    {
+      "text": "YIH",
+      "callback_data": "prox_YIH"
+    },
+    {
+      "text": "Japanese Pri",
+      "callback_data": "prox_The Japanese Primary School"
+    },
+    {
+      "text": "KR Terminal",
+      "callback_data": "prox_Kent Ridge Bus Terminal"
+    }
+  ]
+]
