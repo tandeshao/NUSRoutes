@@ -15,12 +15,10 @@ export const animationOne = {
 
 export const animationTwo = {
   in: {
-    opacity: 1,
-    y: 0
+    opacity: 1
   },
   out: {
-    opacity: 0,
-    y: "100vh",
+    opacity: 0
   },
 };
 
@@ -40,5 +38,5 @@ export const animationThree = {
 };
 
 export const transition = {
-  duration: 0.5
+  duration: 0.4
 };

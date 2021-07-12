@@ -14,7 +14,7 @@ export const ContactContainer = styled.div`
   @media screen and (max-width: 768px) {
     display: flex;
     flex-direction: column;
-    height: auto + 10px;
+    height: 1200px;
     padding: 20px;
     align-items: center;
     justify-content: center;

@@ -18,7 +18,10 @@ export const Header = styled.h1`
     font-size: 1.5rem;
   }
 
-  @media screen and (max-width: 400px) {
-    font-size: 1.1rem;
+  @media screen and (max-width: 400px) and (max-height: 860px) {
+    font-size: 2rem;
+    top: 20vh;
   }
+
+  
 `;

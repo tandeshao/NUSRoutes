@@ -6,11 +6,10 @@ export const PageContainer = styled.div`
   display: flex;
   flex-direction: row-reverse;
 
-  @media screen and (max-width: 400px) and (max-height: 820px) {
-    ${'' /* flex-direction: column; */}
-    display: block;
+  @media screen and (max-width: 400px) and (max-height: 860px) {
+    ${"" /* flex-direction: column; */}
     height: 100vh;
-    ${'' /* justify-content: flex-end; */}
+    ${"" /* justify-content: flex-end; */}
   }
 `;
 
@@ -40,11 +39,10 @@ export const MapContainer = styled.div`
   max-height: 100vh;
   z-index: 2;
 
-  @media screen and (max-width: 400px) and (max-height: 820px) {
+  @media screen and (max-width: 400px) and (max-height: 860px) {
     position: fixed;
     height: 100vh;
     z-index: 1;
-    
   }
 `;
 
@@ -77,17 +75,17 @@ export const ArrowLeftButton = styled(ArrowLeftRoundedIcon)`
       width: 3vw;
     }
 
-    @media screen and (max-width: 1100px) and (max-height: 735px){
+    @media screen and (max-width: 1100px) and (max-height: 735px) {
       top: 35%;
       left: ${({ $sidebar }) => ($sidebar ? "74vw" : "0vw")};
     }
 
-    @media screen and (max-width: 733px) and (max-height: 735px){
+    @media screen and (max-width: 733px) and (max-height: 735px) {
       top: 35%;
       left: ${({ $sidebar }) => ($sidebar ? "78vw" : "0vw")};
     }
 
-    @media screen and (max-width: 557px) and (max-height: 735px){
+    @media screen and (max-width: 557px) and (max-height: 735px) {
       top: 35%;
       left: ${({ $sidebar }) => ($sidebar ? "84vw" : "0vw")};
     }
@@ -112,14 +110,26 @@ export const ArrowRightButton = styled(ArrowRightRoundedIcon)`
     height: 4vh;
     transition: background 2s;
 
-    @media screen and (max-width: 1100px) and (max-height: 735px){
+    @media screen and (max-width: 1100px) and (max-height: 735px) {
       top: 35%;
       width: 1rem;
     }
 
-
     &:hover {
       height: 6vh;
     }
+  }
+`;
+
+export const MobileView = styled.div`
+  display: none;
+  @media screen and (max-width: 400px) and (max-height: 860px) {
+    display: block;
+  }
+`;
+
+export const DesktopView = styled.div`
+  @media screen and (max-width: 400px) and (max-height: 860px) {
+    display: none;
   }
 `;

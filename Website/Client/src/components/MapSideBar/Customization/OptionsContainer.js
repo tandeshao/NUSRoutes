@@ -20,10 +20,6 @@ export const DepartureContainer = styled.div`
   left: 1%;
   width: auto;
 
-  @media screen and (max-width: 400px) (max-height: 820px) {
-    display: none;
-  }
-
 `;
 
 export const OptionsContainer = styled.div`
@@ -31,11 +27,7 @@ export const OptionsContainer = styled.div`
   position: absolute;
   top: 12%;
   width: auto;
-  right: 10%;
-
-  @media screen and (max-width: 400px) and (max-height: 820px) {
-    display: none;
-  }
+  right: 10%; 
 
 `;
 
@@ -44,9 +36,5 @@ export const ProximityAlarmContainer = styled.div`
   margin-left: 15px;
   top: 60%;
   left: 1%;
-
-  @media screen and (max-width: 400px) and (max-height: 820px) {
-    display: none;
-  }
 
 `;

@@ -11,15 +11,14 @@ export const MapSideBarContainer = styled.div`
   padding-bottom: 1%;
   flex-direction: column;
 
-  @media screen and (max-width: 400px) and (max-height: 820px) {
+  @media screen and (max-width: 400px) and (max-height: 860px) {
     width: 100vw;
     min-height: 35vh;
-    height: 84vh;
+    height: 90vh;
     overflow: hidden;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     z-index: 1;
-    opacity: 98%;
   }
 `;
 
@@ -40,7 +39,7 @@ export const Logo = styled(LinkR)`
   bottom: 2%;
   right: 10%;
 
-  @media screen and (max-width: 400px) and (max-height: 820px) {
+  @media screen and (max-width: 400px) and (max-height: 860px) {
     display: none;
   }
 `;
