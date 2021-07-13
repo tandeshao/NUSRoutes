@@ -8,7 +8,7 @@ export const MapNavbarContainer = styled.div`
     bottom: 0;
     z-index: 1400;
     width: 100vw;
-    background-color: rgba(255, 255, 255, 0.98);
+    background: #282828;
     height: 8vh;
   }
 `;
@@ -17,19 +17,27 @@ export const Item = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: black;
+  color: #b3b3b3;
   padding: 10px;
   flex-grow: 1;
   text-align: center;
+
+  @media screen and (max-width: 400px) and (max-height: 860px) {
+    font-size: 15px;
+  }
 `;
 
 export const LinkItem = styled(Link)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: black;
+  color: #b3b3b3;
   padding: 10px;
   flex-grow: 1;
   text-align: center;
   text-decoration: none;
+  
+  @media screen and (max-width: 400px) and (max-height: 860px) {
+    font-size: 15px;
+  }
 `;

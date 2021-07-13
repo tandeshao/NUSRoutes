@@ -1,51 +1,77 @@
 import {
-  OptionsContainer,
-  DepartureContainer,
-  SectionContainer,
-  ProximityAlarmContainer
-} from "./OptionsContainer";
-import Button from "@material-ui/core/Button";
+  CustomizationButton,
+  CustomizationButton2,
+  CustomizationSection,
+  AlarmButton,
+  GetBusStopButton,
+} from "./MobileCustomizationElements";
 import { useState } from "react";
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
-import "date-fns";
 import { useHistory } from "react-router-dom";
-import map from "../../../data/map.json";
-import data from "../../../data/vacation.json";
-import ProximityAlarm from "../ProximityAlarm";
-import busStops from "../../../data/busStops.json";
-import {distance} from './functions';
+import map from "../../data/map.json";
+import data from "../../data/vacation.json";
+import { distance } from "../MapSideBar/Customization/functions";
+import busStops from "../../data/busStops.json";
 
-const Customization = ({
+const findNearest = async () => {
+  let arr = [];
+  function getLongAndLat() {
+    return new Promise((resolve, reject) =>
+      navigator.geolocation.getCurrentPosition(resolve, reject)
+    );
+  }
+  let obj = await getLongAndLat();
+  busStops.forEach((busStop) => {
+    const dist = distance(
+      obj.coords.latitude,
+      obj.coords.longitude,
+      busStop.latitude,
+      busStop.longitude
+    );
+    if (dist <= 0.2) {
+      // distance is less than 200 metres.
+      arr.push(busStop.caption);
+    }
+  });
+
+  if (arr.length === 0) {
+    alert("No bus stops are near you.");
+  } else if (arr.length === 1) {
+    alert("Closest bus stop near you is: " + arr[0]);
+  } else if (arr.length === 2) {
+    alert("Closest bus stop near you are: " + arr[0] + " and " + arr[1]);
+  } else {
+    alert(
+      "The closest bus stops near you are: " +
+        arr.slice(0, arr.length - 1).join(", ") +
+        " and " +
+        arr[arr.length - 1]
+    );
+  }
+};
+
+const MobileCustomization = ({
   setTime,
+  setDate,
   setMonth,
   setYear,
-  setDate,
   setDay,
   setIncludeArrivalTime,
   setSelectedRoute,
   current,
-  destination
+  destination,
 }) => {
-  const [anchorEl, setAnchorEl] = useState(() => null);
-  const [btnName, setBtnName] = useState(() => "Depart Now");
+  const [departureSetting, setDepartureSetting] = useState(true);
+  const [alarm, setAlarm] = useState(false);
   const history = useHistory();
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = (name) => {
+  const handleSelect = (name) => {
     if (name === "Depart Later") {
-      setAnchorEl(null);
-      setBtnName(name);
+      setDepartureSetting(false);
       setIncludeArrivalTime(false);
       setSelectedRoute(null);
       handleDateInput();
-  
     } else {
-      setAnchorEl(null);
-      setBtnName(name);
+      setDepartureSetting(true);
       const obj = new Date();
       const today = obj.getDay();
       let [hour, minute] = obj.toLocaleTimeString("it-IT").split(/:| /);
@@ -109,26 +135,26 @@ const Customization = ({
     );
 
     if (userTime === null) {
-      handleClose("Depart Now");
+      handleSelect("Depart Now");
       return null;
     } else if (isNaN(parseInt(userTime))) {
       alert("Input is not a number. Please try again.");
-      return handleTimeInput() === null ? handleClose("Depart Now") : "";
+      return handleTimeInput() === null ? handleSelect("Depart Now") : "";
     } else if (userTime.length !== 4) {
       alert("Input is not of the correct length. Please try again.");
-      return handleTimeInput() === null ? handleClose("Depart Now") : "";
+      return handleTimeInput() === null ? handleSelect("Depart Now") : "";
     } else if (
       parseInt(userTime.substring(0, 2)) < 0 ||
       parseInt(userTime.substring(0, 2)) > 23
     ) {
       alert("Hour is not between 00 and 23 inclusive. Please try again.");
-      return handleTimeInput() === null ? handleClose("Depart Now") : "";
+      return handleTimeInput() === null ? handleSelect("Depart Now") : "";
     } else if (
       parseInt(userTime.substring(0, 2)) < 0 ||
       parseInt(userTime.substring(2, 4)) > 59
     ) {
       alert("Mnute is not between 00 and 59 inclusive. Please try again.");
-      return handleTimeInput() === null ? handleClose("Depart Now") : "";
+      return handleTimeInput() === null ? handleSelect("Depart Now") : "";
     } else {
       return userTime;
     }
@@ -142,23 +168,23 @@ const Customization = ({
     );
 
     if (userDate === null) {
-      handleClose("Depart Now");
+      handleSelect("Depart Now");
       return null;
     } else if (userDate === "") {
       alert("You have no input. Please try again.");
-      return handleDateInput() === null ? handleClose("Depart Now") : "";
+      return handleDateInput() === null ? handleSelect("Depart Now") : "";
     } else if (isNaN(parseInt(userDate))) {
       alert("Input is not a number. Please try again.");
-      return handleDateInput() === null ? handleClose("Depart Now") : "";
+      return handleDateInput() === null ? handleSelect("Depart Now") : "";
     } else if (userDate.length !== 8) {
       alert("Input is not of the correct length. Please try again.");
-      return handleDateInput() === null ? handleClose("Depart Now") : "";
+      return handleDateInput() === null ? handleSelect("Depart Now") : "";
     } else if (
       parseInt(userDate.substring(4, 8)) > 2024 ||
       parseInt(userDate.substring(4, 8)) < 2021
     ) {
       alert("Input is not between 2021 and 2024. Please try again.");
-      return handleDateInput() === null ? handleClose("Depart Now") : "";
+      return handleDateInput() === null ? handleSelect("Depart Now") : "";
     } else {
       const obj = new Date(
         userDate.substring(4, 8) +
@@ -172,7 +198,7 @@ const Customization = ({
       setDate(parseInt(userDate.substring(0, 2)));
       const res = handleTimeInput();
       if (res === null) {
-        handleClose("Depart Now");
+        handleSelect("Depart Now");
       } else {
         setTime(parseInt(res));
         alert(
@@ -182,90 +208,28 @@ const Customization = ({
     }
   };
 
-  const findNearest = async () => {
-    let arr = [];
-    function getLongAndLat() {
-      return new Promise((resolve, reject) =>
-        navigator.geolocation.getCurrentPosition(resolve, reject)
-      );
-    }
-    let obj = await getLongAndLat();
-    busStops.forEach((busStop) => {
-      const dist = distance(
-        obj.coords.latitude,
-        obj.coords.longitude,
-        busStop.latitude,
-        busStop.longitude
-      );
-      if (dist <= 0.2) {
-        // distance is less than 200 metres.
-        arr.push(busStop.caption);
-      }
-    });
-
-    if (arr.length === 0) {
-      alert("No bus stops are near you.");
-    } else if (arr.length === 1) {
-      alert("Closest bus stop near you is: " + arr[0]);
-    } else if (arr.length === 2) {
-      alert("Closest bus stop near you are: " + arr[0] + " and " + arr[1]);
-    } else {
-      alert(
-        "The closest bus stops near you are: " +
-          arr.slice(0, arr.length - 1).join(", ") +
-          " and " +
-          arr[arr.length - 1]
-      );
-    }
-  };
-
   return (
-    <SectionContainer>
-      <DepartureContainer>
-        <Button
-          onClick={handleClick}
-          aria-controls="simple-menu"
-          aria-haspopup="true"
-          variant="contained"
-          color="primary"
-        >
-          {btnName}
-        </Button>
-        <Menu
-          id="simple-menu"
-          anchorEl={anchorEl}
-          keepMounted
-          open={Boolean(anchorEl)}
-          onClose={() => handleClose}
-        >
-          <MenuItem
-            onClick={() => {
-              handleClose("Depart Now");
-            }}
-          >
-            Depart Now
-          </MenuItem>
-          <MenuItem
-            onClick={() => {
-              handleClose("Depart Later");
-            }}
-          >
-            Depart Later
-          </MenuItem>
-        </Menu>
-      </DepartureContainer>
-
-      <OptionsContainer>
-        <Button variant="contained" color="secondary" onClick={findNearest}>
-          NEAREST BUS STOPS
-        </Button>
-      </OptionsContainer>
-
-      <ProximityAlarmContainer>
-        <ProximityAlarm destination={destination} />
-      </ProximityAlarmContainer>
-    </SectionContainer>
+    <CustomizationSection>
+      <CustomizationButton
+        departureSetting={departureSetting}
+        onClick={() => handleSelect("Depart Now")}
+      >
+        Now
+      </CustomizationButton>
+      <CustomizationButton2
+        departureSetting={departureSetting}
+        onClick={() => handleSelect("Depart Later")}
+      >
+        Later
+      </CustomizationButton2>
+      <GetBusStopButton onClick={findNearest}>
+        Nearest Bus Stop
+      </GetBusStopButton>
+      <AlarmButton alarm={alarm} onClick={() => setAlarm(!alarm)}>
+        Alarm
+      </AlarmButton>
+    </CustomizationSection>
   );
 };
 
-export default Customization;
+export default MobileCustomization;

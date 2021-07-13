@@ -4,15 +4,20 @@ export const RouteContainer = styled.div`
   padding: 20px;
   cursor: pointer;
   color: #fff;
-  background: #353535;
-  filter: brightness(0.5);
-  border: 7px solid black;
+  background: #181818;
+  filter: brightness(1);
   width: 80%;
   border-radius: 40px;
+  border: 7px solid black;
 
   &:hover {
     transform: scale(1.02);
     transition: all 0.2s ease-in-out;
+  }
+
+  @media screen and (max-width: 400px) and (max-height: 860px) {
+    background: #121212;
+    border: 2px solid #282828;
   }
 `;
 
@@ -23,7 +28,7 @@ export const ScrollBar = styled.div`
   maxwidth: 20vw;
   margin: 20px;
   opacity: 90%;
-  backdrop-filter: blur(5px) brightness(0.2);
+  backdrop-filter: brightness(0.2);
 
   ::-webkit-scrollbar {
     width: 8px;
@@ -58,6 +63,10 @@ export const ScrollBar = styled.div`
     100% {
       left: 0;
     }
+  }
+
+  @media screen and (max-width: 400px) and (max-height: 860px) {
+    background: #121212;
   }
 `;
 
@@ -97,7 +106,7 @@ export const Effect = styled.div`
 export const Container = styled.div`
   padding: 20px;
   color: #fff;
-  background: #353535;
+  background: #181818;
   backdrop-filter: brightness(0.5);
   border: 7px solid black;
   width: 100%;
@@ -112,7 +121,7 @@ export const Container2 = styled.div`
   padding: 20px;
   padding-left: 40px;
   color: #fff;
-  background: #353535;
+  background: #181818;
   backdrop-filter: brightness(0.5);
   border: 7px solid black;
   width: 100%;

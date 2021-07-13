@@ -167,13 +167,16 @@ const Routes = ({
   return (
     <div
       style={{
-        height: "100%"
+        height: "100%",
       }}
     >
       {selectedRoute === null ? (
         <ScrollBar>
           {routeRecommendations[0]["Cost"] !== -1 ? (
             <TransitionGroup component={Effect}>
+              <h4 style={{ color: "white", margin: '20px'}}>           
+                Route Recommendations
+              </h4>
               {routeRecommendations.map((route, index) => {
                 return (
                   <CSSTransition
@@ -270,7 +273,8 @@ const Routes = ({
               unmountOnExit
             >
               <Container2>
-                Start from {route[0] && map[route[0].substring(0, route[0].indexOf("_"))]}.{" "}
+                Start from{" "}
+                {route[0] && map[route[0].substring(0, route[0].indexOf("_"))]}.{" "}
                 <img
                   src={startIcon}
                   alt=""
@@ -298,14 +302,14 @@ const Routes = ({
                 >
                   <Container2 key={index + 500}>
                     Take {x.service} from{" "}
-                    {route[x.start] && 
+                    {route[x.start] &&
                       map[
                         route[x.start].substring(0, route[x.start].indexOf("_"))
-                      ]
-                    }{" "}
+                      ]}{" "}
                     to{" "}
-                    {route[x.end] && map[route[x.end].substring(0, route[x.end].indexOf("_"))]}.{" "}
-                    <br />
+                    {route[x.end] &&
+                      map[route[x.end].substring(0, route[x.end].indexOf("_"))]}
+                    . <br />
                     {includeArrivalTime ? <br /> : ""}
                     {includeArrivalTime ? (
                       <strong style={{ cursor: "pointer" }}> Refresh </strong>
@@ -360,14 +364,13 @@ const Routes = ({
               unmountOnExit
             >
               <Container2>
-                {route[route.length - 1] && 
+                {route[route.length - 1] &&
                   map[
                     route[route.length - 1].substring(
                       0,
                       route[route.length - 1].indexOf("_")
                     )
-                  ]
-                }{" "}
+                  ]}{" "}
                 reached.
                 <img
                   src={endIcon}

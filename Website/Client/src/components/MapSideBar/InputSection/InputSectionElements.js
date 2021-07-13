@@ -11,16 +11,6 @@ export const InputSectionContainer = styled.div`
   }
 `;
 
-export const Bar = styled.div`
-  display: none;
-
-  @media screen and (max-width: 400px) and (max-height: 860px) {
-    display: block;
-    color: white;
-    text-align: center;
-  }
-`
-
 
 export const Switch = styled.img`
   position: absolute;
@@ -200,6 +190,8 @@ export const MobileViewContainer = styled.div`
 
   @media screen and (max-width: 400px) and (max-height: 860px) {
     display: flex;
+    justify-content: space-between;
+    margin-left: 20px;
   }
 
   @media screen and (max-height: 750px) {

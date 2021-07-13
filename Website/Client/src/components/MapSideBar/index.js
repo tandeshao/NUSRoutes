@@ -2,14 +2,13 @@ import Customization from "./Customization/";
 import InputSection from "./InputSection/";
 import Routes from "./Routes/";
 import { useState } from "react";
-import {
-  MapSideBarContainer,
-  Dividers,
-  Logo,
-} from "./MapSideBarElements";
+import { MapSideBarContainer, Dividers, Logo, Bar } from "./MapSideBarElements";
 import reverseMap from "../../data/reverseMap.json";
 import options from "../../data/options.json";
 import { IoHomeSharp } from "react-icons/io5";
+import useWindowDimensions from "../../useWindowDimensions";
+import MobileCustomization from "../MobileCustomization";
+import { CgLoadbar } from 'react-icons/cg'
 
 const MapSideBar = ({ routeRecommendations, setRoute, route, startAndEnd }) => {
   const [transferredBuses, setTransferredBuses] = useState(() => []);
@@ -36,8 +35,13 @@ const MapSideBar = ({ routeRecommendations, setRoute, route, startAndEnd }) => {
       : reverseMap[startAndEnd[1]];
   });
 
+  const { width, height } = useWindowDimensions();
+
   return (
     <MapSideBarContainer>
+      <Bar>
+        <CgLoadbar size={40} />
+      </Bar>
       <InputSection
         setTransferredBuses={setTransferredBuses}
         setBusArrivalTime={setBusArrivalTime}
@@ -54,17 +58,29 @@ const MapSideBar = ({ routeRecommendations, setRoute, route, startAndEnd }) => {
         setDestination={setDestination}
       />
       <Dividers />
-      <Customization
-        setTime={setTime}
-        setDate={setDate}
-        setMonth={setMonth}
-        setYear={setYear}
-        setDay={setDay}
-        setIncludeArrivalTime={setIncludeArrivalTime}
-        setSelectedRoute={setSelectedRoute}
-        current={current}
-        destination={destination}
-      />
+      {width <= 400 && height < 860 ? (
+        <MobileCustomization setTime={setTime}
+          setDate={setDate}
+          setMonth={setMonth}
+          setYear={setYear}
+          setDay={setDay}
+          setIncludeArrivalTime={setIncludeArrivalTime}
+          setSelectedRoute={setSelectedRoute}
+          current={current}
+          destination={destination} />
+      ) : (
+        <Customization
+          setTime={setTime}
+          setDate={setDate}
+          setMonth={setMonth}
+          setYear={setYear}
+          setDay={setDay}
+          setIncludeArrivalTime={setIncludeArrivalTime}
+          setSelectedRoute={setSelectedRoute}
+          current={current}
+          destination={destination}
+        />
+      )}
 
       <Routes
         includeArrivalTime={includeArrivalTime}

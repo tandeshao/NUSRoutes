@@ -225,7 +225,7 @@ function RenderMap({ route }) {
             }}
           >
             <div>
-              <h4> Bus Stop: {selectedBusStop["LongName"]} </h4>
+              <h4> {selectedBusStop["LongName"]} </h4>
             </div>
           </InfoWindow>
         )}

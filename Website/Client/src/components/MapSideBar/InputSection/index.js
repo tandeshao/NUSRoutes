@@ -18,14 +18,13 @@ import {
   Button2,
   Switch2,
   MobileViewContainer,
-  DesktopViewContainer,
-  Bar
+  DesktopViewContainer
 } from "./InputSectionElements";
 
 import firebase from "firebase/app";
 import "firebase/firestore";
 import image from "../../../images/switch.png";
-import { CgLoadbar } from 'react-icons/cg'
+
 
 const InputSection = ({
   time,
@@ -138,9 +137,7 @@ const InputSection = ({
 
   return (
     <InputSectionContainer>
-      <Bar>
-      <CgLoadbar size={30} />
-      </Bar>
+      
       <Switch
         onClick={() => {
           const curr = current;

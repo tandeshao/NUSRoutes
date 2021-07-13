@@ -1,10 +1,5 @@
 import { MapNavbarContainer, Item, LinkItem } from "./MapNavbar";
-import {
-  FaHome,
-  FaHistory,
-  FaRoute,
-  FaInfoCircle
-} from "react-icons/fa";
+import { FaHome, FaHistory, FaRoute, FaInfoCircle } from "react-icons/fa";
 import { useHistory } from "react-router-dom";
 
 const MapNavbar = ({ open, toggle }) => {
@@ -29,11 +24,11 @@ const MapNavbar = ({ open, toggle }) => {
             push("/");
           }}
         >
-          <FaHome />
+          <FaHome size={27} />
           Home
         </Item>
         <Item onClick={() => toggle(!open)}>
-          <FaRoute /> Routes
+          <FaRoute size={27} /> {open ? "Map" : "Routes"}
         </Item>
         <LinkItem
           to="/#businfo"
@@ -41,7 +36,7 @@ const MapNavbar = ({ open, toggle }) => {
           style={{ textDecoration: "none" }}
           onClick={() => toggle(false)}
         >
-          <FaInfoCircle />
+          <FaInfoCircle size={27}/>
           Bus Info
         </LinkItem>
         <Item
@@ -50,7 +45,7 @@ const MapNavbar = ({ open, toggle }) => {
             push("/profile");
           }}
         >
-          <FaHistory />
+          <FaHistory size={27}/>
           History
         </Item>
       </MapNavbarContainer>

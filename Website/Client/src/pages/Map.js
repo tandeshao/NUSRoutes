@@ -105,12 +105,12 @@ const Map = () => {
           {width <= 400 && height < 860 ? (
             <>
               <Drawer open={open} onRequestClose={() => toggle(false)}>
-                <MapSideBar
-                  routeRecommendations={routeRecommendations}
-                  setRoute={setRoute}
-                  startAndEnd={[start, end]}
-                  route={route}
-                />
+              <MapSideBar
+                routeRecommendations={routeRecommendations}
+                setRoute={setRoute}
+                startAndEnd={[start, end]}
+                route={route}
+              />
               </Drawer>
               <MapNavbar open={open} toggle={toggle} style={{ zIndex: "1400" }} />
             </>
