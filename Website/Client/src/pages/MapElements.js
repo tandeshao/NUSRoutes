@@ -3,18 +3,24 @@ import ArrowLeftRoundedIcon from "@material-ui/icons/ArrowLeftRounded";
 import ArrowRightRoundedIcon from "@material-ui/icons/ArrowRightRounded";
 
 export const PageContainer = styled.div`
-  background: black;
   display: flex;
+  flex-direction: row-reverse;
+
+  @media screen and (max-width: 450px) and (max-height: 900px) {
+    ${"" /* flex-direction: column; */}
+    height: 100vh;
+    ${"" /* justify-content: flex-end; */}
+  }
 `;
 
 export const SideBarContainer = styled.div`
-  width: ${({ $sidebar }) => ($sidebar ? "30vw" : "0vw")};
+  width: ${({ $sidebar }) => ($sidebar ? "33.2vw" : "0vw")};
   height: 100vh;
   z-index: 1;
   transition: all 0.15s ease-in-out;
   position: relative;
 
-  @media screen and (max-width: 1500px) {
+  @media screen and (max-width: 1700px) {
     width: ${({ $sidebar }) => ($sidebar ? "60vw" : "0vw")};
   }
 
@@ -22,73 +28,69 @@ export const SideBarContainer = styled.div`
     width: ${({ $sidebar }) => ($sidebar ? "85vw" : "0vw")};
   }
 
-  @media screen and (max-width: 828px) {
-    width: ${({ $sidebar }) => ($sidebar ? "100vw" : "0vw")};
-    height: ${({ $sidebar }) => ($sidebar ? "100vh" : "0vh")};
-  }
-
-  @media screen and (max-height: 850px) {
-    width: ${({ $sidebar }) => ($sidebar ? "100vw" : "0vw")};
-    height: ${({ $sidebar }) => ($sidebar ? "100vh" : "0vh")};
+  @media screen and (max-width: 927px) and (max-height: 900px) {
+    width: ${({ $sidebar }) => ($sidebar ? "100vww" : "0vw")};
   }
 `;
 
 export const MapContainer = styled.div`
   width: 100%;
-  height: 100vh;
-  z-index: 1;
+  min-height: 0;
+  max-height: 100vh;
+  z-index: 2;
 
-  @media screen and (max-width: 828px) {
-    width: ${({ $sidebar }) => ($sidebar ? "0vw" : "100vw")};
-    height: ${({ $sidebar }) => ($sidebar ? "0vh" : "100vh")};
-  }
-
-  @media screen and (max-height: 850px) {
-    width: ${({ $sidebar }) => ($sidebar ? "0vw" : "100vw")};
-    height: ${({ $sidebar }) => ($sidebar ? "0vh" : "100vh")};
+  @media screen and (max-width: 450px) and (max-height: 900px) {
+    position: fixed;
+    height: 100vh;
+    z-index: 1;
   }
 `;
 
 export const ArrowLeftButton = styled(ArrowLeftRoundedIcon)`
   && {
     position: absolute;
-    z-index: 2;
+    z-index: 3;
     font-size: 100px;
     top: 50vh;
     color: black;
-    left: ${({ $sidebar }) => ($sidebar ? "23vw" : "0vw")};
+    left: ${({ $sidebar }) => ($sidebar ? "25vw" : "0vw")};
     cursor: pointer;
-    background: #dfccb7;
+    background: #ffb6c1;
     width: 1vw;
     height: 4vh;
     transition: background 2s;
-    
+
+    @media screen and (max-width: 1700px) {
+      width: 2vw;
+      left: ${({ $sidebar }) => ($sidebar ? "37.5%" : "0vw")};
+    }
 
     @media screen and (max-width: 1500px) {
-      left: ${({ $sidebar }) => ($sidebar ? "33.2vw" : "0vw")};
+      width: 2vw;
+      left: ${({ $sidebar }) => ($sidebar ? "37.5%" : "0vw")};
     }
 
     @media screen and (max-width: 1100px) {
-      left: ${({ $sidebar }) => ($sidebar ? "41.2vw" : "0vw")};
+      left: ${({ $sidebar }) => ($sidebar ? "46%" : "0vw")};
       width: 3vw;
     }
 
-    @media screen and (max-width: 828px) {
+    @media screen and (max-width: 1100px) and (max-height: 735px) {
       top: 35%;
-      left: ${({ $sidebar }) => ($sidebar ? "97%" : "0vw")};
+      left: ${({ $sidebar }) => ($sidebar ? "74vw" : "0vw")};
     }
 
-    @media screen and (max-height: 850px) {
+    @media screen and (max-width: 733px) and (max-height: 735px) {
       top: 35%;
-      left: ${({ $sidebar }) => ($sidebar ? "97%" : "0vw")};
+      left: ${({ $sidebar }) => ($sidebar ? "78vw" : "0vw")};
     }
 
-    @media screen and (max-width: 492px) {
-      width: 6vw;
-      left: ${({ $sidebar }) => ($sidebar ? "94%" : "0vw")};
+    @media screen and (max-width: 557px) and (max-height: 735px) {
+      top: 35%;
+      left: ${({ $sidebar }) => ($sidebar ? "84vw" : "0vw")};
     }
 
-    &:hover{
+    &:hover {
       height: 6vh;
     }
   }
@@ -97,43 +99,37 @@ export const ArrowLeftButton = styled(ArrowLeftRoundedIcon)`
 export const ArrowRightButton = styled(ArrowRightRoundedIcon)`
   && {
     position: absolute;
-    z-index: 2;
+    z-index: 3;
     font-size: 100px;
     top: 50vh;
     color: black;
-    left: ${({ $sidebar }) => ($sidebar ? "23vw" : "0vw")};
+    left: ${({ $sidebar }) => ($sidebar ? "25vw" : "0vw")};
     cursor: pointer;
-    background: #dfccb7;
+    background: #ffb6c1;
     width: 1vw;
     height: 4vh;
     transition: background 2s;
 
-    @media screen and (max-width: 1500px) {
-      left: ${({ $sidebar }) => ($sidebar ? "33.2vw" : "0vw")};
-    }
-
-    @media screen and (max-width: 1100px) {
-      left: ${({ $sidebar }) => ($sidebar ? "41.2vw" : "0vw")};
-      width: 3vw;
-    }
-
-    @media screen and (max-width: 828px) {
+    @media screen and (max-width: 1100px) and (max-height: 735px) {
       top: 35%;
-      left: ${({ $sidebar }) => ($sidebar ? "97%" : "0%")};
+      width: 1rem;
     }
 
-    @media screen and (max-height: 850px) {
-      top: 35%;
-      left: ${({ $sidebar }) => ($sidebar ? "97%" : "0vw")};
-    }
-
-    @media screen and (max-width: 492px) {
-      width: 6vw;
-      left: ${({ $sidebar }) => ($sidebar ? "94%" : "0vw")};
-    }
-
-    &:hover{
+    &:hover {
       height: 6vh;
     }
+  }
+`;
+
+export const MobileView = styled.div`
+  display: none;
+  @media screen and (max-width: 450px) and (max-height: 900px) {
+    display: block;
+  }
+`;
+
+export const DesktopView = styled.div`
+  @media screen and (max-width: 450px) and (max-height: 900px) {
+    display: none;
   }
 `;

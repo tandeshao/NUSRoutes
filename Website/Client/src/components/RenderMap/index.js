@@ -12,6 +12,7 @@ import icon from "../../images/icon.png";
 import icon2 from "../../images/Picture2.png";
 import icon3 from "../../images/Picture3.png";
 import busStops from "../../data/busStops.json";
+import gpsIcon from "../../images/gpslocation.gif";
 
 const containerStyle = {
   height: "100%",
@@ -79,11 +80,10 @@ function MapDirectionsRenderer(props) {
 
 function RenderMap({ route }) {
   const mapRef = useRef(() => null);
-  const position = useRef({
-    lat: 1.296643,
-    lng: 103.776398,
-  });
-
+  const center = { lat: 1.296643, lng: 103.776398 };
+  const position = useRef(center);
+  const [gpsLocation, setGpsLocation] = useState(() => null);
+  const [selectedGpsMarker, setSelectedGpsMarker] = useState(() => null);
   function handleLoad(map) {
     mapRef.current = map;
   }
@@ -98,15 +98,38 @@ function RenderMap({ route }) {
       }
     });
   });
+
+  const onSuccess = (location) => {
+    setGpsLocation({
+      lat: location.coords.latitude,
+      lng: location.coords.longitude,
+    });
+  };
+
+  const onError = (error) => {
+    return {
+      error: {
+        code: error.code,
+        message: error.message,
+      },
+    };
+  };
+
+  useEffect(() => {
+    setInterval(() => {
+      navigator.geolocation.getCurrentPosition(onSuccess, onError);
+    }, 10000);
+  }, []);
+
   const { REACT_APP_API_KEY } = process.env;
   return (
     <LoadScript googleMapsApiKey={REACT_APP_API_KEY}>
       <GoogleMap
         mapContainerStyle={containerStyle}
         onLoad={handleLoad}
-        center={position}
+        center={position.current}
         zoom={16}
-        options={{ styles: mapStyle, clickableIcons: false }}
+        options={{ styles: mapStyle, clickableIcons: false, disableDefaultUI: true }}
       >
         {places.length !== 0 && (
           <MapDirectionsRenderer
@@ -168,6 +191,28 @@ function RenderMap({ route }) {
             );
           }
         })}
+
+        {gpsLocation && (
+          <Marker
+            position={{ lat: gpsLocation.lat, lng: gpsLocation.lng }}
+            icon={{
+              url: gpsIcon,
+              scaledSize: new window.google.maps.Size(50, 60),
+            }}
+            onClick={() => setSelectedGpsMarker(true)}
+          />
+        )}
+
+        {selectedGpsMarker && (
+          <InfoWindow
+            position={{ lat: gpsLocation.lat, lng: gpsLocation.lng }}
+            onCloseClick={() => setSelectedGpsMarker(null)}
+          >
+            <div>
+              <h4> Your current location. </h4>
+            </div>
+          </InfoWindow>
+        )}
 
         {selectedBusStop && (
           <InfoWindow

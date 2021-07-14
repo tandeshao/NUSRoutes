@@ -25,6 +25,10 @@ export const HeroContainer = styled.div`
       ),
       linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, transparent 100%);
   }
+
+  @media screen and (max-width: 481px) {
+    height: 800px;
+  }
 `;
 
 /* add before styles */
@@ -134,13 +138,13 @@ export const FormSelect = styled.select`
 
 export const FormBg = styled.div`
   background: #353535;
-  borderradius: 10%;
+  border-radius: 10%;
   position: absolute;
   left: 0%;
   width: 130%;
   height: 130%;
   opacity: 85%;
-  filter: brightness(0.5);
+  filter: brightness(0.75);
   border: 7px solid #636363;
   margin: -50px;
 

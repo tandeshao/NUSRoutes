@@ -58,8 +58,8 @@ const Sidebar = ({ isOpen, toggle }) => {
           <SidebarLink to="about" onClick={toggle}>
             About
           </SidebarLink>
-          <SidebarLink to="platforms" onClick={toggle}>
-            Platforms
+          <SidebarLink to="businfo" onClick={toggle}>
+            Bus Info
           </SidebarLink>
           <SidebarLink to="faq" onClick={toggle}>
             FAQs

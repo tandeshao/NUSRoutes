@@ -9,7 +9,7 @@ export const InfoContainer = styled.div`
   }
 
   @media screen and (max-width: 480px) {
-    height: auto + 200px;
+    height: 1000px;
   }
 `;
 
@@ -99,6 +99,7 @@ export const BtnWrap = styled.div`
 export const ImgWrap = styled.div`
   max-width: 555px;
   height: 100%;
+  margin-bottom: 60px;
 
   @media screen and (max-width: 480px) {
     margin-right: 30px;
@@ -109,4 +110,6 @@ export const Img = styled.img`
   width: 100%;
   margin: 0 0 10px 0;
   padding-right: 0;
+  cursor: pointer;
 `;
+

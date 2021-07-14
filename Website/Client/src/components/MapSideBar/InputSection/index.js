@@ -18,12 +18,13 @@ import {
   Button2,
   Switch2,
   MobileViewContainer,
-  DesktopViewContainer,
+  DesktopViewContainer
 } from "./InputSectionElements";
 
 import firebase from "firebase/app";
 import "firebase/firestore";
 import image from "../../../images/switch.png";
+
 
 const InputSection = ({
   time,
@@ -90,10 +91,7 @@ const InputSection = ({
 
       const start = map[current];
       const end = map[destination];
-      const [hour, minute] = obj.toLocaleTimeString("it-IT").split(/:| /);
-      let now = parseInt(hour + minute);
-      setTime(now);
-      
+
       const category =
         data.reduce((x, y) => {
           if (x !== null) {
@@ -139,6 +137,7 @@ const InputSection = ({
 
   return (
     <InputSectionContainer>
+      
       <Switch
         onClick={() => {
           const curr = current;
@@ -167,7 +166,7 @@ const InputSection = ({
                   label="Choose Starting Point"
                   variant="outlined"
                   error={currentError}
-                  color="secondary"
+                  color="secondary" 
                 />
               )}
             />
