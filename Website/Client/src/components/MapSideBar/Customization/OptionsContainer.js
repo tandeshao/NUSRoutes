@@ -2,43 +2,39 @@ import styled from "styled-components";
 
 export const SectionContainer = styled.div`
   width: 100%;
+  min-height: 10%;
+  height: 10vh;
   position: relative;
-  overflow: hidden;
+  margin-bottom: 20px;
+
+  @media screen and (max-width: 400px) (max-height: 820px) {
+    margin-bottom: 20px;
+  }
+
 `;
 
 export const DepartureContainer = styled.div`
   color: #fff;
   position: absolute;
-  top: 10%;
-  left: 3%;
-  width: 100%;
+  top: 12%;
+  left: 1%;
+  width: auto;
 
-  @media screen and (max-width: 450px) {
-    left: 3%;
-  }
 `;
 
 export const OptionsContainer = styled.div`
   color: #fff;
   position: absolute;
-  top: 10%;
-  left: 41%;
-  width: 100%;
+  top: 12%;
+  width: auto;
+  right: 10%; 
 
-  @media screen and (max-height: 850px) {
-    display: none;
-  }
 `;
 
-export const OptionsContainer2 = styled.div`
-  display: none;
+export const ProximityAlarmContainer = styled.div`
+  position: absolute;
+  margin-left: 15px;
+  top: 60%;
+  left: 1%;
 
-  @media screen and (max-height: 850px) {
-    display: block;
-    color: #fff;
-    position: absolute;
-    top: 10%;
-    left: 45%;
-    width: 100%;
-  }
 `;

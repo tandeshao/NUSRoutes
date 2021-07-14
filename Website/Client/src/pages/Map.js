@@ -2,7 +2,8 @@ import RenderMap from "../components/RenderMap";
 import MapSideBar from "../components/MapSideBar";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-
+import useWindowDimensions from "../useWindowDimensions";
+import MapNavbar from "../components/MapNavbar";
 import {
   PageContainer,
   SideBarContainer,
@@ -10,15 +11,15 @@ import {
   ArrowLeftButton,
   ArrowRightButton,
 } from "./MapElements.js";
+import { motion } from "framer-motion";
+import { animationTwo, transition } from "./pageAnimation";
+import Drawer from "react-drag-drawer";
 
 const Map = () => {
-<<<<<<< Updated upstream
-=======
   const [renderRouteIndex, setRenderRouteIndex] = useState(0);
   const {height, width}= useWindowDimensions();
   const [open, setOpen] = useState(true);
   const toggle = (value) => setOpen(value);
->>>>>>> Stashed changes
   const [sidebar, setSideBar] = useState(() => true);
   const { REACT_APP_DOMAIN } = process.env;
   let { string } = useParams();
@@ -32,6 +33,8 @@ const Map = () => {
   let end = params.get("end");
   let time = params.get("time");
   let date = params.get("date");
+  
+  console.log(height, width);
 
   useEffect(() => {
     fetch(
@@ -55,7 +58,7 @@ const Map = () => {
       .then((data) => {
         //reason for the rendering of map pg twice.
         setRoute(data[0]["Path"]);
-        setRouteRecommendations(data);    
+        setRouteRecommendations(data);
       })
       .catch((error) =>
         setRouteRecommendations([
@@ -69,32 +72,6 @@ const Map = () => {
   }, [string, start, end, time, date, REACT_APP_DOMAIN]);
 
   return (
-<<<<<<< Updated upstream
-      <PageContainer>
-        <SideBarContainer $sidebar={sidebar}>
-          <MapSideBar
-            routeRecommendations={routeRecommendations}
-            setRoute={setRoute}
-            startAndEnd={[start, end]}
-            route={route}
-          />
-        </SideBarContainer>
-        <MapContainer $sidebar={sidebar}>
-          {sidebar ? (
-            <ArrowLeftButton
-              $sidebar={sidebar}
-              onClick={() => {
-                setSideBar((prev) => !prev);
-              }}
-            />
-          ) : (
-            <ArrowRightButton
-              $sidebar={sidebar}
-              onClick={() => {
-                setSideBar((prev) => !prev);
-              }}
-            />
-=======
     <motion.div
       initial="out"
       animate="in"
@@ -151,11 +128,10 @@ const Map = () => {
                 setRenderRouteIndex={setRenderRouteIndex}
               />
             </SideBarContainer>
->>>>>>> Stashed changes
+              />
           )}
-          <RenderMap route={route}/>
-        </MapContainer>
-      </PageContainer>
+        </PageContainer>
+    </motion.div>
   );
 };
 

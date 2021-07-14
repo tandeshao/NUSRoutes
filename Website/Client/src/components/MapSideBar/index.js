@@ -2,9 +2,13 @@ import Customization from "./Customization/";
 import InputSection from "./InputSection/";
 import Routes from "./Routes/";
 import { useState } from "react";
-import { MapSideBarContainer, Dividers, Logo } from "./MapSideBarElements";
+import { MapSideBarContainer, Dividers, Logo, Bar } from "./MapSideBarElements";
 import reverseMap from "../../data/reverseMap.json";
 import options from "../../data/options.json";
+import { IoHomeSharp } from "react-icons/io5";
+import useWindowDimensions from "../../useWindowDimensions";
+import MobileCustomization from "../MobileCustomization";
+import { CgLoadbar } from 'react-icons/cg'
 
 const MapSideBar = ({ routeRecommendations, setRoute, route, startAndEnd, renderRouteIndex, setRenderRouteIndex }) => {
   const [transferredBuses, setTransferredBuses] = useState(() => []);
@@ -13,11 +17,10 @@ const MapSideBar = ({ routeRecommendations, setRoute, route, startAndEnd, render
   let [hour, minute] = obj.toLocaleTimeString("it-IT").split(/:| /);
   let [monthNow, dateNow, yearNow] = obj.toLocaleDateString("en-US").split("/");
   const today = obj.getDay();
-  const [time, setTime] = useState(() => hour + minute);
+  const [time, setTime] = useState(() => parseInt(hour + minute));
   const [date, setDate] = useState(() => parseInt(dateNow));
   const [month, setMonth] = useState(() => parseInt(monthNow));
   const [year, setYear] = useState(() => parseInt(yearNow));
-  const [isOpen, setIsOpen] = useState(() => false);
   const [day, setDay] = useState(() => today);
   const [selectedRoute, setSelectedRoute] = useState(() => null);
   const [includeArrivalTime, setIncludeArrivalTime] = useState(() => true);
@@ -32,8 +35,13 @@ const MapSideBar = ({ routeRecommendations, setRoute, route, startAndEnd, render
       : reverseMap[startAndEnd[1]];
   });
 
+  const { width, height } = useWindowDimensions();
+
   return (
     <MapSideBarContainer>
+      <Bar>
+        <CgLoadbar size={40} />
+      </Bar>
       <InputSection
         setTransferredBuses={setTransferredBuses}
         setBusArrivalTime={setBusArrivalTime}
@@ -49,20 +57,30 @@ const MapSideBar = ({ routeRecommendations, setRoute, route, startAndEnd, render
         setCurrent={setCurrent}
         setDestination={setDestination}
       />
-      <Dividers variant="middle" />
-      <Customization
-        setTime={setTime}
-        setDate={setDate}
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
-        setMonth={setMonth}
-        setYear={setYear}
-        setDay={setDay}
-        setIncludeArrivalTime={setIncludeArrivalTime}
-        setSelectedRoute={setSelectedRoute}
-        current={current}
-        destination={destination}
-      />
+      <Dividers />
+      {width <= 450 && height < 900 ? (
+        <MobileCustomization setTime={setTime}
+          setDate={setDate}
+          setMonth={setMonth}
+          setYear={setYear}
+          setDay={setDay}
+          setIncludeArrivalTime={setIncludeArrivalTime}
+          setSelectedRoute={setSelectedRoute}
+          current={current}
+          destination={destination} />
+      ) : (
+        <Customization
+          setTime={setTime}
+          setDate={setDate}
+          setMonth={setMonth}
+          setYear={setYear}
+          setDay={setDay}
+          setIncludeArrivalTime={setIncludeArrivalTime}
+          setSelectedRoute={setSelectedRoute}
+          current={current}
+          destination={destination}
+        />
+      )}
 
       <Routes
         includeArrivalTime={includeArrivalTime}
@@ -72,7 +90,6 @@ const MapSideBar = ({ routeRecommendations, setRoute, route, startAndEnd, render
         setBusArrivalTime={setBusArrivalTime}
         routeRecommendations={routeRecommendations}
         setRoute={setRoute}
-        isOpen={isOpen}
         route={route}
         selectedRoute={selectedRoute}
         setSelectedRoute={setSelectedRoute}
@@ -80,7 +97,14 @@ const MapSideBar = ({ routeRecommendations, setRoute, route, startAndEnd, render
         setRenderRouteIndex={setRenderRouteIndex}
       />
 
-      <Logo to="/">NUSROUTES</Logo>
+      <Logo to="/">
+        {" "}
+        <IoHomeSharp
+          size={30}
+          style={{ position: "relative", top: "5px", right: "5px" }}
+        />{" "}
+        Home{" "}
+      </Logo>
     </MapSideBarContainer>
   );
 };

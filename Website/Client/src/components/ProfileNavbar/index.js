@@ -82,7 +82,7 @@ const ProfileNavbar = (props) => {
               <NavLinks to="/">Home</NavLinks>
             </NavItem>
             <NavItem>
-              <NavToggle>History</NavToggle>
+              <NavToggle to='/profile'>History</NavToggle>
             </NavItem>
           </NavMenu>
           <NavBtn>

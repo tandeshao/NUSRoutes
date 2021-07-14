@@ -8,15 +8,13 @@ export const ContactContainer = styled.div`
   grid-template-rows: 10% 80%;
   grid-template-columns: 60% 40%;
   grid-template-areas: "hd hd" "contact info";
-
   @media screen and (max-width: 1400px) {
     grid-template-columns: 50% 50%;
   }
-
   @media screen and (max-width: 768px) {
     display: flex;
     flex-direction: column;
-    height: auto + 400px;
+    height: 1200px;
     padding: 20px;
     align-items: center;
     justify-content: center;
@@ -38,11 +36,9 @@ export const ContactForm = styled.form`
   color: #29f2f2;
   margin-left: 15vw;
   border-radius: 5%;
-
   @media screen and (max-width: 1400px) {
     margin-left: 4vw;
   }
-
 `;
 
 export const Formhd = styled.p`
@@ -92,7 +88,6 @@ export const MessageBox = styled.textarea`
   color: white;
   font-size: 1.2rem;
   padding: 0.5%;
-
   ::placeholder {
     color: #2eb8b8;
     font-style: italic;
@@ -108,7 +103,6 @@ export const EmailBox = styled.input`
   color: white;
   font-size: 1.2rem;
   padding: 0.5%;
-
   ::placeholder {
     color: #2eb8b8;
     padding: 0.5%;
@@ -125,7 +119,6 @@ export const NameBox = styled.input`
   color: white;
   font-size: 1.2rem;
   padding: 0.5%;
-
   ::placeholder {
     color: #2eb8b8;
     padding: 0.5%;
@@ -142,13 +135,11 @@ export const SubjectBox = styled.input`
   padding: 0.5%;
   font-size: 1.2rem;
   color: white;
-
   ::placeholder {
     color: #2eb8b8;
     padding: 0.5%;
     font-style: italic;
   }
-
   &:focus {
     border: 1px solid #3dfc03;
     border-color: #509632;
@@ -163,16 +154,13 @@ export const ContactInfo = styled.img`
   grid-area: info;
   margin-left: 8vw;
   margin-top: 6vh;
-
   @media screen and (max-width: 1400px) {
     margin-left: 4vw;
   }
-
   @media screen and (max-width: 928px) {
     height: 600px;
     width: 350px;
   }
-
   @media screen and (max-width: 768px) {
     display: none;
   }
