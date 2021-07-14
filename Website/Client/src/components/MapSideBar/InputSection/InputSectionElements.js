@@ -5,10 +5,6 @@ import { MdKeyboardArrowRight, MdArrowForward } from "react-icons/md";
 export const InputSectionContainer = styled.div`
   min-height: auto;
   position: relative;
-
-  @media screen and (max-width: 400px) and (max-height: 820px) {
-    margin-top: 5px;
-  }
 `;
 
 
@@ -29,7 +25,7 @@ export const Switch = styled.img`
     right: 10%;
   }
 
-  @media screen and (max-width: 400px) and (max-height: 860px) {
+  @media screen and (max-width: 450px) and (max-height: 900px) {
     display: none;
   }
 
@@ -48,10 +44,9 @@ export const Switch2 = styled.img`
     left: 70%;
   }
 
-  @media screen and (max-width: 624px) {
-    height: 30%;
+  @media screen and (max-width: 450px) and (max-height: 900px) {
+    height: 60px;
   }
-
   
 `;
 
@@ -103,7 +98,7 @@ export const ArrowRight = styled(MdKeyboardArrowRight)`
 export const Button2 = styled.button`
   display: none;
 
-  @media screen and (max-width: 400px) and (max-height: 860px) {
+  @media screen and (max-width: 450px) and (max-height: 900px) {
     width: 5%;
     border-radius: 50px;
     background: ${({ primary, secondary }) =>
@@ -180,7 +175,7 @@ export const Button = styled.button`
     display: none;
   }
 
-  @media screen and (max-width: 400px) and (max-height: 860px) {
+  @media screen and (max-width: 450px) and (max-height: 900px) {
     display: none;
   }
 `;
@@ -188,8 +183,9 @@ export const Button = styled.button`
 export const MobileViewContainer = styled.div`
   display: none;
 
-  @media screen and (max-width: 400px) and (max-height: 860px) {
+  @media screen and (max-width: 450px) and (max-height: 900px) {
     display: flex;
+    height: 50px;
     justify-content: space-between;
     margin-left: 20px;
   }
@@ -204,7 +200,7 @@ export const DesktopViewContainer = styled.div`
     display: none;
   }
 
-  @media screen and (max-width: 400px) and (max-height: 860px) {
+  @media screen and (max-width: 450px) and (max-height: 900px) {
     display: none;
   }
 `;

@@ -166,7 +166,7 @@ const InputSection = ({
                   label="Choose Starting Point"
                   variant="outlined"
                   error={currentError}
-                  color="secondary"
+                  color="secondary" 
                 />
               )}
             />

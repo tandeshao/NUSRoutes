@@ -22,7 +22,7 @@ export const Item = styled.div`
   flex-grow: 1;
   text-align: center;
 
-  @media screen and (max-width: 400px) and (max-height: 860px) {
+  @media screen and (max-width: 450px) and (max-height: 900px) {
     font-size: 15px;
   }
 `;
@@ -37,7 +37,7 @@ export const LinkItem = styled(Link)`
   text-align: center;
   text-decoration: none;
   
-  @media screen and (max-width: 400px) and (max-height: 860px) {
+  @media screen and (max-width: 450px) and (max-height: 900px) {
     font-size: 15px;
   }
 `;

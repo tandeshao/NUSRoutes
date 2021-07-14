@@ -16,7 +16,7 @@ export const FAQContainer = styled.div`
     align-items: center;
   }
 
-  @media screen and (max-width: 400px) and (max-height: 860px) {
+  @media screen and (max-width: 450px) and (max-height: 900px) {
     height: 1000px;
   }
 
@@ -37,7 +37,7 @@ export const FAQH1 = styled.h1`
     font-size: 2rem;
   }
 
-  @media screen and (max-width: 400px) and (max-height: 860px) {
+  @media screen and (max-width: 450px) and (max-height: 900px) {
     margin-top: 0;
   }
 `;

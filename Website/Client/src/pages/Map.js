@@ -79,7 +79,7 @@ const Map = () => {
       transition={transition}
     >
         <PageContainer>
-          {width > 400 || height > 860 ? (
+          {width > 450 || height > 900 ? (
             sidebar ? (
               <ArrowLeftButton
                 $sidebar={sidebar}
@@ -102,7 +102,7 @@ const Map = () => {
             <RenderMap route={route} />
           </MapContainer>
 
-          {width <= 400 && height < 860 ? (
+          {width <= 450 && height < 900 ? (
             <>
               <Drawer open={open} onRequestClose={() => toggle(false)}>
               <MapSideBar

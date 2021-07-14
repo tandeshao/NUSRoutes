@@ -6,7 +6,7 @@ export const PageContainer = styled.div`
   display: flex;
   flex-direction: row-reverse;
 
-  @media screen and (max-width: 400px) and (max-height: 860px) {
+  @media screen and (max-width: 450px) and (max-height: 900px) {
     ${"" /* flex-direction: column; */}
     height: 100vh;
     ${"" /* justify-content: flex-end; */}
@@ -39,7 +39,7 @@ export const MapContainer = styled.div`
   max-height: 100vh;
   z-index: 2;
 
-  @media screen and (max-width: 400px) and (max-height: 860px) {
+  @media screen and (max-width: 450px) and (max-height: 900px) {
     position: fixed;
     height: 100vh;
     z-index: 1;
@@ -123,13 +123,13 @@ export const ArrowRightButton = styled(ArrowRightRoundedIcon)`
 
 export const MobileView = styled.div`
   display: none;
-  @media screen and (max-width: 400px) and (max-height: 860px) {
+  @media screen and (max-width: 450px) and (max-height: 900px) {
     display: block;
   }
 `;
 
 export const DesktopView = styled.div`
-  @media screen and (max-width: 400px) and (max-height: 860px) {
+  @media screen and (max-width: 450px) and (max-height: 900px) {
     display: none;
   }
 `;

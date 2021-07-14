@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 
 const MapNavbar = ({ open, toggle }) => {
   const history = useHistory();
-
+  const user = window.localStorage.getItem("user");
   const push = (location) => {
     history.push(location);
   };
@@ -42,7 +42,7 @@ const MapNavbar = ({ open, toggle }) => {
         <Item
           onClick={() => {
             toggle(false);
-            push("/profile");
+            push(user ? "/profile" : "/signin");
           }}
         >
           <FaHistory size={27}/>

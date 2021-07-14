@@ -8,6 +8,7 @@ export const CustomizationSection = styled.div`
   justify-content: space-between;
   margin: 10px;
   flex-wrap: wrap;
+  font-size: 0.8rem;
 `;
 
 export const CustomizationButton = styled.p`
@@ -31,9 +32,9 @@ export const CustomizationButton2 = styled.p`
 export const AlarmButton = styled.p`
   font-weight: bold;
   padding: 5px;
-  color: ${({alarm}) => alarm ? "red" : ""};
-  border:  ${({alarm}) => alarm ? "1px solid red" : ""};
-  border-radius: ${({alarm}) => alarm ? "10px" : ""};
+  color: ${({alarmToggle}) => alarmToggle ? "red" : ""};
+  border:  ${({alarmToggle}) => alarmToggle ? "1px solid red" : ""};
+  border-radius: ${({alarmToggle}) => alarmToggle ? "10px" : ""};
 `;
 
 export const GetBusStopButton = styled.p`

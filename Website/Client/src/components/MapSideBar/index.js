@@ -58,7 +58,7 @@ const MapSideBar = ({ routeRecommendations, setRoute, route, startAndEnd }) => {
         setDestination={setDestination}
       />
       <Dividers />
-      {width <= 400 && height < 860 ? (
+      {width <= 450 && height < 900 ? (
         <MobileCustomization setTime={setTime}
           setDate={setDate}
           setMonth={setMonth}

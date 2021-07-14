@@ -7,13 +7,12 @@ import {
   ScrollBar2,
   Container2,
 } from "./RouteElements";
-import { Button } from "../../ButtonElement";
 import map from "../../../data/reverseMap.json";
 import startIcon from "../../../images/Picture2.png";
 import endIcon from "../../../images/Picture3.png";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { BiRefresh } from "react-icons/bi";
-import { GiClick } from "react-icons/gi";
+import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
 
 const findTransferredBuses = (route, selectedRoute) => {
   const transferredBuses = [];
@@ -68,7 +67,8 @@ const Routes = ({
   setBusArrivalTime,
   includeArrivalTime,
 }) => {
-  const units = ["hrs", "hrs", "", "mins", "metres", ""];
+  const [renderRouteIndex, setRenderRouteIndex] = useState(0);
+  const units = ["hrs", "hrs", "", "mins", "", ""];
   const { REACT_APP_DOMAIN } = process.env;
   useEffect(() => {
     console.log("fetch called");
@@ -174,7 +174,7 @@ const Routes = ({
         <ScrollBar>
           {routeRecommendations[0]["Cost"] !== -1 ? (
             <TransitionGroup component={Effect}>
-              <h4 style={{ color: "white", margin: '20px'}}>           
+              <h4 style={{ color: "#b3b3b3", margin: "0 0 20px 20px" }}>
                 Route Recommendations
               </h4>
               {routeRecommendations.map((route, index) => {
@@ -195,22 +195,39 @@ const Routes = ({
                         setTransferredBuses(
                           findTransferredBuses(route["Path"], index)
                         );
+                        setRenderRouteIndex(index);
                       }}
                     >
+                      {renderRouteIndex === index && (
+                        <h4
+                          style={{
+                            color: "red",
+                            position: "absolute",
+                            right: "35%",
+                            top: '5px',
+                          }}
+                        >
+                          {" "}
+                          Rendered{" "}
+                        </h4>
+                      )}
                       {Object.keys(route).map(
                         (str, index) =>
                           str !== "Path" &&
-                          str !== "Cost" && (
-                            <p key={index + 300}>
+                          str !== "Cost" &&
+                          str !== "Distance" && (
+                            <p key={index + 300} style={{marginTop: '10px'}}>
                               {str + ": " + route[str] + " " + units[index]}
                             </p>
                           )
                       )}
-                      <GiClick
+                      <MdKeyboardArrowRight
                         style={{
                           position: "absolute",
-                          top: "10px",
-                          right: "10px",
+                          top: "0",
+                          right: "0",
+                          height: "100%",
+                          width: "20%",
                         }}
                       />
                     </RouteContainer>
@@ -237,6 +254,24 @@ const Routes = ({
       ) : (
         <ScrollBar2>
           <TransitionGroup component={Effect}>
+            <div
+              style={{
+                display: "flex",
+                margin: "0 0 20px 20px",
+                color: "#b3b3b3",
+                cursor: "pointer",
+              }}
+              onClick={() => {
+                setSelectedRoute(null);
+                setBusArrivalTime([]);
+                setTransferredBuses([]);
+              }}
+            >
+              {" "}
+              <MdKeyboardArrowLeft size={22} />
+              <h4>Route Information</h4>
+            </div>
+
             <CSSTransition
               in={true}
               appear={true}
@@ -249,7 +284,8 @@ const Routes = ({
                   (str, index) => {
                     return (
                       str !== "Path" &&
-                      str !== "Cost" && (
+                      str !== "Cost" &&
+                      str !== "Distance" && (
                         <p key={index + 400}>
                           {str +
                             ": " +
@@ -383,28 +419,6 @@ const Routes = ({
                   }}
                 />
               </Container2>
-            </CSSTransition>
-          </TransitionGroup>
-          <TransitionGroup component={Effect}>
-            <CSSTransition
-              in={true}
-              appear={true}
-              timeout={500}
-              classNames="fade"
-              unmountOnExit
-            >
-              <Button
-                primary="false"
-                dark="true"
-                onClick={() => {
-                  setSelectedRoute(null);
-                  setBusArrivalTime([]);
-                  setTransferredBuses([]);
-                }}
-                style={{ width: "100%" }}
-              >
-                Go Back to Route Search
-              </Button>
             </CSSTransition>
           </TransitionGroup>
         </ScrollBar2>
