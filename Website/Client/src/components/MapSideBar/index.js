@@ -6,7 +6,7 @@ import { MapSideBarContainer, Dividers, Logo } from "./MapSideBarElements";
 import reverseMap from "../../data/reverseMap.json";
 import options from "../../data/options.json";
 
-const MapSideBar = ({ routeRecommendations, setRoute, route, startAndEnd }) => {
+const MapSideBar = ({ routeRecommendations, setRoute, route, startAndEnd, renderRouteIndex, setRenderRouteIndex }) => {
   const [transferredBuses, setTransferredBuses] = useState(() => []);
   const [busArrivalTime, setBusArrivalTime] = useState(() => []);
   const obj = new Date();
@@ -76,6 +76,8 @@ const MapSideBar = ({ routeRecommendations, setRoute, route, startAndEnd }) => {
         route={route}
         selectedRoute={selectedRoute}
         setSelectedRoute={setSelectedRoute}
+        renderRouteIndex={renderRouteIndex}
+        setRenderRouteIndex={setRenderRouteIndex}
       />
 
       <Logo to="/">NUSROUTES</Logo>

@@ -67,7 +67,12 @@ const Routes = ({
   setBusArrivalTime,
   includeArrivalTime,
 }) => {
+<<<<<<< Updated upstream
   const units = ["hrs", "hrs", "", "mins", "metres", ""];
+=======
+  
+  const units = ["hrs", "hrs", "", "mins", "", ""];
+>>>>>>> Stashed changes
   const { REACT_APP_DOMAIN } = process.env;
   useEffect(() => {
     transferredBuses.forEach((obj) => {

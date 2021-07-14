@@ -12,6 +12,13 @@ import {
 } from "./MapElements.js";
 
 const Map = () => {
+<<<<<<< Updated upstream
+=======
+  const [renderRouteIndex, setRenderRouteIndex] = useState(0);
+  const {height, width}= useWindowDimensions();
+  const [open, setOpen] = useState(true);
+  const toggle = (value) => setOpen(value);
+>>>>>>> Stashed changes
   const [sidebar, setSideBar] = useState(() => true);
   const { REACT_APP_DOMAIN } = process.env;
   let { string } = useParams();
@@ -62,6 +69,7 @@ const Map = () => {
   }, [string, start, end, time, date, REACT_APP_DOMAIN]);
 
   return (
+<<<<<<< Updated upstream
       <PageContainer>
         <SideBarContainer $sidebar={sidebar}>
           <MapSideBar
@@ -86,6 +94,64 @@ const Map = () => {
                 setSideBar((prev) => !prev);
               }}
             />
+=======
+    <motion.div
+      initial="out"
+      animate="in"
+      exit="out"
+      variants={animationTwo}
+      transition={transition}
+    >
+        <PageContainer>
+          {width > 450 || height > 900 ? (
+            sidebar ? (
+              <ArrowLeftButton
+                $sidebar={sidebar}
+                onClick={() => {
+                  setSideBar((prev) => !prev);
+                }}
+              />
+            ) : (
+              <ArrowRightButton
+                $sidebar={sidebar}
+                onClick={() => {
+                  setSideBar((prev) => !prev);
+                }}
+              />
+            )
+          ) : (
+            ""
+          )}
+          <MapContainer $sidebar={sidebar}>
+            <RenderMap route={route} />
+          </MapContainer>
+
+          {width <= 450 && height < 900 ? (
+            <>
+              <Drawer open={open} onRequestClose={() => toggle(false)}>
+              <MapSideBar
+                routeRecommendations={routeRecommendations}
+                setRoute={setRoute}
+                startAndEnd={[start, end]}
+                route={route}
+                renderRouteIndex={renderRouteIndex}
+                setRenderRouteIndex={setRenderRouteIndex}
+              />
+              </Drawer>
+              <MapNavbar open={open} toggle={toggle} style={{ zIndex: "1400" }} />
+            </>
+          ) : (
+            <SideBarContainer $sidebar={sidebar}>
+              <MapSideBar
+                routeRecommendations={routeRecommendations}
+                setRoute={setRoute}
+                startAndEnd={[start, end]}
+                route={route}
+                renderRouteIndex={renderRouteIndex}
+                setRenderRouteIndex={setRenderRouteIndex}
+              />
+            </SideBarContainer>
+>>>>>>> Stashed changes
           )}
           <RenderMap route={route}/>
         </MapContainer>
