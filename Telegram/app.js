@@ -742,16 +742,15 @@ const requestLocationKeyboard = {
 
 var proxDest = {};
 var counter = {};
+var locationStr =
+  "\n" +
+  "Please share your Live Location to start the proximity alarm.\n\n1) Click on the paperclip icon at the bottom\n2) Click on Location\n3) Share My Live Location";
 
 bot.hears("/proximityAlarm", (ctx) => {
   console.log(ctx.from);
   if (destination[ctx.from.id] !== undefined) {
     proxDest[ctx.from.id] = destination[ctx.from.id];
-    ctx.reply(
-      `Destination: ${
-        proxDest[ctx.from.id]
-      } \nPlease share your Live Location to start the proximity alarm.`
-    );
+    ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
   } else {
     let msg = `Select your DESTINATION:`;
     ctx.deleteMessage();
@@ -788,11 +787,7 @@ bot.on("edited_message", (ctx) => {
 
 bot.action("prox_AS5", (ctx) => {
   proxDest[ctx.from.id] = "AS5";
-  ctx.reply(
-    `Destination: ${
-      proxDest[ctx.from.id]
-    } \nPlease share your Live Location to start the proximity alarm`
-  );
+  ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
 bot.launch();
