@@ -95,14 +95,14 @@ const Navbar = (props) => {
             </NavItem>
             <NavItem>
               <NavLinks
-                to="platforms"
+                to="businfo"
                 smooth={true}
                 duration={500}
                 spy={true}
                 exact="true"
                 offset={-80}
               >
-                Platforms
+                Bus Info
               </NavLinks>
             </NavItem>
             <NavItem>

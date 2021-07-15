@@ -133,8 +133,13 @@ const Login = () => {
 
   return (
     <section className="login">
-      <div className="loginContainer">
-        <IconButton aria-label="back" className={classes.root} size="small">
+      <div className="loginContainer" style={{ position: "relative" }}>
+        <IconButton
+          aria-label="back"
+          className={classes.root}
+          size="small"
+          style={{ position: "absolute", top: "5%", left: "0" }}
+        >
           <ArrowBackIcon fontSize="large" onClick={handleClick} />
         </IconButton>
         <NUSRoutes>NUSRoutes</NUSRoutes>

@@ -6,12 +6,16 @@ import {
   Container,
   ScrollBar2,
   Container2,
+  Arrow,
+  Notifier,
 } from "./RouteElements";
-import { Button } from "../../ButtonElement";
 import map from "../../../data/reverseMap.json";
 import startIcon from "../../../images/Picture2.png";
 import endIcon from "../../../images/Picture3.png";
 import { useEffect } from "react";
+import { BiRefresh } from "react-icons/bi";
+import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
+import useWindowDimensions from "../../../useWindowDimensions";
 
 const findTransferredBuses = (route, selectedRoute) => {
   const transferredBuses = [];
@@ -55,7 +59,6 @@ const findTransferredBuses = (route, selectedRoute) => {
 };
 
 const Routes = ({
-  isOpen,
   setRoute,
   routeRecommendations,
   route,
@@ -66,61 +69,135 @@ const Routes = ({
   busArrivalTime,
   setBusArrivalTime,
   includeArrivalTime,
+  renderRouteIndex,
+  setRenderRouteIndex,
 }) => {
-  const units = ["hrs", "hrs", "", "mins", "metres", ""];
+  const { height, width } = useWindowDimensions();
+
+  const units = ["hrs", "hrs", "", "mins", "", ""];
   const { REACT_APP_DOMAIN } = process.env;
   useEffect(() => {
+    console.log("fetch called");
     transferredBuses.forEach((obj) => {
-      const busStop = route[obj.start].substring(
-        0,
-        route[obj.start].indexOf("_")
-      );
-      const busService = obj.service;
-      const checkBusService =
-        busStop === "COM2" && busService === "D1"
-          ? route[obj.start + 1] === "LT13-OPP"
-            ? encodeURIComponent("D1(To UTown)")
-            : encodeURIComponent("D1(To BIZ2)")
-          : busStop === "UTown" && busService === "C"
-          ? route[obj.start + 1] === "RAFFLES"
-            ? encodeURIComponent("C(To KRT)")
-            : encodeURIComponent("C(To FOS)")
-          : encodeURIComponent(busService);
-      fetch(
-        `${REACT_APP_DOMAIN}` +
-          "/api/" +
-          "getArrivalTime" +
-          "?" +
-          "busStop=" +
-          busStop +
-          "&" +
-          "busService=" +
-          checkBusService
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          setBusArrivalTime((arr) => {
-            if (arr.length < transferredBuses.length) {
-              return arr.concat([data]);
-            } else {
-              return [];
-            }
-          });
-        })
-        .catch(console.log);
+      if (route[obj.start]) {
+        const busStop = route[obj.start].substring(
+          0,
+          route[obj.start].indexOf("_")
+        );
+        const busService = obj.service;
+        const checkBusService =
+          busStop === "COM2" && busService === "D1"
+            ? route[obj.start + 1] === "LT13-OPP"
+              ? encodeURIComponent("D1(To UTown)")
+              : encodeURIComponent("D1(To BIZ2)")
+            : busStop === "UTown" && busService === "C"
+            ? route[obj.start + 1] === "RAFFLES"
+              ? encodeURIComponent("C(To KRT)")
+              : encodeURIComponent("C(To FOS)")
+            : encodeURIComponent(busService);
+        fetch(
+          `${REACT_APP_DOMAIN}` +
+            "/api/" +
+            "getArrivalTime" +
+            "?" +
+            "busStop=" +
+            busStop +
+            "&" +
+            "busService=" +
+            checkBusService
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            setBusArrivalTime((arr) => {
+              if (arr.length < transferredBuses.length) {
+                return arr.concat([data]);
+              } else {
+                return [];
+              }
+            });
+          })
+          .catch(console.log);
+      }
     });
   }, [transferredBuses, REACT_APP_DOMAIN, route, setBusArrivalTime]);
+
+  // const getArrivalTime = () => {
+  //   if (!running) {
+  //     console.log('running');
+  //     setRunning(true);
+  //     transferredBuses.forEach((obj) => {
+  //       const busStop = route[obj.start].substring(
+  //         0,
+  //         route[obj.start].indexOf("_")
+  //       );
+  //       const busService = obj.service;
+  //       const checkBusService =
+  //         busStop === "COM2" && busService === "D1"
+  //           ? route[obj.start + 1] === "LT13-OPP"
+  //             ? encodeURIComponent("D1(To UTown)")
+  //             : encodeURIComponent("D1(To BIZ2)")
+  //           : busStop === "UTown" && busService === "C"
+  //           ? route[obj.start + 1] === "RAFFLES"
+  //             ? encodeURIComponent("C(To KRT)")
+  //             : encodeURIComponent("C(To FOS)")
+  //           : encodeURIComponent(busService);
+  //       console.log('fetching');
+  //       fetch(
+  //         `${REACT_APP_DOMAIN}` +
+  //           "/api/" +
+  //           "getArrivalTime" +
+  //           "?" +
+  //           "busStop=" +
+  //           busStop +
+  //           "&" +
+  //           "busService=" +
+  //           checkBusService
+  //       )
+  //         .then((response) => response.json())
+  //         .then((data) => {
+
+  //           setBusArrivalTime((arr) => {
+  //             if (arr.length < transferredBuses.length) {
+  //               return arr.concat([data]);
+  //             } else {
+  //               return [];
+  //             }
+  //           });
+  //           setRunning(false);
+  //         })
+  //         .catch(console.log);
+  //     });
+  //   }
+  // };
 
   return (
     <div
       style={{
-        height: isOpen ? "100%" : "100%",
+        height: "100%",
       }}
     >
       {selectedRoute === null ? (
-        <ScrollBar isOpen={isOpen}>
+        <ScrollBar>
           {routeRecommendations[0]["Cost"] !== -1 ? (
             <TransitionGroup component={Effect}>
+              <CSSTransition
+                in={true}
+                appear={true}
+                timeout={500}
+                classNames="fade"
+                unmountOnExit
+              >
+                {<h4
+                  style={{
+                    color: "#b3b3b3",
+                    margin: "10px 0 20px 20px",
+                    fontSize: "15px",
+                  }}
+                >
+                  Route Recommendations
+                </h4>}
+              </CSSTransition>
+
               {routeRecommendations.map((route, index) => {
                 return (
                   <CSSTransition
@@ -139,15 +216,26 @@ const Routes = ({
                         setTransferredBuses(
                           findTransferredBuses(route["Path"], index)
                         );
+                        setRenderRouteIndex(index);
                       }}
                     >
+                      {renderRouteIndex === index && (
+                        <Notifier>Rendered</Notifier>
+                      )}
                       {Object.keys(route).map(
                         (str, index) =>
-                          str !== "Path" && str !== "Cost" && (
-                            <p key={index + 300}>
+                          str !== "Path" &&
+                          str !== "Cost" &&
+                          str !== "Distance" && (
+                            <p key={index + 300} style={{ marginTop: "2px" }}>
                               {str + ": " + route[str] + " " + units[index]}
                             </p>
                           )
+                      )}
+                      {routeRecommendations[0]["Cost"] && (
+                        <Arrow>
+                          <MdKeyboardArrowRight size={70} />
+                        </Arrow>
                       )}
                     </RouteContainer>
                   </CSSTransition>
@@ -171,8 +259,35 @@ const Routes = ({
           )}
         </ScrollBar>
       ) : (
-        <ScrollBar2 isOpen={isOpen}>
+        <ScrollBar2>
           <TransitionGroup component={Effect}>
+            <CSSTransition
+              in={true}
+              appear={true}
+              timeout={500}
+              classNames="fade"
+              unmountOnExit
+            >
+              <div
+                style={{
+                  display: "flex",
+                  margin: "10px 0 20px 20px",
+                  color: "#b3b3b3",
+                  cursor: "pointer",
+                  fontSize: "15px",
+                }}
+                onClick={() => {
+                  setSelectedRoute(null);
+                  setBusArrivalTime([]);
+                  setTransferredBuses([]);
+                }}
+              >
+                {" "}
+                <MdKeyboardArrowLeft size={22} />
+                <h4>Route Information</h4>
+              </div>
+            </CSSTransition>
+
             <CSSTransition
               in={true}
               appear={true}
@@ -184,7 +299,9 @@ const Routes = ({
                 {Object.keys(routeRecommendations[selectedRoute]).map(
                   (str, index) => {
                     return (
-                      str !== "Path" && str !== "Cost" && (
+                      str !== "Path" &&
+                      str !== "Cost" &&
+                      str !== "Distance" && (
                         <p key={index + 400}>
                           {str +
                             ": " +
@@ -208,16 +325,27 @@ const Routes = ({
               unmountOnExit
             >
               <Container2>
-                Start from {map[route[0].substring(0, route[0].indexOf("_"))]}.{" "}
+                Start from{" "}
+                {route[0] && map[route[0].substring(0, route[0].indexOf("_"))]}.{" "}
                 <img
                   src={startIcon}
                   alt=""
-                  style={{
-                    display: "inline",
-                    float: "right",
-                    width: "30px",
-                    height: "30px",
-                  }}
+                  style={
+                    width <= 450 && height < 900
+                      ? {
+                          display: "inline",
+                          width: "20px",
+                          float: "right",
+                          marginRight: "5%",
+                          height: "20px",
+                        }
+                      : {
+                          display: "inline",
+                          width: "30px",
+                          float: "right",
+                          height: "35px",
+                        }
+                  }
                 />
               </Container2>
             </CSSTransition>
@@ -236,14 +364,25 @@ const Routes = ({
                 >
                   <Container2 key={index + 500}>
                     Take {x.service} from{" "}
-                    {
+                    {route[x.start] &&
                       map[
                         route[x.start].substring(0, route[x.start].indexOf("_"))
-                      ]
-                    }{" "}
+                      ]}{" "}
                     to{" "}
-                    {map[route[x.end].substring(0, route[x.end].indexOf("_"))]}.{" "}
-                    <br />
+                    {route[x.end] &&
+                      map[route[x.end].substring(0, route[x.end].indexOf("_"))]}
+                    . <br />
+                    {includeArrivalTime ? <br /> : ""}
+                    {includeArrivalTime ? (
+                      <strong style={{ cursor: "pointer" }}> Refresh </strong>
+                    ) : (
+                      ""
+                    )}
+                    {includeArrivalTime ? (
+                      <BiRefresh style={{ cursor: "pointer" }} />
+                    ) : (
+                      ""
+                    )}
                     {includeArrivalTime ? <br /> : ""}
                     {includeArrivalTime ? "Bus Arrival Time: " : ""}
                     {includeArrivalTime
@@ -251,7 +390,9 @@ const Routes = ({
                         ? "loading.."
                         : busArrivalTime[index][0] === "-"
                         ? "-"
-                        : busArrivalTime[index][0] + " mins"
+                        : busArrivalTime[index][0] !== "Arr"
+                        ? busArrivalTime[index][0] + " mins"
+                        : busArrivalTime[index][0]
                       : ""}
                     {includeArrivalTime ? <br /> : " "}
                     {includeArrivalTime ? "Next Bus Arrival Time: " : ""}
@@ -260,7 +401,9 @@ const Routes = ({
                         ? "loading.."
                         : busArrivalTime[index][1] === "-"
                         ? "-"
-                        : +busArrivalTime[index][1] + " mins"
+                        : busArrivalTime[index][1] !== "Arr"
+                        ? busArrivalTime[index][1] + " mins"
+                        : busArrivalTime[index][1]
                       : ""}
                     {includeArrivalTime ? <br /> : ""} <br />
                     Path: <br />
@@ -283,48 +426,35 @@ const Routes = ({
               unmountOnExit
             >
               <Container2>
-                {
+                {route[route.length - 1] &&
                   map[
                     route[route.length - 1].substring(
                       0,
                       route[route.length - 1].indexOf("_")
                     )
-                  ]
-                }{" "}
+                  ]}{" "}
                 reached.
                 <img
                   src={endIcon}
                   alt=""
-                  style={{
-                    display: "inline",
-                    float: "right",
-                    width: "20px",
-                    height: "35px",
-                  }}
+                  style={
+                    width <= 450 && height < 900
+                      ? {
+                          display: "inline",
+                          width: "15px",
+                          float: "right",
+                          marginRight: "7%",
+                          height: "20px",
+                        }
+                      : {
+                          display: "inline",
+                          width: "20px",
+                          float: "right",
+                          height: "35px",
+                        }
+                  }
                 />
               </Container2>
-            </CSSTransition>
-          </TransitionGroup>
-          <TransitionGroup component={Effect}>
-            <CSSTransition
-              in={true}
-              appear={true}
-              timeout={500}
-              classNames="fade"
-              unmountOnExit
-            >
-              <Button
-                primary="false"
-                dark="true"
-                onClick={() => {
-                  setSelectedRoute(null);
-                  setBusArrivalTime([]);
-                  setTransferredBuses([]);
-                }}
-                style={{ width: "100%" }}
-              >
-                Go Back to Route Search
-              </Button>
             </CSSTransition>
           </TransitionGroup>
         </ScrollBar2>

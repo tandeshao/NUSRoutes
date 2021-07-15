@@ -3,8 +3,8 @@ export const homeObjOne = {
     lightBg: true,
     lightText: false,
     lightTextDesc: false,
-    topLine: 'At a Glance, NUSRoutes is a',
-    headLine: 'Route Recommendation Service for NUS shuttle bus services.',
+    topLine: 'At a Glance, NUSRoutes is',
+    headLine: 'A Route Recommendation Service for NUS shuttle bus.',
     description: "With a User-Friendly Interface, we strive to give users the best possible experience.",
     buttonLabel: 'Learn More',
     imgStart: false, //true

@@ -24,30 +24,29 @@ const FAQ = () => {
   };
 
   return (
-    <FAQContainer id="faq">
-      <FAQH1>Frequently Asked Questions </FAQH1>
-      
-      <FAQWrapper>
-        {Data.map((element, index) => {
-          return (
-            <FAQSet key={index}>
-              <Question onClick={() => makeOpen(index)}>
-                {element.question}
-                <OpenIcon>
-                  {isOpen === index ? (
-                    <HiMinus className="plusminus" />
-                  ) : (
-                    <HiPlus className="plusminus" />
-                  )}
-                </OpenIcon>
-              </Question>
-              {isOpen === index ? <Answer>{element.answer}</Answer> : ""}
-            </FAQSet>
-          );
-        })}
-      </FAQWrapper>
-      <Image src={Icon1} />
-    </FAQContainer>
+      <FAQContainer id="faq">
+        <FAQH1>Frequently Asked Questions </FAQH1>
+        <FAQWrapper>
+          {Data.map((element, index) => {
+            return (
+              <FAQSet key={index}>
+                <Question onClick={() => makeOpen(index)}>
+                  {element.question}
+                  <OpenIcon>
+                    {isOpen === index ? (
+                      <HiMinus className="plusminus" />
+                    ) : (
+                      <HiPlus className="plusminus" />
+                    )}
+                  </OpenIcon>
+                </Question>
+                <Answer onClick={() => makeOpen(index)} isOpen={isOpen} index={index}> {element.answer} </Answer>
+              </FAQSet>
+            );
+          })}
+        </FAQWrapper>
+        <Image src={Icon1} />
+      </FAQContainer>
   );
 };
 

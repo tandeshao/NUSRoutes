@@ -1,60 +1,62 @@
 import styled from "styled-components";
 
 export const FAQContainer = styled.div`
-  height: 927px;
+  height: 1100px;
   background: #f9f9f9;
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 40% 60%;
   grid-template-rows: 20% 80%;
-  grid-template-areas: "header header" "qns gif";
+  grid-template-areas: "header header" "gif qns";
 
   @media screen and (max-width: 768px) {
     display: flex;
     flex-direction: column;
-    height: 700px;
+    height: auto + 100px;
     justify-content: center;
     align-items: center;
   }
 
-  @media screen and (max-width: 480px) {
-    height: 600px;
+  @media screen and (max-width: 450px) and (max-height: 900px) {
+    height: 1000px;
   }
+
 `;
 
 export const FAQH1 = styled.h1`
   font-size: 3rem;
   grid-area: header;
-  margin-top: 60px;
   color: #000;
+  margin-top: 60px;
   text-align: center;
 
   @media screen and (max-width: 768px) {
     font-size: 2rem;
-    margin-left: 40px;
   }
 
   @media screen and (max-width: 480px) {
-    font-size: 1rem;
+    font-size: 2rem;
+  }
+
+  @media screen and (max-width: 450px) and (max-height: 900px) {
+    margin-top: 0;
   }
 `;
 
 export const FAQWrapper = styled.div`
   width: 80%;
   max-width: 80rem;
-  margin: 0 auto;
+  margin: 0;
   margin-top: 60px;
-  margin-left: 40%;
-
-  @media screen and (max-width: 768px) {
-    margin-left: 10%;
-  }
+  display: flex;
+  flex-direction: column;
+  
 `;
 
 export const FAQSet = styled.div`
   background-color: #203042;
   border-radius: 0.4rem;
   margin-bottom: 1rem;
-  padding: 1rem;
+  padding: 0.5rem;
   box-shadow: 0.5rem 0.5rem rgba(0, 0, 0, 0.1);
   grid-area: qns;
 
@@ -76,6 +78,8 @@ export const Question = styled.div`
   -ms-user-select: none;
   user-select: none;
   cursor: pointer;
+  padding-top: 10px;
+  flex-grow: 1;
 
   @media screen and (max-width: 480px) {
     font-size: 1rem;
@@ -87,6 +91,9 @@ export const OpenIcon = styled.div`
 `;
 
 export const Answer = styled.p`
+  height: ${({isOpen, index}) => isOpen === index ? 'auto' : '0'};
+  flex-grow: ${({isOpen, index}) => isOpen === index ? '0' : '1'};
+  overflow: hidden;
   margin-top: 1rem;
   color: #29e3c1;
   font-size: 0.9rem;
@@ -100,11 +107,15 @@ export const Answer = styled.p`
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  transition: all 0.3s ease-in-out;
+  padding: ${({isOpen, index}) => isOpen === index ? '0.5rem' : '0'};
+  vertical-align: center;
+  cursor: pointer;
 `;
 
 export const Image = styled.img`
-  margin-left: 40%;
-  margin-top: 60px;
+  margin-left: 30%;
+  margin-top: 200px;
   height: 400px;
   width: 400px;
   margin-bottom: 10px;
@@ -112,22 +123,14 @@ export const Image = styled.img`
   grid-area: gif;
 
   @media screen and (max-width: 1200px) {
-    margin-left: 20%;
+    margin-left: 10%;
     height: 280px;
     width: 280px;
   }
   
   @media screen and (max-width: 768px) {
-    height: 200px;
-    width: 200px;
-    margin: 0;
+    display: none;
 
   }
-
-  @media screen and (max-width: 480px) {
-    height: 150px;
-    width: 150px;
-  }
-
   
 `;
