@@ -9,6 +9,7 @@ export const RouteContainer = styled.div`
   width: 80%;
   border-radius: 40px;
   border: 7px solid black;
+  position: relative;
 
   &:hover {
     background: #404040;
@@ -17,8 +18,10 @@ export const RouteContainer = styled.div`
   @media screen and (max-width: 450px) and (max-height: 900px) {
     background: #121212;
     border: 2px solid #282828;
-    font-size: 0.9rem;
+    font-size: 11px;
     width: 90%;
+    padding: 5px 0 5px 50px;
+    margin-bottom: 15px;
   }
 `;
 
@@ -30,7 +33,7 @@ export const ScrollBar = styled.div`
   margin: 20px;
   opacity: 90%;
   backdrop-filter: brightness(0.2);
-  
+
   ::-webkit-scrollbar {
     width: 8px;
     height: 3px;
@@ -118,6 +121,11 @@ export const Container = styled.div`
   @media screen and (max-width: 450px) and (max-height: 900px) {
     background: #121212;
     border: 2px solid #282828;
+    font-size: 11px;
+    width: 80%;
+    padding: 5px 0 5px 30px;
+    margin-bottom: 15px;
+    margin-left: 15px;
   }
 `;
 
@@ -138,6 +146,12 @@ export const Container2 = styled.div`
   @media screen and (max-width: 450px) and (max-height: 900px) {
     background: #121212;
     border: 2px solid #282828;
+    font-size: 13px;
+    width: 80%;
+    padding: 5px 0 5px 30px;
+    margin-bottom: 15px;
+    margin-left: 15px;
+    height: auto;
   }
 `;
 
@@ -187,5 +201,27 @@ export const ScrollBar2 = styled.div`
   @media screen and (max-width: 450px) and (max-height: 900px) {
     background: #121212;
     padding: 0 0 0 5px;
+    margin: 10px;
+  }
+`;
+
+export const Arrow = styled.div`
+  color: white;
+  position: absolute;
+  top: 10%;
+  right: 0;
+  height: 100%;
+  width: 20%;
+`;
+
+export const Notifier = styled.h4`
+  color: red;
+  position: absolute;
+  right: 10%;
+  bottom: 5px;
+
+  @media screen and (max-width: 450px) and (max-height: 900px) {
+    right: 20%;
+    top: 5px;
   }
 `;

@@ -8,9 +8,18 @@ import options from "../../data/options.json";
 import { IoHomeSharp } from "react-icons/io5";
 import useWindowDimensions from "../../useWindowDimensions";
 import MobileCustomization from "../MobileCustomization";
-import { CgLoadbar } from 'react-icons/cg'
+import { CgLoadbar } from "react-icons/cg";
 
-const MapSideBar = ({ routeRecommendations, setRoute, route, startAndEnd, renderRouteIndex, setRenderRouteIndex }) => {
+const MapSideBar = ({
+  routeRecommendations,
+  setRoute,
+  route,
+  startAndEnd,
+  renderRouteIndex,
+  setRenderRouteIndex,
+  departureSetting,
+  setDepartureSetting
+}) => {
   const [transferredBuses, setTransferredBuses] = useState(() => []);
   const [busArrivalTime, setBusArrivalTime] = useState(() => []);
   const obj = new Date();
@@ -35,12 +44,13 @@ const MapSideBar = ({ routeRecommendations, setRoute, route, startAndEnd, render
       : reverseMap[startAndEnd[1]];
   });
 
-  const { width, height } = useWindowDimensions();
+  const { height, width } = useWindowDimensions();
 
   return (
     <MapSideBarContainer>
       <Bar>
-        <CgLoadbar size={40} />
+        <CgLoadbar size={40} />{" "}
+        <p style={{ fontSize: "10px" }}>Swipe up to lock drawer</p>
       </Bar>
       <InputSection
         setTransferredBuses={setTransferredBuses}
@@ -59,7 +69,8 @@ const MapSideBar = ({ routeRecommendations, setRoute, route, startAndEnd, render
       />
       <Dividers />
       {width <= 450 && height < 900 ? (
-        <MobileCustomization setTime={setTime}
+        <MobileCustomization
+          setTime={setTime}
           setDate={setDate}
           setMonth={setMonth}
           setYear={setYear}
@@ -67,7 +78,10 @@ const MapSideBar = ({ routeRecommendations, setRoute, route, startAndEnd, render
           setIncludeArrivalTime={setIncludeArrivalTime}
           setSelectedRoute={setSelectedRoute}
           current={current}
-          destination={destination} />
+          destination={destination}
+          departureSetting={departureSetting}
+          setDepartureSetting={setDepartureSetting}
+        />
       ) : (
         <Customization
           setTime={setTime}

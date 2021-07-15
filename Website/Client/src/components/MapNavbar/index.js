@@ -24,11 +24,11 @@ const MapNavbar = ({ open, toggle }) => {
             push("/");
           }}
         >
-          <FaHome size={27} />
+          <FaHome size={25} />
           Home
         </Item>
         <Item onClick={() => toggle(!open)}>
-          <FaRoute size={27} /> {open ? "Map" : "Routes"}
+          <FaRoute size={25} /> {open ? "Map" : "Routes"}
         </Item>
         <LinkItem
           to="/#businfo"
@@ -36,7 +36,7 @@ const MapNavbar = ({ open, toggle }) => {
           style={{ textDecoration: "none" }}
           onClick={() => toggle(false)}
         >
-          <FaInfoCircle size={27}/>
+          <FaInfoCircle size={25}/>
           Bus Info
         </LinkItem>
         <Item
@@ -45,7 +45,7 @@ const MapNavbar = ({ open, toggle }) => {
             push(user ? "/profile" : "/signin");
           }}
         >
-          <FaHistory size={27}/>
+          <FaHistory size={25}/>
           History
         </Item>
       </MapNavbarContainer>

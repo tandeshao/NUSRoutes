@@ -20,43 +20,6 @@ import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Button from "@material-ui/core/Button";
 
-const findNearest = async () => {
-  let arr = [];
-  function getLongAndLat() {
-    return new Promise((resolve, reject) =>
-      navigator.geolocation.getCurrentPosition(resolve, reject)
-    );
-  }
-  let obj = await getLongAndLat();
-  busStops.forEach((busStop) => {
-    const dist = distance(
-      obj.coords.latitude,
-      obj.coords.longitude,
-      busStop.latitude,
-      busStop.longitude
-    );
-    if (dist <= 0.2) {
-      // distance is less than 200 metres.
-      arr.push(busStop.caption);
-    }
-  });
-
-  if (arr.length === 0) {
-    alert("No bus stops are near you.");
-  } else if (arr.length === 1) {
-    alert("Closest bus stop near you is: " + arr[0]);
-  } else if (arr.length === 2) {
-    alert("Closest bus stop near you are: " + arr[0] + " and " + arr[1]);
-  } else {
-    alert(
-      "The closest bus stops near you are: " +
-        arr.slice(0, arr.length - 1).join(", ") +
-        " and " +
-        arr[arr.length - 1]
-    );
-  }
-};
-
 const MobileCustomization = ({
   setTime,
   setDate,
@@ -67,8 +30,9 @@ const MobileCustomization = ({
   setSelectedRoute,
   current,
   destination,
+  departureSetting,
+  setDepartureSetting,
 }) => {
-  const [departureSetting, setDepartureSetting] = useState(true);
   const history = useHistory();
 
   const handleSelect = (name) => {
@@ -135,6 +99,44 @@ const MobileCustomization = ({
     }
   };
 
+  const findNearest = async () => {
+    let arr = [];
+    function getLongAndLat() {
+      return new Promise((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(resolve, reject);
+      });
+    }
+    let obj = await getLongAndLat();
+    busStops.forEach((busStop) => {
+      const dist = distance(
+        obj.coords.latitude,
+        obj.coords.longitude,
+        busStop.latitude,
+        busStop.longitude
+      );
+      if (dist <= 0.2) {
+        // distance is less than 200 metres.
+        arr.push(busStop.caption);
+      }
+    });
+
+    if (arr.length === 0) {
+      alert("No bus stops are near you.");
+    } else if (arr.length === 1) {
+      alert("Closest bus stop near you is: " + arr[0]);
+    } else if (arr.length === 2) {
+      alert("Closest bus stop near you are: " + arr[0] + " and " + arr[1]);
+    } else {
+      alert(
+        "The closest bus stops near you are: " +
+          arr.slice(0, arr.length - 1).join(", ") +
+          " and " +
+          arr[arr.length - 1]
+      );
+    }
+  };
+
+  
   const [alarmToggle, setAlarmToggle] = useState(false);
   const [alarm, setAlarm] = useState(false);
   const [location, setLocation] = useState({

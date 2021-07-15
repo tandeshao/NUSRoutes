@@ -6,13 +6,16 @@ import {
   Container,
   ScrollBar2,
   Container2,
+  Arrow,
+  Notifier,
 } from "./RouteElements";
 import map from "../../../data/reverseMap.json";
 import startIcon from "../../../images/Picture2.png";
 import endIcon from "../../../images/Picture3.png";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { BiRefresh } from "react-icons/bi";
 import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
+import useWindowDimensions from "../../../useWindowDimensions";
 
 const findTransferredBuses = (route, selectedRoute) => {
   const transferredBuses = [];
@@ -66,8 +69,11 @@ const Routes = ({
   busArrivalTime,
   setBusArrivalTime,
   includeArrivalTime,
+  renderRouteIndex,
+  setRenderRouteIndex,
 }) => {
-  const [renderRouteIndex, setRenderRouteIndex] = useState(0);
+  const { height, width } = useWindowDimensions();
+
   const units = ["hrs", "hrs", "", "mins", "", ""];
   const { REACT_APP_DOMAIN } = process.env;
   useEffect(() => {
@@ -174,9 +180,24 @@ const Routes = ({
         <ScrollBar>
           {routeRecommendations[0]["Cost"] !== -1 ? (
             <TransitionGroup component={Effect}>
-              <h4 style={{ color: "#b3b3b3", margin: "0 0 20px 20px" }}>
-                Route Recommendations
-              </h4>
+              <CSSTransition
+                in={true}
+                appear={true}
+                timeout={500}
+                classNames="fade"
+                unmountOnExit
+              >
+                {<h4
+                  style={{
+                    color: "#b3b3b3",
+                    margin: "10px 0 20px 20px",
+                    fontSize: "15px",
+                  }}
+                >
+                  Route Recommendations
+                </h4>}
+              </CSSTransition>
+
               {routeRecommendations.map((route, index) => {
                 return (
                   <CSSTransition
@@ -199,37 +220,23 @@ const Routes = ({
                       }}
                     >
                       {renderRouteIndex === index && (
-                        <h4
-                          style={{
-                            color: "red",
-                            position: "absolute",
-                            right: "35%",
-                            top: '5px',
-                          }}
-                        >
-                          {" "}
-                          Rendered{" "}
-                        </h4>
+                        <Notifier>Rendered</Notifier>
                       )}
                       {Object.keys(route).map(
                         (str, index) =>
                           str !== "Path" &&
                           str !== "Cost" &&
                           str !== "Distance" && (
-                            <p key={index + 300} style={{marginTop: '10px'}}>
+                            <p key={index + 300} style={{ marginTop: "2px" }}>
                               {str + ": " + route[str] + " " + units[index]}
                             </p>
                           )
                       )}
-                      <MdKeyboardArrowRight
-                        style={{
-                          position: "absolute",
-                          top: "0",
-                          right: "0",
-                          height: "100%",
-                          width: "20%",
-                        }}
-                      />
+                      {routeRecommendations[0]["Cost"] && (
+                        <Arrow>
+                          <MdKeyboardArrowRight size={70} />
+                        </Arrow>
+                      )}
                     </RouteContainer>
                   </CSSTransition>
                 );
@@ -254,23 +261,32 @@ const Routes = ({
       ) : (
         <ScrollBar2>
           <TransitionGroup component={Effect}>
-            <div
-              style={{
-                display: "flex",
-                margin: "0 0 20px 20px",
-                color: "#b3b3b3",
-                cursor: "pointer",
-              }}
-              onClick={() => {
-                setSelectedRoute(null);
-                setBusArrivalTime([]);
-                setTransferredBuses([]);
-              }}
+            <CSSTransition
+              in={true}
+              appear={true}
+              timeout={500}
+              classNames="fade"
+              unmountOnExit
             >
-              {" "}
-              <MdKeyboardArrowLeft size={22} />
-              <h4>Route Information</h4>
-            </div>
+              <div
+                style={{
+                  display: "flex",
+                  margin: "10px 0 20px 20px",
+                  color: "#b3b3b3",
+                  cursor: "pointer",
+                  fontSize: "15px",
+                }}
+                onClick={() => {
+                  setSelectedRoute(null);
+                  setBusArrivalTime([]);
+                  setTransferredBuses([]);
+                }}
+              >
+                {" "}
+                <MdKeyboardArrowLeft size={22} />
+                <h4>Route Information</h4>
+              </div>
+            </CSSTransition>
 
             <CSSTransition
               in={true}
@@ -314,12 +330,22 @@ const Routes = ({
                 <img
                   src={startIcon}
                   alt=""
-                  style={{
-                    display: "inline",
-                    float: "right",
-                    width: "30px",
-                    height: "30px",
-                  }}
+                  style={
+                    width <= 450 && height < 900
+                      ? {
+                          display: "inline",
+                          width: "20px",
+                          float: "right",
+                          marginRight: "5%",
+                          height: "20px",
+                        }
+                      : {
+                          display: "inline",
+                          width: "30px",
+                          float: "right",
+                          height: "35px",
+                        }
+                  }
                 />
               </Container2>
             </CSSTransition>
@@ -411,12 +437,22 @@ const Routes = ({
                 <img
                   src={endIcon}
                   alt=""
-                  style={{
-                    display: "inline",
-                    float: "right",
-                    width: "20px",
-                    height: "35px",
-                  }}
+                  style={
+                    width <= 450 && height < 900
+                      ? {
+                          display: "inline",
+                          width: "15px",
+                          float: "right",
+                          marginRight: "7%",
+                          height: "20px",
+                        }
+                      : {
+                          display: "inline",
+                          width: "20px",
+                          float: "right",
+                          height: "35px",
+                        }
+                  }
                 />
               </Container2>
             </CSSTransition>

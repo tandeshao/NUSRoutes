@@ -8,7 +8,7 @@ export const CustomizationSection = styled.div`
   justify-content: space-between;
   margin: 10px;
   flex-wrap: wrap;
-  font-size: 0.8rem;
+  font-size: 12px;
 `;
 
 export const CustomizationButton = styled.p`

@@ -2,7 +2,7 @@ import {
   OptionsContainer,
   DepartureContainer,
   SectionContainer,
-  ProximityAlarmContainer
+  ProximityAlarmContainer,
 } from "./OptionsContainer";
 import Button from "@material-ui/core/Button";
 import { useState } from "react";
@@ -14,7 +14,8 @@ import map from "../../../data/map.json";
 import data from "../../../data/vacation.json";
 import ProximityAlarm from "../ProximityAlarm";
 import busStops from "../../../data/busStops.json";
-import {distance} from './functions';
+import { distance } from "./functions";
+
 
 const Customization = ({
   setTime,
@@ -25,7 +26,7 @@ const Customization = ({
   setIncludeArrivalTime,
   setSelectedRoute,
   current,
-  destination
+  destination,
 }) => {
   const [anchorEl, setAnchorEl] = useState(() => null);
   const [btnName, setBtnName] = useState(() => "Depart Now");
@@ -42,7 +43,6 @@ const Customization = ({
       setIncludeArrivalTime(false);
       setSelectedRoute(null);
       handleDateInput();
-  
     } else {
       setAnchorEl(null);
       setBtnName(name);

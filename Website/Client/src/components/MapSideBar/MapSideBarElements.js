@@ -14,8 +14,8 @@ export const MapSideBarContainer = styled.div`
   @media screen and (max-width: 450px) and (max-height: 900px) {
     width: 100vw;
     background: #121212;
-    margin-top: 5vh;
-    height: 92vh;
+    margin-top: 20vh;
+    height: 100vh;
     overflow: hidden;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
@@ -49,8 +49,11 @@ export const Bar = styled.div`
   display: none;
 
   @media screen and (max-width: 450px) and (max-height: 900px) {
-    display: block;
+    display: flex;
     color: #404040;
-    text-align: center;
+    justify-content: flex-start;
+    align-items: center;
+    width: 50%;
+    margin-left: 40%;
   }
-`
+`;

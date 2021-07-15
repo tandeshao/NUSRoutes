@@ -16,7 +16,8 @@ import { animationTwo, transition } from "./pageAnimation";
 import Drawer from "react-drag-drawer";
 
 const Map = () => {
-  const [renderRouteIndex, setRenderRouteIndex] = useState(0);
+  const [departureSetting, setDepartureSetting] = useState(true);
+  const [renderRouteIndex, setRenderRouteIndex] = useState(null);
   const {height, width}= useWindowDimensions();
   const [open, setOpen] = useState(true);
   const toggle = (value) => setOpen(value);
@@ -34,8 +35,6 @@ const Map = () => {
   let time = params.get("time");
   let date = params.get("date");
   
-  console.log(height, width);
-
   useEffect(() => {
     fetch(
       `${REACT_APP_DOMAIN}` +
@@ -59,6 +58,7 @@ const Map = () => {
         //reason for the rendering of map pg twice.
         setRoute(data[0]["Path"]);
         setRouteRecommendations(data);
+        setRenderRouteIndex(0);
       })
       .catch((error) =>
         setRouteRecommendations([
@@ -113,6 +113,8 @@ const Map = () => {
                 route={route}
                 renderRouteIndex={renderRouteIndex}
                 setRenderRouteIndex={setRenderRouteIndex}
+                departureSetting={departureSetting}
+                setDepartureSetting={setDepartureSetting}
               />
               </Drawer>
               <MapNavbar open={open} toggle={toggle} style={{ zIndex: "1400" }} />
@@ -126,9 +128,10 @@ const Map = () => {
                 route={route}
                 renderRouteIndex={renderRouteIndex}
                 setRenderRouteIndex={setRenderRouteIndex}
+                departureSetting={departureSetting}
+                setDepartureSetting={setDepartureSetting}
               />
             </SideBarContainer>
-              />
           )}
         </PageContainer>
     </motion.div>
