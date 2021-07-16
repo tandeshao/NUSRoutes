@@ -1,5 +1,5 @@
 require("dotenv").config();
-const { Telegraf } = require("telegraf");
+const { Composer } = require("micro-bot");
 const fetch = require("node-fetch");
 const curBusStops = require("./data/curBusStops.json");
 const destBusStops = require("./data/destBusStops.json");
@@ -11,7 +11,7 @@ const map = require("./data/map.json");
 const reverseMap = require("./data/reverseMap.json");
 const data = require("./data/vacation.json");
 
-const bot = new Telegraf(process.env.TELETOKEN);
+const bot = new Composer();
 
 var current = {};
 var destination = {};
@@ -166,7 +166,7 @@ async function checkProximity(latitude, longitude, dest, ctx) {
 
 bot.command("start", (ctx) => {
   console.log(ctx.from);
-  bot.telegram.sendMessage(
+  ctx.telegram.sendMessage(
     ctx.chat.id,
     "Welcome to NUSRoutes! \n/routeFinder \n/arrivalTime \n/proximityAlarm",
     {}
@@ -183,7 +183,7 @@ bot.hears("/routeFinder", (ctx) => {
   console.log(ctx.from);
   let msg = `Select your CURRENT LOCATION:`;
   ctx.deleteMessage();
-  bot.telegram.sendMessage(ctx.chat.id, msg, {
+  ctx.telegram.sendMessage(ctx.chat.id, msg, {
     reply_markup: {
       inline_keyboard: curBusStops,
     },
@@ -365,7 +365,7 @@ const dest = (ctx) => {
   console.log(ctx.from);
   let msg = `Select your DESTINATION:`;
   ctx.deleteMessage();
-  bot.telegram.sendMessage(ctx.chat.id, msg, {
+  ctx.telegram.sendMessage(ctx.chat.id, msg, {
     reply_markup: {
       inline_keyboard: destBusStops,
     },
@@ -651,7 +651,7 @@ bot.hears("/arrivalTime", (ctx) => {
   console.log(ctx.from);
   let msg = `Select the bus stop:`;
   ctx.deleteMessage();
-  bot.telegram.sendMessage(ctx.chat.id, msg, {
+  ctx.telegram.sendMessage(ctx.chat.id, msg, {
     reply_markup: {
       inline_keyboard: arrBusStops,
     },
@@ -662,7 +662,7 @@ const selectBusServices = (ctx) => {
   console.log(ctx.from);
   let msg = `Select the bus service:`;
   ctx.deleteMessage();
-  bot.telegram.sendMessage(ctx.chat.id, msg, {
+  ctx.telegram.sendMessage(ctx.chat.id, msg, {
     reply_markup: {
       inline_keyboard: busServices[arrBusStop[ctx.chat.id]],
     },
@@ -739,7 +739,7 @@ bot.hears("/proximityAlarm", (ctx) => {
   } else {
     let msg = `Select your DESTINATION:`;
     ctx.deleteMessage();
-    bot.telegram.sendMessage(ctx.chat.id, msg, {
+    ctx.telegram.sendMessage(ctx.chat.id, msg, {
       reply_markup: {
         inline_keyboard: proxBusStops,
       },
@@ -762,7 +762,7 @@ bot.on("edited_message", (ctx) => {
   } else {
     let msg = `Select your DESTINATION:`;
     ctx.deleteMessage();
-    bot.telegram.sendMessage(ctx.chat.id, msg, {
+    ctx.telegram.sendMessage(ctx.chat.id, msg, {
       reply_markup: {
         inline_keyboard: proxBusStops,
       },
@@ -775,4 +775,4 @@ bot.action("prox_AS5", (ctx) => {
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
-bot.launch();
+module.exports = bot;

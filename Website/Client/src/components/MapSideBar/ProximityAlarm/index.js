@@ -109,8 +109,7 @@ const ProximityAlarm = ({ destination }) => {
           () => navigator.geolocation.getCurrentPosition(onSuccess, onError),
           5000
         );
-        console.log(location.lat, location.lng);
-        console.log("Far from destination");
+        
         if (location.loaded) {
           fetch(
             REACT_APP_DOMAIN +
