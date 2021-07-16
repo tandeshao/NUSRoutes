@@ -98,30 +98,15 @@ async function routeFinder(current, destination, ctx) {
 
 function formatPath(arr) {
   var path = "";
-  for (var i = 0; i < arr.length; i++) {
-    if (i === 0) {
-      path += reverseMap[arr[i].split("_")[0]];
-    } else if (i === arr.length - 1 && arr.length === 2) {
-      const cur = arr[i].split("_");
-      const bus = "(" + cur[1] + ")  -->  ";
-      path += bus;
-      path += reverseMap[cur[0]];
-    } else if (i === arr.length - 1) {
-      path += "  -->  " + reverseMap[arr[i].split("_")[0]];
-    } else if (
-      arr.length > 2 &&
-      arr[i].split("_")[1] == arr[i + 1].split("_")[1]
-    ) {
-      const cur = arr[i].split("_");
-      const bus = "(" + cur[1] + ")  -->  ";
-      path += bus;
-      path += reverseMap[arr[i + 1].split("_")[0]];
-      break;
+  const splitArr = arr.map((stop) => stop.split("_"));
+  for (var i = 0; i < splitArr.length; i++) {
+    if (i === splitArr.length - 1) {
+      path += reverseMap[splitArr[i][0]];
     } else {
-      const cur = arr[i].split("_");
-      const bus = "(" + cur[1] + ")  -->  ";
-      path += bus;
-      path += reverseMap[cur[0]];
+      if (splitArr[i][1] !== splitArr[i + 1][1]) {
+        path += reverseMap[splitArr[i][0]];
+        path += "(" + splitArr[i + 1][1] + ")  -->  ";
+      }
     }
   }
   return path;
