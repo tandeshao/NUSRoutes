@@ -1,11 +1,6 @@
 import {
   FooterContainer,
   FooterWrap,
-  FooterLinksContainer,
-  FooterLinksWrapper,
-  FooterLinkItems,
-  FooterLinkTitle,
-  FooterLink,
   SocialMedia,
   SocialMediaWrap,
   SocialLogo,
@@ -14,7 +9,7 @@ import {
   SocialIconLink,
 } from "./FooterElements";
 import { animateScroll as scroll } from "react-scroll";
-import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
+import { FaGithub, FaTelegram } from "react-icons/fa";
 
 const Footer = () => {
   const toggleHome = () => {
@@ -24,40 +19,6 @@ const Footer = () => {
   return (
     <FooterContainer>
       <FooterWrap>
-        <FooterLinksContainer>
-          <FooterLinksWrapper>
-            <FooterLinkItems>
-              <FooterLinkTitle> Placeholder </FooterLinkTitle>
-              <FooterLink to="/"> Placeholder </FooterLink>
-              <FooterLink to="/"> Placeholder </FooterLink>
-              <FooterLink to="/"> Placeholder </FooterLink>
-              <FooterLink to="/"> Placeholder </FooterLink>
-            </FooterLinkItems>
-            <FooterLinkItems>
-              <FooterLinkTitle> Placeholder </FooterLinkTitle>
-              <FooterLink to="/"> Placeholder </FooterLink>
-              <FooterLink to="/"> Placeholder </FooterLink>
-              <FooterLink to="/"> Placeholder </FooterLink>
-              <FooterLink to="/"> Placeholder </FooterLink>
-            </FooterLinkItems>
-          </FooterLinksWrapper>
-          <FooterLinksWrapper>
-            <FooterLinkItems>
-              <FooterLinkTitle> Placeholder </FooterLinkTitle>
-              <FooterLink to="/"> Placeholder </FooterLink>
-              <FooterLink to="/"> Placeholder </FooterLink>
-              <FooterLink to="/"> Placeholder </FooterLink>
-              <FooterLink to="/"> Placeholder </FooterLink>
-            </FooterLinkItems>
-            <FooterLinkItems>
-              <FooterLinkTitle> Placeholder </FooterLinkTitle>
-              <FooterLink to="/"> Placeholder </FooterLink>
-              <FooterLink to="/"> Placeholder </FooterLink>
-              <FooterLink to="/"> Placeholder </FooterLink>
-              <FooterLink to="/"> Placeholder </FooterLink>
-            </FooterLinkItems>
-          </FooterLinksWrapper>
-        </FooterLinksContainer>
         <SocialMedia>
           <SocialMediaWrap>
             <SocialLogo to="/" onClick={toggleHome}>
@@ -67,17 +28,19 @@ const Footer = () => {
               NUSROUTES © {new Date().getFullYear()} All rights reserved.
             </WebsiteRights>
             <SocialIcons>
-              <SocialIconLink herf="/" target="blank" aria-label="Facebook">
-                <FaFacebook />
+              <SocialIconLink
+                href="https://github.com/tandeshao/NUSRoutes"
+                target="blank"
+                aria-label="Github"
+              >
+                <FaGithub />
               </SocialIconLink>
-              <SocialIconLink herf="/" target="blank" aria-label="Youtube">
-                <FaYoutube />
-              </SocialIconLink>
-              <SocialIconLink herf="/" target="blank" aria-label="Twitter">
-                <FaTwitter />
-              </SocialIconLink>
-              <SocialIconLink herf="/" target="blank" aria-label="Instagram">
-                <FaInstagram />
+              <SocialIconLink
+                href="http://t.me/NUSRoutesBot"
+                target="blank"
+                aria-label="Telegram"
+              >
+                <FaTelegram />
               </SocialIconLink>
             </SocialIcons>
           </SocialMediaWrap>
