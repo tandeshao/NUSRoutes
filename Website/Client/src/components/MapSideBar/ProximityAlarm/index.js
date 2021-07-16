@@ -64,8 +64,8 @@ const IOSSwitch = withStyles((theme) => ({
   );
 });
 
-const ProximityAlarm = ({ destination }) => {
-  const [alarmToggle, setAlarmToggle] = useState(false);
+const ProximityAlarm = ({ destination, alarmToggle, setAlarmToggle }) => {
+ 
   const [alarm, setAlarm] = useState(false);
   const [location, setLocation] = useState({
     loaded: false,

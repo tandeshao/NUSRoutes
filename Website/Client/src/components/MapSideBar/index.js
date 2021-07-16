@@ -18,7 +18,9 @@ const MapSideBar = ({
   renderRouteIndex,
   setRenderRouteIndex,
   departureSetting,
-  setDepartureSetting
+  setDepartureSetting,
+  alarmToggle,
+  setAlarmToggle
 }) => {
   const [transferredBuses, setTransferredBuses] = useState(() => []);
   const [busArrivalTime, setBusArrivalTime] = useState(() => []);
@@ -81,6 +83,8 @@ const MapSideBar = ({
           destination={destination}
           departureSetting={departureSetting}
           setDepartureSetting={setDepartureSetting}
+          alarmToggle={alarmToggle}
+          setAlarmToggle={setAlarmToggle}
         />
       ) : (
         <Customization
@@ -93,6 +97,8 @@ const MapSideBar = ({
           setSelectedRoute={setSelectedRoute}
           current={current}
           destination={destination}
+          alarmToggle={alarmToggle}
+          setAlarmToggle={setAlarmToggle}
         />
       )}
 
@@ -114,7 +120,7 @@ const MapSideBar = ({
       <Logo to="/">
         {" "}
         <IoHomeSharp
-          size={30}
+          size={25}
           style={{ position: "relative", top: "5px", right: "5px" }}
         />{" "}
         Home{" "}

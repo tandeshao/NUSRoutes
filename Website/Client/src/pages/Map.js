@@ -16,6 +16,8 @@ import { animationTwo, transition } from "./pageAnimation";
 import Drawer from "react-drag-drawer";
 
 const Map = () => {
+  console.log("map rendered");
+  const [alarmToggle, setAlarmToggle] = useState(false);
   const [departureSetting, setDepartureSetting] = useState(true);
   const [renderRouteIndex, setRenderRouteIndex] = useState(null);
   const {height, width}= useWindowDimensions();
@@ -115,6 +117,8 @@ const Map = () => {
                 setRenderRouteIndex={setRenderRouteIndex}
                 departureSetting={departureSetting}
                 setDepartureSetting={setDepartureSetting}
+                alarmToggle={alarmToggle}
+                setAlarmToggle={setAlarmToggle}
               />
               </Drawer>
               <MapNavbar open={open} toggle={toggle} style={{ zIndex: "1400" }} />
@@ -130,6 +134,8 @@ const Map = () => {
                 setRenderRouteIndex={setRenderRouteIndex}
                 departureSetting={departureSetting}
                 setDepartureSetting={setDepartureSetting}
+                alarmToggle={alarmToggle}
+                setAlarmToggle={setAlarmToggle}
               />
             </SideBarContainer>
           )}

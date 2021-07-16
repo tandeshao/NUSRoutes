@@ -29,7 +29,7 @@ export const Switch = styled.img`
     display: none;
   }
 
-  @media screen and (max-height: 750px) {
+  @media screen and (max-height: 650px) {
     display: none;
   }
 `;
@@ -63,7 +63,7 @@ export const Form = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
 
-  @media screen and (max-height: 750px) {
+  @media screen and (max-height: 650px) {
     width: 60%;
     margin: 20px;
   }
@@ -122,7 +122,7 @@ export const Button2 = styled.button`
     }
   }
 
-  @media screen and (max-height: 750px) {
+  @media screen and (max-height: 650px) {
     width: 5%;
     border-radius: 50px;
     background: ${({ primary, secondary }) =>
@@ -171,7 +171,7 @@ export const Button = styled.button`
     background: ${({ primary }) => (primary ? "#fff" : "#01BF71")};
   }
 
-  @media screen and (max-height: 750px) {
+  @media screen and (max-height: 650px) {
     display: none;
   }
 
@@ -190,13 +190,13 @@ export const MobileViewContainer = styled.div`
     margin-left: 20px;
   }
 
-  @media screen and (max-height: 750px) {
+  @media screen and (max-height: 650px) {
     display: flex;
   }
 `;
 
 export const DesktopViewContainer = styled.div`
-  @media screen and (max-height: 750px) {
+  @media screen and (max-height: 650px) {
     display: none;
   }
 

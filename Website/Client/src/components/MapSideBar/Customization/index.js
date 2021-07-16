@@ -16,7 +16,6 @@ import ProximityAlarm from "../ProximityAlarm";
 import busStops from "../../../data/busStops.json";
 import { distance } from "./functions";
 
-
 const Customization = ({
   setTime,
   setMonth,
@@ -27,6 +26,8 @@ const Customization = ({
   setSelectedRoute,
   current,
   destination,
+  alarmToggle,
+  setAlarmToggle,
 }) => {
   const [anchorEl, setAnchorEl] = useState(() => null);
   const [btnName, setBtnName] = useState(() => "Depart Now");
@@ -262,7 +263,11 @@ const Customization = ({
       </OptionsContainer>
 
       <ProximityAlarmContainer>
-        <ProximityAlarm destination={destination} />
+        <ProximityAlarm
+          destination={destination}
+          alarmToggle={alarmToggle}
+          setAlarmToggle={setAlarmToggle}
+        />
       </ProximityAlarmContainer>
     </SectionContainer>
   );

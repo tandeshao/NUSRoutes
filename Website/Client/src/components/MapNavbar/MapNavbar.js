@@ -21,6 +21,8 @@ export const Item = styled.div`
   padding: 10px;
   flex-grow: 1;
   text-align: center;
+   text-decoration: none;
+  justify-content: center;
 
   @media screen and (max-width: 450px) and (max-height: 900px) {
     font-size: 10px;

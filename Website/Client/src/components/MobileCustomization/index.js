@@ -32,6 +32,8 @@ const MobileCustomization = ({
   destination,
   departureSetting,
   setDepartureSetting,
+  alarmToggle,
+  setAlarmToggle
 }) => {
   const history = useHistory();
 
@@ -136,8 +138,7 @@ const MobileCustomization = ({
     }
   };
 
-  
-  const [alarmToggle, setAlarmToggle] = useState(false);
+
   const [alarm, setAlarm] = useState(false);
   const [location, setLocation] = useState({
     loaded: false,
