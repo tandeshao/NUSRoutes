@@ -75,9 +75,11 @@ async function routeFinder(current, destination, ctx) {
     if (current == destination) {
       reply =
         "Current location must be different from destination! /routefinder";
-    } else if (route === "No available path could be found.") {
+      await ctx.reply(reply);
+    } else if (route[0].Path.length === 0) {
       reply =
-        "No routes available. Please select another location. /routefinder";
+        "No route available. Please select another location. /routefinder";
+      await ctx.reply(reply);
     } else {
       for (var i = 0; i < route.length; i++) {
         if (i !== 0) {
@@ -87,9 +89,9 @@ async function routeFinder(current, destination, ctx) {
           route[i].Duration
         } \n\nTransfers: ${route[i].Transfers}`;
       }
+      await ctx.reply(reply);
+      ctx.reply("Want to sit back and relax? \nTry /proximityalarm");
     }
-    await ctx.reply(reply);
-    ctx.reply("Want to sit back and relax? \nTry /proximityalarm");
   } catch (error) {
     console.log(error);
     ctx.reply("Error occured. Server is down.");
