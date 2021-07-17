@@ -74,10 +74,10 @@ async function routeFinder(current, destination, ctx) {
     var reply = "";
     if (current == destination) {
       reply =
-        "Current location must be different from destination! /routeFinder";
-    } else if (route.length === 0) {
+        "Current location must be different from destination! /routefinder";
+    } else if (route === "No available path could be found.") {
       reply =
-        "No routes available. Please select another location. /routeFinder";
+        "No routes available. Please select another location. /routefinder";
     } else {
       for (var i = 0; i < route.length; i++) {
         if (i !== 0) {
@@ -89,7 +89,7 @@ async function routeFinder(current, destination, ctx) {
       }
     }
     await ctx.reply(reply);
-    ctx.reply("Want to sit back and relax? \nTry /proximityAlarm");
+    ctx.reply("Want to sit back and relax? \nTry /proximityalarm");
   } catch (error) {
     console.log(error);
     ctx.reply("Error occured. Server is down.");
@@ -139,7 +139,7 @@ async function checkProximity(latitude, longitude, dest, ctx) {
   try {
     const closeToDest = await fetch(
       "https://nusroutesapi.herokuapp.com" +
-        "/proximityAlarm?lat=" +
+        "/proximityalarm?lat=" +
         encodeURIComponent(latitude) +
         "&lng=" +
         encodeURIComponent(longitude) +
@@ -168,18 +168,18 @@ bot.command("start", (ctx) => {
   console.log(ctx.from);
   ctx.telegram.sendMessage(
     ctx.chat.id,
-    "Welcome to NUSRoutes! \n/routeFinder \n/arrivalTime \n/proximityAlarm",
+    "Welcome to NUSRoutes! \n/routefinder \n/arrivaltime \n/proximityalarm",
     {}
   );
 });
 
 bot.hears("/help", (ctx) =>
-  ctx.reply("Commands: \n/routeFinder \n/arrivalTime \n/proximityAlarm")
+  ctx.reply("Commands: \n/routefinder \n/arrivaltime \n/proximityalarm")
 );
 
 // Route Finder
 
-bot.hears("/routeFinder", (ctx) => {
+bot.hears("/routefinder", (ctx) => {
   console.log(ctx.from);
   let msg = `Select your CURRENT LOCATION:`;
   ctx.deleteMessage();
@@ -647,7 +647,7 @@ bot.action("dest_Kent Ridge Bus Terminal", (ctx) => {
 var arrBusStop = {};
 var busService = {};
 
-bot.hears("/arrivalTime", (ctx) => {
+bot.hears("/arrivaltime", (ctx) => {
   console.log(ctx.from);
   let msg = `Select the bus stop:`;
   ctx.deleteMessage();
@@ -731,7 +731,7 @@ var locationStr =
   "\n" +
   "Please share your Live Location to start the proximity alarm.\n\n1) Click on the paperclip icon at the bottom\n2) Click on Location\n3) Share My Live Location";
 
-bot.hears("/proximityAlarm", (ctx) => {
+bot.hears("/proximityalarm", (ctx) => {
   console.log(ctx.from);
   if (destination[ctx.from.id] !== undefined) {
     proxDest[ctx.from.id] = destination[ctx.from.id];
