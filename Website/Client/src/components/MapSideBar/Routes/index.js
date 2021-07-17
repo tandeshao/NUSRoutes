@@ -13,7 +13,7 @@ import map from "../../../data/reverseMap.json";
 import startIcon from "../../../images/Picture2.png";
 import endIcon from "../../../images/Picture3.png";
 import { useEffect } from "react";
-import { BiRefresh } from "react-icons/bi";
+// import { BiRefresh } from "react-icons/bi";
 import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
 import useWindowDimensions from "../../../useWindowDimensions";
 
@@ -73,102 +73,57 @@ const Routes = ({
   setRenderRouteIndex,
 }) => {
   const { height, width } = useWindowDimensions();
-
   const units = ["hrs", "hrs", "", "mins", "", ""];
   const { REACT_APP_DOMAIN } = process.env;
   useEffect(() => {
-    console.log("fetch called");
-    transferredBuses.forEach((obj) => {
-      if (route[obj.start]) {
-        const busStop = route[obj.start].substring(
-          0,
-          route[obj.start].indexOf("_")
-        );
-        const busService = obj.service;
-        const checkBusService =
-          busStop === "COM2" && busService === "D1"
-            ? route[obj.start + 1] === "LT13-OPP"
-              ? encodeURIComponent("D1(To UTown)")
-              : encodeURIComponent("D1(To BIZ2)")
-            : busStop === "UTown" && busService === "C"
-            ? route[obj.start + 1] === "RAFFLES"
-              ? encodeURIComponent("C(To KRT)")
-              : encodeURIComponent("C(To FOS)")
-            : encodeURIComponent(busService);
-        fetch(
-          `${REACT_APP_DOMAIN}` +
-            "/api/" +
-            "getArrivalTime" +
-            "?" +
-            "busStop=" +
-            busStop +
-            "&" +
-            "busService=" +
-            checkBusService
-        )
-          .then((response) => response.json())
-          .then((data) => {
-            setBusArrivalTime((arr) => {
-              if (arr.length < transferredBuses.length) {
-                return arr.concat([data]);
-              } else {
-                return [];
-              }
-            });
-          })
-          .catch(console.log);
-      }
-    });
-  }, [transferredBuses, REACT_APP_DOMAIN, route, setBusArrivalTime]);
-
-  // const getArrivalTime = () => {
-  //   if (!running) {
-  //     console.log('running');
-  //     setRunning(true);
-  //     transferredBuses.forEach((obj) => {
-  //       const busStop = route[obj.start].substring(
-  //         0,
-  //         route[obj.start].indexOf("_")
-  //       );
-  //       const busService = obj.service;
-  //       const checkBusService =
-  //         busStop === "COM2" && busService === "D1"
-  //           ? route[obj.start + 1] === "LT13-OPP"
-  //             ? encodeURIComponent("D1(To UTown)")
-  //             : encodeURIComponent("D1(To BIZ2)")
-  //           : busStop === "UTown" && busService === "C"
-  //           ? route[obj.start + 1] === "RAFFLES"
-  //             ? encodeURIComponent("C(To KRT)")
-  //             : encodeURIComponent("C(To FOS)")
-  //           : encodeURIComponent(busService);
-  //       console.log('fetching');
-  //       fetch(
-  //         `${REACT_APP_DOMAIN}` +
-  //           "/api/" +
-  //           "getArrivalTime" +
-  //           "?" +
-  //           "busStop=" +
-  //           busStop +
-  //           "&" +
-  //           "busService=" +
-  //           checkBusService
-  //       )
-  //         .then((response) => response.json())
-  //         .then((data) => {
-
-  //           setBusArrivalTime((arr) => {
-  //             if (arr.length < transferredBuses.length) {
-  //               return arr.concat([data]);
-  //             } else {
-  //               return [];
-  //             }
-  //           });
-  //           setRunning(false);
-  //         })
-  //         .catch(console.log);
-  //     });
-  //   }
-  // };
+    const timeoutID = setTimeout(() => {
+      console.log("fetch called");
+      transferredBuses.forEach((obj) => {
+        if (route[obj.start]) {
+          const busStop = route[obj.start].substring(
+            0,
+            route[obj.start].indexOf("_")
+          );
+          const busService = obj.service;
+          const checkBusService =
+            busStop === "COM2" && busService === "D1"
+              ? route[obj.start + 1] === "LT13-OPP"
+                ? encodeURIComponent("D1(To UTown)")
+                : encodeURIComponent("D1(To BIZ2)")
+              : busStop === "UTown" && busService === "C"
+              ? route[obj.start + 1] === "RAFFLES"
+                ? encodeURIComponent("C(To KRT)")
+                : encodeURIComponent("C(To FOS)")
+              : encodeURIComponent(busService);
+          fetch(
+            `${REACT_APP_DOMAIN}` +
+              "/api/" +
+              "getArrivalTime" +
+              "?" +
+              "busStop=" +
+              busStop +
+              "&" +
+              "busService=" +
+              checkBusService
+          )
+            .then((response) => response.json())
+            .then((data) => {
+              setBusArrivalTime((arr) => {
+                if (arr.length < transferredBuses.length) {
+                  return arr.concat([data]);
+                } else {
+                  return [];
+                }
+              });
+            })
+            .catch(console.log);
+        }
+      });
+    }, 10000);
+    return () => clearTimeout(timeoutID);
+      
+  
+  }, [transferredBuses, REACT_APP_DOMAIN, route, setBusArrivalTime, busArrivalTime]);
 
   return (
     <div
@@ -187,15 +142,17 @@ const Routes = ({
                 classNames="fade"
                 unmountOnExit
               >
-                {<h4
-                  style={{
-                    color: "#b3b3b3",
-                    margin: "10px 0 20px 20px",
-                    fontSize: "15px",
-                  }}
-                >
-                  Route Recommendations
-                </h4>}
+                {
+                  <h4
+                    style={{
+                      color: "#b3b3b3",
+                      margin: "10px 0 20px 20px",
+                      fontSize: "15px",
+                    }}
+                  >
+                    Route Recommendations
+                  </h4>
+                }
               </CSSTransition>
 
               {routeRecommendations.map((route, index) => {
@@ -373,7 +330,7 @@ const Routes = ({
                       map[route[x.end].substring(0, route[x.end].indexOf("_"))]}
                     . <br />
                     {includeArrivalTime ? <br /> : ""}
-                    {includeArrivalTime ? (
+                    {/* {includeArrivalTime ? (
                       <strong style={{ cursor: "pointer" }}> Refresh </strong>
                     ) : (
                       ""
@@ -382,7 +339,7 @@ const Routes = ({
                       <BiRefresh style={{ cursor: "pointer" }} />
                     ) : (
                       ""
-                    )}
+                    )} */}
                     {includeArrivalTime ? <br /> : ""}
                     {includeArrivalTime ? "Bus Arrival Time: " : ""}
                     {includeArrivalTime

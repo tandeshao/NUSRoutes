@@ -116,9 +116,12 @@ function RenderMap({ route }) {
   };
 
   useEffect(() => {
-    setInterval(() => {
+    console.log("useEffect called")
+    const intervalId = setInterval(() => {
+      console.log("interval called")
       navigator.geolocation.getCurrentPosition(onSuccess, onError);
     }, 10000);
+    return () => clearInterval(intervalId);
   }, []);
 
   const { REACT_APP_API_KEY } = process.env;
