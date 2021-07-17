@@ -162,19 +162,37 @@ const routeRecommendation = (
     Object.keys(graphForTransfers).forEach((x) => {
       if (x !== end + "_none" && x.substring(0, x.indexOf("_")) === end) {
         graphForTransfers = create_dijkstraGraphforTransfers(graph);
-        arr.push(
-          dijkstra(
-            start + "_none",
-            x,
-            time,
-            date,
-            dijkstraGraphWithService,
-            graphForTransfers,
-            costPerStop,
-            costPerTransfer,
-            durationPerTransfer
-          )
+        const res = dijkstra(
+          start + "_none",
+          x,
+          time,
+          date,
+          dijkstraGraphWithService,
+          graphForTransfers,
+          costPerStop,
+          costPerTransfer,
+          durationPerTransfer
         );
+
+        let goAhead = true;
+        if (!res.Path) {
+          arr.push(res);
+        } else {
+          res.Path.forEach((busStop, index) => {
+            if (
+              busStop.substring(0, x.indexOf("_")) === end &&
+              index !== res.Path.length - 1
+            ) {
+              goAhead = false;
+            } else if (goAhead) {
+              goAhead = true;
+            }
+          });
+
+          if (goAhead) {
+            arr.push(res);
+          }
+        }
       }
     });
 
