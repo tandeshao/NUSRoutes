@@ -99,6 +99,7 @@ const MapSideBar = ({
           destination={destination}
           alarmToggle={alarmToggle}
           setAlarmToggle={setAlarmToggle}
+          departureSetting={departureSetting}
         />
       )}
 

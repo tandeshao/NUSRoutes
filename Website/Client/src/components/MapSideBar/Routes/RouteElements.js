@@ -11,7 +11,7 @@ export const RouteContainer = styled.div`
   border: 7px solid black;
   position: relative;
 
-  &:hover {
+  &:active {
     background: #404040;
   }
 

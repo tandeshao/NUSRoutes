@@ -116,9 +116,7 @@ function RenderMap({ route }) {
   };
 
   useEffect(() => {
-    console.log("useEffect called")
     const intervalId = setInterval(() => {
-      console.log("interval called")
       navigator.geolocation.getCurrentPosition(onSuccess, onError);
     }, 10000);
     return () => clearInterval(intervalId);

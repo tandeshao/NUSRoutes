@@ -77,7 +77,6 @@ const Routes = ({
   const { REACT_APP_DOMAIN } = process.env;
   useEffect(() => {
     const timeoutID = setTimeout(() => {
-      console.log("fetch called");
       transferredBuses.forEach((obj) => {
         if (route[obj.start]) {
           const busStop = route[obj.start].substring(

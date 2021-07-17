@@ -28,9 +28,10 @@ const Customization = ({
   destination,
   alarmToggle,
   setAlarmToggle,
+  departureSetting
 }) => {
   const [anchorEl, setAnchorEl] = useState(() => null);
-  const [btnName, setBtnName] = useState(() => "Depart Now");
+  const [btnName, setBtnName] = useState(() => departureSetting ? "Depart Now" : "Depart Later");
   const history = useHistory();
 
   const handleClick = (event) => {

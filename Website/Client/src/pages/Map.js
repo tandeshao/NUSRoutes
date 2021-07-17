@@ -16,11 +16,18 @@ import { animationTwo, transition } from "./pageAnimation";
 import Drawer from "react-drag-drawer";
 
 const Map = () => {
-  console.log("map rendered");
+  const search = window.location.search;
+  const params = new URLSearchParams(search);
+  let start = params.get("start");
+  let end = params.get("end");
+  let time = params.get("time");
+  let date = params.get("date");
   const [alarmToggle, setAlarmToggle] = useState(false);
-  const [departureSetting, setDepartureSetting] = useState(true);
+  const obj = new Date();
+  const now = obj.toString().substring(0, 24);
+  const [departureSetting, setDepartureSetting] = useState(() => time === now);
   const [renderRouteIndex, setRenderRouteIndex] = useState(null);
-  const {height, width}= useWindowDimensions();
+  const { height, width } = useWindowDimensions();
   const [open, setOpen] = useState(true);
   const toggle = (value) => setOpen(value);
   const [sidebar, setSideBar] = useState(() => true);
@@ -30,13 +37,7 @@ const Map = () => {
     { Path: [] },
   ]);
   const [route, setRoute] = useState(() => []);
-  const search = window.location.search;
-  const params = new URLSearchParams(search);
-  let start = params.get("start");
-  let end = params.get("end");
-  let time = params.get("time");
-  let date = params.get("date");
-  
+
   useEffect(() => {
     fetch(
       `${REACT_APP_DOMAIN}` +
@@ -81,33 +82,33 @@ const Map = () => {
       variants={animationTwo}
       transition={transition}
     >
-        <PageContainer>
-          {width > 450 || height > 900 ? (
-            sidebar ? (
-              <ArrowLeftButton
-                $sidebar={sidebar}
-                onClick={() => {
-                  setSideBar((prev) => !prev);
-                }}
-              />
-            ) : (
-              <ArrowRightButton
-                $sidebar={sidebar}
-                onClick={() => {
-                  setSideBar((prev) => !prev);
-                }}
-              />
-            )
+      <PageContainer>
+        {width > 450 || height > 900 ? (
+          sidebar ? (
+            <ArrowLeftButton
+              $sidebar={sidebar}
+              onClick={() => {
+                setSideBar((prev) => !prev);
+              }}
+            />
           ) : (
-            ""
-          )}
-          <MapContainer $sidebar={sidebar}>
-            <RenderMap route={route} />
-          </MapContainer>
+            <ArrowRightButton
+              $sidebar={sidebar}
+              onClick={() => {
+                setSideBar((prev) => !prev);
+              }}
+            />
+          )
+        ) : (
+          ""
+        )}
+        <MapContainer $sidebar={sidebar}>
+          <RenderMap route={route} />
+        </MapContainer>
 
-          {width <= 450 && height < 900 ? (
-            <>
-              <Drawer open={open} onRequestClose={() => toggle(false)}>
+        {width <= 450 && height < 900 ? (
+          <>
+            <Drawer open={open} onRequestClose={() => toggle(false)}>
               <MapSideBar
                 routeRecommendations={routeRecommendations}
                 setRoute={setRoute}
@@ -120,26 +121,26 @@ const Map = () => {
                 alarmToggle={alarmToggle}
                 setAlarmToggle={setAlarmToggle}
               />
-              </Drawer>
-              <MapNavbar open={open} toggle={toggle} style={{ zIndex: "1400" }} />
-            </>
-          ) : (
-            <SideBarContainer $sidebar={sidebar}>
-              <MapSideBar
-                routeRecommendations={routeRecommendations}
-                setRoute={setRoute}
-                startAndEnd={[start, end]}
-                route={route}
-                renderRouteIndex={renderRouteIndex}
-                setRenderRouteIndex={setRenderRouteIndex}
-                departureSetting={departureSetting}
-                setDepartureSetting={setDepartureSetting}
-                alarmToggle={alarmToggle}
-                setAlarmToggle={setAlarmToggle}
-              />
-            </SideBarContainer>
-          )}
-        </PageContainer>
+            </Drawer>
+            <MapNavbar open={open} toggle={toggle} style={{ zIndex: "1400" }} />
+          </>
+        ) : (
+          <SideBarContainer $sidebar={sidebar}>
+            <MapSideBar
+              routeRecommendations={routeRecommendations}
+              setRoute={setRoute}
+              startAndEnd={[start, end]}
+              route={route}
+              renderRouteIndex={renderRouteIndex}
+              setRenderRouteIndex={setRenderRouteIndex}
+              departureSetting={departureSetting}
+              setDepartureSetting={setDepartureSetting}
+              alarmToggle={alarmToggle}
+              setAlarmToggle={setAlarmToggle}
+            />
+          </SideBarContainer>
+        )}
+      </PageContainer>
     </motion.div>
   );
 };
