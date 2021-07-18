@@ -115,8 +115,6 @@ function formatPath(arr) {
 }
 
 async function arrivalTime(arrBusStop, busService, ctx) {
-  // Current Time
-  // Get route
   try {
     const stop = map[arrBusStop];
     const arrTime = await fetch(
