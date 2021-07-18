@@ -23,8 +23,8 @@ const Map = () => {
   let time = params.get("time");
   let date = params.get("date");
   const [alarmToggle, setAlarmToggle] = useState(false);
-  const obj = new Date();
-  const now = obj.toString().substring(0, 24);
+  let [hour, minute] = new Date().toLocaleTimeString("it-IT").split(/:| /);
+  let now = hour + minute;
   const [departureSetting, setDepartureSetting] = useState(() => time === now);
   const [renderRouteIndex, setRenderRouteIndex] = useState(null);
   const { height, width } = useWindowDimensions();
