@@ -100,7 +100,8 @@ export const ImgWrap = styled.div`
   max-width: 555px;
   height: 100%;
   margin-bottom: 60px;
-
+  box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 5);
+  
   @media screen and (max-width: 480px) {
     margin-right: 30px;
   }
