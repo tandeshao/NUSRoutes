@@ -252,7 +252,7 @@ const Routes = ({
               unmountOnExit
             >
               <Container>
-                {Object.keys(routeRecommendations[selectedRoute]).map(
+                {routeRecommendations[selectedRoute] && Object.keys(routeRecommendations[selectedRoute]).map(
                   (str, index) => {
                     return (
                       str !== "Path" &&
