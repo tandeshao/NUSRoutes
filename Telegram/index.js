@@ -23,7 +23,7 @@ async function routeFinder(current, destination, ctx) {
   const obj = new Date();
   let [month, date, year] = obj.toLocaleDateString("en-US").split("/");
   const day = obj.getDay();
-
+  
   // Get route
   const start = map[current];
   const end = map[destination];

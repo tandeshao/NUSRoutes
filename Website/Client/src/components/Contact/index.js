@@ -90,7 +90,7 @@ const ContactSection = () => {
       <ContactForm>
         <Formhd>
           {" "}
-          Do you have any feedbacks? We love to hear it from you!
+          Do you have any feedback? We love to hear it from you!
         </Formhd>
         <NameSet>
           <Label> Name </Label>
