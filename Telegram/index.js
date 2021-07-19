@@ -373,6 +373,7 @@ const dest = (ctx) => {
 };
 
 bot.action("dest_AS5", (ctx) => {
+  ctx.deleteMessage();
   destination[ctx.from.id] = "AS5";
   ctx.reply(
     `Calculating... ${current[ctx.from.id]} to ${destination[ctx.from.id]}`
@@ -381,6 +382,7 @@ bot.action("dest_AS5", (ctx) => {
 });
 
 bot.action("dest_BIZ 2", (ctx) => {
+  ctx.deleteMessage();
   destination[ctx.from.id] = "BIZ 2";
   ctx.reply(
     `Calculating... ${current[ctx.from.id]} to ${destination[ctx.from.id]}`
@@ -389,6 +391,7 @@ bot.action("dest_BIZ 2", (ctx) => {
 });
 
 bot.action("dest_Botanic Gardens MRT", (ctx) => {
+  ctx.deleteMessage();
   destination[ctx.from.id] = "Botanic Gardens MRT";
   ctx.reply(
     `Calculating... ${current[ctx.from.id]} to ${destination[ctx.from.id]}`
@@ -397,6 +400,7 @@ bot.action("dest_Botanic Gardens MRT", (ctx) => {
 });
 
 bot.action("dest_BTC - Oei Tiong Ham Building", (ctx) => {
+  ctx.deleteMessage();
   destination[ctx.from.id] = "BTC - Oei Tiong Ham Building";
   ctx.reply(
     `Calculating... ${current[ctx.from.id]} to ${destination[ctx.from.id]}`
@@ -405,6 +409,7 @@ bot.action("dest_BTC - Oei Tiong Ham Building", (ctx) => {
 });
 
 bot.action("dest_Central Library", (ctx) => {
+  ctx.deleteMessage();
   destination[ctx.from.id] = "Central Library";
   ctx.reply(
     `Calculating... ${current[ctx.from.id]} to ${destination[ctx.from.id]}`
@@ -413,6 +418,7 @@ bot.action("dest_Central Library", (ctx) => {
 });
 
 bot.action("dest_College Green", (ctx) => {
+  ctx.deleteMessage();
   destination[ctx.from.id] = "College Green";
   ctx.reply(
     `Calculating... ${current[ctx.from.id]} to ${destination[ctx.from.id]}`
@@ -421,6 +427,7 @@ bot.action("dest_College Green", (ctx) => {
 });
 
 bot.action("dest_COM2", (ctx) => {
+  ctx.deleteMessage();
   destination[ctx.from.id] = "COM2";
   ctx.reply(
     `Calculating... ${current[ctx.from.id]} to ${destination[ctx.from.id]}`
@@ -429,6 +436,7 @@ bot.action("dest_COM2", (ctx) => {
 });
 
 bot.action("dest_EA", (ctx) => {
+  ctx.deleteMessage();
   destination[ctx.from.id] = "EA";
   ctx.reply(
     `Calculating... ${current[ctx.from.id]} to ${destination[ctx.from.id]}`
@@ -437,6 +445,7 @@ bot.action("dest_EA", (ctx) => {
 });
 
 bot.action("dest_Information Technology", (ctx) => {
+  ctx.deleteMessage();
   destination[ctx.from.id] = "Information Technology";
   ctx.reply(
     `Calculating... ${current[ctx.from.id]} to ${destination[ctx.from.id]}`
@@ -445,6 +454,7 @@ bot.action("dest_Information Technology", (ctx) => {
 });
 
 bot.action("dest_Kent Ridge MRT", (ctx) => {
+  ctx.deleteMessage();
   destination[ctx.from.id] = "Kent Ridge MRT";
   ctx.reply(
     `Calculating... ${current[ctx.from.id]} to ${destination[ctx.from.id]}`
@@ -453,6 +463,7 @@ bot.action("dest_Kent Ridge MRT", (ctx) => {
 });
 
 bot.action("dest_Kent Vale", (ctx) => {
+  ctx.deleteMessage();
   destination[ctx.from.id] = "Kent Vale";
   ctx.reply(
     `Calculating... ${current[ctx.from.id]} to ${destination[ctx.from.id]}`
@@ -461,6 +472,7 @@ bot.action("dest_Kent Vale", (ctx) => {
 });
 
 bot.action("dest_LT13", (ctx) => {
+  ctx.deleteMessage();
   destination[ctx.from.id] = "LT13";
   ctx.reply(
     `Calculating... ${current[ctx.from.id]} to ${destination[ctx.from.id]}`
@@ -469,6 +481,7 @@ bot.action("dest_LT13", (ctx) => {
 });
 
 bot.action("dest_LT27", (ctx) => {
+  ctx.deleteMessage();
   destination[ctx.from.id] = "LT27";
   ctx.reply(
     `Calculating... ${current[ctx.from.id]} to ${destination[ctx.from.id]}`
@@ -477,6 +490,7 @@ bot.action("dest_LT27", (ctx) => {
 });
 
 bot.action("dest_Museum", (ctx) => {
+  ctx.deleteMessage();
   destination[ctx.from.id] = "Museum";
   ctx.reply(
     `Calculating... ${current[ctx.from.id]} to ${destination[ctx.from.id]}`
@@ -485,6 +499,7 @@ bot.action("dest_Museum", (ctx) => {
 });
 
 bot.action("dest_Opp HSSML", (ctx) => {
+  ctx.deleteMessage();
   destination[ctx.from.id] = "Opp HSSML";
   ctx.reply(
     `Calculating... ${current[ctx.from.id]} to ${destination[ctx.from.id]}`
@@ -493,6 +508,7 @@ bot.action("dest_Opp HSSML", (ctx) => {
 });
 
 bot.action("dest_Opp Kent Ridge MRT", (ctx) => {
+  ctx.deleteMessage();
   destination[ctx.from.id] = "Opp Kent Ridge MRT";
   ctx.reply(
     `Calculating... ${current[ctx.from.id]} to ${destination[ctx.from.id]}`
@@ -501,6 +517,7 @@ bot.action("dest_Opp Kent Ridge MRT", (ctx) => {
 });
 
 bot.action("dest_Opp NUSS", (ctx) => {
+  ctx.deleteMessage();
   destination[ctx.from.id] = "Opp NUSS";
   ctx.reply(
     `Calculating... ${current[ctx.from.id]} to ${destination[ctx.from.id]}`
@@ -509,6 +526,7 @@ bot.action("dest_Opp NUSS", (ctx) => {
 });
 
 bot.action("dest_Opp TCOMS", (ctx) => {
+  ctx.deleteMessage();
   destination[ctx.from.id] = "Opp TCOMS";
   ctx.reply(
     `Calculating... ${current[ctx.from.id]} to ${destination[ctx.from.id]}`
@@ -517,6 +535,7 @@ bot.action("dest_Opp TCOMS", (ctx) => {
 });
 
 bot.action("dest_Opp University Hall", (ctx) => {
+  ctx.deleteMessage();
   destination[ctx.from.id] = "Opp University Hall";
   ctx.reply(
     `Calculating... ${current[ctx.from.id]} to ${destination[ctx.from.id]}`
@@ -525,6 +544,7 @@ bot.action("dest_Opp University Hall", (ctx) => {
 });
 
 bot.action("dest_Opp University Health Centre", (ctx) => {
+  ctx.deleteMessage();
   destination[ctx.from.id] = "Opp University Health Centre";
   ctx.reply(
     `Calculating... ${current[ctx.from.id]} to ${destination[ctx.from.id]}`
@@ -533,6 +553,7 @@ bot.action("dest_Opp University Health Centre", (ctx) => {
 });
 
 bot.action("dest_Opp YIH", (ctx) => {
+  ctx.deleteMessage();
   destination[ctx.from.id] = "Opp YIH";
   ctx.reply(
     `Calculating... ${current[ctx.from.id]} to ${destination[ctx.from.id]}`
@@ -541,6 +562,7 @@ bot.action("dest_Opp YIH", (ctx) => {
 });
 
 bot.action("dest_Prince George's Park", (ctx) => {
+  ctx.deleteMessage();
   destination[ctx.from.id] = "Prince George's Park";
   ctx.reply(
     `Calculating... ${current[ctx.from.id]} to ${destination[ctx.from.id]}`
@@ -549,6 +571,7 @@ bot.action("dest_Prince George's Park", (ctx) => {
 });
 
 bot.action("dest_Prince George's Park Residence", (ctx) => {
+  ctx.deleteMessage();
   destination[ctx.from.id] = "Prince George's Park Residence";
   ctx.reply(
     `Calculating... ${current[ctx.from.id]} to ${destination[ctx.from.id]}`
@@ -557,6 +580,7 @@ bot.action("dest_Prince George's Park Residence", (ctx) => {
 });
 
 bot.action("dest_Raffles Hall (Opp. Museum)", (ctx) => {
+  ctx.deleteMessage();
   destination[ctx.from.id] = "Raffles Hall (Opp. Museum)";
   ctx.reply(
     `Calculating... ${current[ctx.from.id]} to ${destination[ctx.from.id]}`
@@ -565,6 +589,7 @@ bot.action("dest_Raffles Hall (Opp. Museum)", (ctx) => {
 });
 
 bot.action("dest_S17", (ctx) => {
+  ctx.deleteMessage();
   destination[ctx.from.id] = "S17";
   ctx.reply(
     `Calculating... ${current[ctx.from.id]} to ${destination[ctx.from.id]}`
@@ -573,6 +598,7 @@ bot.action("dest_S17", (ctx) => {
 });
 
 bot.action("dest_TCOMS", (ctx) => {
+  ctx.deleteMessage();
   destination[ctx.from.id] = "TCOMS";
   ctx.reply(
     `Calculating... ${current[ctx.from.id]} to ${destination[ctx.from.id]}`
@@ -581,6 +607,7 @@ bot.action("dest_TCOMS", (ctx) => {
 });
 
 bot.action("dest_University Hall", (ctx) => {
+  ctx.deleteMessage();
   destination[ctx.from.id] = "University Hall";
   ctx.reply(
     `Calculating... ${current[ctx.from.id]} to ${destination[ctx.from.id]}`
@@ -589,6 +616,7 @@ bot.action("dest_University Hall", (ctx) => {
 });
 
 bot.action("dest_University Health Centre", (ctx) => {
+  ctx.deleteMessage();
   destination[ctx.from.id] = "University Health Centre";
   ctx.reply(
     `Calculating... ${current[ctx.from.id]} to ${destination[ctx.from.id]}`
@@ -597,6 +625,7 @@ bot.action("dest_University Health Centre", (ctx) => {
 });
 
 bot.action("dest_University Town", (ctx) => {
+  ctx.deleteMessage();
   destination[ctx.from.id] = "University Town";
   ctx.reply(
     `Calculating... ${current[ctx.from.id]} to ${destination[ctx.from.id]}`
@@ -605,6 +634,7 @@ bot.action("dest_University Town", (ctx) => {
 });
 
 bot.action("dest_Ventus (Opp LT13)", (ctx) => {
+  ctx.deleteMessage();
   destination[ctx.from.id] = "Ventus (Opp LT13)";
   ctx.reply(
     `Calculating... ${current[ctx.from.id]} to ${destination[ctx.from.id]}`
@@ -613,6 +643,7 @@ bot.action("dest_Ventus (Opp LT13)", (ctx) => {
 });
 
 bot.action("dest_YIH", (ctx) => {
+  ctx.deleteMessage();
   destination[ctx.from.id] = "YIH";
   ctx.reply(
     `Calculating... ${current[ctx.from.id]} to ${destination[ctx.from.id]}`
@@ -621,6 +652,7 @@ bot.action("dest_YIH", (ctx) => {
 });
 
 bot.action("dest_The Japanese Primary School", (ctx) => {
+  ctx.deleteMessage();
   destination[ctx.from.id] = "The Japanese Primary School";
   ctx.reply(
     `Calculating... ${current[ctx.from.id]} to ${destination[ctx.from.id]}`
@@ -629,6 +661,7 @@ bot.action("dest_The Japanese Primary School", (ctx) => {
 });
 
 bot.action("dest_Kent Ridge Bus Terminal", (ctx) => {
+  ctx.deleteMessage();
   destination[ctx.from.id] = "Kent Ridge Bus Terminal";
   ctx.reply(
     `Calculating... ${current[ctx.from.id]} to ${destination[ctx.from.id]}`
@@ -681,6 +714,7 @@ bot.action("arr_AS5", (ctx) => {
 -------------------------------------------------------------------------------------------  */
 
 bot.action("service_A1", (ctx) => {
+  ctx.deleteMessage();
   busService[ctx.from.id] = "A1";
   ctx.reply(
     `Arrival Time of ${busService[ctx.from.id]} at ${arrBusStop[ctx.from.id]}`
