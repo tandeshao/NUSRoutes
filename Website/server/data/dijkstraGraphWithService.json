@@ -1,34 +1,32 @@
 {
-  "AS7": {
+  "AS5": {
     "COM2": { "distance": 312, "services": ["A1", "D1"], "duration": "1 min" },
-    "BIZ2": {
-      "distance": 482,
-      "services": ["B1", "BTC1"],
-      "duration": "2 mins"
-    }
+    "BIZ2": { "distance": 482, "services": ["BTC"], "duration": "1 min" }
   },
   "BIZ2": {
-    "PGP12-OPP": { "distance": 230, "services": ["A1"], "duration": "1 min" },
-    "PGPT": { "distance": 691, "services": ["BTC1"], "duration": "2 mins" }
+    "TCOMS-OPP": { "distance": 230, "services": ["A1"], "duration": "1 min" },
+    "PGP": { "distance": 691, "services": ["BTC"], "duration": "2 mins" }
   },
   "BG-MRT": {
-    "MUSEUM": { "distance": 8295, "services": ["BTC2"], "duration": "11 mins" }
+    "KR-MRT": { "distance": 6106, "services": ["BTC"], "duration": "9 mins" },
+    "CG": { "distance": 665, "services": ["L"], "duration": "2 mins" }
   },
-  "BUKITTIMAH": {
-    "BG-MRT": { "distance": 910, "services": ["BTC2"], "duration": "3 mins" }
+  "OTH": {
+    "BG-MRT": {
+      "distance": 910,
+      "services": ["BTC", "L"],
+      "duration": "3 mins"
+    }
   },
-  "CENLIB": {
-    "LT13": {
-      "distance": 315,
-      "services": ["A1", "B1", "BTC1", "D1"],
-      "duration": "1 min"
-    },
-    "YIH-OPP": { "distance": 648, "services": ["B2"], "duration": "2 mins" }
+  "CLB": {
+    "KRB": { "distance": 503, "services": ["A1"], "duration": "2 mins" },
+    "LT13": { "distance": 315, "services": ["D1", "BTC"], "duration": "1 min" },
+    "SDE3-OPP": { "distance": 490, "services": ["K"], "duration": "2 mins" }
   },
-  "CGH": {
-    "BUKITTIMAH": {
+  "CG": {
+    "OTH": {
       "distance": 1062,
-      "services": ["BTC1"],
+      "services": ["BTC", "L"],
       "duration": "4 mins"
     }
   },
@@ -40,86 +38,85 @@
       "duration": "3 mins"
     }
   },
-  "BLK-EA-OPP": {
-    "KR-BT": {
-      "distance": 736,
-      "services": ["B2", "BTC2", "C"],
-      "duration": "2 mins"
-    }
+  "EA": {
+    "SDE3": { "distance": 313, "services": ["E"], "duration": "1 min" }
   },
-  "COMCEN": {
+  "IT": {
     "YIH-OPP": {
       "distance": 234,
-      "services": ["A2", "B1", "D1"],
+      "services": ["A2", "D1", "E"],
       "duration": "1 min"
     }
   },
   "KR-MRT": {
-    "LT27": { "distance": 517, "services": ["A1", "D2"], "duration": "1 min" }
+    "LT27": {
+      "distance": 517,
+      "services": ["A1", "D2", "K", "BTC"],
+      "duration": "1 min"
+    }
   },
   "KV": {
+    "EA": { "distance": 266, "services": ["E"], "duration": "1 min" },
     "MUSEUM": {
       "distance": 498,
-      "services": ["BTC1", "C"],
+      "services": ["K", "BTC"],
       "duration": "2 mins"
     }
   },
   "LT13": {
-    "AS7": {
+    "AS5": {
       "distance": 231,
-      "services": ["A1", "B1", "BTC1", "D1"],
+      "services": ["A1", "D1", "BTC"],
       "duration": "1 min"
     }
   },
   "LT27": {
     "UHALL": {
       "distance": 267,
-      "services": ["A1", "C", "D2"],
+      "services": ["A1", "D2", "K", "BTC"],
       "duration": "1 min"
     }
   },
   "MUSEUM": {
-    "STAFFCLUB": { "distance": 420, "services": ["A2"], "duration": "1 min" },
-    "YIH": { "distance": 317, "services": ["BTC1"], "duration": "1 min" },
-    "BLK-EA-OPP": {
-      "distance": 652,
-      "services": ["BTC2"],
-      "duration": "2 mins"
-    },
-    "UTown": {
-      "distance": 449,
-      "services": ["C", "D1", "D2"],
+    "UHC": {
+      "distance": 420,
+      "services": ["A2", "K"],
       "duration": "1 min"
-    }
+    },
+    "UTOWN": { "distance": 449, "services": ["D1", "D2"], "duration": "1 min" },
+    "YIH": { "distance": 317, "services": ["BTC"], "duration": "1 min" }
   },
   "HSSML-OPP": {
     "NUSS-OPP": {
       "distance": 378,
-      "services": ["A2", "B2", "D1"],
+      "services": ["A2", "D1"],
       "duration": "1 min"
     }
   },
   "KR-MRT-OPP": {
-    "PGPR": { "distance": 822, "services": ["A2", "D2"], "duration": "3 mins" }
+    "PGPR": {
+      "distance": 827,
+      "services": ["A2", "D2", "K"],
+      "duration": "3 mins"
+    }
   },
   "NUSS-OPP": {
-    "COM2": { "distance": 305, "services": ["A2", "D1"], "duration": "1 min" },
-    "LT13-OPP": { "distance": 351, "services": ["B2"], "duration": "1 min" }
+    "COM2": { "distance": 305, "services": ["A2", "D1"], "duration": "1 min" }
   },
-  "PGP12-OPP": {
-    "PGPT": { "distance": 461, "services": ["A1", "D2"], "duration": "1 min" }
+  "TCOMS-OPP": {
+    "PGP": { "distance": 461, "services": ["A1"], "duration": "1 min" }
   },
   "UHALL-OPP": {
     "S17": {
       "distance": 374,
-      "services": ["A2", "C", "D2"],
+      "services": ["A2", "D2", "K"],
       "duration": "1 min"
     }
   },
-  "STAFFCLUB-OPP": {
-    "YIH": { "distance": 161, "services": ["A1"], "duration": "1 min" },
-    "UTown": { "distance": 692, "services": ["C"], "duration": "2 mins" },
-    "MUSEUM": { "distance": 490, "services": ["D2"], "duration": "2 mins" }
+  "UHC-OPP": {
+    "YIH": { "distance": 161, "services": ["A1", "K"], "duration": "1 min" },
+    "MUSEUM": { "distance": 490, "services": ["D2"], "duration": "1 min" },
+    "UTOWN": { "distance": 692, "services": ["BTC"], "duration": "2 mins" }
   },
   "YIH-OPP": {
     "MUSEUM": {
@@ -127,86 +124,77 @@
       "services": ["A2", "D1"],
       "duration": "1 min"
     },
-    "UTown": { "distance": 609, "services": ["B1", "B2"], "duration": "2 mins" }
+    "UTOWN": { "distance": 609, "services": ["E"], "duration": "2 mins" }
   },
-  "PGPT": {
+  "PGP": {
     "KR-MRT": {
-      "distance": 883,
-      "services": ["A1", "D2"],
+      "distance": 886,
+      "services": ["A1", "D2", "K"],
       "duration": "3 mins"
     },
-    "PGP12": { "distance": 466, "services": ["A2"], "duration": "1 min" },
-    "CGH": { "distance": 7029, "services": ["BTC1"], "duration": "13 mins" }
+    "CG": { "distance": 7030, "services": ["BTC"], "duration": "13 mins" }
   },
   "PGPR": {
-    "PGP12": { "distance": 583, "services": ["D2"], "duration": "1 min" }
+    "TCOMS": { "distance": 580, "services": ["A2"], "duration": "1 min" }
   },
   "RAFFLES": {
-    "BLK-EA-OPP": {
-      "distance": 352,
-      "services": ["B2", "C"],
-      "duration": "1 min"
-    }
+    "KV": { "distance": 386, "services": ["E", "BTC"], "duration": "2 mins" }
   },
   "S17": {
     "KR-MRT-OPP": {
       "distance": 487,
-      "services": ["A2", "D2"],
+      "services": ["A2", "D2", "K"],
       "duration": "1 min"
-    },
-    "LT27": { "distance": 42, "services": ["C"], "duration": "1 min" }
+    }
   },
-  "PGP12": {
+  "TCOMS": {
     "HSSML-OPP": { "distance": 281, "services": ["A2"], "duration": "1 min" }
   },
   "UHALL": {
-    "STAFFCLUB-OPP": {
+    "UHC-OPP": {
       "distance": 414,
-      "services": ["A1", "C", "D2"],
+      "services": ["A1", "D2", "K", "BTC"],
       "duration": "1 min"
     }
   },
-  "STAFFCLUB": {
+  "UHC": {
     "UHALL-OPP": {
       "distance": 280,
-      "services": ["A2", "C", "D2"],
+      "services": ["A2", "D2", "K"],
       "duration": "1 min"
     }
   },
-  "UTown": {
-    "YIH": { "distance": 871, "services": ["B1", "D1"], "duration": "2 mins" },
+  "UTOWN": {
+    "YIH": { "distance": 871, "services": ["D1"], "duration": "2 mins" },
+    "UHC": { "distance": 974, "services": ["D2"], "duration": "3 mins" },
     "RAFFLES": {
       "distance": 853,
-      "services": ["B2", "C"],
+      "services": ["E", "BTC"],
       "duration": "2 mins"
-    },
-    "STAFFCLUB": {
-      "distance": 974,
-      "services": ["C", "D2"],
-      "duration": "3 mins"
     }
   },
   "LT13-OPP": {
-    "COMCEN": {
-      "distance": 393,
-      "services": ["A2", "D1"],
-      "duration": "1 min"
-    },
-    "CENLIB": { "distance": 411, "services": ["B2"], "duration": "2 mins" }
+    "KRB": { "distance": 455, "services": ["A2"], "duration": "2 mins" },
+    "IT": { "distance": 393, "services": ["D1"], "duration": "1 min" }
   },
   "YIH": {
-    "CENLIB": {
+    "CLB": {
       "distance": 375,
-      "services": ["A1", "B1", "BTC1", "D1"],
+      "services": ["A1", "D1", "K", "BTC"],
       "duration": "1 min"
     }
   },
   "JP-SCH-16151": {
-    "KV": { "distance": 225, "services": ["C"], "duration": "1 min" }
+    "KV": { "distance": 225, "services": ["K"], "duration": "1 min" }
   },
-  "KR-BT": {
-    "COMCEN": { "distance": 782, "services": ["B1"], "duration": "3 mins" },
-    "KV": { "distance": 1102, "services": ["BTC1"], "duration": "3 mins" },
-    "JP-SCH-16151": { "distance": 877, "services": ["C"], "duration": "2 mins" }
+  "KRB": {
+    "LT13": { "distance": 699, "services": ["A1"], "duration": "3 mins" },
+    "IT": { "distance": 782, "services": ["A2"], "duration": "3 mins" }
+  },
+  "SDE3": {
+    "IT": { "distance": 562, "services": ["E"], "duration": "2 mins" }
+  },
+  "SDE3-OPP": {
+    "JP-SCH-16151": { "distance": 330, "services": ["K"], "duration": "1 min" }
   }
 }

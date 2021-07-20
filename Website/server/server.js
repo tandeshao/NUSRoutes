@@ -28,7 +28,7 @@ app.get("/api/routeRecommedation", (req, res) => {
 
 app.get("/api/getArrivalTime", async (req, res) => {
   console.log("getArrivalTime function called");
-  const result = await getArrivalTime(req.query.busStop, req.query.busService);
+  const result = await getArrivalTime(req.query.busStop, req.query.busService, req.query.busstopcode);
   res.json(result);
 });
 
@@ -95,5 +95,3 @@ app.get("/proximityAlarm", (req, res) => {
 app.listen(port, () => {
   console.log(`Listening to ${port}...`);
 });
-
-

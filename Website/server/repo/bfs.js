@@ -1,4 +1,4 @@
-const graph = require('../data/bfsGraph');
+const graph = require("../data/bfsGraph");
 
 const breadthFirstSearch = (graph, start, end) => {
   const queue = [];
@@ -23,8 +23,7 @@ const breadthFirstSearch = (graph, start, end) => {
   }
 
   console.log("No result available");
-}
+};
 
-console.log(breadthFirstSearch(graph, 'PGPT', 'KV'));
+console.log(breadthFirstSearch(graph, "PGP", "KV"));
 //module.exports = breadthFirstSearch;
-

@@ -75,8 +75,10 @@ const Routes = ({
   const { height, width } = useWindowDimensions();
   const units = ["hrs", "hrs", "", "mins", "", ""];
   const { REACT_APP_DOMAIN } = process.env;
+
   useEffect(() => {
     const timeoutID = setTimeout(() => {
+      console.log("fetch called");
       transferredBuses.forEach((obj) => {
         if (route[obj.start]) {
           const busStop = route[obj.start].substring(
@@ -84,45 +86,94 @@ const Routes = ({
             route[obj.start].indexOf("_")
           );
           const busService = obj.service;
-          const checkBusService =
-            busStop === "COM2" && busService === "D1"
-              ? route[obj.start + 1] === "LT13-OPP"
-                ? encodeURIComponent("D1(To UTown)")
-                : encodeURIComponent("D1(To BIZ2)")
-              : busStop === "UTown" && busService === "C"
-              ? route[obj.start + 1] === "RAFFLES"
-                ? encodeURIComponent("C(To KRT)")
-                : encodeURIComponent("C(To FOS)")
-              : encodeURIComponent(busService);
-          fetch(
-            `${REACT_APP_DOMAIN}` +
-              "/api/" +
-              "getArrivalTime" +
-              "?" +
-              "busStop=" +
-              busStop +
-              "&" +
-              "busService=" +
-              checkBusService
-          )
-            .then((response) => response.json())
-            .then((data) => {
-              setBusArrivalTime((arr) => {
-                if (arr.length < transferredBuses.length) {
-                  return arr.concat([data]);
-                } else {
-                  return [];
-                }
-              });
-            })
-            .catch(console.log);
+          const busstopcode =
+              busStop === "COM2" && busService === "D1"
+                ? route[obj.start + 1] === "BIZ2"
+                  ? "COM2-BIZ2"
+                  : "COM2-UT"
+                : busStop === "OTH" && busService === "BTC"
+                ? route[obj.start + 1] === "BG-MRT"
+                  ? "OTH-BTC-S"
+                  : "OTH-BTC-E"
+                : busStop === "OTH" && busService === "L"
+                ? route[obj.start + 1] === "BG-MRT"
+                  ? "OTH-L-S"
+                  : "OTH-L-E"
+                : busStop === "UTOWN" && busService === "E"
+                ? route[obj.start + 1] === "RAFFLES"
+                  ? "UTOWN-E-S"
+                  : "UTOWN-E-E"
+                : busStop === "KRB" && busService === "A1"
+                ? route[obj.start + 1] === "LT13"
+                  ? "KRB-A1-S"
+                  : "KRB-A1-E"
+                : busStop === "KRB" && busService === "A2"
+                ? route[obj.start + 1] === "IT"
+                  ? "KRB-A2-S"
+                  : "KRB-A2-E"
+                : null;
+          if (busstopcode) {
+            return fetch(
+              `${REACT_APP_DOMAIN}` +
+                "/api/" +
+                "getArrivalTime" +
+                "?" +
+                "busStop=" +
+                busStop +
+                "&" +
+                "busService=" +
+                busService +
+                "&busstopcode=" +
+                busstopcode
+            )
+              .then((response) => response.json())
+              .then((data) => {
+                setBusArrivalTime((arr) => {
+                  if (arr.length < transferredBuses.length) {
+                    return arr.concat([data]);
+                  } else {
+                    return [];
+                  }
+                });
+              })
+              .catch(console.log);
+          } else {
+            return fetch(
+              `${REACT_APP_DOMAIN}` +
+                "/api/" +
+                "getArrivalTime" +
+                "?" +
+                "busStop=" +
+                busStop +
+                "&" +
+                "busService=" +
+                busService
+            )
+              .then((response) => response.json())
+              .then((data) => {
+                setBusArrivalTime((arr) => {
+                  console.log(arr);
+                  if (arr.length < transferredBuses.length) {
+                    return arr.concat([data]);
+                  } else {
+                    const new_array = [];
+                    return new_array.concat([data]);
+                  }
+                });
+              })
+              .catch(console.log);
+          }
         }
       });
-    }, 10000);
+    }, 5000);
     return () => clearTimeout(timeoutID);
-      
-  
-  }, [transferredBuses, REACT_APP_DOMAIN, route, setBusArrivalTime, busArrivalTime]);
+  }, [
+    transferredBuses,
+    REACT_APP_DOMAIN,
+    route,
+    setBusArrivalTime,
+    busArrivalTime,
+  ]);
 
   return (
     <div
@@ -252,23 +303,24 @@ const Routes = ({
               unmountOnExit
             >
               <Container>
-                {routeRecommendations[selectedRoute] && Object.keys(routeRecommendations[selectedRoute]).map(
-                  (str, index) => {
-                    return (
-                      str !== "Path" &&
-                      str !== "Cost" &&
-                      str !== "Distance" && (
-                        <p key={index + 400}>
-                          {str +
-                            ": " +
-                            routeRecommendations[selectedRoute][str] +
-                            " " +
-                            units[index]}
-                        </p>
-                      )
-                    );
-                  }
-                )}
+                {routeRecommendations[selectedRoute] &&
+                  Object.keys(routeRecommendations[selectedRoute]).map(
+                    (str, index) => {
+                      return (
+                        str !== "Path" &&
+                        str !== "Cost" &&
+                        str !== "Distance" && (
+                          <p key={index + 400}>
+                            {str +
+                              ": " +
+                              routeRecommendations[selectedRoute][str] +
+                              " " +
+                              units[index]}
+                          </p>
+                        )
+                      );
+                    }
+                  )}
               </Container>
             </CSSTransition>
           </TransitionGroup>

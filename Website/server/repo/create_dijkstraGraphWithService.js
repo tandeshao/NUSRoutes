@@ -1,6 +1,6 @@
 const djikstraGraph = require('../data/dijkstraGraph');
 const fs = require('fs');
-const find_service = require('./find_service');
+const find_service = require('./findService');
 const busServices = require('../data/busServices');
 const detailedGraph = require('../data/detailedGraph');
 

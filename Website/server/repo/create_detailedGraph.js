@@ -1,11 +1,13 @@
 //cannot be used without api key.
-
+//before starting, duplicate the bfsGraph.json and call it detailedGraph.json
 const GoogleDistanceApi = require("google-distance-api");
 const graph = require("../data/bfsgraph");
 const busStops = require("../data/busStops");
 const fs = require("fs");
+require('dotenv').config();
+const { API_KEY } = process.env;
 
-const key_input = '<API Key>';
+const key_input = `${API_KEY}`;
 const mode_input = "driving";
 let options = {
   key: key_input,
@@ -21,7 +23,7 @@ const register_result = (graph, origin, destination, data) => {
     }
   }
 
-  fs.writeFile("../data/test.json", JSON.stringify(graph), (err) => {
+  fs.writeFile("../data/detailedgraph.json", JSON.stringify(graph), (err) => {
     if (err) return console.log(err);
     console.log("File has been successfully written!");
   });
@@ -45,7 +47,7 @@ for (let key in graph) {
         return console.log(err);
       }
       
-      const new_graph = require("../data/detailedgraph");
+      const new_graph = require("../data/detailedgraph.json");
       register_result(new_graph, key, element, data);
     });
   });
