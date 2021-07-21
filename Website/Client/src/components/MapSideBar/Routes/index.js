@@ -73,13 +73,12 @@ const Routes = ({
   setRenderRouteIndex,
 }) => {
   const { height, width } = useWindowDimensions();
-  const units = ["hrs", "hrs", "", "mins", "", ""];
+  const units = ["hrs", "hrs", "", "", "mins", "", "", ""];
   const { REACT_APP_DOMAIN } = process.env;
 
   useEffect(() => {
     const timeoutID = setTimeout(() => {
-      console.log("fetch called");
-      transferredBuses.forEach((obj) => {
+      transferredBuses.forEach((obj, index) => {
         if (route[obj.start]) {
           const busStop = route[obj.start].substring(
             0,
@@ -87,33 +86,34 @@ const Routes = ({
           );
           const busService = obj.service;
           const busstopcode =
-              busStop === "COM2" && busService === "D1"
-                ? route[obj.start + 1] === "BIZ2"
-                  ? "COM2-BIZ2"
-                  : "COM2-UT"
-                : busStop === "OTH" && busService === "BTC"
-                ? route[obj.start + 1] === "BG-MRT"
-                  ? "OTH-BTC-S"
-                  : "OTH-BTC-E"
-                : busStop === "OTH" && busService === "L"
-                ? route[obj.start + 1] === "BG-MRT"
-                  ? "OTH-L-S"
-                  : "OTH-L-E"
-                : busStop === "UTOWN" && busService === "E"
-                ? route[obj.start + 1] === "RAFFLES"
-                  ? "UTOWN-E-S"
-                  : "UTOWN-E-E"
-                : busStop === "KRB" && busService === "A1"
-                ? route[obj.start + 1] === "LT13"
-                  ? "KRB-A1-S"
-                  : "KRB-A1-E"
-                : busStop === "KRB" && busService === "A2"
-                ? route[obj.start + 1] === "IT"
-                  ? "KRB-A2-S"
-                  : "KRB-A2-E"
-                : null;
+            busStop === "COM2" && busService === "D1"
+              ? route[obj.start + 1] === "BIZ2"
+                ? "COM2-BIZ2"
+                : "COM2-UT"
+              : busStop === "OTH" && busService === "BTC"
+              ? route[obj.start + 1] === "BG-MRT"
+                ? "OTH-BTC-S"
+                : "OTH-BTC-E"
+              : busStop === "OTH" && busService === "L"
+              ? route[obj.start + 1] === "BG-MRT"
+                ? "OTH-L-S"
+                : "OTH-L-E"
+              : busStop === "UTOWN" && busService === "E"
+              ? route[obj.start + 1] === "RAFFLES"
+                ? "UTOWN-E-S"
+                : "UTOWN-E-E"
+              : busStop === "KRB" && busService === "A1"
+              ? route[obj.start + 1] === "LT13"
+                ? "KRB-A1-S"
+                : "KRB-A1-E"
+              : busStop === "KRB" && busService === "A2"
+              ? route[obj.start + 1] === "IT"
+                ? "KRB-A2-S"
+                : "KRB-A2-E"
+              : null;
+
           if (busstopcode) {
-            return fetch(
+            fetch(
               `${REACT_APP_DOMAIN}` +
                 "/api/" +
                 "getArrivalTime" +
@@ -131,14 +131,16 @@ const Routes = ({
                 setBusArrivalTime((arr) => {
                   if (arr.length < transferredBuses.length) {
                     return arr.concat([data]);
-                  } else {
-                    return [];
+                  } else if (arr.length === transferredBuses.length) {
+                    const new_arr = arr.slice();
+                    new_arr[index] = data;
+                    return new_arr;
                   }
                 });
               })
               .catch(console.log);
           } else {
-            return fetch(
+            fetch(
               `${REACT_APP_DOMAIN}` +
                 "/api/" +
                 "getArrivalTime" +
@@ -152,12 +154,12 @@ const Routes = ({
               .then((response) => response.json())
               .then((data) => {
                 setBusArrivalTime((arr) => {
-                  console.log(arr);
                   if (arr.length < transferredBuses.length) {
                     return arr.concat([data]);
-                  } else {
-                    const new_array = [];
-                    return new_array.concat([data]);
+                  } else if (arr.length === transferredBuses.length) {
+                    const new_arr = arr.slice();
+                    new_arr[index] = data;
+                    return new_arr;
                   }
                 });
               })
@@ -233,11 +235,16 @@ const Routes = ({
                         (str, index) =>
                           str !== "Path" &&
                           str !== "Cost" &&
-                          str !== "Distance" && (
+                          str !== "Distance" &&
+                          (str === "Bus" ? (
+                            <p key={index + 300} style={{ marginTop: "2px" }}>
+                              {"Bus to take: " + route[str].join(" > ")}
+                            </p>
+                          ) : (
                             <p key={index + 300} style={{ marginTop: "2px" }}>
                               {str + ": " + route[str] + " " + units[index]}
                             </p>
-                          )
+                          ))
                       )}
                       {routeRecommendations[0]["Cost"] && (
                         <Arrow>
@@ -291,7 +298,7 @@ const Routes = ({
               >
                 {" "}
                 <MdKeyboardArrowLeft size={22} />
-                <h4>Route Information</h4>
+                <h4 onClick={() => setBusArrivalTime([])}>Route Information</h4>
               </div>
             </CSSTransition>
 
@@ -309,7 +316,15 @@ const Routes = ({
                       return (
                         str !== "Path" &&
                         str !== "Cost" &&
-                        str !== "Distance" && (
+                        str !== "Distance" &&
+                        (str === "Bus" ? (
+                          <p key={index + 400}>
+                            {"Bus to take: " +
+                              routeRecommendations[selectedRoute][str].join(
+                                " > "
+                              )}
+                          </p>
+                        ) : (
                           <p key={index + 400}>
                             {str +
                               ": " +
@@ -317,7 +332,7 @@ const Routes = ({
                               " " +
                               units[index]}
                           </p>
-                        )
+                        ))
                       );
                     }
                   )}
@@ -391,7 +406,6 @@ const Routes = ({
                     ) : (
                       ""
                     )} */}
-                    {includeArrivalTime ? <br /> : ""}
                     {includeArrivalTime ? "Bus Arrival Time: " : ""}
                     {includeArrivalTime
                       ? busArrivalTime[index] === undefined
@@ -449,7 +463,7 @@ const Routes = ({
                     width <= 450 && height < 900
                       ? {
                           display: "inline",
-                          width: "15px",
+                          width: "13px",
                           float: "right",
                           marginRight: "7%",
                           height: "20px",

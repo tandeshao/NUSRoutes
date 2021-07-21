@@ -93,6 +93,7 @@ const dijkstra = (
     results = {
       StartingTime: null,
       ArrivalTime: null,
+      Bus: null,
       Transfers: null,
       Duration: null,
       Distance: null,
@@ -112,6 +113,7 @@ const dijkstra = (
     results = {
       StartingTime: time,
       ArrivalTime: addTime(parseInt(time), duration),
+      Bus: res[2],
       Transfers: transfers,
       //duration = duration of going to each stop + a 40s "stop time" given to each stop.
       //40s = 40/60 = 2/3 estimated to be 0.67.
@@ -215,3 +217,15 @@ const routeRecommendation = (
 };
 
 module.exports = routeRecommendation;
+// console.log(
+//   routeRecommendation(
+//     "CG",
+//     "KRB",
+//     1300,
+//     "vacation-weekdays",
+//     dijkstraGraphWithService,
+//     150,
+//     1000,
+//     12
+//   )
+// );

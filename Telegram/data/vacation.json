@@ -1,39 +1,40 @@
 [
-  {
-    "duration-year": [2021, 2021],
-    "duration-month": [5, 8],
-    "duration-date": [9, 1]
-  },
-
-  {
-    "duration-year": [2021, 2022],
-    "duration-month": [12, 1],
-    "duration-date": [5, 9]
-  },
-
-  {
-    "duration-year": [2022, 2022],
-    "duration-month": [5, 7],
-    "duration-date": [8, 31]
-  },
-  {
-    "duration-year": [2022, 2023],
-    "duration-month": [12, 1],
-    "duration-date": [4, 8]
-  },
-  {
-    "duration-year": [2023, 2023],
-    "duration-month": [5, 8],
-    "duration-date": [7, 6]
-  },
-  {
-    "duration-year": [2023, 2024],
-    "duration-month": [12, 1],
-    "duration-date": [10, 14]
-  },
-  {
-    "duration-year": [2024, 2024],
-    "duration-month": [5, 8],
-    "duration-date": [12, 4]
-  }
-]
+    {
+      "duration-year": [2021, 2021],
+      "duration-month": [5, 8],
+      "duration-date": [9, 1]
+    },
+  
+    {
+      "duration-year": [2021, 2022],
+      "duration-month": [12, 1],
+      "duration-date": [5, 9]
+    },
+  
+    {
+      "duration-year": [2022, 2022],
+      "duration-month": [5, 7],
+      "duration-date": [8, 31]
+    },
+    {
+      "duration-year": [2022, 2023],
+      "duration-month": [12, 1],
+      "duration-date": [4, 8]
+    },
+    {
+      "duration-year": [2023, 2023],
+      "duration-month": [5, 8],
+      "duration-date": [7, 6]
+    },
+    {
+      "duration-year": [2023, 2024],
+      "duration-month": [12, 1],
+      "duration-date": [10, 14]
+    },
+    {
+      "duration-year": [2024, 2024],
+      "duration-month": [5, 8],
+      "duration-date": [12, 4]
+    }
+  ]
+  

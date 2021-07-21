@@ -33,7 +33,8 @@ const MobileCustomization = ({
   departureSetting,
   setDepartureSetting,
   alarmToggle,
-  setAlarmToggle
+  setAlarmToggle,
+  setBusArrivalTime
 }) => {
   const history = useHistory();
 
@@ -137,7 +138,6 @@ const MobileCustomization = ({
       );
     }
   };
-
 
   const [alarm, setAlarm] = useState(false);
   const [location, setLocation] = useState({
@@ -314,13 +314,19 @@ const MobileCustomization = ({
     <CustomizationSection>
       <CustomizationButton
         departureSetting={departureSetting}
-        onClick={() => handleSelect("Depart Now")}
+        onClick={() => {
+          handleSelect("Depart Now");
+          setBusArrivalTime(() => []);
+        }}
       >
         Now
       </CustomizationButton>
       <CustomizationButton2
         departureSetting={departureSetting}
-        onClick={() => handleSelect("Depart Later")}
+        onClick={() => {
+          handleSelect("Depart Later");
+          setBusArrivalTime(() => []);
+        }}
       >
         Later
       </CustomizationButton2>

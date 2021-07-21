@@ -198,7 +198,7 @@ function RenderMap({ route }) {
             position={{ lat: gpsLocation.lat, lng: gpsLocation.lng }}
             icon={{
               url: gpsIcon,
-              scaledSize: new window.google.maps.Size(50, 60),
+              scaledSize: new window.google.maps.Size(10, 20),
             }}
             onClick={() => setSelectedGpsMarker(true)}
           />

@@ -16,7 +16,6 @@ export const MapSideBarContainer = styled.div`
     background: #121212;
     margin-top: 20vh;
     height: 100vh;
-    overflow: hidden;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     z-index: 1;

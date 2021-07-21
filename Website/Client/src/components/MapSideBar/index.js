@@ -34,7 +34,7 @@ const MapSideBar = ({
   const [year, setYear] = useState(() => parseInt(yearNow));
   const [day, setDay] = useState(() => today);
   const [selectedRoute, setSelectedRoute] = useState(() => null);
-  const [includeArrivalTime, setIncludeArrivalTime] = useState(() => true);
+  const [includeArrivalTime, setIncludeArrivalTime] = useState(() => departureSetting ? true :false);
   const [current, setCurrent] = useState(() => {
     return reverseMap[startAndEnd[0]] === ""
       ? options[0]
@@ -52,7 +52,7 @@ const MapSideBar = ({
     <MapSideBarContainer>
       <Bar>
         <CgLoadbar size={40} />{" "}
-        <p style={{ fontSize: "10px" }}>Swipe up to lock drawer</p>
+        <p style={{ fontSize: "10px" }}>Swipe up to lock drawer <br /> Swipe down to look at map</p>
       </Bar>
       <InputSection
         setTransferredBuses={setTransferredBuses}
@@ -85,6 +85,7 @@ const MapSideBar = ({
           setDepartureSetting={setDepartureSetting}
           alarmToggle={alarmToggle}
           setAlarmToggle={setAlarmToggle}
+          setBusArrivalTime={setBusArrivalTime}
         />
       ) : (
         <Customization
@@ -100,6 +101,7 @@ const MapSideBar = ({
           alarmToggle={alarmToggle}
           setAlarmToggle={setAlarmToggle}
           departureSetting={departureSetting}
+          setBusArrivalTime={setBusArrivalTime}
         />
       )}
 

@@ -28,7 +28,8 @@ const Customization = ({
   destination,
   alarmToggle,
   setAlarmToggle,
-  departureSetting
+  departureSetting,
+  setBusArrivalTime
 }) => {
   const [anchorEl, setAnchorEl] = useState(() => null);
   const [btnName, setBtnName] = useState(() => departureSetting ? "Depart Now" : "Depart Later");
@@ -243,6 +244,7 @@ const Customization = ({
           <MenuItem
             onClick={() => {
               handleClose("Depart Now");
+              setBusArrivalTime(() => []);
             }}
           >
             Depart Now
@@ -250,6 +252,7 @@ const Customization = ({
           <MenuItem
             onClick={() => {
               handleClose("Depart Later");
+              setBusArrivalTime(() => []);
             }}
           >
             Depart Later

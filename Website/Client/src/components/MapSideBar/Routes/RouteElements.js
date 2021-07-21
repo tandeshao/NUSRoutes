@@ -122,7 +122,7 @@ export const Container = styled.div`
     background: #121212;
     border: 2px solid #282828;
     font-size: 11px;
-    width: 80%;
+    width: 90%;
     padding: 5px 0 5px 30px;
     margin-bottom: 15px;
     margin-left: 15px;
@@ -147,7 +147,7 @@ export const Container2 = styled.div`
     background: #121212;
     border: 2px solid #282828;
     font-size: 13px;
-    width: 80%;
+    width: 90%;
     padding: 5px 0 5px 30px;
     margin-bottom: 15px;
     margin-left: 15px;
