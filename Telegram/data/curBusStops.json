@@ -152,5 +152,15 @@
       "text": "KR Terminal",
       "callback_data": "cur_Kent Ridge Bus Terminal"
     }
+  ],
+  [
+    {
+      "text": "SDE 3",
+      "callback_data": "cur_SDE 3"
+    },
+    {
+      "text": "Opp SDE 3",
+      "callback_data": "cur_Opp SDE 3"
+    }
   ]
 ]

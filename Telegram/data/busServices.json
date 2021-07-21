@@ -6,8 +6,528 @@
         "callback_data": "service_A1"
       },
       {
+        "text": "D1",
+        "callback_data": "service_D1"
+      },
+      {
+        "text": "BTC",
+        "callback_data": "service_BTC"
+      }
+    ]
+  ],
+  "BIZ 2": [
+    [
+      {
+        "text": "A1",
+        "callback_data": "service_A1"
+      },
+      {
+        "text": "BTC",
+        "callback_data": "service_BTC"
+      }
+    ]
+  ],
+  "Botanic Gardens MRT": [
+    [
+      {
+        "text": "BTC",
+        "callback_data": "service_BTC"
+      },
+      {
+        "text": "L",
+        "callback_data": "service_L"
+      }
+    ]
+  ],
+  "BTC - Oei Tiong Ham Building": [
+    [
+      {
+        "text": "BTC",
+        "callback_data": "service_BTC"
+      },
+      {
+        "text": "L",
+        "callback_data": "service_L"
+      }
+    ]
+  ],
+  "Central Library": [
+    [
+      {
+        "text": "A1",
+        "callback_data": "service_A1"
+      },
+      {
+        "text": "D1",
+        "callback_data": "service_D1"
+      }
+    ],
+    [
+      {
+        "text": "BTC",
+        "callback_data": "service_BTC"
+      },
+      {
+        "text": "K",
+        "callback_data": "service_K"
+      }
+    ]
+  ],
+  "College Green": [
+    [
+      {
+        "text": "BTC",
+        "callback_data": "service_BTC"
+      },
+      {
+        "text": "L",
+        "callback_data": "service_L"
+      }
+    ]
+  ],
+  "COM2": [
+    [
+      {
+        "text": "A1",
+        "callback_data": "service_A1"
+      },
+      {
+        "text": "D1 (BIZ2)",
+        "callback_data": "service_D1 (BIZ2)"
+      }
+    ],
+    [
+      {
         "text": "A2",
         "callback_data": "service_A2"
+      },
+      {
+        "text": "D1 (UTOWN)",
+        "callback_data": "service_D1 (UTOWN)"
+      }
+    ]
+  ],
+  "EA": [
+    [
+      {
+        "text": "E",
+        "callback_data": "service_E"
+      }
+    ]
+  ],
+  "Information Technology": [
+    [
+      {
+        "text": "A2",
+        "callback_data": "service_A2"
+      },
+      {
+        "text": "D1",
+        "callback_data": "service_D1"
+      },
+      {
+        "text": "E",
+        "callback_data": "service_E"
+      }
+    ]
+  ],
+  "Kent Ridge MRT": [
+    [
+      {
+        "text": "A1",
+        "callback_data": "service_A1"
+      },
+      {
+        "text": "D2",
+        "callback_data": "service_D2"
+      }
+    ],
+    [
+      {
+        "text": "K",
+        "callback_data": "service_K"
+      },
+      {
+        "text": "BTC",
+        "callback_data": "service_BTC"
+      }
+    ]
+  ],
+  "Kent Vale": [
+    [
+      {
+        "text": "E",
+        "callback_data": "service_E"
+      },
+      {
+        "text": "K",
+        "callback_data": "service_K"
+      },
+      {
+        "text": "BTC",
+        "callback_data": "service_BTC"
+      }
+    ]
+  ],
+  "LT13": [
+    [
+      {
+        "text": "A1",
+        "callback_data": "service_A1"
+      },
+      {
+        "text": "D1",
+        "callback_data": "service_D1"
+      },
+      {
+        "text": "BTC",
+        "callback_data": "service_BTC"
+      }
+    ]
+  ],
+  "LT27": [
+    [
+      {
+        "text": "A1",
+        "callback_data": "service_A1"
+      },
+      {
+        "text": "D2",
+        "callback_data": "service_D2"
+      }
+    ],
+    [
+      {
+        "text": "K",
+        "callback_data": "service_K"
+      },
+      {
+        "text": "BTC",
+        "callback_data": "service_BTC"
+      }
+    ]
+  ],
+  "Museum": [
+    [
+      {
+        "text": "A2",
+        "callback_data": "service_A2"
+      },
+      {
+        "text": "K",
+        "callback_data": "service_K"
+      },
+      {
+        "text": "D1",
+        "callback_data": "service_D1"
+      }
+    ],
+    [
+      {
+        "text": "D2",
+        "callback_data": "service_D2"
+      },
+      {
+        "text": "BTC",
+        "callback_data": "service_BTC"
+      }
+    ]
+  ],
+  "Opp HSSML": [
+    [
+      {
+        "text": "A2",
+        "callback_data": "service_A2"
+      },
+      {
+        "text": "D1",
+        "callback_data": "service_D1"
+      }
+    ]
+  ],
+  "Opp Kent Ridge MRT": [
+    [
+      {
+        "text": "A2",
+        "callback_data": "service_A2"
+      },
+      {
+        "text": "D2",
+        "callback_data": "service_D2"
+      },
+      {
+        "text": "K",
+        "callback_data": "service_K"
+      }
+    ]
+  ],
+  "Opp NUSS": [
+    [
+      {
+        "text": "A2",
+        "callback_data": "service_A2"
+      },
+      {
+        "text": "D1",
+        "callback_data": "service_D1"
+      }
+    ]
+  ],
+  "Opp TCOMS": [
+    [
+      {
+        "text": "A1",
+        "callback_data": "service_A1"
+      }
+    ]
+  ],
+  "Opp University Hall": [
+    [
+      {
+        "text": "A2",
+        "callback_data": "service_A2"
+      },
+      {
+        "text": "D2",
+        "callback_data": "service_D2"
+      },
+      {
+        "text": "K",
+        "callback_data": "service_K"
+      }
+    ]
+  ],
+  "Opp University Health Centre": [
+    [
+      {
+        "text": "A1",
+        "callback_data": "service_A1"
+      },
+      {
+        "text": "K",
+        "callback_data": "service_K"
+      }
+    ],
+    [
+      {
+        "text": "D2",
+        "callback_data": "service_D2"
+      },
+      {
+        "text": "BTC",
+        "callback_data": "service_BTC"
+      }
+    ]
+  ],
+  "Opp YIH": [
+    [
+      {
+        "text": "A2",
+        "callback_data": "service_A2"
+      },
+      {
+        "text": "D1",
+        "callback_data": "service_D1"
+      },
+      {
+        "text": "E",
+        "callback_data": "service_E"
+      }
+    ]
+  ],
+  "Prince George's Park": [
+    [
+      {
+        "text": "A1",
+        "callback_data": "service_A1"
+      },
+      {
+        "text": "D2",
+        "callback_data": "service_D2"
+      }
+    ],
+    [
+      {
+        "text": "K",
+        "callback_data": "service_K"
+      },
+      {
+        "text": "BTC",
+        "callback_data": "service_BTC"
+      }
+    ]
+  ],
+  "Prince George's Park Residence": [
+    [
+      {
+        "text": "A2",
+        "callback_data": "service_A2"
+      }
+    ]
+  ],
+  "Raffles Hall (Opp. Museum)": [
+    [
+      {
+        "text": "E",
+        "callback_data": "service_E"
+      },
+      {
+        "text": "BTC",
+        "callback_data": "service_BTC"
+      }
+    ]
+  ],
+  "S17": [
+    [
+      {
+        "text": "A2",
+        "callback_data": "service_A2"
+      },
+      {
+        "text": "D2",
+        "callback_data": "service_D2"
+      },
+      {
+        "text": "K",
+        "callback_data": "service_K"
+      }
+    ]
+  ],
+  "TCOMS": [
+    [
+      {
+        "text": "A2",
+        "callback_data": "service_A2"
+      }
+    ]
+  ],
+  "University Hall": [
+    [
+      {
+        "text": "A1",
+        "callback_data": "service_A1"
+      },
+      {
+        "text": "D2",
+        "callback_data": "service_D2"
+      }
+    ],
+    [
+      {
+        "text": "K",
+        "callback_data": "service_K"
+      },
+      {
+        "text": "BTC",
+        "callback_data": "service_BTC"
+      }
+    ]
+  ],
+  "University Health Centre": [
+    [
+      {
+        "text": "A2",
+        "callback_data": "service_A2"
+      },
+      {
+        "text": "D2",
+        "callback_data": "service_D2"
+      },
+      {
+        "text": "K",
+        "callback_data": "service_K"
+      }
+    ]
+  ],
+  "University Town": [
+    [
+      {
+        "text": "D1",
+        "callback_data": "service_D1"
+      },
+      {
+        "text": "D2",
+        "callback_data": "service_D2"
+      }
+    ],
+    [
+      {
+        "text": "E",
+        "callback_data": "service_E"
+      },
+      {
+        "text": "BTC",
+        "callback_data": "service_BTC"
+      }
+    ]
+  ],
+  "Ventus (Opp LT13)": [
+    [
+      {
+        "text": "A2",
+        "callback_data": "service_A2"
+      },
+      {
+        "text": "D1",
+        "callback_data": "service_D1"
+      }
+    ]
+  ],
+  "YIH": [
+    [
+      {
+        "text": "A1",
+        "callback_data": "service_A1"
+      },
+      {
+        "text": "D1",
+        "callback_data": "service_D1"
+      }
+    ],
+    [
+      {
+        "text": "K",
+        "callback_data": "service_K"
+      },
+      {
+        "text": "BTC",
+        "callback_data": "service_BTC"
+      }
+    ]
+  ],
+  "The Japanese Primary School": [
+    [
+      {
+        "text": "K",
+        "callback_data": "service_K"
+      }
+    ]
+  ],
+  "Kent Ridge Bus Terminal": [
+    [
+      {
+        "text": "A1",
+        "callback_data": "service_A1"
+      },
+      {
+        "text": "A2",
+        "callback_data": "service_A2"
+      }
+    ]
+  ],
+  "SDE 3": [
+    [
+      {
+        "text": "E",
+        "callback_data": "service_E"
+      }
+    ]
+  ],
+  "Opp SDE 3": [
+    [
+      {
+        "text": "K",
+        "callback_data": "service_K"
       }
     ]
   ]
