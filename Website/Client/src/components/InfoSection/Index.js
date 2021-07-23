@@ -43,21 +43,22 @@ const InfoSection = ({
                 <TopLine> {topLine} </TopLine>
                 <Heading lightText={lightText}> {headLine} </Heading>
                 <Subtitle darkText={darkText}> {description} </Subtitle>
-                <BtnWrap>
-                  <Button
-                    to="home"
-                    smooth={true}
-                    duration={500}
-                    spy={true}
-                    exact="true"
-                    offset={-80}
-                    primary={primary ? 1 : 0} //from stackoverflow
-                    dark={dark ? 1 : 0} //from stackoverflow
-                    dark2={dark2 ? 1 : 0}
-                  >
-                    {buttonLabel}
-                  </Button>
-                </BtnWrap>
+                <a href="https://github.com/tandeshao/NUSRoutes" style={{textDecoration: 'none'}}>
+                  <BtnWrap>
+                    <Button
+                      smooth={true}
+                      duration={500}
+                      spy={true}
+                      exact="true"
+                      offset={-80}
+                      primary={primary ? 1 : 0} //from stackoverflow
+                      dark={dark ? 1 : 0} //from stackoverflow
+                      dark2={dark2 ? 1 : 0}
+                    >
+                      {buttonLabel}
+                    </Button>
+                  </BtnWrap>
+                </a>
               </TextWrapper>
             </Column1>
             <Column2>
@@ -90,13 +91,13 @@ const InfoSection = ({
               style={{
                 position: "fixed",
                 left: "50%",
-                top: '50%',
-                transform: 'translate(-50%, -50%)',
-                zIndex: '100',
+                top: "50%",
+                transform: "translate(-50%, -50%)",
+                zIndex: "100",
                 width: "75%",
                 height: "auto",
-                minWidth: '100px',
-                cursor: 'pointer'
+                minWidth: "100px",
+                cursor: "pointer",
               }}
               onClick={() => setIsOpen(false)}
             />
