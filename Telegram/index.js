@@ -125,20 +125,18 @@ async function arrivalTime(arrBusStop, busService, ctx, busstopcode) {
           encodeURIComponent(busService)
       ).then((response) => response.json());
 
-      if ((arrTime[0] = "-")) {
+      if (arrTime[0] == "-") {
         arrTime[0] = "nil";
-      } else if ((arrTime[0] = "Arr")) {
-        arrTime[0] = "Arr";
+      } else if (arrTime[0] == "Arr") {
       } else {
         arrTime[0] = arrTime[0] + " mins";
       }
 
-      if ((arrTime[1] = "-")) {
+      if (arrTime[1] == "-") {
         arrTime[1] = "nil";
-      } else if ((arrTime[0] = "Arr")) {
-        arrTime[1] = "Arr";
+      } else if (arrTime[1] == "Arr") {
       } else {
-        arrTime[1] = arrTime[0] + " mins";
+        arrTime[1] = arrTime[1] + " mins";
       }
 
       var reply;
@@ -169,7 +167,7 @@ async function checkProximity(latitude, longitude, dest, ctx) {
 
     console.log("Close To Destination: " + closeToDest);
     if (closeToDest && counter[ctx.from.id] === 0) {
-      ctx.reply(`ALERT: Arriving at ${dest}. Please alight soon!`);
+      ctx.reply(`ALERT: Arriving at ${dest} \r\nPlease alight soon!`);
       counter[ctx.from.id] = 1;
     }
   } catch (error) {
