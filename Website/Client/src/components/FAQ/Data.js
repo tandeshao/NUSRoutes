@@ -20,9 +20,9 @@ export const Data = [
     main page of our website.`,
   },
   {
-    question: "Why does it take quite awhile for the webpage to load?",
-    answer: `This is because our website is hosted on heroku and if the application is left unused for awhile, it gets unloaded from heroku's server memory. Hence, it would take some time for
-    heroku to boot up our application for the first load. Subsequent loads thereafter should be faster as the application has already been booted up.`
+    question: "Why does it take quite awhile for the route recommendation to load?",
+    answer: `This is because the route recommendation is hosted on heroku and if the application is left unused for awhile, it gets unloaded from heroku's server memory. It would take some time for
+    heroku to boot up our application for the first load. Subsequent loads thereafter should be faster as the application had already been booted up.`
   },
   {
     question:
