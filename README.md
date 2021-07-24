@@ -50,19 +50,19 @@ By: Alvin Tay & Tan De Shao.
   * Client (Firebase): 
     * REACT_APP_UNSPLASH_APIKEY=
     * REACT_APP_UNSPLASH_AUTHDOMAIN=
-   * REACT_APP_UNSPLASH_PROJECTID=
-   * REACT_APP_UNSPLASH_STORAGEBUCKET=
-   * REACT_APP_UNSPLASH_MESSAGINGSENDERID=
-   * REACT_APP_UNSPLASH_APPID=
+    * REACT_APP_UNSPLASH_PROJECTID=
+    * REACT_APP_UNSPLASH_STORAGEBUCKET=
+    * REACT_APP_UNSPLASH_MESSAGINGSENDERID=
+    * REACT_APP_UNSPLASH_APPID=
   * Server (Google Map API):
-   * API_KEY=
-   * AUTH_KEY=
+    * API_KEY=
+    * AUTH_KEY=
 * To run locally:
   * Client: npm start
   * Server: node server.js
   * Telegram: 
-   * Open git bash
-   * cd to Telegram folder 
-   * $ BOT_TOKEN='TOKEN' npm start
-    * Replace 'TOKEN' with the API Token of your bot
+    * Open git bash
+    * cd to Telegram folder 
+    * $ BOT_TOKEN='TOKEN' npm start
+      * Replace 'TOKEN' with the API Token of your bot
 * For deployment, Vercel was used to deploy the Client (Frontend). Heroku was used to deploy the server (backend) and Telegram.
