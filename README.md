@@ -48,8 +48,8 @@ By: Alvin Tay & Tan De Shao.
 * For each folder, run “npm install” to install the required dependencies.
 * Create a .env file in each folder. Include these details (Your own credentials)
   * Client (Firebase): 
-   * REACT_APP_UNSPLASH_APIKEY=
-   * REACT_APP_UNSPLASH_AUTHDOMAIN=
+    * REACT_APP_UNSPLASH_APIKEY=
+    * REACT_APP_UNSPLASH_AUTHDOMAIN=
    * REACT_APP_UNSPLASH_PROJECTID=
    * REACT_APP_UNSPLASH_STORAGEBUCKET=
    * REACT_APP_UNSPLASH_MESSAGINGSENDERID=
