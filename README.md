@@ -11,8 +11,9 @@ By: Alvin Tay & Tan De Shao.
 ## Features
  - Route recommendation of shortest bus route from one place to another within NUS.
  - Proximity Alarm.
- - Bus Schedule.
- - Bus Stops and respective Bus Services.
+ - Nearest Bus Stops.
+ - Arrival Time of busses.
+ - Bus services infographic.
 
 ## How are we different from NUSNextBUS?
 * Route recommendation
@@ -32,9 +33,36 @@ By: Alvin Tay & Tan De Shao.
   * We put in our best effort to make NUSRoutes modern yet super intuitive.
 
 ## Platforms
-Website, iOS, Android, Telegram.
+[Website](https://nusroutes.vercel.app/), [Telegram](t.me/NUSRoutesBot).
 
 ## Documentations
 [Report](https://docs.google.com/document/d/1SXj5WiLJiQzO4HPfhKkvp-F8F_eFLhVs-c22GaXN5eo/edit?usp=sharing)  
 [Poster](https://drive.google.com/file/d/1q7cKIbXN8d7XDeiox5G0c58zURM-MiOU/view?usp=sharing)  
 [Video](https://drive.google.com/file/d/10ny5oZnlAhzsbMgueB8fedn1xBNOjorn/view?usp=sharing)  
+
+
+## Getting Started 
+
+* Clone the github repo.
+* There are three folders, Client, server and Telegram.
+* For each folder, run “npm install” to install the required dependencies.
+* Create a .env file in each folder. Include these details (Your own credentials)
+  * Client (Firebase): 
+   * REACT_APP_UNSPLASH_APIKEY=
+   * REACT_APP_UNSPLASH_AUTHDOMAIN=
+   * REACT_APP_UNSPLASH_PROJECTID=
+   * REACT_APP_UNSPLASH_STORAGEBUCKET=
+   * REACT_APP_UNSPLASH_MESSAGINGSENDERID=
+   * REACT_APP_UNSPLASH_APPID=
+  * Server (Google Map API):
+   * API_KEY=
+   * AUTH_KEY=
+* To run locally:
+  * Client: npm start
+  * Server: node server.js
+  * Telegram: 
+   * Open git bash
+   * cd to Telegram folder 
+   * $ BOT_TOKEN='TOKEN' npm start
+    * Replace 'TOKEN' with the API Token of your bot
+* For deployment, Vercel was used to deploy the Client (Frontend). Heroku was used to deploy the server (backend) and Telegram.
