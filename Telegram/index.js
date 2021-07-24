@@ -88,7 +88,7 @@ async function arrivalTime(arrBusStop, busService, ctx, busstopcode) {
       ).then((response) => response.json());
 
       if ((arrTime[0] = "-")) {
-        arrTime[0] = "nil";
+        arrTime[0] = "-";
       } else if ((arrTime[0] = "Arr")) {
         arrTime[0] = "Arr";
       } else {
@@ -96,7 +96,7 @@ async function arrivalTime(arrBusStop, busService, ctx, busstopcode) {
       }
 
       if ((arrTime[1] = "-")) {
-        arrTime[1] = "nil";
+        arrTime[1] = "-";
       } else if ((arrTime[0] = "Arr")) {
         arrTime[1] = "Arr";
       } else {
@@ -104,7 +104,7 @@ async function arrivalTime(arrBusStop, busService, ctx, busstopcode) {
       }
 
       var reply;
-      if (arrTime[0] === "nil" && arrTime[1] === "nil") {
+      if (arrTime[0] === "-" && arrTime[1] === "-") {
         reply = "No incoming bus";
       } else {
         reply = `Arriving: ${arrTime[0]} \nNext: ${arrTime[1]}`;
@@ -126,21 +126,21 @@ async function arrivalTime(arrBusStop, busService, ctx, busstopcode) {
       ).then((response) => response.json());
 
       if (arrTime[0] == "-") {
-        arrTime[0] = "nil";
+        arrTime[0] = "-";
       } else if (arrTime[0] == "Arr") {
       } else {
         arrTime[0] = arrTime[0] + " mins";
       }
 
       if (arrTime[1] == "-") {
-        arrTime[1] = "nil";
+        arrTime[1] = "-";
       } else if (arrTime[1] == "Arr") {
       } else {
         arrTime[1] = arrTime[1] + " mins";
       }
 
       var reply;
-      if (arrTime[0] === "nil" && arrTime[1] === "nil") {
+      if (arrTime[0] === "-" && arrTime[1] === "-") {
         reply = "No incoming bus";
       } else {
         reply = `Arriving: ${arrTime[0]} \nNext: ${arrTime[1]}`;
