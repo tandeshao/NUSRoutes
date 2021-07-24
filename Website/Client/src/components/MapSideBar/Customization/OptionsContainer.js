@@ -10,7 +10,6 @@ export const SectionContainer = styled.div`
   @media screen and (max-width: 400px) (max-height: 820px) {
     margin-bottom: 20px;
   }
-
 `;
 
 export const DepartureContainer = styled.div`
@@ -19,7 +18,6 @@ export const DepartureContainer = styled.div`
   top: 12%;
   left: 1%;
   width: auto;
-
 `;
 
 export const OptionsContainer = styled.div`
@@ -27,8 +25,7 @@ export const OptionsContainer = styled.div`
   position: absolute;
   top: 12%;
   width: auto;
-  right: 10%; 
-
+  right: 10%;
 `;
 
 export const ProximityAlarmContainer = styled.div`
@@ -36,5 +33,4 @@ export const ProximityAlarmContainer = styled.div`
   margin-left: 15px;
   top: 60%;
   left: 1%;
-
 `;

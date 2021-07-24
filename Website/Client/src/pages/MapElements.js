@@ -55,7 +55,7 @@ export const ArrowLeftButton = styled(ArrowLeftRoundedIcon)`
     color: black;
     left: ${({ $sidebar }) => ($sidebar ? "25vw" : "0vw")};
     cursor: pointer;
-    background: #ffb6c1;
+    background: #b3b3b3;
     width: 1vw;
     height: 4vh;
     transition: background 2s;
@@ -105,7 +105,7 @@ export const ArrowRightButton = styled(ArrowRightRoundedIcon)`
     color: black;
     left: ${({ $sidebar }) => ($sidebar ? "25vw" : "0vw")};
     cursor: pointer;
-    background: #ffb6c1;
+    background: #b3b3b3;
     width: 1vw;
     height: 4vh;
     transition: background 2s;

@@ -8,7 +8,7 @@ export const Header = styled.h1`
   top: 5vh;
   text-align: center;
   margin-top: 60px;
-  
+
   @media screen and (max-width: 700px) {
     font-size: 1.7rem;
     margin-top: 0px;
@@ -22,6 +22,4 @@ export const Header = styled.h1`
     font-size: 2rem;
     top: 20vh;
   }
-
-  
 `;

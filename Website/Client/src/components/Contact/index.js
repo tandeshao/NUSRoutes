@@ -88,10 +88,7 @@ const ContactSection = () => {
     <ContactContainer id="contact">
       <ContactHeader>Contact Us</ContactHeader>
       <ContactForm>
-        <Formhd>
-          {" "}
-          Do you have any feedback? We love to hear it from you!
-        </Formhd>
+        <Formhd> Do you have any feedback? We love to hear it from you!</Formhd>
         <NameSet>
           <Label> Name </Label>
           <NameBox

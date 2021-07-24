@@ -1,12 +1,10 @@
 import styled from "styled-components";
 import { MdKeyboardArrowRight, MdArrowForward } from "react-icons/md";
 
-
 export const InputSectionContainer = styled.div`
   min-height: auto;
   position: relative;
 `;
-
 
 export const Switch = styled.img`
   position: absolute;
@@ -47,7 +45,6 @@ export const Switch2 = styled.img`
   @media screen and (max-width: 450px) and (max-height: 900px) {
     height: 60px;
   }
-  
 `;
 
 export const Form = styled.div`
@@ -71,7 +68,6 @@ export const Form = styled.div`
   @media screen and (max-height: 900px) {
     margin: 10px;
   }
-
 `;
 
 export const FormLabel = styled.h5`

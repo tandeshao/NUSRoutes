@@ -193,14 +193,15 @@ const HeroSection = () => {
               <Button
                 onMouseEnter={onHover}
                 onMouseLeave={onHover}
-                primary="true"
-                dark="true"
+                primary={1} //from stackoverflow
+                dark={1} //from stackoverflow
                 smooth={true}
                 duration={500}
                 spy={true}
                 exact="true"
               >
-                Get Route {hover ? <ArrowForward /> : <ArrowRight />}
+                <strong> Get Routes </strong>
+                {hover ? <ArrowForward /> : <ArrowRight />}
               </Button>
             </HeroBtnWrapper>
           </form>

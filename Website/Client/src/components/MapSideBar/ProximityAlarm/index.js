@@ -65,7 +65,6 @@ const IOSSwitch = withStyles((theme) => ({
 });
 
 const ProximityAlarm = ({ destination, alarmToggle, setAlarmToggle }) => {
- 
   const [alarm, setAlarm] = useState(false);
   const [location, setLocation] = useState({
     loaded: false,
@@ -83,7 +82,6 @@ const ProximityAlarm = ({ destination, alarmToggle, setAlarmToggle }) => {
     });
   };
 
-  
   const onError = (error) => {
     setLocation({
       loaded: false,
@@ -94,7 +92,6 @@ const ProximityAlarm = ({ destination, alarmToggle, setAlarmToggle }) => {
     });
   };
 
-  
   useEffect(() => {
     const { REACT_APP_DOMAIN } = process.env;
     if (alarmToggle) {
@@ -109,7 +106,7 @@ const ProximityAlarm = ({ destination, alarmToggle, setAlarmToggle }) => {
           () => navigator.geolocation.getCurrentPosition(onSuccess, onError),
           5000
         );
-        
+
         if (location.loaded) {
           fetch(
             REACT_APP_DOMAIN +
