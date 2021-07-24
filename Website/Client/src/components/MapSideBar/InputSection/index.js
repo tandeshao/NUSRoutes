@@ -257,7 +257,7 @@ const InputSection = ({
                 setTransferredBuses([]);
               }}
             >
-              Go
+              <strong>Go</strong>
             </Button2>
           </MobileViewContainer>
 
@@ -276,7 +276,7 @@ const InputSection = ({
               setTransferredBuses([]);
             }}
           >
-            Get Route {hover ? <ArrowForward /> : <ArrowRight />}
+            <strong>Get Route</strong> {hover ? <ArrowForward /> : <ArrowRight />}
           </Button>
         </form>
       </Form>

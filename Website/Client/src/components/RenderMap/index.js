@@ -69,7 +69,7 @@ function MapDirectionsRenderer(props) {
           polylineOptions: {
             strokeWeight: 7,
             strokeOpacity: 0.8,
-            strokeColor: "#00ced1",
+            strokeColor: "#76e8dd",
           },
           suppressMarkers: true,
         }}
@@ -202,7 +202,7 @@ function RenderMap({ route }) {
             position={{ lat: gpsLocation.lat, lng: gpsLocation.lng }}
             icon={{
               url: gpsIcon,
-              scaledSize: new window.google.maps.Size(10, 20),
+              scaledSize: new window.google.maps.Size(80, 80),
             }}
             onClick={() => setSelectedGpsMarker(true)}
           />
