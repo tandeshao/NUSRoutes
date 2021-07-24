@@ -157,7 +157,7 @@ async function checkProximity(latitude, longitude, dest, ctx) {
   try {
     const closeToDest = await fetch(
       "https://nusroutesapi.herokuapp.com" +
-        "/proximityalarm?lat=" +
+        "/proximityAlarm?lat=" +
         encodeURIComponent(latitude) +
         "&lng=" +
         encodeURIComponent(longitude) +
@@ -1073,22 +1073,21 @@ var locationStr =
 
 bot.hears("/proximityalarm", (ctx) => {
   console.log(ctx.from);
-  if (destination[ctx.from.id] !== undefined) {
-    proxDest[ctx.from.id] = destination[ctx.from.id];
-    ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
-  } else {
-    let msg = `Select your DESTINATION:`;
-    ctx.deleteMessage();
-    ctx.telegram.sendMessage(ctx.chat.id, msg, {
-      reply_markup: {
-        inline_keyboard: proxBusStops,
-      },
-    });
-  }
+  let msg = `Select your DESTINATION:`;
+  ctx.deleteMessage();
+  ctx.telegram.sendMessage(ctx.chat.id, msg, {
+    reply_markup: {
+      inline_keyboard: proxBusStops,
+    },
+  });
 });
 
 bot.on("location", (ctx) => {
-  ctx.reply("Location detected, proximityAlarm enabled!");
+  if (proxDest[ctx.from.id] !== undefined) {
+    ctx.reply("Location detected, proximityAlarm enabled!");
+  } else {
+    ctx.reply("Location detected, try out /proximityalarm");
+  }
   counter[ctx.from.id] = 0;
 });
 
@@ -1111,176 +1110,211 @@ bot.on("edited_message", (ctx) => {
 });
 
 bot.action("prox_AS5", (ctx) => {
-  proxDest[ctx.from.id] = "AS5";
+  ctx.deleteMessage();
+  proxDest[ctx.from.id] = "AS 5";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
 bot.action("prox_BIZ 2", (ctx) => {
+  ctx.deleteMessage();
   proxDest[ctx.from.id] = "BIZ 2";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
 bot.action("prox_Botanic Gardens MRT", (ctx) => {
+  ctx.deleteMessage();
   proxDest[ctx.from.id] = "Botanic Gardens MRT";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
 bot.action("prox_BTC - Oei Tiong Ham Building", (ctx) => {
+  ctx.deleteMessage();
   proxDest[ctx.from.id] = "BTC - Oei Tiong Ham Building";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
 bot.action("prox_Central Library", (ctx) => {
+  ctx.deleteMessage();
   proxDest[ctx.from.id] = "Central Library";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
 bot.action("prox_College Green", (ctx) => {
+  ctx.deleteMessage();
   proxDest[ctx.from.id] = "College Green";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
 bot.action("prox_COM2", (ctx) => {
+  ctx.deleteMessage();
   proxDest[ctx.from.id] = "COM2";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
 bot.action("prox_EA", (ctx) => {
+  ctx.deleteMessage();
   proxDest[ctx.from.id] = "EA";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
 bot.action("prox_Information Technology", (ctx) => {
+  ctx.deleteMessage();
   proxDest[ctx.from.id] = "Information Technology";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
 bot.action("prox_Kent Ridge MRT", (ctx) => {
+  ctx.deleteMessage();
   proxDest[ctx.from.id] = "Kent Ridge MRT";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
 bot.action("prox_Kent Vale", (ctx) => {
+  ctx.deleteMessage();
   proxDest[ctx.from.id] = "Kent Vale";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
 bot.action("prox_LT13", (ctx) => {
+  ctx.deleteMessage();
   proxDest[ctx.from.id] = "LT13";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
 bot.action("prox_LT27", (ctx) => {
+  ctx.deleteMessage();
   proxDest[ctx.from.id] = "LT27";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
 bot.action("prox_Museum", (ctx) => {
+  ctx.deleteMessage();
   proxDest[ctx.from.id] = "Museum";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
 bot.action("prox_Opp HSSML", (ctx) => {
+  ctx.deleteMessage();
   proxDest[ctx.from.id] = "Opp HSSML";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
 bot.action("prox_Opp Kent Ridge MRT", (ctx) => {
+  ctx.deleteMessage();
   proxDest[ctx.from.id] = "Opp Kent Ridge MRT";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
 bot.action("prox_Opp NUSS", (ctx) => {
+  ctx.deleteMessage();
   proxDest[ctx.from.id] = "Opp NUSS";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
 bot.action("prox_Opp TCOMS", (ctx) => {
+  ctx.deleteMessage();
   proxDest[ctx.from.id] = "Opp TCOMS";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
 bot.action("prox_Opp University Hall", (ctx) => {
+  ctx.deleteMessage();
   proxDest[ctx.from.id] = "Opp University Hall";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
 bot.action("prox_Opp University Health Centre", (ctx) => {
+  ctx.deleteMessage();
   proxDest[ctx.from.id] = "Opp University Health Centre";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
 bot.action("prox_Opp YIH", (ctx) => {
+  ctx.deleteMessage();
   proxDest[ctx.from.id] = "Opp YIH";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
 bot.action("prox_Prince George's Park", (ctx) => {
+  ctx.deleteMessage();
   proxDest[ctx.from.id] = "Prince George's Park";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
 bot.action("prox_Prince George's Park Residence", (ctx) => {
+  ctx.deleteMessage();
   proxDest[ctx.from.id] = "Prince George's Park Residence";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
 bot.action("prox_Raffles Hall (Opp. Museum)", (ctx) => {
+  ctx.deleteMessage();
   proxDest[ctx.from.id] = "Raffles Hall (Opp. Museum)";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
 bot.action("prox_S17", (ctx) => {
+  ctx.deleteMessage();
   proxDest[ctx.from.id] = "S17";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
 bot.action("prox_TCOMS", (ctx) => {
+  ctx.deleteMessage();
   proxDest[ctx.from.id] = "TCOMS";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
 bot.action("prox_University Hall", (ctx) => {
+  ctx.deleteMessage();
   proxDest[ctx.from.id] = "University Hall";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
 bot.action("prox_University Health Centre", (ctx) => {
+  ctx.deleteMessage();
   proxDest[ctx.from.id] = "University Health Centre";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
 bot.action("prox_University Town", (ctx) => {
+  ctx.deleteMessage();
   proxDest[ctx.from.id] = "University Town";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
 bot.action("prox_Ventus (Opp LT13)", (ctx) => {
+  ctx.deleteMessage();
   proxDest[ctx.from.id] = "Ventus (Opp LT13)";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
 bot.action("prox_YIH", (ctx) => {
+  ctx.deleteMessage();
   proxDest[ctx.from.id] = "YIH";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
 bot.action("prox_The Japanese Primary School", (ctx) => {
+  ctx.deleteMessage();
   proxDest[ctx.from.id] = "The Japanese Primary School";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
 bot.action("prox_Kent Ridge Bus Terminal", (ctx) => {
+  ctx.deleteMessage();
   proxDest[ctx.from.id] = "Kent Ridge Bus Terminal";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
 bot.action("prox_SDE 3", (ctx) => {
+  ctx.deleteMessage();
   proxDest[ctx.from.id] = "SDE 3";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
 bot.action("prox_Opp SDE 3", (ctx) => {
+  ctx.deleteMessage();
   proxDest[ctx.from.id] = "Opp SDE 3";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
