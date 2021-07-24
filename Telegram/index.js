@@ -208,8 +208,8 @@ bot.hears("/routefinder", (ctx) => {
   });
 });
 
-bot.action("cur_AS5", (ctx) => {
-  current[ctx.from.id] = "AS5";
+bot.action("cur_AS 5", (ctx) => {
+  current[ctx.from.id] = "AS 5";
   dest(ctx);
 });
 
@@ -400,9 +400,9 @@ const dest = (ctx) => {
   });
 };
 
-bot.action("dest_AS5", (ctx) => {
+bot.action("dest_AS 5", (ctx) => {
   ctx.deleteMessage();
-  destination[ctx.from.id] = "AS5";
+  destination[ctx.from.id] = "AS 5";
   ctx.reply(
     `Calculating... ${current[ctx.from.id]} to ${destination[ctx.from.id]}`
   );
@@ -748,8 +748,8 @@ const selectBusServices = (ctx) => {
   });
 };
 
-bot.action("arr_AS5", (ctx) => {
-  arrBusStop[ctx.from.id] = "AS5";
+bot.action("arr_AS 5", (ctx) => {
+  arrBusStop[ctx.from.id] = "AS 5";
   selectBusServices(ctx);
 });
 
@@ -1109,7 +1109,7 @@ bot.on("edited_message", (ctx) => {
   }
 });
 
-bot.action("prox_AS5", (ctx) => {
+bot.action("prox_AS 5", (ctx) => {
   ctx.deleteMessage();
   proxDest[ctx.from.id] = "AS 5";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
