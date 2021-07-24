@@ -69,7 +69,7 @@ function MapDirectionsRenderer(props) {
           polylineOptions: {
             strokeWeight: 7,
             strokeOpacity: 0.8,
-            strokeColor: "aquamarine",
+            strokeColor: "#00ced1",
           },
           suppressMarkers: true,
         }}
@@ -130,7 +130,11 @@ function RenderMap({ route }) {
         onLoad={handleLoad}
         center={position.current}
         zoom={16}
-        options={{ styles: mapStyle, clickableIcons: false, disableDefaultUI: true }}
+        options={{
+          styles: mapStyle,
+          clickableIcons: false,
+          disableDefaultUI: true,
+        }}
       >
         {places.length !== 0 && (
           <MapDirectionsRenderer

@@ -1,4 +1,4 @@
-import Customization from "./Customization/";
+// import Customization from "./Customization/";
 import InputSection from "./InputSection/";
 import Routes from "./Routes/";
 import { useState } from "react";
@@ -6,7 +6,6 @@ import { MapSideBarContainer, Dividers, Logo, Bar } from "./MapSideBarElements";
 import reverseMap from "../../data/reverseMap.json";
 import options from "../../data/options.json";
 import { IoHomeSharp } from "react-icons/io5";
-import useWindowDimensions from "../../useWindowDimensions";
 import MobileCustomization from "../MobileCustomization";
 import { CgLoadbar } from "react-icons/cg";
 
@@ -20,21 +19,24 @@ const MapSideBar = ({
   departureSetting,
   setDepartureSetting,
   alarmToggle,
-  setAlarmToggle
+  setAlarmToggle,
+  timeInput,
+  setTimeInput,
+  dateInput,
+  setDateInput,
+  month,
+  setMonth,
+  year,
+  setYear,
+  day,
+  setDay,
 }) => {
   const [transferredBuses, setTransferredBuses] = useState(() => []);
   const [busArrivalTime, setBusArrivalTime] = useState(() => []);
-  const obj = new Date();
-  let [hour, minute] = obj.toLocaleTimeString("it-IT").split(/:| /);
-  let [monthNow, dateNow, yearNow] = obj.toLocaleDateString("en-US").split("/");
-  const today = obj.getDay();
-  const [time, setTime] = useState(() => parseInt(hour + minute));
-  const [date, setDate] = useState(() => parseInt(dateNow));
-  const [month, setMonth] = useState(() => parseInt(monthNow));
-  const [year, setYear] = useState(() => parseInt(yearNow));
-  const [day, setDay] = useState(() => today);
   const [selectedRoute, setSelectedRoute] = useState(() => null);
-  const [includeArrivalTime, setIncludeArrivalTime] = useState(() => departureSetting ? true :false);
+  const [includeArrivalTime, setIncludeArrivalTime] = useState(() =>
+    departureSetting ? true : false
+  );
   const [current, setCurrent] = useState(() => {
     return reverseMap[startAndEnd[0]] === ""
       ? options[0]
@@ -46,20 +48,19 @@ const MapSideBar = ({
       : reverseMap[startAndEnd[1]];
   });
 
-  const { height, width } = useWindowDimensions();
-
   return (
     <MapSideBarContainer>
       <Bar>
         <CgLoadbar size={40} />{" "}
-        <p style={{ fontSize: "10px" }}>Swipe up to lock drawer <br /> Swipe down to look at map</p>
+        <p style={{ fontSize: "10px" }}>
+          Swipe up to lock drawer <br /> Swipe down to look at map
+        </p>
       </Bar>
       <InputSection
         setTransferredBuses={setTransferredBuses}
         setBusArrivalTime={setBusArrivalTime}
-        setTime={setTime}
-        time={time}
-        date={date}
+        time={timeInput}
+        date={dateInput}
         month={month}
         year={year}
         day={day}
@@ -70,40 +71,23 @@ const MapSideBar = ({
         setDestination={setDestination}
       />
       <Dividers />
-      {width <= 450 && height < 900 ? (
-        <MobileCustomization
-          setTime={setTime}
-          setDate={setDate}
-          setMonth={setMonth}
-          setYear={setYear}
-          setDay={setDay}
-          setIncludeArrivalTime={setIncludeArrivalTime}
-          setSelectedRoute={setSelectedRoute}
-          current={current}
-          destination={destination}
-          departureSetting={departureSetting}
-          setDepartureSetting={setDepartureSetting}
-          alarmToggle={alarmToggle}
-          setAlarmToggle={setAlarmToggle}
-          setBusArrivalTime={setBusArrivalTime}
-        />
-      ) : (
-        <Customization
-          setTime={setTime}
-          setDate={setDate}
-          setMonth={setMonth}
-          setYear={setYear}
-          setDay={setDay}
-          setIncludeArrivalTime={setIncludeArrivalTime}
-          setSelectedRoute={setSelectedRoute}
-          current={current}
-          destination={destination}
-          alarmToggle={alarmToggle}
-          setAlarmToggle={setAlarmToggle}
-          departureSetting={departureSetting}
-          setBusArrivalTime={setBusArrivalTime}
-        />
-      )}
+
+      <MobileCustomization
+        setTime={setTimeInput}
+        setDate={setDateInput}
+        setMonth={setMonth}
+        setYear={setYear}
+        setDay={setDay}
+        setIncludeArrivalTime={setIncludeArrivalTime}
+        setSelectedRoute={setSelectedRoute}
+        current={current}
+        destination={destination}
+        departureSetting={departureSetting}
+        setDepartureSetting={setDepartureSetting}
+        alarmToggle={alarmToggle}
+        setAlarmToggle={setAlarmToggle}
+        setBusArrivalTime={setBusArrivalTime}
+      />
 
       <Routes
         includeArrivalTime={includeArrivalTime}

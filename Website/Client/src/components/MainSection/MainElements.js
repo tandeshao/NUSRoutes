@@ -145,7 +145,7 @@ export const FormBg = styled.div`
   height: 130%;
   opacity: 85%;
   filter: brightness(0.75);
-  border: 7px solid #636363;
+  border: 3px solid #636363;
   margin: -50px;
 
   @media screen and (max-width: 480px) {
@@ -153,7 +153,8 @@ export const FormBg = styled.div`
   }
 
   @media screen and (max-width: 481px) {
-    display: none;
+    left: 11%;
+    border-radius: 5%;
+    width: 370px;
   }
- 
 `;

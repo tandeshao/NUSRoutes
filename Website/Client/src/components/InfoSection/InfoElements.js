@@ -101,9 +101,13 @@ export const ImgWrap = styled.div`
   height: 100%;
   margin-bottom: 60px;
   box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 5);
-  
+
   @media screen and (max-width: 480px) {
     margin-right: 30px;
+  }
+
+  @media screen and (max-width: 450px) and (max-height: 900px) {
+    width: 300px;
   }
 `;
 
@@ -113,4 +117,3 @@ export const Img = styled.img`
   padding-right: 0;
   cursor: pointer;
 `;
-

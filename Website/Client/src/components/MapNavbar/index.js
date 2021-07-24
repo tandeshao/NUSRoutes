@@ -36,7 +36,7 @@ const MapNavbar = ({ open, toggle }) => {
           style={{ textDecoration: "none" }}
           onClick={() => toggle(false)}
         >
-          <FaInfoCircle size={25}/>
+          <FaInfoCircle size={25} />
           Bus Info
         </LinkItem>
         <Item
@@ -45,7 +45,7 @@ const MapNavbar = ({ open, toggle }) => {
             push(user ? "/profile" : "/signin");
           }}
         >
-          <FaHistory size={25}/>
+          <FaHistory size={25} />
           History
         </Item>
       </MapNavbarContainer>

@@ -18,13 +18,12 @@ import {
   Button2,
   Switch2,
   MobileViewContainer,
-  DesktopViewContainer
+  DesktopViewContainer,
 } from "./InputSectionElements";
 
 import firebase from "firebase/app";
 import "firebase/firestore";
 import image from "../../../images/switch.png";
-
 
 const InputSection = ({
   time,
@@ -39,7 +38,6 @@ const InputSection = ({
   destination,
   setCurrent,
   setDestination,
-  setTime,
 }) => {
   const [hover, setHover] = useState(false);
   const onHover = () => {
@@ -137,7 +135,6 @@ const InputSection = ({
 
   return (
     <InputSectionContainer>
-      
       <Switch
         onClick={() => {
           const curr = current;
@@ -166,7 +163,7 @@ const InputSection = ({
                   label="Choose Starting Point"
                   variant="outlined"
                   error={currentError}
-                  color="secondary" 
+                  color="secondary"
                 />
               )}
             />

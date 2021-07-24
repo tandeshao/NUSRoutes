@@ -20,13 +20,14 @@ export const Data = [
     main page of our website.`,
   },
   {
-    question: "Why does it take quite awhile for the route recommendation to load?",
+    question:
+      "Why does it take quite awhile for the route recommendation to load?",
     answer: `This is because the route recommendation is hosted on heroku and if the application is left unused for awhile, it gets unloaded from heroku's server memory. It would take some time for
-    heroku to boot up our application for the first load. Subsequent loads thereafter should be faster as the application had already been booted up.`
+    heroku to boot up our application for the first load. Subsequent loads thereafter should be faster as the application had already been booted up.`,
   },
   {
     question:
       "Would it be possible to view the bus arrival timings without having to prompt the app for a route recommendation?",
     answer: "This feature is currently only available on our telegram bot.",
-  }
+  },
 ];

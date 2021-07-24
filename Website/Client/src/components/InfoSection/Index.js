@@ -43,7 +43,10 @@ const InfoSection = ({
                 <TopLine> {topLine} </TopLine>
                 <Heading lightText={lightText}> {headLine} </Heading>
                 <Subtitle darkText={darkText}> {description} </Subtitle>
-                <a href="https://github.com/tandeshao/NUSRoutes" style={{textDecoration: 'none'}}>
+                <a
+                  href="https://github.com/tandeshao/NUSRoutes"
+                  style={{ textDecoration: "none" }}
+                >
                   <BtnWrap>
                     <Button
                       smooth={true}

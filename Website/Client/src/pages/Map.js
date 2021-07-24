@@ -23,8 +23,16 @@ const Map = () => {
   let time = params.get("time");
   let date = params.get("date");
   const [alarmToggle, setAlarmToggle] = useState(false);
-  let [hour, minute] = new Date().toLocaleTimeString("it-IT").split(/:| /);
+  const obj = new Date();
+  let [hour, minute] = obj.toLocaleTimeString("it-IT").split(/:| /);
   let now = hour + minute;
+  let [monthNow, dateNow, yearNow] = obj.toLocaleDateString("en-US").split("/");
+  const today = obj.getDay();
+  const [timeInput, setTimeInput] = useState(() => parseInt(hour + minute));
+  const [dateInput, setDateInput] = useState(() => parseInt(dateNow));
+  const [month, setMonth] = useState(() => parseInt(monthNow));
+  const [year, setYear] = useState(() => parseInt(yearNow));
+  const [day, setDay] = useState(() => today);
   const [departureSetting, setDepartureSetting] = useState(() => time === now);
   const [renderRouteIndex, setRenderRouteIndex] = useState(null);
   const { height, width } = useWindowDimensions();
@@ -120,6 +128,16 @@ const Map = () => {
                 setDepartureSetting={setDepartureSetting}
                 alarmToggle={alarmToggle}
                 setAlarmToggle={setAlarmToggle}
+                timeInput={timeInput}
+                setTimeInput={setTimeInput}
+                dateInput={dateInput}
+                setDateInput={setDateInput}
+                month={month}
+                setMonth={setMonth}
+                year={year}
+                setYear={setYear}
+                day={day}
+                setDay={setDay}
               />
             </Drawer>
             <MapNavbar open={open} toggle={toggle} style={{ zIndex: "1400" }} />
@@ -137,6 +155,16 @@ const Map = () => {
               setDepartureSetting={setDepartureSetting}
               alarmToggle={alarmToggle}
               setAlarmToggle={setAlarmToggle}
+              timeInput={timeInput}
+              setTimeInput={setTimeInput}
+              dateInput={dateInput}
+              setDateInput={setDateInput}
+              month={month}
+              setMonth={setMonth}
+              year={year}
+              setYear={setYear}
+              day={day}
+              setDay={setDay}
             />
           </SideBarContainer>
         )}

@@ -10,7 +10,6 @@ export const MapNavbarContainer = styled.div`
     width: 100vw;
     background: #282828;
     height: 8vh;
-
   }
 `;
 
@@ -22,7 +21,7 @@ export const Item = styled.div`
   padding: 10px;
   flex-grow: 1;
   text-align: center;
-   text-decoration: none;
+  text-decoration: none;
   justify-content: center;
 
   @media screen and (max-width: 450px) and (max-height: 900px) {
@@ -44,7 +43,7 @@ export const LinkItem = styled(Link)`
   text-align: center;
   text-decoration: none;
   justify-content: center;
-  
+
   @media screen and (max-width: 450px) and (max-height: 900px) {
     font-size: 10px;
   }

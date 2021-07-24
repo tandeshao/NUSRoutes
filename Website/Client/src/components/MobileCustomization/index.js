@@ -34,7 +34,7 @@ const MobileCustomization = ({
   setDepartureSetting,
   alarmToggle,
   setAlarmToggle,
-  setBusArrivalTime
+  setBusArrivalTime,
 }) => {
   const history = useHistory();
 

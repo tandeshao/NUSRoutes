@@ -29,10 +29,12 @@ const Customization = ({
   alarmToggle,
   setAlarmToggle,
   departureSetting,
-  setBusArrivalTime
+  setBusArrivalTime,
 }) => {
   const [anchorEl, setAnchorEl] = useState(() => null);
-  const [btnName, setBtnName] = useState(() => departureSetting ? "Depart Now" : "Depart Later");
+  const [btnName, setBtnName] = useState(() =>
+    departureSetting ? "Depart Now" : "Depart Later"
+  );
   const history = useHistory();
 
   const handleClick = (event) => {

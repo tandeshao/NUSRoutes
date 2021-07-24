@@ -8,7 +8,10 @@ export const CustomizationSection = styled.div`
   justify-content: space-between;
   margin: 10px;
   flex-wrap: wrap;
-  font-size: 12px;
+
+  @media screen and (max-width: 450px) and (max-height: 900px) {
+    font-size: 12px;
+  }
 `;
 
 export const CustomizationButton = styled.p`
@@ -18,6 +21,7 @@ export const CustomizationButton = styled.p`
   border: ${({ departureSetting }) =>
     departureSetting ? "1px solid aquamarine" : ""};
   border-radius: ${({ departureSetting }) => (departureSetting ? "10px" : "")};
+  cursor: pointer;
 `;
 
 export const CustomizationButton2 = styled.p`
@@ -27,19 +31,22 @@ export const CustomizationButton2 = styled.p`
   border: ${({ departureSetting }) =>
     departureSetting ? "" : "1px solid aquamarine"};
   border-radius: ${({ departureSetting }) => (departureSetting ? "" : "10px")};
+  cursor: pointer;
 `;
 
 export const AlarmButton = styled.p`
   font-weight: bold;
   padding: 5px;
-  color: ${({alarmToggle}) => alarmToggle ? "red" : ""};
-  border:  ${({alarmToggle}) => alarmToggle ? "1px solid red" : ""};
-  border-radius: ${({alarmToggle}) => alarmToggle ? "10px" : ""};
+  color: ${({ alarmToggle }) => (alarmToggle ? "red" : "")};
+  border: ${({ alarmToggle }) => (alarmToggle ? "1px solid red" : "")};
+  border-radius: ${({ alarmToggle }) => (alarmToggle ? "10px" : "")};
+  cursor: pointer;
 `;
 
 export const GetBusStopButton = styled.p`
   font-weight: bold;
   padding: 5px;
+  cursor: pointer;
 
   &:active {
     color: silver;
