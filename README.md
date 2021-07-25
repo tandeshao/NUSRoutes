@@ -36,9 +36,9 @@ By: Alvin Tay & Tan De Shao.
 [Website](https://nusroutes.vercel.app/), [Telegram](t.me/NUSRoutesBot).
 
 ## Documentations
-[Report](https://docs.google.com/document/d/1SXj5WiLJiQzO4HPfhKkvp-F8F_eFLhVs-c22GaXN5eo/edit?usp=sharing)  
-[Poster](https://drive.google.com/file/d/1q7cKIbXN8d7XDeiox5G0c58zURM-MiOU/view?usp=sharing)  
-[Video](https://drive.google.com/file/d/10ny5oZnlAhzsbMgueB8fedn1xBNOjorn/view?usp=sharing)  
+[Report](https://docs.google.com/document/d/1ST9wCioqsFDxzsIwjOdqEbzw3Zaoa-8I9pfsdZLDI5o/edit?usp=sharing)  
+[Poster](https://drive.google.com/file/d/1_tzlforHaoxKiEV4nuW5nt0g87nc7dZ8/view?usp=sharing)  
+[Video](https://drive.google.com/file/d/1boZCia2O9JQTUlC4LnREeJ1QCbJKnUOq/view?usp=sharing)  
 
 
 ## Getting Started 
