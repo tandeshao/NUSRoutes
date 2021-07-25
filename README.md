@@ -57,6 +57,8 @@ By: Alvin Tay & Tan De Shao.
   * Server (Google Map API):
     * API_KEY=
     * AUTH_KEY=
+  * Server => repo folder (Google Map API):
+    * Same as above, API_KEY and AUTH_KEY
 * To run locally:
   * Client: npm start
   * Server: node server.js
