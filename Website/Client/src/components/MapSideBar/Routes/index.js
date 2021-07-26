@@ -126,7 +126,8 @@ const Routes = ({
                 "&busstopcode=" +
                 busstopcode
             )
-              .then((response) => response.json())
+              .then((response) => response.text())
+              .then((data) => (data ? JSON.parse(data) : {}))
               .then((data) => {
                 setBusArrivalTime((arr) => {
                   if (arr.length < transferredBuses.length) {
@@ -151,7 +152,8 @@ const Routes = ({
                 "busService=" +
                 busService
             )
-              .then((response) => response.json())
+              .then((response) => response.text())
+              .then((data) => (data ? JSON.parse(data) : {}))
               .then((data) => {
                 setBusArrivalTime((arr) => {
                   if (arr.length < transferredBuses.length) {

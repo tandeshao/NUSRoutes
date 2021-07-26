@@ -85,22 +85,25 @@ async function arrivalTime(arrBusStop, busService, ctx, busstopcode) {
           encodeURIComponent(busService) +
           "&busstopcode=" +
           encodeURIComponent(busstopcode)
-      ).then((response) => response.json());
+      )
+        .then((response) => response.text())
+        .then((data) => data ? JSON.parse(data) : {})
+        .catch(console.log);
 
-      if ((arrTime[0] = "-")) {
+      if ((arrTime[0] === "-")) {
         arrTime[0] = "-";
-      } else if ((arrTime[0] = "Arr")) {
+      } else if ((arrTime[0] === "Arr")) {
         arrTime[0] = "Arr";
       } else {
         arrTime[0] = arrTime[0] + " mins";
       }
 
-      if ((arrTime[1] = "-")) {
+      if ((arrTime[1] === "-")) {
         arrTime[1] = "-";
-      } else if ((arrTime[0] = "Arr")) {
+      } else if ((arrTime[1] === "Arr")) {
         arrTime[1] = "Arr";
       } else {
-        arrTime[1] = arrTime[0] + " mins";
+        arrTime[1] = arrTime[1] + " mins";
       }
 
       var reply;
