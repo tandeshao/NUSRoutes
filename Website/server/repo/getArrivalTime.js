@@ -17,7 +17,7 @@ const getArrivalTime = (busStopName, busService, busstopcode) => {
     .then((result) => [result[0].arrivalTime, result[0].nextArrivalTime])
     .catch((err) => {
       console.log(
-        `Cannot retrieve Arrival Time for ${busService} at ${busStopName}`
+        err
       );
     });
 

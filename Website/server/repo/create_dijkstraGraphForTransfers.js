@@ -24,8 +24,8 @@ const create_dijkstraGraphforTransfers = (input_graph) => {
 
   Object.keys(input_graph).forEach((elem) => {
     //create _service keys
-    //once we have created the _none keys, we can loop through the 'input_graph' to first find the destination 
-    // and its corresponding bus services available for us to get to that destination. 
+    //once we have created the _none keys, we can loop through the 'input_graph' to first find the destination
+    // and its corresponding bus services available for us to get to that destination.
     // Then, we can append the 'destination_none' value into the 'graph' with the 'destination_service' as the key.
     for (let adjacentBusStop in input_graph[elem]) {
       input_graph[elem][adjacentBusStop]["services"].forEach((service) => {
@@ -40,6 +40,7 @@ const create_dijkstraGraphforTransfers = (input_graph) => {
   return graph;
 };
 
+// To create a file called dijkstraGraphForTransfers use the function below and comment out line 53. After you are done, undo all changes.
 // fs.writeFile(
 //   "../data/dijkstraGraphForTransfers.json",
 //   JSON.stringify(create_dijkstraGraphforTransfers(dijkstraGraphWithService)),

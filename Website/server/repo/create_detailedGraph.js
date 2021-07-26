@@ -1,10 +1,10 @@
-//cannot be used without api key.
-//before starting, duplicate the bfsGraph.json and call it detailedGraph.json
+//cannot be used without an api key.
+//before starting, duplicate the basicGraph.json and call it detailedGraph.json
 const GoogleDistanceApi = require("google-distance-api");
-const graph = require("../data/bfsgraph");
+const graph = require("../data/basicGraph");
 const busStops = require("../data/busStops");
 const fs = require("fs");
-require('dotenv').config();
+require("dotenv").config();
 const { API_KEY } = process.env;
 
 const key_input = `${API_KEY}`;
@@ -15,7 +15,6 @@ let options = {
 };
 
 const register_result = (graph, origin, destination, data) => {
-  
   let arr = graph[origin];
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] == destination) {
@@ -23,7 +22,7 @@ const register_result = (graph, origin, destination, data) => {
     }
   }
 
-  fs.writeFile("../data/detailedgraph.json", JSON.stringify(graph), (err) => {
+  fs.writeFile("../data/detailedGraph.json", JSON.stringify(graph), (err) => {
     if (err) return console.log(err);
     console.log("File has been successfully written!");
   });
@@ -40,14 +39,13 @@ for (let key in graph) {
         options["destinations"] = [busStop.latitude + ", " + busStop.longitude];
       }
     });
-    
+
     GoogleDistanceApi.distance(options, (err, data) => {
-    
       if (err) {
         return console.log(err);
       }
-      
-      const new_graph = require("../data/detailedgraph.json");
+
+      const new_graph = require("../data/detailedGraph.json");
       register_result(new_graph, key, element, data);
     });
   });

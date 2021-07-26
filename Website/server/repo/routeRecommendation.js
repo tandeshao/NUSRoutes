@@ -44,7 +44,6 @@ const dijkstra = (
       dijkstraGraph[start][x] = dijkstraGraph[start][x] + costPerStop;
     }
   });
-  //here
   const costs = {};
   Object.assign(costs, dijkstraGraph[start]);
   const parents = { end: null };
@@ -79,8 +78,6 @@ const dijkstra = (
     processed.push(node);
     node = lowestCostNode(costs, processed);
   }
-
-  //here
 
   let shortestPath = [end];
   let parent = parents[end];
@@ -217,6 +214,7 @@ const routeRecommendation = (
 };
 
 module.exports = routeRecommendation;
+
 // console.log(
 //   routeRecommendation(
 //     "CG",
