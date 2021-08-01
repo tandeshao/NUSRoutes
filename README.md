@@ -34,7 +34,7 @@ By: Alvin Tay & Tan De Shao.
 
 ## Platforms
 [Website](https://nusroutes.vercel.app/)  
-[Telegram](t.me/NUSRoutesBot)
+[Telegram](https://t.me/NUSRoutesBot)
 
 ## Documentations
 [Report](https://docs.google.com/document/d/1ST9wCioqsFDxzsIwjOdqEbzw3Zaoa-8I9pfsdZLDI5o/edit?usp=sharing)  
