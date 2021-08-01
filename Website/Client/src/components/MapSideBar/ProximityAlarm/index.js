@@ -106,7 +106,7 @@ const ProximityAlarm = ({ destination, alarmToggle, setAlarmToggle }) => {
           () => navigator.geolocation.getCurrentPosition(onSuccess, onError),
           5000
         );
-
+        
         if (location.loaded) {
           fetch(
             REACT_APP_DOMAIN +
