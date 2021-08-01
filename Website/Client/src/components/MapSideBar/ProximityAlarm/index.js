@@ -110,7 +110,7 @@ const ProximityAlarm = ({ destination, alarmToggle, setAlarmToggle }) => {
         if (location.loaded) {
           fetch(
             REACT_APP_DOMAIN +
-              "/proximityAlarm?" +
+              "/api/proximityAlarmV?" +
               "lat=" +
               location.lat +
               "&" +
