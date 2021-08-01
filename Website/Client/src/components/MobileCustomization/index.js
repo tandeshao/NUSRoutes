@@ -185,7 +185,7 @@ const MobileCustomization = ({
         if (location.loaded) {
           fetch(
             REACT_APP_DOMAIN +
-              "/proximityAlarmV?" +
+              "/api/proximityAlarmV?" +
               "lat=" +
               location.lat +
               "&" +

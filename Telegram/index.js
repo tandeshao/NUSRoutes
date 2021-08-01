@@ -23,8 +23,8 @@ async function routeFinder(current, destination, ctx) {
 
   try {
     const route = await fetch(
-      "https://nusroutesapi.herokuapp.com" +
-        "/api/telegramRouteRecommendation?start=" +
+      "https://nusroutesapi.vercel.app" +
+        "/api/telegramRouteRecommendationV?start=" +
         encodeURIComponent(start) +
         "&end=" +
         encodeURIComponent(end)
@@ -78,8 +78,8 @@ async function arrivalTime(arrBusStop, busService, ctx, busstopcode) {
     try {
       const stop = map[arrBusStop];
       const arrTime = await fetch(
-        "https://nusroutesapi.herokuapp.com" +
-          "/api/getArrivalTime?busStop=" +
+        "https://nusroutesapi.vercel.app" +
+          "/api/getArrivalTimeV?busStop=" +
           encodeURIComponent(stop) +
           "&busService=" +
           encodeURIComponent(busService) +
@@ -87,20 +87,20 @@ async function arrivalTime(arrBusStop, busService, ctx, busstopcode) {
           encodeURIComponent(busstopcode)
       )
         .then((response) => response.text())
-        .then((data) => data ? JSON.parse(data) : {})
+        .then((data) => (data ? JSON.parse(data) : {}))
         .catch(console.log);
 
-      if ((arrTime[0] === "-")) {
+      if (arrTime[0] === "-") {
         arrTime[0] = "-";
-      } else if ((arrTime[0] === "Arr")) {
+      } else if (arrTime[0] === "Arr") {
         arrTime[0] = "Arr";
       } else {
         arrTime[0] = arrTime[0] + " mins";
       }
 
-      if ((arrTime[1] === "-")) {
+      if (arrTime[1] === "-") {
         arrTime[1] = "-";
-      } else if ((arrTime[1] === "Arr")) {
+      } else if (arrTime[1] === "Arr") {
         arrTime[1] = "Arr";
       } else {
         arrTime[1] = arrTime[1] + " mins";
@@ -121,8 +121,8 @@ async function arrivalTime(arrBusStop, busService, ctx, busstopcode) {
     try {
       const stop = map[arrBusStop];
       const arrTime = await fetch(
-        "https://nusroutesapi.herokuapp.com" +
-          "/api/getArrivalTime?busStop=" +
+        "https://nusroutesapi.vercel.app" +
+          "/api/getArrivalTimeV?busStop=" +
           encodeURIComponent(stop) +
           "&busService=" +
           encodeURIComponent(busService)
@@ -159,8 +159,8 @@ async function arrivalTime(arrBusStop, busService, ctx, busstopcode) {
 async function checkProximity(latitude, longitude, dest, ctx) {
   try {
     const closeToDest = await fetch(
-      "https://nusroutesapi.herokuapp.com" +
-        "/proximityAlarm?lat=" +
+      "https://nusroutesapi.vercel.app" +
+        "/api/proximityAlarmV?lat=" +
         encodeURIComponent(latitude) +
         "&lng=" +
         encodeURIComponent(longitude) +
