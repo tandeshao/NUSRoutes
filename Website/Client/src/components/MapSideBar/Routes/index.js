@@ -116,7 +116,7 @@ const Routes = ({
             fetch(
               `${REACT_APP_DOMAIN}` +
                 "/api/" +
-                "getArrivalTime" +
+                "getArrivalTimeV" +
                 "?" +
                 "busStop=" +
                 busStop +
@@ -144,7 +144,7 @@ const Routes = ({
             fetch(
               `${REACT_APP_DOMAIN}` +
                 "/api/" +
-                "getArrivalTime" +
+                "getArrivalTimeV" +
                 "?" +
                 "busStop=" +
                 busStop +
