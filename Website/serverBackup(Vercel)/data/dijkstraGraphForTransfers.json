@@ -1,0 +1,354 @@
+{
+  "KRB_none": { "LT13_A1": 757, "IT_A2": 777 },
+  "IT_none": { "YIH-OPP_A2": 252, "YIH-OPP_D1": 252, "YIH-OPP_E": 252 },
+  "YIH-OPP_none": { "MUSEUM_A2": 417, "MUSEUM_D1": 417, "UTOWN_E": 624 },
+  "MUSEUM_none": {
+    "UHC_A2": 419,
+    "UHC_K": 419,
+    "UTOWN_D1": 453,
+    "UTOWN_D2": 453,
+    "YIH_BTC": 318
+  },
+  "UHC_none": { "UHALL-OPP_A2": 280, "UHALL-OPP_D2": 280, "UHALL-OPP_K": 280 },
+  "UHALL-OPP_none": { "S17_A2": 303, "S17_D2": 303, "S17_K": 303 },
+  "S17_none": {
+    "KR-MRT-OPP_A2": 559,
+    "KR-MRT-OPP_D2": 559,
+    "KR-MRT-OPP_K": 559
+  },
+  "KR-MRT-OPP_none": { "PGPR_A2": 813, "PGPR_D2": 813, "PGPR_K": 813 },
+  "PGPR_none": { "TCOMS_A2": 587 },
+  "TCOMS_none": { "HSSML-OPP_A2": 292 },
+  "HSSML-OPP_none": { "NUSS-OPP_A2": 356, "NUSS-OPP_D1": 356 },
+  "NUSS-OPP_none": { "COM2_A2": 334, "COM2_D1": 334 },
+  "COM2_none": {
+    "BIZ2_A1": 787,
+    "BIZ2_D1": 787,
+    "LT13-OPP_A2": 676,
+    "LT13-OPP_D1": 676
+  },
+  "LT13-OPP_none": { "KRB_A2": 423, "IT_D1": 357 },
+  "UTOWN_none": {
+    "YIH_D1": 868,
+    "UHC_D2": 969,
+    "RAFFLES_E": 849,
+    "RAFFLES_BTC": 849
+  },
+  "YIH_none": { "CLB_A1": 333, "CLB_D1": 333, "CLB_K": 333, "CLB_BTC": 333 },
+  "CLB_none": {
+    "KRB_A1": 518,
+    "LT13_D1": 388,
+    "LT13_BTC": 388,
+    "SDE3-OPP_K": 533
+  },
+  "LT13_none": { "AS5_A1": 152, "AS5_D1": 152, "AS5_BTC": 152 },
+  "AS5_none": { "COM2_A1": 366, "COM2_D1": 366, "BIZ2_BTC": 521 },
+  "BIZ2_none": { "TCOMS-OPP_A1": 222, "PGP_BTC": 705 },
+  "PGP_none": {
+    "KR-MRT_A1": 878,
+    "KR-MRT_D2": 878,
+    "KR-MRT_K": 878,
+    "CG_BTC": 7021
+  },
+  "KR-MRT_none": {
+    "LT27_A1": 527,
+    "LT27_D2": 527,
+    "LT27_K": 527,
+    "LT27_BTC": 527
+  },
+  "LT27_none": {
+    "UHALL_A1": 326,
+    "UHALL_D2": 326,
+    "UHALL_K": 326,
+    "UHALL_BTC": 326
+  },
+  "UHALL_none": {
+    "UHC-OPP_A1": 332,
+    "UHC-OPP_D2": 332,
+    "UHC-OPP_K": 332,
+    "UHC-OPP_BTC": 332
+  },
+  "UHC-OPP_none": {
+    "YIH_A1": 175,
+    "YIH_K": 175,
+    "MUSEUM_D2": 503,
+    "UTOWN_BTC": 710
+  },
+  "OTH_none": { "BG-MRT_BTC": 871, "BG-MRT_L": 871 },
+  "BG-MRT_none": { "KR-MRT_BTC": 6150, "CG_L": 708 },
+  "RAFFLES_none": { "KV_E": 378, "KV_BTC": 378 },
+  "KV_none": { "EA_E": 252, "MUSEUM_K": 487, "MUSEUM_BTC": 487 },
+  "CG_none": { "OTH_BTC": 1057, "OTH_L": 1057 },
+  "EA_none": { "SDE3_E": 313 },
+  "SDE3_none": { "IT_E": 530 },
+  "SDE3-OPP_none": { "JP-SCH-16151_K": 330 },
+  "JP-SCH-16151_none": { "KV_K": 216 },
+  "TCOMS-OPP_none": { "PGP_A1": 483 },
+  "LT13_A1": { "AS5_A1": 152, "AS5_D1": 152, "AS5_BTC": 152 },
+  "IT_A2": { "YIH-OPP_A2": 252, "YIH-OPP_D1": 252, "YIH-OPP_E": 252 },
+  "YIH-OPP_A2": { "MUSEUM_A2": 417, "MUSEUM_D1": 417, "UTOWN_E": 624 },
+  "YIH-OPP_D1": { "MUSEUM_A2": 417, "MUSEUM_D1": 417, "UTOWN_E": 624 },
+  "YIH-OPP_E": { "MUSEUM_A2": 417, "MUSEUM_D1": 417, "UTOWN_E": 624 },
+  "MUSEUM_A2": {
+    "UHC_A2": 419,
+    "UHC_K": 419,
+    "UTOWN_D1": 453,
+    "UTOWN_D2": 453,
+    "YIH_BTC": 318
+  },
+  "MUSEUM_D1": {
+    "UHC_A2": 419,
+    "UHC_K": 419,
+    "UTOWN_D1": 453,
+    "UTOWN_D2": 453,
+    "YIH_BTC": 318
+  },
+  "UTOWN_E": {
+    "YIH_D1": 868,
+    "UHC_D2": 969,
+    "RAFFLES_E": 849,
+    "RAFFLES_BTC": 849
+  },
+  "UHC_A2": { "UHALL-OPP_A2": 280, "UHALL-OPP_D2": 280, "UHALL-OPP_K": 280 },
+  "UHC_K": { "UHALL-OPP_A2": 280, "UHALL-OPP_D2": 280, "UHALL-OPP_K": 280 },
+  "UTOWN_D1": {
+    "YIH_D1": 868,
+    "UHC_D2": 969,
+    "RAFFLES_E": 849,
+    "RAFFLES_BTC": 849
+  },
+  "UTOWN_D2": {
+    "YIH_D1": 868,
+    "UHC_D2": 969,
+    "RAFFLES_E": 849,
+    "RAFFLES_BTC": 849
+  },
+  "YIH_BTC": { "CLB_A1": 333, "CLB_D1": 333, "CLB_K": 333, "CLB_BTC": 333 },
+  "UHALL-OPP_A2": { "S17_A2": 303, "S17_D2": 303, "S17_K": 303 },
+  "UHALL-OPP_D2": { "S17_A2": 303, "S17_D2": 303, "S17_K": 303 },
+  "UHALL-OPP_K": { "S17_A2": 303, "S17_D2": 303, "S17_K": 303 },
+  "S17_A2": { "KR-MRT-OPP_A2": 559, "KR-MRT-OPP_D2": 559, "KR-MRT-OPP_K": 559 },
+  "S17_D2": { "KR-MRT-OPP_A2": 559, "KR-MRT-OPP_D2": 559, "KR-MRT-OPP_K": 559 },
+  "S17_K": { "KR-MRT-OPP_A2": 559, "KR-MRT-OPP_D2": 559, "KR-MRT-OPP_K": 559 },
+  "KR-MRT-OPP_A2": { "PGPR_A2": 813, "PGPR_D2": 813, "PGPR_K": 813 },
+  "KR-MRT-OPP_D2": { "PGPR_A2": 813, "PGPR_D2": 813, "PGPR_K": 813 },
+  "KR-MRT-OPP_K": { "PGPR_A2": 813, "PGPR_D2": 813, "PGPR_K": 813 },
+  "PGPR_A2": { "TCOMS_A2": 587 },
+  "PGPR_D2": { "TCOMS_A2": 587 },
+  "PGPR_K": { "TCOMS_A2": 587 },
+  "TCOMS_A2": { "HSSML-OPP_A2": 292 },
+  "HSSML-OPP_A2": { "NUSS-OPP_A2": 356, "NUSS-OPP_D1": 356 },
+  "NUSS-OPP_A2": { "COM2_A2": 334, "COM2_D1": 334 },
+  "NUSS-OPP_D1": { "COM2_A2": 334, "COM2_D1": 334 },
+  "COM2_A2": {
+    "BIZ2_A1": 787,
+    "BIZ2_D1": 787,
+    "LT13-OPP_A2": 676,
+    "LT13-OPP_D1": 676
+  },
+  "COM2_D1": {
+    "BIZ2_A1": 787,
+    "BIZ2_D1": 787,
+    "LT13-OPP_A2": 676,
+    "LT13-OPP_D1": 676
+  },
+  "BIZ2_A1": { "TCOMS-OPP_A1": 222, "PGP_BTC": 705 },
+  "BIZ2_D1": { "TCOMS-OPP_A1": 222, "PGP_BTC": 705 },
+  "LT13-OPP_A2": { "KRB_A2": 423, "IT_D1": 357 },
+  "LT13-OPP_D1": { "KRB_A2": 423, "IT_D1": 357 },
+  "KRB_A2": { "LT13_A1": 757, "IT_A2": 777 },
+  "IT_D1": { "YIH-OPP_A2": 252, "YIH-OPP_D1": 252, "YIH-OPP_E": 252 },
+  "YIH_D1": { "CLB_A1": 333, "CLB_D1": 333, "CLB_K": 333, "CLB_BTC": 333 },
+  "UHC_D2": { "UHALL-OPP_A2": 280, "UHALL-OPP_D2": 280, "UHALL-OPP_K": 280 },
+  "RAFFLES_E": { "KV_E": 378, "KV_BTC": 378 },
+  "RAFFLES_BTC": { "KV_E": 378, "KV_BTC": 378 },
+  "CLB_A1": {
+    "KRB_A1": 518,
+    "LT13_D1": 388,
+    "LT13_BTC": 388,
+    "SDE3-OPP_K": 533
+  },
+  "CLB_D1": {
+    "KRB_A1": 518,
+    "LT13_D1": 388,
+    "LT13_BTC": 388,
+    "SDE3-OPP_K": 533
+  },
+  "CLB_K": {
+    "KRB_A1": 518,
+    "LT13_D1": 388,
+    "LT13_BTC": 388,
+    "SDE3-OPP_K": 533
+  },
+  "CLB_BTC": {
+    "KRB_A1": 518,
+    "LT13_D1": 388,
+    "LT13_BTC": 388,
+    "SDE3-OPP_K": 533
+  },
+  "KRB_A1": { "LT13_A1": 757, "IT_A2": 777 },
+  "LT13_D1": { "AS5_A1": 152, "AS5_D1": 152, "AS5_BTC": 152 },
+  "LT13_BTC": { "AS5_A1": 152, "AS5_D1": 152, "AS5_BTC": 152 },
+  "SDE3-OPP_K": { "JP-SCH-16151_K": 330 },
+  "AS5_A1": { "COM2_A1": 366, "COM2_D1": 366, "BIZ2_BTC": 521 },
+  "AS5_D1": { "COM2_A1": 366, "COM2_D1": 366, "BIZ2_BTC": 521 },
+  "AS5_BTC": { "COM2_A1": 366, "COM2_D1": 366, "BIZ2_BTC": 521 },
+  "COM2_A1": {
+    "BIZ2_A1": 787,
+    "BIZ2_D1": 787,
+    "LT13-OPP_A2": 676,
+    "LT13-OPP_D1": 676
+  },
+  "BIZ2_BTC": { "TCOMS-OPP_A1": 222, "PGP_BTC": 705 },
+  "TCOMS-OPP_A1": { "PGP_A1": 483 },
+  "PGP_BTC": {
+    "KR-MRT_A1": 878,
+    "KR-MRT_D2": 878,
+    "KR-MRT_K": 878,
+    "CG_BTC": 7021
+  },
+  "KR-MRT_A1": {
+    "LT27_A1": 527,
+    "LT27_D2": 527,
+    "LT27_K": 527,
+    "LT27_BTC": 527
+  },
+  "KR-MRT_D2": {
+    "LT27_A1": 527,
+    "LT27_D2": 527,
+    "LT27_K": 527,
+    "LT27_BTC": 527
+  },
+  "KR-MRT_K": {
+    "LT27_A1": 527,
+    "LT27_D2": 527,
+    "LT27_K": 527,
+    "LT27_BTC": 527
+  },
+  "CG_BTC": { "OTH_BTC": 1057, "OTH_L": 1057 },
+  "LT27_A1": {
+    "UHALL_A1": 326,
+    "UHALL_D2": 326,
+    "UHALL_K": 326,
+    "UHALL_BTC": 326
+  },
+  "LT27_D2": {
+    "UHALL_A1": 326,
+    "UHALL_D2": 326,
+    "UHALL_K": 326,
+    "UHALL_BTC": 326
+  },
+  "LT27_K": {
+    "UHALL_A1": 326,
+    "UHALL_D2": 326,
+    "UHALL_K": 326,
+    "UHALL_BTC": 326
+  },
+  "LT27_BTC": {
+    "UHALL_A1": 326,
+    "UHALL_D2": 326,
+    "UHALL_K": 326,
+    "UHALL_BTC": 326
+  },
+  "UHALL_A1": {
+    "UHC-OPP_A1": 332,
+    "UHC-OPP_D2": 332,
+    "UHC-OPP_K": 332,
+    "UHC-OPP_BTC": 332
+  },
+  "UHALL_D2": {
+    "UHC-OPP_A1": 332,
+    "UHC-OPP_D2": 332,
+    "UHC-OPP_K": 332,
+    "UHC-OPP_BTC": 332
+  },
+  "UHALL_K": {
+    "UHC-OPP_A1": 332,
+    "UHC-OPP_D2": 332,
+    "UHC-OPP_K": 332,
+    "UHC-OPP_BTC": 332
+  },
+  "UHALL_BTC": {
+    "UHC-OPP_A1": 332,
+    "UHC-OPP_D2": 332,
+    "UHC-OPP_K": 332,
+    "UHC-OPP_BTC": 332
+  },
+  "UHC-OPP_A1": {
+    "YIH_A1": 175,
+    "YIH_K": 175,
+    "MUSEUM_D2": 503,
+    "UTOWN_BTC": 710
+  },
+  "UHC-OPP_D2": {
+    "YIH_A1": 175,
+    "YIH_K": 175,
+    "MUSEUM_D2": 503,
+    "UTOWN_BTC": 710
+  },
+  "UHC-OPP_K": {
+    "YIH_A1": 175,
+    "YIH_K": 175,
+    "MUSEUM_D2": 503,
+    "UTOWN_BTC": 710
+  },
+  "UHC-OPP_BTC": {
+    "YIH_A1": 175,
+    "YIH_K": 175,
+    "MUSEUM_D2": 503,
+    "UTOWN_BTC": 710
+  },
+  "YIH_A1": { "CLB_A1": 333, "CLB_D1": 333, "CLB_K": 333, "CLB_BTC": 333 },
+  "YIH_K": { "CLB_A1": 333, "CLB_D1": 333, "CLB_K": 333, "CLB_BTC": 333 },
+  "MUSEUM_D2": {
+    "UHC_A2": 419,
+    "UHC_K": 419,
+    "UTOWN_D1": 453,
+    "UTOWN_D2": 453,
+    "YIH_BTC": 318
+  },
+  "UTOWN_BTC": {
+    "YIH_D1": 868,
+    "UHC_D2": 969,
+    "RAFFLES_E": 849,
+    "RAFFLES_BTC": 849
+  },
+  "BG-MRT_BTC": { "KR-MRT_BTC": 6150, "CG_L": 708 },
+  "BG-MRT_L": { "KR-MRT_BTC": 6150, "CG_L": 708 },
+  "KR-MRT_BTC": {
+    "LT27_A1": 527,
+    "LT27_D2": 527,
+    "LT27_K": 527,
+    "LT27_BTC": 527
+  },
+  "CG_L": { "OTH_BTC": 1057, "OTH_L": 1057 },
+  "KV_E": { "EA_E": 252, "MUSEUM_K": 487, "MUSEUM_BTC": 487 },
+  "KV_BTC": { "EA_E": 252, "MUSEUM_K": 487, "MUSEUM_BTC": 487 },
+  "EA_E": { "SDE3_E": 313 },
+  "MUSEUM_K": {
+    "UHC_A2": 419,
+    "UHC_K": 419,
+    "UTOWN_D1": 453,
+    "UTOWN_D2": 453,
+    "YIH_BTC": 318
+  },
+  "MUSEUM_BTC": {
+    "UHC_A2": 419,
+    "UHC_K": 419,
+    "UTOWN_D1": 453,
+    "UTOWN_D2": 453,
+    "YIH_BTC": 318
+  },
+  "OTH_BTC": { "BG-MRT_BTC": 871, "BG-MRT_L": 871 },
+  "OTH_L": { "BG-MRT_BTC": 871, "BG-MRT_L": 871 },
+  "SDE3_E": { "IT_E": 530 },
+  "IT_E": { "YIH-OPP_A2": 252, "YIH-OPP_D1": 252, "YIH-OPP_E": 252 },
+  "JP-SCH-16151_K": { "KV_K": 216 },
+  "KV_K": { "EA_E": 252, "MUSEUM_K": 487, "MUSEUM_BTC": 487 },
+  "PGP_A1": {
+    "KR-MRT_A1": 878,
+    "KR-MRT_D2": 878,
+    "KR-MRT_K": 878,
+    "CG_BTC": 7021
+  }
+}
