@@ -33,7 +33,8 @@ By: Alvin Tay & Tan De Shao.
   * We put in our best effort to make NUSRoutes modern yet super intuitive.
 
 ## Platforms
-[Website](https://nusroutes.vercel.app/) | [Telegram](t.me/NUSRoutesBot)
+[Website](https://nusroutes.vercel.app/)  
+[Telegram](t.me/NUSRoutesBot)
 
 ## Documentations
 [Report](https://docs.google.com/document/d/1ST9wCioqsFDxzsIwjOdqEbzw3Zaoa-8I9pfsdZLDI5o/edit?usp=sharing)  
