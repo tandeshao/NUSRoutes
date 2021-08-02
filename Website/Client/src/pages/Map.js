@@ -51,6 +51,7 @@ const Map = () => {
       `${REACT_APP_DOMAIN}` +
         "/api/" +
         string +
+        "V" +
         "?" +
         "start=" +
         start +
@@ -91,25 +92,6 @@ const Map = () => {
       transition={transition}
     >
       <PageContainer>
-        {width > 450 || height > 900 ? (
-          sidebar ? (
-            <ArrowLeftButton
-              $sidebar={sidebar}
-              onClick={() => {
-                setSideBar((prev) => !prev);
-              }}
-            />
-          ) : (
-            <ArrowRightButton
-              $sidebar={sidebar}
-              onClick={() => {
-                setSideBar((prev) => !prev);
-              }}
-            />
-          )
-        ) : (
-          ""
-        )}
         <MapContainer $sidebar={sidebar}>
           <RenderMap route={route} />
         </MapContainer>
@@ -143,30 +125,60 @@ const Map = () => {
             <MapNavbar open={open} toggle={toggle} style={{ zIndex: "1400" }} />
           </>
         ) : (
-          <SideBarContainer $sidebar={sidebar}>
-            <MapSideBar
-              routeRecommendations={routeRecommendations}
-              setRoute={setRoute}
-              startAndEnd={[start, end]}
-              route={route}
-              renderRouteIndex={renderRouteIndex}
-              setRenderRouteIndex={setRenderRouteIndex}
-              departureSetting={departureSetting}
-              setDepartureSetting={setDepartureSetting}
-              alarmToggle={alarmToggle}
-              setAlarmToggle={setAlarmToggle}
-              timeInput={timeInput}
-              setTimeInput={setTimeInput}
-              dateInput={dateInput}
-              setDateInput={setDateInput}
-              month={month}
-              setMonth={setMonth}
-              year={year}
-              setYear={setYear}
-              day={day}
-              setDay={setDay}
-            />
-          </SideBarContainer>
+          <div
+            style={{
+              position: "absolute",
+              top: "0",
+              display: "flex",
+              width: "auto",
+              height: "100%",
+              zIndex: "5",
+              background: "transparent",
+            }}
+          >
+            {sidebar && (
+              <SideBarContainer $sidebar={sidebar}>
+                <MapSideBar
+                  routeRecommendations={routeRecommendations}
+                  setRoute={setRoute}
+                  startAndEnd={[start, end]}
+                  route={route}
+                  renderRouteIndex={renderRouteIndex}
+                  setRenderRouteIndex={setRenderRouteIndex}
+                  departureSetting={departureSetting}
+                  setDepartureSetting={setDepartureSetting}
+                  alarmToggle={alarmToggle}
+                  setAlarmToggle={setAlarmToggle}
+                  timeInput={timeInput}
+                  setTimeInput={setTimeInput}
+                  dateInput={dateInput}
+                  setDateInput={setDateInput}
+                  month={month}
+                  setMonth={setMonth}
+                  year={year}
+                  setYear={setYear}
+                  day={day}
+                  setDay={setDay}
+                />
+              </SideBarContainer>
+            )}
+
+            {sidebar ? (
+              <ArrowLeftButton
+                $sidebar={sidebar}
+                onClick={() => {
+                  setSideBar((prev) => !prev);
+                }}
+              />
+            ) : (
+              <ArrowRightButton
+                $sidebar={sidebar}
+                onClick={() => {
+                  setSideBar((prev) => !prev);
+                }}
+              />
+            )}
+          </div>
         )}
       </PageContainer>
     </motion.div>

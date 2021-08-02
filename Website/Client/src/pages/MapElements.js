@@ -3,64 +3,77 @@ import ArrowLeftRoundedIcon from "@material-ui/icons/ArrowLeftRounded";
 import ArrowRightRoundedIcon from "@material-ui/icons/ArrowRightRounded";
 
 export const PageContainer = styled.div`
-  display: flex;
-  flex-direction: row-reverse;
-
+  ${
+    "" /* display: flex;
+  flex-direction: row-reverse; */
+  }
   @media screen and (max-width: 450px) and (max-height: 900px) {
-    ${"" /* flex-direction: column; */}
+    display: flex;
+    flex-direction: row-reverse;
     height: 100vh;
-    ${"" /* justify-content: flex-end; */}
   }
 `;
 
 export const SideBarContainer = styled.div`
-  width: ${({ $sidebar }) => ($sidebar ? "33.2vw" : "0vw")};
+  width: ${({ $sidebar }) => ($sidebar ? "25vw" : "0vw")};
   height: 100vh;
   z-index: 1;
   transition: all 0.15s ease-in-out;
   position: relative;
 
   @media screen and (max-width: 1700px) {
-    width: ${({ $sidebar }) => ($sidebar ? "60vw" : "0vw")};
+    width: ${({ $sidebar }) => ($sidebar ? "33vw" : "0vw")};
   }
 
   @media screen and (max-width: 1100px) {
-    width: ${({ $sidebar }) => ($sidebar ? "85vw" : "0vw")};
-  }
-
-  @media screen and (max-width: 927px) and (max-height: 900px) {
-    width: ${({ $sidebar }) => ($sidebar ? "100vww" : "0vw")};
+    width: ${({ $sidebar }) => ($sidebar ? "40vw" : "0vw")};
   }
 `;
 
 export const MapContainer = styled.div`
-  width: 100%;
+  ${
+    "" /* width: 100%;
   min-height: 0;
-  max-height: 100vh;
+  max-height: 100vh; */
+  }
+  height: 100vh;
+  width: ${({ $sidebar }) => ($sidebar ? "78vw" : "100vw")};
   z-index: 2;
+  position: absolute;
+  right: 0;
+
+  @media screen and (max-width: 1700px) {
+    width: ${({ $sidebar }) => ($sidebar ? "70vw" : "100vw")};
+  }
+
+  @media screen and (max-width: 1100px) {
+    width: ${({ $sidebar }) => ($sidebar ? "63vw" : "100vw")};
+  }
 
   @media screen and (max-width: 450px) and (max-height: 900px) {
     position: fixed;
     height: 100vh;
+    width: 100vw;
     z-index: 1;
   }
 `;
 
 export const ArrowLeftButton = styled(ArrowLeftRoundedIcon)`
   && {
-    position: absolute;
+    position: relative;
     z-index: 3;
     font-size: 100px;
     top: 50vh;
     color: black;
-    left: ${({ $sidebar }) => ($sidebar ? "25vw" : "0vw")};
+    ${"" /* left: ${({ $sidebar }) => ($sidebar ? "25vw" : "0vw")}; */}
     cursor: pointer;
     background: #b3b3b3;
-    width: 1vw;
-    height: 4vh;
+    width: 1.3vw;
+    height: 6vh;
     transition: background 2s;
 
-    @media screen and (max-width: 1700px) {
+    ${
+      "" /* @media screen and (max-width: 1700px) {
       width: 2vw;
       left: ${({ $sidebar }) => ($sidebar ? "37.5%" : "0vw")};
     }
@@ -88,17 +101,22 @@ export const ArrowLeftButton = styled(ArrowLeftRoundedIcon)`
     @media screen and (max-width: 557px) and (max-height: 735px) {
       top: 35%;
       left: ${({ $sidebar }) => ($sidebar ? "84vw" : "0vw")};
+    } */
     }
 
     &:hover {
-      height: 6vh;
+      height: 8vh;
+    }
+
+    @media screen and (max-width: 450px) and (max-height: 900px) {
+      display: none;
     }
   }
 `;
 
 export const ArrowRightButton = styled(ArrowRightRoundedIcon)`
   && {
-    position: absolute;
+    position: relative;
     z-index: 3;
     font-size: 100px;
     top: 50vh;
@@ -106,17 +124,16 @@ export const ArrowRightButton = styled(ArrowRightRoundedIcon)`
     left: ${({ $sidebar }) => ($sidebar ? "25vw" : "0vw")};
     cursor: pointer;
     background: #b3b3b3;
-    width: 1vw;
-    height: 4vh;
+    width: 1.3vw;
+    height: 6vh;
     transition: background 2s;
 
-    @media screen and (max-width: 1100px) and (max-height: 735px) {
-      top: 35%;
-      width: 1rem;
+    &:hover {
+      height: 8vh;
     }
 
-    &:hover {
-      height: 6vh;
+    @media screen and (max-width: 450px) and (max-height: 900px) {
+      display: none;
     }
   }
 `;

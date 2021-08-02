@@ -9,7 +9,6 @@ import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import map from "../../data/map.json";
 import data from "../../data/vacation.json";
-import { distance } from "../MapSideBar/Customization/functions";
 import busStops from "../../data/busStops.json";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -19,6 +18,17 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Button from "@material-ui/core/Button";
+
+const distance = (lat1, lon1, lat2, lon2) => {
+  var p = 0.017453292519943295; // Math.PI / 180
+  var c = Math.cos;
+  var a =
+    0.5 -
+    c((lat2 - lat1) * p) / 2 +
+    (c(lat1 * p) * c(lat2 * p) * (1 - c((lon2 - lon1) * p))) / 2;
+
+  return 12742 * Math.asin(Math.sqrt(a)); // 2 * R; R = 6371 km
+};
 
 const MobileCustomization = ({
   setTime,
