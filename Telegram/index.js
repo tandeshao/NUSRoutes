@@ -266,13 +266,13 @@ bot.action("cur_Kent Vale", (ctx) => {
   dest(ctx);
 });
 
-bot.action("cur_LT13", (ctx) => {
-  current[ctx.from.id] = "LT13";
+bot.action("cur_LT 13", (ctx) => {
+  current[ctx.from.id] = "LT 13";
   dest(ctx);
 });
 
-bot.action("cur_LT27", (ctx) => {
-  current[ctx.from.id] = "LT27";
+bot.action("cur_LT 27", (ctx) => {
+  current[ctx.from.id] = "LT 27";
   dest(ctx);
 });
 
@@ -502,18 +502,18 @@ bot.action("dest_Kent Vale", (ctx) => {
   routeFinder(current[ctx.from.id], destination[ctx.from.id], ctx);
 });
 
-bot.action("dest_LT13", (ctx) => {
+bot.action("dest_LT 13", (ctx) => {
   ctx.deleteMessage();
-  destination[ctx.from.id] = "LT13";
+  destination[ctx.from.id] = "LT 13";
   ctx.reply(
     `Calculating... ${current[ctx.from.id]} to ${destination[ctx.from.id]}`
   );
   routeFinder(current[ctx.from.id], destination[ctx.from.id], ctx);
 });
 
-bot.action("dest_LT27", (ctx) => {
+bot.action("dest_LT 27", (ctx) => {
   ctx.deleteMessage();
-  destination[ctx.from.id] = "LT27";
+  destination[ctx.from.id] = "LT 27";
   ctx.reply(
     `Calculating... ${current[ctx.from.id]} to ${destination[ctx.from.id]}`
   );
@@ -806,13 +806,13 @@ bot.action("arr_Kent Vale", (ctx) => {
   selectBusServices(ctx);
 });
 
-bot.action("arr_LT13", (ctx) => {
-  arrBusStop[ctx.from.id] = "LT13";
+bot.action("arr_LT 13", (ctx) => {
+  arrBusStop[ctx.from.id] = "LT 13";
   selectBusServices(ctx);
 });
 
-bot.action("arr_LT27", (ctx) => {
-  arrBusStop[ctx.from.id] = "LT27";
+bot.action("arr_LT 27", (ctx) => {
+  arrBusStop[ctx.from.id] = "LT 27";
   selectBusServices(ctx);
 });
 
@@ -1178,15 +1178,15 @@ bot.action("prox_Kent Vale", (ctx) => {
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
-bot.action("prox_LT13", (ctx) => {
+bot.action("prox_LT 13", (ctx) => {
   ctx.deleteMessage();
-  proxDest[ctx.from.id] = "LT13";
+  proxDest[ctx.from.id] = "LT 13";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
-bot.action("prox_LT27", (ctx) => {
+bot.action("prox_LT 27", (ctx) => {
   ctx.deleteMessage();
-  proxDest[ctx.from.id] = "LT27";
+  proxDest[ctx.from.id] = "LT 27";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
