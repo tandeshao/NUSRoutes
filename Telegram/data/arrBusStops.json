@@ -16,7 +16,7 @@
   [
     {
       "text": "BTC-Oei Tiong Ham Building",
-      "callback_data": "arr_BTC - Oei Tiong Ham Building"
+      "callback_data": "arr_Oei Tiong Ham Building"
     },
     {
       "text": "Central Library",
@@ -93,8 +93,8 @@
       "callback_data": "arr_Opp University Health Centre"
     },
     {
-      "text": "Opp YIH",
-      "callback_data": "arr_Opp YIH"
+      "text": "Opp Yusof Ishak House",
+      "callback_data": "arr_Opp Yusof Ishak House"
     }
   ],
   [
@@ -104,11 +104,11 @@
     },
     {
       "text": "PGPR",
-      "callback_data": "arr_Prince George's Park Residence"
+      "callback_data": "arr_Prince George's Park Residences"
     },
     {
       "text": "Raffles Hall",
-      "callback_data": "arr_Raffles Hall (Opp. Museum)"
+      "callback_data": "arr_Raffles Hall"
     }
   ],
   [
@@ -135,14 +135,14 @@
       "callback_data": "arr_University Town"
     },
     {
-      "text": "Ventus (Opp LT13)",
-      "callback_data": "arr_Ventus (Opp LT13)"
+      "text": "Ventus",
+      "callback_data": "arr_Ventus"
     }
   ],
   [
     {
-      "text": "YIH",
-      "callback_data": "arr_YIH"
+      "text": "Yusof Ishak House",
+      "callback_data": "arr_Yusof Ishak House"
     },
     {
       "text": "Japanese Pri",
