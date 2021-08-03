@@ -226,8 +226,8 @@ bot.action("cur_Botanic Gardens MRT", (ctx) => {
   dest(ctx);
 });
 
-bot.action("cur_BTC - Oei Tiong Ham Building", (ctx) => {
-  current[ctx.from.id] = "BTC - Oei Tiong Ham Building";
+bot.action("cur_Oei Tiong Ham Building", (ctx) => {
+  current[ctx.from.id] = "Oei Tiong Ham Building";
   dest(ctx);
 });
 
@@ -266,13 +266,13 @@ bot.action("cur_Kent Vale", (ctx) => {
   dest(ctx);
 });
 
-bot.action("cur_LT13", (ctx) => {
-  current[ctx.from.id] = "LT13";
+bot.action("cur_LT 13", (ctx) => {
+  current[ctx.from.id] = "LT 13";
   dest(ctx);
 });
 
-bot.action("cur_LT27", (ctx) => {
-  current[ctx.from.id] = "LT27";
+bot.action("cur_LT 27", (ctx) => {
+  current[ctx.from.id] = "LT 27";
   dest(ctx);
 });
 
@@ -311,8 +311,8 @@ bot.action("cur_Opp University Health Centre", (ctx) => {
   dest(ctx);
 });
 
-bot.action("cur_Opp YIH", (ctx) => {
-  current[ctx.from.id] = "Opp YIH";
+bot.action("cur_Opp Yusof Ishak House", (ctx) => {
+  current[ctx.from.id] = "Opp Yusof Ishak House";
   dest(ctx);
 });
 
@@ -321,13 +321,13 @@ bot.action("cur_Prince George's Park", (ctx) => {
   dest(ctx);
 });
 
-bot.action("cur_Prince George's Park Residence", (ctx) => {
-  current[ctx.from.id] = "Prince George's Park Residence";
+bot.action("cur_Prince George's Park Residences", (ctx) => {
+  current[ctx.from.id] = "Prince George's Park Residences";
   dest(ctx);
 });
 
-bot.action("cur_Raffles Hall (Opp. Museum)", (ctx) => {
-  current[ctx.from.id] = "Raffles Hall (Opp. Museum)";
+bot.action("cur_Raffles Hall", (ctx) => {
+  current[ctx.from.id] = "Raffles Hall";
   dest(ctx);
 });
 
@@ -356,13 +356,13 @@ bot.action("cur_University Town", (ctx) => {
   dest(ctx);
 });
 
-bot.action("cur_Ventus (Opp LT13)", (ctx) => {
-  current[ctx.from.id] = "Ventus (Opp LT13)";
+bot.action("cur_Ventus", (ctx) => {
+  current[ctx.from.id] = "Ventus";
   dest(ctx);
 });
 
-bot.action("cur_YIH", (ctx) => {
-  current[ctx.from.id] = "YIH";
+bot.action("cur_Yusof Ishak House", (ctx) => {
+  current[ctx.from.id] = "Yusof Ishak House";
   dest(ctx);
 });
 
@@ -430,9 +430,9 @@ bot.action("dest_Botanic Gardens MRT", (ctx) => {
   routeFinder(current[ctx.from.id], destination[ctx.from.id], ctx);
 });
 
-bot.action("dest_BTC - Oei Tiong Ham Building", (ctx) => {
+bot.action("dest_Oei Tiong Ham Building", (ctx) => {
   ctx.deleteMessage();
-  destination[ctx.from.id] = "BTC - Oei Tiong Ham Building";
+  destination[ctx.from.id] = "Oei Tiong Ham Building";
   ctx.reply(
     `Calculating... ${current[ctx.from.id]} to ${destination[ctx.from.id]}`
   );
@@ -502,18 +502,18 @@ bot.action("dest_Kent Vale", (ctx) => {
   routeFinder(current[ctx.from.id], destination[ctx.from.id], ctx);
 });
 
-bot.action("dest_LT13", (ctx) => {
+bot.action("dest_LT 13", (ctx) => {
   ctx.deleteMessage();
-  destination[ctx.from.id] = "LT13";
+  destination[ctx.from.id] = "LT 13";
   ctx.reply(
     `Calculating... ${current[ctx.from.id]} to ${destination[ctx.from.id]}`
   );
   routeFinder(current[ctx.from.id], destination[ctx.from.id], ctx);
 });
 
-bot.action("dest_LT27", (ctx) => {
+bot.action("dest_LT 27", (ctx) => {
   ctx.deleteMessage();
-  destination[ctx.from.id] = "LT27";
+  destination[ctx.from.id] = "LT 27";
   ctx.reply(
     `Calculating... ${current[ctx.from.id]} to ${destination[ctx.from.id]}`
   );
@@ -583,9 +583,9 @@ bot.action("dest_Opp University Health Centre", (ctx) => {
   routeFinder(current[ctx.from.id], destination[ctx.from.id], ctx);
 });
 
-bot.action("dest_Opp YIH", (ctx) => {
+bot.action("dest_Opp Yusof Ishak House", (ctx) => {
   ctx.deleteMessage();
-  destination[ctx.from.id] = "Opp YIH";
+  destination[ctx.from.id] = "Opp Yusof Ishak House";
   ctx.reply(
     `Calculating... ${current[ctx.from.id]} to ${destination[ctx.from.id]}`
   );
@@ -601,18 +601,18 @@ bot.action("dest_Prince George's Park", (ctx) => {
   routeFinder(current[ctx.from.id], destination[ctx.from.id], ctx);
 });
 
-bot.action("dest_Prince George's Park Residence", (ctx) => {
+bot.action("dest_Prince George's Park Residences", (ctx) => {
   ctx.deleteMessage();
-  destination[ctx.from.id] = "Prince George's Park Residence";
+  destination[ctx.from.id] = "Prince George's Park Residences";
   ctx.reply(
     `Calculating... ${current[ctx.from.id]} to ${destination[ctx.from.id]}`
   );
   routeFinder(current[ctx.from.id], destination[ctx.from.id], ctx);
 });
 
-bot.action("dest_Raffles Hall (Opp. Museum)", (ctx) => {
+bot.action("dest_Raffles Hall", (ctx) => {
   ctx.deleteMessage();
-  destination[ctx.from.id] = "Raffles Hall (Opp. Museum)";
+  destination[ctx.from.id] = "Raffles Hall";
   ctx.reply(
     `Calculating... ${current[ctx.from.id]} to ${destination[ctx.from.id]}`
   );
@@ -664,18 +664,18 @@ bot.action("dest_University Town", (ctx) => {
   routeFinder(current[ctx.from.id], destination[ctx.from.id], ctx);
 });
 
-bot.action("dest_Ventus (Opp LT13)", (ctx) => {
+bot.action("dest_Ventus", (ctx) => {
   ctx.deleteMessage();
-  destination[ctx.from.id] = "Ventus (Opp LT13)";
+  destination[ctx.from.id] = "Ventus";
   ctx.reply(
     `Calculating... ${current[ctx.from.id]} to ${destination[ctx.from.id]}`
   );
   routeFinder(current[ctx.from.id], destination[ctx.from.id], ctx);
 });
 
-bot.action("dest_YIH", (ctx) => {
+bot.action("dest_Yusof Ishak House", (ctx) => {
   ctx.deleteMessage();
-  destination[ctx.from.id] = "YIH";
+  destination[ctx.from.id] = "Yusof Ishak House";
   ctx.reply(
     `Calculating... ${current[ctx.from.id]} to ${destination[ctx.from.id]}`
   );
@@ -766,8 +766,8 @@ bot.action("arr_Botanic Gardens MRT", (ctx) => {
   selectBusServices(ctx);
 });
 
-bot.action("arr_BTC - Oei Tiong Ham Building", (ctx) => {
-  arrBusStop[ctx.from.id] = "BTC - Oei Tiong Ham Building";
+bot.action("arr_Oei Tiong Ham Building", (ctx) => {
+  arrBusStop[ctx.from.id] = "Oei Tiong Ham Building";
   selectBusServices(ctx);
 });
 
@@ -806,13 +806,13 @@ bot.action("arr_Kent Vale", (ctx) => {
   selectBusServices(ctx);
 });
 
-bot.action("arr_LT13", (ctx) => {
-  arrBusStop[ctx.from.id] = "LT13";
+bot.action("arr_LT 13", (ctx) => {
+  arrBusStop[ctx.from.id] = "LT 13";
   selectBusServices(ctx);
 });
 
-bot.action("arr_LT27", (ctx) => {
-  arrBusStop[ctx.from.id] = "LT27";
+bot.action("arr_LT 27", (ctx) => {
+  arrBusStop[ctx.from.id] = "LT 27";
   selectBusServices(ctx);
 });
 
@@ -851,8 +851,8 @@ bot.action("arr_Opp University Health Centre", (ctx) => {
   selectBusServices(ctx);
 });
 
-bot.action("arr_Opp YIH", (ctx) => {
-  arrBusStop[ctx.from.id] = "Opp YIH";
+bot.action("arr_Opp Yusof Ishak House", (ctx) => {
+  arrBusStop[ctx.from.id] = "Opp Yusof Ishak House";
   selectBusServices(ctx);
 });
 
@@ -861,13 +861,13 @@ bot.action("arr_Prince George's Park", (ctx) => {
   selectBusServices(ctx);
 });
 
-bot.action("arr_Prince George's Park Residence", (ctx) => {
-  arrBusStop[ctx.from.id] = "Prince George's Park Residence";
+bot.action("arr_Prince George's Park Residences", (ctx) => {
+  arrBusStop[ctx.from.id] = "Prince George's Park Residences";
   selectBusServices(ctx);
 });
 
-bot.action("arr_Raffles Hall (Opp. Museum)", (ctx) => {
-  arrBusStop[ctx.from.id] = "Raffles Hall (Opp. Museum)";
+bot.action("arr_Raffles Hall", (ctx) => {
+  arrBusStop[ctx.from.id] = "Raffles Hall";
   selectBusServices(ctx);
 });
 
@@ -896,13 +896,13 @@ bot.action("arr_University Town", (ctx) => {
   selectBusServices(ctx);
 });
 
-bot.action("arr_Ventus (Opp LT13)", (ctx) => {
-  arrBusStop[ctx.from.id] = "Ventus (Opp LT13)";
+bot.action("arr_Ventus", (ctx) => {
+  arrBusStop[ctx.from.id] = "Ventus";
   selectBusServices(ctx);
 });
 
-bot.action("arr_YIH", (ctx) => {
-  arrBusStop[ctx.from.id] = "YIH";
+bot.action("arr_Yusof Ishak House", (ctx) => {
+  arrBusStop[ctx.from.id] = "Yusof Ishak House";
   selectBusServices(ctx);
 });
 
@@ -1130,9 +1130,9 @@ bot.action("prox_Botanic Gardens MRT", (ctx) => {
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
-bot.action("prox_BTC - Oei Tiong Ham Building", (ctx) => {
+bot.action("prox_Oei Tiong Ham Building", (ctx) => {
   ctx.deleteMessage();
-  proxDest[ctx.from.id] = "BTC - Oei Tiong Ham Building";
+  proxDest[ctx.from.id] = "Oei Tiong Ham Building";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
@@ -1178,15 +1178,15 @@ bot.action("prox_Kent Vale", (ctx) => {
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
-bot.action("prox_LT13", (ctx) => {
+bot.action("prox_LT 13", (ctx) => {
   ctx.deleteMessage();
-  proxDest[ctx.from.id] = "LT13";
+  proxDest[ctx.from.id] = "LT 13";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
-bot.action("prox_LT27", (ctx) => {
+bot.action("prox_LT 27", (ctx) => {
   ctx.deleteMessage();
-  proxDest[ctx.from.id] = "LT27";
+  proxDest[ctx.from.id] = "LT 27";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
@@ -1232,9 +1232,9 @@ bot.action("prox_Opp University Health Centre", (ctx) => {
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
-bot.action("prox_Opp YIH", (ctx) => {
+bot.action("prox_Opp Yusof Ishak House", (ctx) => {
   ctx.deleteMessage();
-  proxDest[ctx.from.id] = "Opp YIH";
+  proxDest[ctx.from.id] = "Opp Yusof Ishak House";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
@@ -1244,15 +1244,15 @@ bot.action("prox_Prince George's Park", (ctx) => {
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
-bot.action("prox_Prince George's Park Residence", (ctx) => {
+bot.action("prox_Prince George's Park Residences", (ctx) => {
   ctx.deleteMessage();
-  proxDest[ctx.from.id] = "Prince George's Park Residence";
+  proxDest[ctx.from.id] = "Prince George's Park Residences";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
-bot.action("prox_Raffles Hall (Opp. Museum)", (ctx) => {
+bot.action("prox_Raffles Hall", (ctx) => {
   ctx.deleteMessage();
-  proxDest[ctx.from.id] = "Raffles Hall (Opp. Museum)";
+  proxDest[ctx.from.id] = "Raffles Hall";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
@@ -1286,15 +1286,15 @@ bot.action("prox_University Town", (ctx) => {
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
-bot.action("prox_Ventus (Opp LT13)", (ctx) => {
+bot.action("prox_Ventus", (ctx) => {
   ctx.deleteMessage();
-  proxDest[ctx.from.id] = "Ventus (Opp LT13)";
+  proxDest[ctx.from.id] = "Ventus";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 
-bot.action("prox_YIH", (ctx) => {
+bot.action("prox_Yusof Ishak House", (ctx) => {
   ctx.deleteMessage();
-  proxDest[ctx.from.id] = "YIH";
+  proxDest[ctx.from.id] = "Yusof Ishak House";
   ctx.reply(`Destination: ${proxDest[ctx.from.id]} ${locationStr}`);
 });
 

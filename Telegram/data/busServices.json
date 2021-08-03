@@ -39,7 +39,7 @@
       }
     ]
   ],
-  "BTC - Oei Tiong Ham Building": [
+  "Oei Tiong Ham Building": [
     [
       {
         "text": "BTC",
@@ -169,7 +169,7 @@
       }
     ]
   ],
-  "LT13": [
+  "LT 13": [
     [
       {
         "text": "A1",
@@ -185,7 +185,7 @@
       }
     ]
   ],
-  "LT27": [
+  "LT 27": [
     [
       {
         "text": "A1",
@@ -319,7 +319,7 @@
       }
     ]
   ],
-  "Opp YIH": [
+  "Opp Yusof Ishak House": [
     [
       {
         "text": "A2",
@@ -357,7 +357,7 @@
       }
     ]
   ],
-  "Prince George's Park Residence": [
+  "Prince George's Park Residences": [
     [
       {
         "text": "A2",
@@ -365,7 +365,7 @@
       }
     ]
   ],
-  "Raffles Hall (Opp. Museum)": [
+  "Raffles Hall": [
     [
       {
         "text": "E",
@@ -461,7 +461,7 @@
       }
     ]
   ],
-  "Ventus (Opp LT13)": [
+  "Ventus": [
     [
       {
         "text": "A2",
@@ -473,7 +473,7 @@
       }
     ]
   ],
-  "YIH": [
+  "Yusof Ishak House": [
     [
       {
         "text": "A1",
