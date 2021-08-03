@@ -37,17 +37,17 @@ export const MapContainer = styled.div`
   max-height: 100vh; */
   }
   height: 100vh;
-  width: ${({ $sidebar }) => ($sidebar ? "78vw" : "100vw")};
+  width: ${({ $sidebar }) => ($sidebar ? "75vw" : "100vw")};
   z-index: 2;
   position: absolute;
   right: 0;
 
   @media screen and (max-width: 1700px) {
-    width: ${({ $sidebar }) => ($sidebar ? "70vw" : "100vw")};
+    width: ${({ $sidebar }) => ($sidebar ? "67vw" : "100vw")};
   }
 
   @media screen and (max-width: 1100px) {
-    width: ${({ $sidebar }) => ($sidebar ? "63vw" : "100vw")};
+    width: ${({ $sidebar }) => ($sidebar ? "60vw" : "100vw")};
   }
 
   @media screen and (max-width: 450px) and (max-height: 900px) {
