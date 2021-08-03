@@ -2,8 +2,13 @@ import styled from "styled-components";
 import { MdKeyboardArrowRight, MdArrowForward } from "react-icons/md";
 
 export const InputSectionContainer = styled.div`
+  display: ${({$sidebar})=> $sidebar ? 'block' : 'none'};
   min-height: auto;
   position: relative;
+
+  @media screen and (max-width: 450px) and (max-height: 900px) {
+    display: block;
+  }
 `;
 
 export const Switch = styled.img`

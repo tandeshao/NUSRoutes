@@ -45,6 +45,7 @@ const MobileCustomization = ({
   alarmToggle,
   setAlarmToggle,
   setBusArrivalTime,
+  sidebar
 }) => {
   const history = useHistory();
 
@@ -321,7 +322,7 @@ const MobileCustomization = ({
   };
 
   return (
-    <CustomizationSection>
+    <CustomizationSection $sidebar={sidebar}>
       <CustomizationButton
         departureSetting={departureSetting}
         onClick={() => {

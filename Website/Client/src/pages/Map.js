@@ -136,9 +136,9 @@ const Map = () => {
               background: "transparent",
             }}
           >
-            {sidebar && (
-              <SideBarContainer $sidebar={sidebar}>
+            <SideBarContainer $sidebar={sidebar}>
                 <MapSideBar
+                  sidebar={sidebar}
                   routeRecommendations={routeRecommendations}
                   setRoute={setRoute}
                   startAndEnd={[start, end]}
@@ -161,7 +161,7 @@ const Map = () => {
                   setDay={setDay}
                 />
               </SideBarContainer>
-            )}
+            
 
             {sidebar ? (
               <ArrowLeftButton

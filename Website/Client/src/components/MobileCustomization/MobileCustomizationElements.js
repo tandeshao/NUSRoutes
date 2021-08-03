@@ -3,13 +3,14 @@ import styled from "styled-components";
 export const CustomizationSection = styled.div`
   height: 20px;
   color: white;
-  display: flex;
+  display: ${({$sidebar}) => $sidebar ? 'flex' : 'none'};
   max-width: 100%;
   justify-content: space-between;
   margin: 10px;
   flex-wrap: wrap;
 
   @media screen and (max-width: 450px) and (max-height: 900px) {
+    display: flex;
     font-size: 12px;
   }
 `;

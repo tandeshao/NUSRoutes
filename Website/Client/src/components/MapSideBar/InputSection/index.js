@@ -38,6 +38,7 @@ const InputSection = ({
   destination,
   setCurrent,
   setDestination,
+  sidebar
 }) => {
   const [hover, setHover] = useState(false);
   const onHover = () => {
@@ -134,7 +135,7 @@ const InputSection = ({
   const classes = useStyles();
 
   return (
-    <InputSectionContainer>
+    <InputSectionContainer $sidebar={sidebar}>
       <Switch
         onClick={() => {
           const curr = current;

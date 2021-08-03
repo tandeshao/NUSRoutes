@@ -30,6 +30,7 @@ const MapSideBar = ({
   setYear,
   day,
   setDay,
+  sidebar
 }) => {
   const [transferredBuses, setTransferredBuses] = useState(() => []);
   const [busArrivalTime, setBusArrivalTime] = useState(() => []);
@@ -57,6 +58,7 @@ const MapSideBar = ({
         </p>
       </Bar>
       <InputSection
+        sidebar={sidebar}
         setTransferredBuses={setTransferredBuses}
         setBusArrivalTime={setBusArrivalTime}
         time={timeInput}
@@ -73,6 +75,7 @@ const MapSideBar = ({
       <Dividers />
 
       <MobileCustomization
+        sidebar={sidebar}
         setTime={setTimeInput}
         setDate={setDateInput}
         setMonth={setMonth}
