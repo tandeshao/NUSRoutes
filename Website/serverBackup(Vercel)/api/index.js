@@ -44,6 +44,7 @@ app.get("/api/getArrivalTimeV", async (req, res) => {
 app.get("/api/telegramRouteRecommendationV", async (req, res) => {
   res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
   console.log("telegram RouteRecommendation function called");
+  process.env.TZ = 'Asia/Singapore';
   const obj = new Date();
   const [hour, minute] = obj.toLocaleTimeString("it-IT").split(/:| /);
   let now = parseInt(hour + minute);
